@@ -10,9 +10,18 @@
     "build": "next build",
     "start": "next start"
   },
+  "xo": {
+    "extends": "xo-react"
+  },
   "dependencies": {
     "next": "^5.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint-config-xo-react": "^0.16.0",
+    "eslint-plugin-react": "^7.7.0",
+    "xo": "^0.20.3"
   }
 }
