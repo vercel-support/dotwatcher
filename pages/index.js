@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {createClient} from 'contentful';
-
 import Header from '../components/header';
 import Hero from '../components/hero';
 import Wrapper from '../components/shared/wrapper';
@@ -20,7 +19,10 @@ class App extends Component {
 			accessToken: 'f214dba82579af555cd4839172570328cf8aee10e37bf5b83094953bb65fb317'
 		});
 
-		client.getEntries()
+		client.getEntries({
+			content_type: '2wKn6yEnZewu2SCCkus4as',
+			order: '-sys.createdAt'
+		})
 			.then(entries => {
 				console.log('entries', entries.items);
 				this.setState({
@@ -37,7 +39,7 @@ class App extends Component {
 				<Wrapper>
 					{
 						this.state.posts.map(item => (
-							<Post key={item.sys.id} title={item.fields.name} body={item.fields.biography}/>
+							<Post key={item.sys.id} title={item.fields.title} body={item.fields.body}/>
 						))
 					}
 				</Wrapper>
