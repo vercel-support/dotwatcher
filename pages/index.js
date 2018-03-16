@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {createClient} from 'contentful';
 
 import Header from '../components/header';
+import Hero from '../components/hero';
+import Wrapper from '../components/shared/wrapper';
+import Post from '../components/post';
 
 class App extends Component {
 	constructor(props) {
@@ -30,17 +33,14 @@ class App extends Component {
 		return (
 			<div>
 				<Header title="dotwatchers.cc"/>
-				<main className="ph4">
-					<h1 className="f-headline">Hello, World!</h1>
+				<Hero title="Follow the ride" byline="The best way to track the latest epic bike rides"/>
+				<Wrapper>
 					{
 						this.state.posts.map(item => (
-							<div key={item.sys.id}>
-								<h1>{item.fields.name}</h1>
-								<p className="lh-copy measure-wide">{item.fields.biography}</p>
-							</div>
+							<Post key={item.sys.id} title={item.fields.name} body={item.fields.biography}/>
 						))
 					}
-				</main>
+				</Wrapper>
 			</div>
 		);
 	}
