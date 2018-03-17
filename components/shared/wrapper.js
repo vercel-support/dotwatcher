@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
-const Div = styled.div`
-	${tachyons}
-`;
+const Div = styled.div`${tachyons}`;
 
 const Wrapper = ({children}) => (
 	<Div ph4 className="cf">

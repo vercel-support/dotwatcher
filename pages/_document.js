@@ -4,9 +4,7 @@ import styled, {ServerStyleSheet} from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import stylesheet from '../styles/index.css';
 
-const Body = styled.body`
-	${tachyons}
-`;
+const Body = styled.body`${tachyons}`;
 
 export default class Document extends NextDocument {
 	static getInitialProps ({renderPage}) {

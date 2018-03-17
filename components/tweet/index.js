@@ -19,7 +19,7 @@ class Tweet extends Component {
 		let tweet = null;
 		if (this.state.inBrowser) {
 			const {TwitterTweetEmbed} = require('react-twitter-embed');
-			tweet = <TwitterTweetEmbed tweetId={this.props.tweetId}/>;
+			tweet = <TwitterTweetEmbed tweetId="974715895376482306"/>;
 		} else {
 			tweet = <Placeholder/>;
 		}

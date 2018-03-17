@@ -3,31 +3,46 @@ import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import TimeAgo from 'react-timeago';
+import shortcodes from 'remark-shortcodes';
+import Tweet from '../tweet';
 
-const Article = styled.article`
-	${tachyons}
+const Article = styled.article`${tachyons}`;
+const H1 = styled.h1`${tachyons}`;
+const Div = styled.div`${tachyons}`;
+const StyledTimeAgo = styled(TimeAgo)`
+	display: inline-block;
+	margin-bottom: var(--spacing-small);
+	font-size: 1rem;
+	font-style: italic;
 `;
 
-const H1 = styled.h1`
-	${tachyons}
-`;
+const Post = ({data}) => {
+// var tree = unified()
+//   .use(parse)
+//   .use(shortcodes)
+//   .parse(data.body);
+// 	console.log(tree, {depth: null});
 
-const Div = styled.div`
-	${tachyons}
-`;
-
-const Post = ({title, body}) => (
-	<Article bb bw1 measure_wide>
-		<H1 f2 lh_title>{title}</H1>
-		<Div lh_copy>
-			<ReactMarkdown source={body}/>
-		</Div>
-	</Article>
-);
+	return (
+		<Article bb bw1 f4 measure_wide>
+			<H1 f2 lh_title>{data.title}</H1>
+			<Div lh_copy>
+				<ReactMarkdown
+					source={data.body}
+					plugins={[shortcodes]}
+					renderers={{shortcode: Tweet}}
+				/>
+			</Div>
+			<StyledTimeAgo date={data.date} >
+				{data.date}
+			</StyledTimeAgo>
+		</Article>
+	);
+};
 
 Post.propTypes = {
-	title: PropTypes.string.isRequired,
-	body: PropTypes.string.isRequired
+	data: PropTypes.object.isRequired
 };
 
 export default Post;

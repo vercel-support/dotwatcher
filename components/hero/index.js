@@ -3,17 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
-const Header = styled.header`
-	${tachyons}
-`;
-
-const H1 = styled.h1`
-	${tachyons}
-`;
-
-const H2 = styled.h2`
-	${tachyons}
-`;
+const Header = styled.header`${tachyons}`;
+const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
 
 const Hero = ({title, byline}) => (
 	<Header bg_washed_blue black_90 ph4 pb4 cf className="cf">

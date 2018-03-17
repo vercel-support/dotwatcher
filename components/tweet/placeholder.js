@@ -7,12 +7,10 @@ const Div = styled.div`
 	width: 500px;
 `;
 
-const P = styled.p`
-	${tachyons}
-`;
+const P = styled.p`${tachyons}`;
 
 const Placeholder = ({title, body}) => (
-	<Div  ba b__light_gray br2 pa3 h5 dt>
+	<Div ba b__light_gray br2 pa3 h5 dt>
 		<P f3 fw6 moon_gray ttu tracked lh_copy measure_wide dtc v_mid tc>Loading</P>
 	</Div>
 );

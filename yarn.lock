@@ -5206,6 +5206,10 @@ react-stand-in@^4.0.0-beta.18:
   dependencies:
     shallowequal "^1.0.2"
 
+react-timeago@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-3.4.3.tgz#eb9061eefb044e4a2b09ce8c99d34645b2dbfa25"
+
 react-twitter-embed@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/react-twitter-embed/-/react-twitter-embed-1.1.3.tgz#7b9c4eb8de5e720bdecab5ed0a5c0ab1d3df0698"
@@ -5414,6 +5418,10 @@ remark-parse@^5.0.0:
     unist-util-remove-position "^1.0.0"
     vfile-location "^2.0.0"
     xtend "^4.0.1"
+
+remark-shortcodes@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/remark-shortcodes/-/remark-shortcodes-0.1.4.tgz#b0be97d7db7c89f869d9f483b26cb38998b88506"
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
@@ -6342,7 +6350,7 @@ unherit@^1.0.4:
     inherits "^2.0.1"
     xtend "^4.0.1"
 
-unified@^6.1.5:
+unified@^6.1.5, unified@^6.1.6:
   version "6.1.6"
   resolved "https://registry.yarnpkg.com/unified/-/unified-6.1.6.tgz#5ea7f807a0898f1f8acdeefe5f25faa010cc42b1"
   dependencies:

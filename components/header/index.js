@@ -4,13 +4,8 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Logo from './logo';
 
-const Header = styled.header`
-	${tachyons}
-`;
-
-const P = styled.p`
-	${tachyons}
-`;
+const Header = styled.header`${tachyons}`;
+const P = styled.p`${tachyons}`;
 
 const Banner = ({title}) => (
 	<Header bg_near_black near_white ph4 cf dt w_100>

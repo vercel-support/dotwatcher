@@ -3,9 +3,7 @@ import {createClient} from 'contentful';
 import Header from '../components/header';
 import Hero from '../components/hero';
 import Wrapper from '../components/shared/wrapper';
-import Grid from '../components/shared/grid';
 import Post from '../components/post';
-import Tweet from '../components/tweet';
 
 class App extends Component {
 	constructor(props) {
@@ -44,17 +42,10 @@ class App extends Component {
 					byline="The best way to track the latest epic bike rides"
 				/>
 
-				<Grid>
-					<Tweet tweetId="881966544456220673"/>
-					<Tweet tweetId="974626768652062722"/>
-					<Tweet tweetId="974624544458792961"/>
-					<Tweet tweetId="971107777878855686"/>
-				</Grid>
-
 				<Wrapper>
 					{
 						this.state.posts.map(item => (
-							<Post key={item.sys.id} title={item.fields.title} body={item.fields.body}/>
+							<Post key={item.sys.id} data={item.fields}/>
 						))
 					}
 				</Wrapper>
