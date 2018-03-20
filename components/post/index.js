@@ -18,7 +18,7 @@ const StyledTimeAgo = styled(TimeAgo)`
 	font-style: italic;
 `;
 
-const Post = ({data}) => {
+const Post = ({data, id}) => {
 // var tree = unified()
 //   .use(parse)
 //   .use(shortcodes)
@@ -27,7 +27,7 @@ const Post = ({data}) => {
 
 	return (
 		<Article bb bw1 f4 measure_wide>
-			<H1 f2 lh_title><Link href={'race?id=' + data.slug} as={'/race/' + data.slug}><a>{data.title}</a></Link></H1>
+			<H1 f2 lh_title><Link href={'race?id=' + id} as={'/race/' + id}><a>{data.title}</a></Link></H1>
 			<Div lh_copy>
 				<ReactMarkdown
 					source={data.body}

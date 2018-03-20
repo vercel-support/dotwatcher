@@ -1,19 +1,20 @@
 import React from 'react';
-import {createClient} from 'contentful';
+import {withEntry} from '../data/with-entry';
+import Header from '../components/header';
 import Wrapper from '../components/shared/wrapper';
+import Post from '../components/post';
 
-export default class extends React.Component {
-	static getInitialProps ({query: {id}}) {
-		return {id};
-	}
-
+class Race extends React.Component {
 	render () {
-		return <Wrapper>
-			<h1>My {this.props.id} blog post</h1>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua.
-			</p>
-		</Wrapper>
+		return <div>
+			<Header
+				title="dotwatcher.cc"
+			/>
+			<Wrapper>
+				<Post key={this.props.post.sys.id} id={this.props.post.sys.id} data={this.props.post.data}/>
+			</Wrapper>
+		</div>
 	}
 }
+
+export default withEntry(Race);

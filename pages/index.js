@@ -10,7 +10,7 @@ class App extends Component {
 		return (
 			<div>
 				<Header
-					title="dotwatchers.cc"
+					title="dotwatcher.cc"
 				/>
 				<Hero
 					title="Follow the rides"
@@ -20,7 +20,7 @@ class App extends Component {
 				<Wrapper>
 					{
 						this.props.posts.map(item => (
-							<Post key={item.sys.id} data={item.data}/>
+							<Post key={item.sys.id} id={item.sys.id} data={item.data}/>
 						))
 					}
 				</Wrapper>
