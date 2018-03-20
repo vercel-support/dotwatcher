@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> renders <Logo /> 1`] = `
+.c0 {
+  display: table-cell;
+  margin: var(--spacing-none);
+  font-weight: 600;
+  line-height: 1;
+}
+
+<h1
+  className="c0"
+>
+  Page Title
+</h1>
+`;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hero /> renders <Hero /> 1`] = `
+.c0 {
+  background-color: var(--washed-blue);
+  color: var(--black-90);
+  padding-left: var(--spacing-large);
+  padding-right: var(--spacing-large);
+  padding-bottom: var(--spacing-large);
+  *zoom: 1;
+}
+
+.c1 {
+  font-size: 6rem;
+  margin-bottom: var(--spacing-none);
+}
+
+.c2 {
+  font-size: 3rem;
+  margin-top: var(--spacing-none);
+  max-width: 20em;
+}
+
+<header
+  className="cf c0"
+>
+  <h1
+    className="c1"
+  >
+    Hero Title
+  </h1>
+  <h2
+    className="c2"
+  >
+    Hero Byline
+  </h2>
+</header>
+`;

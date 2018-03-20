@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {withEntries} from '../data/with-entries';
+
 import Header from '../components/header';
 import Hero from '../components/hero';
-import Wrapper from '../components/shared/wrapper';
 import Post from '../components/post';
+import Wrapper from '../components/shared/wrapper';
+import {withEntries} from '../data/with-entries';
 
 class App extends Component {
 	render() {
