@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import SocialButtons from '../social-buttons';
 import TimeAgo from 'react-timeago';
 import Tweet from '../tweet';
+import Image from '../image';
 import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
@@ -20,15 +21,10 @@ const StyledTimeAgo = styled(TimeAgo)`
 `;
 
 const Post = ({data, id}) => {
-// var tree = unified()
-//   .use(parse)
-//   .use(shortcodes)
-//   .parse(data.body);
-// 	console.log(tree, {depth: null});
-
 	return (
-		<Article bb bw1 f4 measure_wide>
-			<H1 f2 lh_title><Link href={'race?id=' + id} as={'/race/' + id}><a>{data.title}</a></Link></H1>
+		<Article bb bw1 f4 measure_wide mt4>
+			{ data.image ? <Image data={data.image.fields}/> : null }
+			<H1 f2 lh_title><Link href={'post?id=' + id} as={'/post/' + id}><a>{data.title}</a></Link></H1>
 			<Div lh_copy>
 				<ReactMarkdown
 					source={data.body}
@@ -37,7 +33,7 @@ const Post = ({data, id}) => {
 				/>
 			</Div>
 			<SocialButtons />
-			<StyledTimeAgo date={data.date} >
+			<StyledTimeAgo date={data.date}>
 				{data.date}
 			</StyledTimeAgo>
 		</Article>

@@ -19,7 +19,7 @@ export const withEntries = Page => {
 
 		const posts = [];
 
-		response.items.forEach(item => {
+		for (let item of response.items) {
 			const entry = {
 				sys: {
 					id: item.sys.id
@@ -31,8 +31,12 @@ export const withEntries = Page => {
 					body: item.fields.body
 				}
 			};
+
+			if (item.fields.featuredImage) {
+				entry.data.image = await client.getAsset(item.fields.featuredImage.sys.id);
+			}
 			posts.push(entry);
-		});
+		};
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),

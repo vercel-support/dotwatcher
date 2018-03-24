@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import Placeholder from './placeholder';
+import Placeholder from '../placeholder';
 
 class Tweet extends Component {
 	constructor(props) {
@@ -29,7 +29,7 @@ class Tweet extends Component {
 }
 
 Tweet.propTypes = {
-	tweetId: PropTypes.string.isRequired
+	tweetId: PropTypes.string
 };
 
 export default Tweet;

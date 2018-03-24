@@ -12,7 +12,7 @@ const A = styled.a`${tachyons}`;
 const Banner = ({title}) => (
 	<Header bg_near_black near_white ph4 cf dt w_100>
 		<Link href="/" as="/">
-			<A dim near_white>
+			<A near_white hover_white>
 				<Logo>{title}</Logo>
 			</A>
 		</Link>

@@ -8,7 +8,7 @@ import Post from '../components/post';
 import Wrapper from '../components/shared/wrapper';
 import {withEntry} from '../data/with-entry';
 
-class Race extends React.Component {
+class PostPage extends React.Component {
 	render () {
 		return (
 			<Page sans_serif near_black pa0 ma0>
@@ -28,8 +28,8 @@ class Race extends React.Component {
 	}
 }
 
-Race.propTypes = {
+PostPage.propTypes = {
 	post: PropTypes.object.isRequired
 };
 
-export default withEntry(Race);
+export default withEntry(PostPage);
