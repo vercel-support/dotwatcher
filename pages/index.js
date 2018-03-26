@@ -21,7 +21,7 @@ class App extends Component {
 					title="dotwatcher.cc"
 				/>
 				<Hero
-					title="Follow the rides"
+					title="Follow the ride"
 					byline="The best way to track the latest epic bike rides"
 				/>
 

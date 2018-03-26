@@ -1,6 +1,7 @@
 // HOC for fetching entries from contentful
 
 import React from 'react';
+import lodash from 'lodash';
 import {createClient} from 'contentful';
 
 export const withEntries = Page => {
@@ -33,7 +34,9 @@ export const withEntries = Page => {
 			};
 
 			if (item.fields.featuredImage) {
-				entry.data.image = await client.getAsset(item.fields.featuredImage.sys.id);
+				entry.data.image = lodash.find(response.includes.Asset, obj => {
+					return obj.sys.id === item.fields.featuredImage.sys.id;
+				});
 			}
 			posts.push(entry);
 		};

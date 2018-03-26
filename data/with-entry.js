@@ -1,6 +1,7 @@
 // HOC for fetching entries from contentful
 
 import React from 'react';
+import lodash from 'lodash';
 import {createClient} from 'contentful';
 
 export const withEntry = Page => {
