@@ -13,6 +13,7 @@ import tachyons from 'styled-components-tachyons';
 const Article = styled.article`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`${tachyons}`;
+const A = styled.a`${tachyons}`;
 const StyledTimeAgo = styled(TimeAgo)`
 	display: inline-block;
 	margin-bottom: var(--spacing-small);
@@ -24,7 +25,11 @@ const Post = ({data, id}) => {
 	return (
 		<Article bb bw1 f4 measure_wide mt4>
 			{ data.image ? <Image data={data.image.fields}/> : null }
-			<H1 f2 lh_title><Link href={'post?id=' + id} as={'/post/' + id}><a>{data.title}</a></Link></H1>
+			<H1 f2 lh_title>
+				<Link href={'post?id=' + id} as={'/post/' + id}>
+					<A link dim near_black underline>{data.title}</A>
+				</Link>
+			</H1>
 			<Div lh_copy>
 				<ReactMarkdown
 					source={data.body}
@@ -36,6 +41,15 @@ const Post = ({data, id}) => {
 			<StyledTimeAgo date={data.date}>
 				{data.date}
 			</StyledTimeAgo>
+			<Div>
+				Race: {
+					data.categories.map(category => (
+						<Link key={category.sys.id} href={'race?id=' + category.sys.id} as={'/race/' + category.sys.id}>
+							<A link dim near_black underline>{category.fields.title}</A>
+						</Link>
+					))
+				}
+			</Div>
 		</Article>
 	);
 };
