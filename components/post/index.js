@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link, Router } from '../../routes'
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -26,7 +26,7 @@ const Post = ({data, id}) => {
 		<Article bb bw1 f4 measure_wide mt4>
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<H1 f2 lh_title>
-				<Link href={'post?id=' + id} as={'/post/' + id}>
+				<Link route="post" params={{id: id, type: 'post'}}>
 					<A link dim near_black underline>{data.title}</A>
 				</Link>
 			</H1>
@@ -44,7 +44,7 @@ const Post = ({data, id}) => {
 			<Div>
 				Race: {
 					data.categories.map(category => (
-						<Link key={category.sys.id} href={'race?id=' + category.sys.id} as={'/race/' + category.sys.id}>
+						<Link key={category.sys.id} route="race" params={{id: category.sys.id, type: 'race'}}>
 							<A link dim near_black underline>{category.fields.title}</A>
 						</Link>
 					))
