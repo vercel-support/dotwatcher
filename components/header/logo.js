@@ -9,7 +9,7 @@ const A = styled.a`${tachyons}`;
 
 const Logo = ({children}) => (
 	<H1 dtc ma0 fw6 lh_solid>
-		<Link href="/" as="/">
+		<Link href="/" as="/" passHref prefetch>
 			<A near_white hover_white>
 				{children}
 			</A>
