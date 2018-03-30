@@ -7,6 +7,7 @@ import TimeAgo from 'react-timeago';
 import Tweet from '../tweet';
 import Image from '../image';
 import shortcodes from 'remark-shortcodes';
+import slugify from '../../utils/slugify';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
@@ -26,7 +27,7 @@ const Post = ({data, id}) => {
 		<Article bb bw1 f4 measure_wide mt4>
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<H1 f2 lh_title>
-				<Link route="post" params={{id: id, type: 'post'}} passHref prefetch>
+				<Link route="post" params={{type: 'post', id: id, slug: slugify(data.title)}} passHref prefetch>
 					<A link dim near_black underline>{data.title}</A>
 				</Link>
 			</H1>
@@ -44,7 +45,7 @@ const Post = ({data, id}) => {
 			<Div>
 				Race: {
 					data.categories.map(category => (
-						<Link key={category.sys.id} route="race" params={{id: category.sys.id, type: 'race'}} passHref prefetch>
+						<Link key={category.sys.id} route="race" params={{type: 'race', id: category.sys.id, slug: slugify(category.fields.title)}} passHref prefetch>
 							<A link dim near_black underline>{category.fields.title}</A>
 						</Link>
 					))
