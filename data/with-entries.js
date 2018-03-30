@@ -8,7 +8,6 @@ export const withEntries = Page => {
 	const WithEntries = props => <Page {...props}/>;
 
 	WithEntries.getInitialProps = async ({query: {id, type}}) => {
-		console.log('TYPE>>>', type)
 		let contenfulQuery
 		const client = createClient({
 			space: '6hyijb95boju',
