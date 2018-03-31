@@ -42,7 +42,8 @@ export const withEntries = Page => {
 					slug: item.fields.slug,
 					date: item.fields.date,
 					body: item.fields.body,
-					categories: item.fields.category
+					categories: item.fields.category,
+					keyEvent: item.fields.keyPost
 				}
 			};
 
