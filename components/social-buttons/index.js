@@ -14,6 +14,7 @@ const StyledFacebookButton = styled(FacebookButton)`
 	line-height: 1;
 	padding: var(--spacing-small);
 	margin: 0 var(--spacing-small) var(--spacing-small);
+	cursor: pointer;
 `;
 const StyledTwitterButton = styled(TwitterButton)`
 	display: inline-block;
@@ -24,6 +25,7 @@ const StyledTwitterButton = styled(TwitterButton)`
 	line-height: 1;
 	padding: var(--spacing-small);
 	margin: 0 var(--spacing-small) var(--spacing-small);
+	cursor: pointer;
 `;
 
 class SocialButtons extends Component {
