@@ -3,6 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../components/header';
+import KeyEvents from '../components/key-events';
 import Page from '../components/shared/page';
 import Post from '../components/post';
 import Wrapper from '../components/shared/wrapper';
@@ -20,7 +21,10 @@ class Race extends React.Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Wrapper>
+				<Wrapper w_100 w_20_ns>
+					<KeyEvents posts={this.props.posts}/>
+				</Wrapper>
+				<Wrapper w_100 w_80_ns>
 					{
 						this.props.posts.map(item => (
 							<Post key={item.sys.id} id={item.sys.id} data={item.data}/>
