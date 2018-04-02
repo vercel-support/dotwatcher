@@ -4,7 +4,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown-with-shortcodes';
 import SocialButtons from '../social-buttons';
 import TimeAgo from 'react-timeago';
-import Tweet from '../tweet';
+import Embed from '../embed';
 import Image from '../image';
 import shortcodes from 'remark-shortcodes';
 import slugify from '../../utils/slugify';
@@ -35,7 +35,7 @@ const Post = ({data, id}) => {
 				<ReactMarkdown
 					source={data.body}
 					plugins={[shortcodes]}
-					renderers={{shortcode: Tweet}}
+					renderers={{shortcode: Embed}}
 				/>
 			</Div>
 			<StyledTimeAgo date={data.date}>
