@@ -5179,9 +5179,9 @@ react-hot-loader@4.0.0:
     prop-types "^15.6.0"
     shallowequal "^1.0.2"
 
-react-markdown@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-3.3.0.tgz#a87cdd822aa9302d6add9687961dd1a82a45d02e"
+react-markdown-with-shortcodes@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-markdown-with-shortcodes/-/react-markdown-with-shortcodes-3.4.0.tgz#25ff3c24bf11c5c26f058643c1489b6fc5835384"
   dependencies:
     prop-types "^15.6.1"
     remark-parse "^5.0.0"

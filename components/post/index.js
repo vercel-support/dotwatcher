@@ -1,7 +1,7 @@
 import { Link, Router } from '../../routes'
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown-with-shortcodes';
 import SocialButtons from '../social-buttons';
 import TimeAgo from 'react-timeago';
 import Tweet from '../tweet';
@@ -24,7 +24,7 @@ const StyledTimeAgo = styled(TimeAgo)`
 
 const Post = ({data, id}) => {
 	return (
-		<Article bb bw1 f4 measure_wide mt4 pb2 id={id} className="cf">
+		<Article bb bw1 f4 measure_wide mt4 pb2 id={slugify(data.title)} className="cf">
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<H1 f2 lh_title>
 				<Link route="post" params={{type: 'post', id: id, slug: slugify(data.title)}} passHref prefetch>
