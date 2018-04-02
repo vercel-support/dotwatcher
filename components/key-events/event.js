@@ -21,7 +21,7 @@ const event = ({data, id}) => {
 			<StyledTimeAgo date={data.date}>
 				{data.date}
 			</StyledTimeAgo>
-				<A f6 lh_title link dim near_black underline db href={'#' + id}>{data.title}</A>
+				<A f6 lh_title link dim near_black underline db href={'#' + slugify(data.title)}>{data.title}</A>
 		</Item>
 	);
 };

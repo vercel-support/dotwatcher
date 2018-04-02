@@ -23,14 +23,14 @@ const keyEvents = ({posts}) => {
 		<Div>
 			<Header pt4>
 				<H2 pt3>
-					Key events
+					Key moments
 				</H2>
 			</Header>
-			<List list pa0>
+			<List list="true" pa0>
 			{
 				posts.filter(post => post.data.keyEvent === true)
 				.map(post => (
-					<Event data={post.data} id={post.sys.id}/>
+					<Event key={post.sys.id} data={post.data} id={post.sys.id}/>
 				))
 			}
 			</List>
@@ -39,7 +39,7 @@ const keyEvents = ({posts}) => {
 };
 
 keyEvents.propTypes = {
-	data: PropTypes.object.isRequired
+	posts: PropTypes.array.isRequired
 };
 
 export default keyEvents;
