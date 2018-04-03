@@ -6,22 +6,22 @@ import Header from '../components/header';
 import Page from '../components/shared/page';
 import Post from '../components/post';
 import Wrapper from '../components/shared/wrapper';
-import {withEntry} from '../data/with-entry';
+import {withEntries} from '../data/with-entries';
 
 class PostPage extends React.Component {
 	render () {
 		return (
 			<Page sans_serif near_black pa0 ma0>
 				<Head>
-					<title>{this.props.post.data.title}</title>
-					<meta property="og:title" content={this.props.post.data.title} />
+					<title>{this.props.posts[0].data.title}</title>
+					<meta property="og:title" content={this.props.posts[0].data.title} />
 					<meta property="og:image" content="" />
 				</Head>
 				<Header
 					title="dotwatcher.cc"
 				/>
 				<Wrapper>
-					<Post key={this.props.post.sys.id} id={this.props.post.sys.id} data={this.props.post.data}/>
+					<Post key={this.props.posts[0].sys.id} id={this.props.posts[0].sys.id} data={this.props.posts[0].data}/>
 				</Wrapper>
 			</Page>
 		);
@@ -29,7 +29,7 @@ class PostPage extends React.Component {
 }
 
 PostPage.propTypes = {
-	post: PropTypes.object.isRequired
+	posts: PropTypes.array.isRequired
 };
 
-export default withEntry(PostPage);
+export default withEntries(PostPage);

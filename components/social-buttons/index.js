@@ -4,15 +4,28 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
+const Div = styled.div`${tachyons}`;
 const StyledFacebookButton = styled(FacebookButton)`
+	display: inline-block;
 	background-color: #3b5998;
 	border: 0;
 	color: #fff;
+	font-size: 1rem;
+	line-height: 1;
+	padding: var(--spacing-small);
+	margin: 0 var(--spacing-small) var(--spacing-small);
+	cursor: pointer;
 `;
 const StyledTwitterButton = styled(TwitterButton)`
+	display: inline-block;
 	background-color: #00aced;
 	border: 0;
 	color: #fff;
+	font-size: 1rem;
+	line-height: 1;
+	padding: var(--spacing-small);
+	margin: 0 var(--spacing-small) var(--spacing-small);
+	cursor: pointer;
 `;
 
 class SocialButtons extends Component {
@@ -29,7 +42,7 @@ class SocialButtons extends Component {
 
 	render() {
 		return (
-			<div>
+			<Div fl w_third tc>
 				<StyledFacebookButton
 					appId="2041612559415974"
 					windowOptions={[
@@ -55,7 +68,7 @@ class SocialButtons extends Component {
 				>
 					{'Tweet'}
 				</StyledTwitterButton>
-			</div>
+			</Div>
 		);
 	}
 }
