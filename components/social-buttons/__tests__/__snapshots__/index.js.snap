@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SocialButtons /> renders <SocialButtons /> 1`] = `
+.c0 {
+  background-color: #3b5998;
+  border: 0;
+  color: #fff;
+}
+
+.c1 {
+  background-color: #00aced;
+  border: 0;
+  color: #fff;
+}
+
+<div>
+  <button
+    className="c0"
+    onClick={[Function]}
+    target="_blank"
+  >
+    Share
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+    target="_blank"
+  >
+    Tweet
+  </button>
+</div>
+`;
