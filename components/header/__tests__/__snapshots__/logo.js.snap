@@ -8,9 +8,22 @@ exports[`<Logo /> renders <Logo /> 1`] = `
   line-height: 1;
 }
 
+.c1 {
+  color: var(--near-white);
+}
+
+.c1:hover {
+  color: var(--white);
+}
+
 <h1
   className="c0"
 >
-  Page Title
+  <a
+    className="c1"
+    onClick={[Function]}
+  >
+    Page Title
+  </a>
 </h1>
 `;

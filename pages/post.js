@@ -1,13 +1,14 @@
+import React from 'react';
+
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Header from '../components/header';
 import Page from '../components/shared/page';
 import Post from '../components/post';
-import PropTypes from 'prop-types';
-import React from 'react';
 import Wrapper from '../components/shared/wrapper';
 import {withEntry} from '../data/with-entry';
 
-class Race extends React.Component {
+class PostPage extends React.Component {
 	render () {
 		return (
 			<Page sans_serif near_black pa0 ma0>
@@ -20,7 +21,6 @@ class Race extends React.Component {
 					title="dotwatcher.cc"
 				/>
 				<Wrapper>
-					KEY {this.props.post.sys.id}
 					<Post key={this.props.post.sys.id} id={this.props.post.sys.id} data={this.props.post.data}/>
 				</Wrapper>
 			</Page>
@@ -28,8 +28,8 @@ class Race extends React.Component {
 	}
 }
 
-Race.propTypes = {
+PostPage.propTypes = {
 	post: PropTypes.object.isRequired
 };
 
-export default withEntry(Race);
+export default withEntry(PostPage);

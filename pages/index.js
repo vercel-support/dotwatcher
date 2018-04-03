@@ -1,20 +1,26 @@
 import React, {Component} from 'react';
 
+import Head from 'next/head';
 import Header from '../components/header';
 import Hero from '../components/hero';
+import Page from '../components/shared/page';
 import Post from '../components/post';
+import PropTypes from 'prop-types';
 import Wrapper from '../components/shared/wrapper';
 import {withEntries} from '../data/with-entries';
 
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<Page sans_serif near_black pa0 ma0>
+				<Head>
+					<title>Dotwatcher</title>
+				</Head>
 				<Header
 					title="dotwatcher.cc"
 				/>
 				<Hero
-					title="Follow the rides"
+					title="Follow the ride"
 					byline="The best way to track the latest epic bike rides"
 				/>
 
@@ -25,9 +31,18 @@ class App extends Component {
 						))
 					}
 				</Wrapper>
-			</div>
+			</Page>
 		);
 	}
 }
 
+App.propTypes = {
+	posts: PropTypes.array
+};
+
+App.defaultProps = {
+	posts: []
+};
+
 export default withEntries(App);
+export let undecorated = App;

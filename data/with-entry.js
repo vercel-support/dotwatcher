@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {createClient} from 'contentful';
+import lodash from 'lodash';
 
 export const withEntry = Page => {
 	const WithEntry = props => <Page {...props}/>;
@@ -20,11 +21,16 @@ export const withEntry = Page => {
 			},
 			data: {
 				title: response.fields.title,
-				slug: response.fields.slug,
 				date: response.fields.date,
-				body: response.fields.body
+				body: response.fields.body,
+				author: response.fields.author,
+				category: response.fields.category
 			}
 		};
+
+		if (response.fields.featuredImage) {
+			post.data.image = await client.getAsset(response.fields.featuredImage.sys.id);
+		}
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),

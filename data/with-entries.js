@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {createClient} from 'contentful';
+import lodash from 'lodash';
 
 export const withEntries = Page => {
 	const WithEntries = props => <Page {...props}/>;
@@ -13,13 +14,13 @@ export const withEntries = Page => {
 		});
 
 		const response = await client.getEntries({
-			content_type: '2wKn6yEnZewu2SCCkus4as',
+			content_type: '2wKn6yEnZewu2SCCkus4as', // eslint-disable-line camelcase
 			order: '-sys.createdAt'
 		});
 
 		const posts = [];
 
-		response.items.forEach(item => {
+		for (let item of response.items) {
 			const entry = {
 				sys: {
 					id: item.sys.id
@@ -31,8 +32,14 @@ export const withEntries = Page => {
 					body: item.fields.body
 				}
 			};
+
+			if (item.fields.featuredImage) {
+				entry.data.image = lodash.find(response.includes.Asset, obj => {
+					return obj.sys.id === item.fields.featuredImage.sys.id;
+				});
+			}
 			posts.push(entry);
-		});
+		};
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
