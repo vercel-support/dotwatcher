@@ -2,27 +2,48 @@
 
 exports[`<SocialButtons /> renders <SocialButtons /> 1`] = `
 .c0 {
-  background-color: #3b5998;
-  border: 0;
-  color: #fff;
+  float: left;
+  _display: inline;
+  width: calc(100% / 3);
+  text-align: center;
 }
 
 .c1 {
+  display: inline-block;
+  background-color: #3b5998;
+  border: 0;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  padding: var(--spacing-small);
+  margin: 0 var(--spacing-small) var(--spacing-small);
+  cursor: pointer;
+}
+
+.c2 {
+  display: inline-block;
   background-color: #00aced;
   border: 0;
   color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  padding: var(--spacing-small);
+  margin: 0 var(--spacing-small) var(--spacing-small);
+  cursor: pointer;
 }
 
-<div>
+<div
+  className="c0"
+>
   <button
-    className="c0"
+    className="c1"
     onClick={[Function]}
     target="_blank"
   >
     Share
   </button>
   <button
-    className="c1"
+    className="c2"
     onClick={[Function]}
     target="_blank"
   >
