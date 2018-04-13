@@ -14,11 +14,13 @@
     "extends": "xo-react"
   },
   "dependencies": {
+    "@mapbox/polyline": "^1.0.0",
     "babel-plugin-module-resolver": "^3.1.0",
     "babel-plugin-styled-components": "^1.5.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "contentful": "^5.1.3",
     "lodash": "^4.17.5",
+    "mapbox-gl": "^0.44.2",
     "next": "^5.1.0",
     "next-routes": "^1.3.0",
     "path-match": "^1.2.4",
@@ -29,6 +31,7 @@
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-instagram-embed": "^1.3.4",
+    "react-mapbox-gl": "^3.8.0",
     "react-markdown-with-shortcodes": "^3.4.0",
     "react-social": "^1.10.0",
     "react-timeago": "^3.4.3",
