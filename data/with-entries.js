@@ -20,7 +20,8 @@ export const withEntries = Page => {
 		} else if (id && type === 'race') {
 			contenfulQuery = {
 				content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
-				'fields.category.sys.id': id
+				'fields.category.sys.id': id,
+				order: '-sys.createdAt'
 			};
 		} else {
 			contenfulQuery = {
@@ -42,7 +43,7 @@ export const withEntries = Page => {
 					title: item.fields.title,
 					format: item.fields.format,
 					slug: item.fields.slug,
-					date: item.fields.date,
+					date: item.sys.createdAt,
 					body: item.fields.body,
 					categories: item.fields.category,
 					keyEvent: item.fields.keyPost
