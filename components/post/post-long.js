@@ -18,7 +18,7 @@ const A = styled.a`${tachyons}`;
 const StyledTimeAgo = styled(TimeAgo)`
 	float: left;
 	width: 33%;
-	font-size: 1rem;
+	font-size: .875rem;
 	padding: var(--spacing-small) 0;
 	text-decoration: underline;
 `;

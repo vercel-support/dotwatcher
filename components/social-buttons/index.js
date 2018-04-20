@@ -11,7 +11,7 @@ const StyledFacebookButton = styled(FacebookButton)`
 	background-color: #3b5998;
 	border: 0;
 	color: #fff;
-	font-size: 1rem;
+	font-size: .875rem;
 	line-height: 1;
 	padding: var(--spacing-small);
 	margin: 0 var(--spacing-small) var(--spacing-small);
@@ -22,7 +22,7 @@ const StyledTwitterButton = styled(TwitterButton)`
 	background-color: #00aced;
 	border: 0;
 	color: #fff;
-	font-size: 1rem;
+	font-size: .875rem;
 	line-height: 1;
 	padding: var(--spacing-small);
 	margin: 0 0 var(--spacing-small) var(--spacing-small);
