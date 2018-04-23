@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactMarkdown from 'react-markdown-with-shortcodes';
-import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import DateTime from '../datetime';
@@ -14,25 +12,22 @@ import slugify from '../../utils/slugify';
 const Article = styled.article`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
+
 const Short = ({data, id}) => {
 	const host = typeof window !== 'undefined' ? window.location.host : '';
 	const url = `${host}/post/${id}?slug=${slugify(data.title)}`;
-	let body;
-	if (data.body) {
-		body = (
-			<Div lh_copy pt4>
-				<ReactMarkdown
-					source={data.body}
-					plugins={[shortcodes]}
-					renderers={{shortcode: Embed}}
-				/>
-			</Div>
-		);
+	let embed;
+	if (data.embed) {
+		if (data.embed.includes('twitter') > 0) {
+			embed = <Embed identifier="tweet" attributes={{id: data.embed.match(/https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/)[3]}}/>;
+		} else {
+			embed = <Embed identifier="instagram" attributes={{url: data.embed}}/>;
+		}
 	}
 	return (
 		<Article bb bw1 f5 measure_wide mt4_l pb2 id={slugify(data.title)} className="cf">
 			{ data.image ? <Image data={data.image.fields}/> : null }
-			{ body ? <Div lh_copy mv4>{body}</Div> : null }
+			{ embed }
 			<Div lh_copy mv4>
 				{data.title}
 			</Div>

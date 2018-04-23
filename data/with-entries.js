@@ -46,7 +46,8 @@ export const withEntries = Page => {
 					date: item.sys.createdAt,
 					body: item.fields.body,
 					categories: item.fields.category,
-					keyEvent: item.fields.keyPost
+					keyEvent: item.fields.keyPost,
+					embed: item.fields.embed
 				}
 			};
 
