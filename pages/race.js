@@ -7,6 +7,7 @@ import tachyons from 'styled-components-tachyons';
 import PropTypes from 'prop-types';
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
+import TopRiders from '../components/top-riders';
 import {Link} from '../routes';
 import Page from '../components/shared/page';
 import Post from '../components/post';
@@ -41,6 +42,7 @@ class Race extends React.Component {
 					</Div>
 				</Wrapper>
 				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
+					<TopRiders/>
 					<KeyEvents posts={this.props.posts}/>
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l mt4_l>

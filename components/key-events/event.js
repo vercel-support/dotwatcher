@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-import {Link, Router} from '../../routes';
 import slugify from '../../utils/slugify';
 import DateTime from '../datetime';
 
 const A = styled.a`${tachyons}`;
 const Item = styled.li`${tachyons}`;
 
-const event = ({data, id}) => {
+const event = ({data}) => {
 	return (
 		<Item mb4>
 			<DateTime datetime={data.date} type="inline"/>
