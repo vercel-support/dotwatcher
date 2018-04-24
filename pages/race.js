@@ -38,7 +38,7 @@ class Race extends React.Component {
 				<Wrapper fixed_l z_0 w_100 w_40_l className="cf">
 					<Iframe raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
 					<Div fixed_l bottom_0_l left_0_l w_40_l z_2 bg_dark_gray near_white pa2 tc>
-						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref prefetch><A near_white underline>Click here for tracker tips</A></Link>
+						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref prefetch><A target="_blank" near_white underline>Click here for tracker tips</A></Link>
 					</Div>
 				</Wrapper>
 				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
