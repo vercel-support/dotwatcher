@@ -20,7 +20,11 @@ const RacePreview = ({data, id}) => {
 	return (
 		<Div mb4 className="cf">
 			<Figure ma0 pa0 fl ph3 w_20 w_third_ns>
-				{ data.icon ? <Img mw_100 src={data.icon.fields.file.url} alt={data.icon.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
+				<Link route="race" params={{type: 'race', id, raceID: data.raceID, slug: slugify(data.title)}} passHref prefetch>
+					<a>
+						{ data.icon ? <Img mw_100 src={data.icon.fields.file.url} alt={data.icon.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
+					</a>
+				</Link>
 			</Figure>
 			<Div fl ph3 w_80 w_two_thirds_ns>
 				<H1 f3 ma0 lh_title>{data.title}</H1>

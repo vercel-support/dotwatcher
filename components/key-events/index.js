@@ -37,11 +37,15 @@ class KeyEvents extends Component {
 								<Event key={post.sys.id} data={post.data}/>
 							))
 					}
-					<Toggle link f6 underline_hover onClick={this.toggleHidden}>
-						{
-							this.state.showMore ? '▲ Show less' : '▼ Show more'
-						}
-					</Toggle>
+					{
+						keyEvents.length > 5 ? (
+							<Toggle link f6 underline_hover onClick={this.toggleHidden}>
+								{
+									this.state.showMore ? '▲ Show less' : '▼ Show more'
+								}
+							</Toggle>
+						) : null
+					}
 				</List>
 			</Div>
 		);

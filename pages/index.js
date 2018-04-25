@@ -36,7 +36,7 @@ class App extends Component {
 					<H1 f2 ph3 ttu tracked>Upcoming races</H1>
 					{
 						this.props.races.map(race => {
-							if (moment(race.data.raceDate).isAfter()) {
+							if (moment(race.data.raceEndDate).isAfter()) {
 								return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
 							}
 						})
@@ -45,7 +45,7 @@ class App extends Component {
 					<H1 f2 ph3 ttu tracked>Past races</H1>
 					{
 						this.props.races.map(race => {
-							if (moment(race.data.raceDate).isBefore()) {
+							if (moment(race.data.raceEndDate).isBefore()) {
 								return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
 							}
 						})

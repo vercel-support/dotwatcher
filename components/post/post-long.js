@@ -13,7 +13,11 @@ import SocialButtons from '../social-buttons';
 
 const Article = styled.article`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
-const Div = styled.div`${tachyons}`;
+const Div = styled.div`
+	img {
+		max-width: 100%;
+	}
+${tachyons}`;
 const A = styled.a`${tachyons}`;
 
 const Long = ({data, id}) => {

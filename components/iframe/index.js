@@ -6,7 +6,7 @@ import tachyons from 'styled-components-tachyons';
 const Map = styled.iframe`${tachyons}`;
 
 const Iframe = ({raceID}) => (
-	<Map w_100 vh_100 pt5 ba bw0 src={`https://trackleaders.com/${raceID}f.php`} frameborder="0"/>
+	<Map id="trackleaders-iframe" w_100 vh_100 pt5 ba bw0 src={`https://trackleaders.com/${raceID}f.php`} frameborder="0"/>
 );
 
 Iframe.propTypes = {

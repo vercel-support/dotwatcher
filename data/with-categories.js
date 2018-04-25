@@ -15,7 +15,8 @@ export const withCategories = Page => {
 		});
 
 		const contenfulQuery = {
-			content_type: vars.contentTypes.categories // eslint-disable-line camelcase
+			content_type: vars.contentTypes.categories, // eslint-disable-line camelcase
+			order: 'fields.raceDate'
 		};
 
 		const response = await client.getEntries(contenfulQuery);
@@ -31,7 +32,8 @@ export const withCategories = Page => {
 					title: item.fields.title,
 					description: item.fields.shortDescription,
 					raceID: item.fields.trackleadersRaceId,
-					raceDate: item.fields.raceDate
+					raceDate: item.fields.raceDate,
+					raceEndDate: item.fields.raceEndDate
 				}
 			};
 
