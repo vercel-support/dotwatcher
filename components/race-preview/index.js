@@ -33,7 +33,7 @@ const RacePreview = ({data, id}) => {
 				<Link route="race" params={{type: 'race', id, raceID: data.raceID, slug: slugify(data.title)}} passHref prefetch>
 					<A link dim near_black underline>
 						{
-							moment(data.raceDate).isBefore() ? `Look back at the race` : `Follow the race`
+							moment(data.raceEndDate).isBefore() ? `Look back at the race` : `Follow the race`
 						}
 					</A>
 				</Link>
