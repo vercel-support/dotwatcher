@@ -22,6 +22,8 @@ class Embed extends Component {
 			embed = <TwitterTweetEmbed tweetId={this.props.attributes.id}/>;
 		} else if (this.state.inBrowser && this.props.identifier === 'instagram') {
 			embed = <Instagram url={this.props.attributes.url}/>;
+		} else if (this.state.inBrowser && this.props.identifier === 'youtube') {
+			embed = <iframe width="560" height="315" style={{maxWidth: '100%'}} src={`https://www.youtube.com/embed/${this.props.attributes.id}`} frameBorder="0" allowFullscreen/>;
 		} else {
 			embed = <Placeholder/>;
 		}

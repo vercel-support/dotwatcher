@@ -20,6 +20,8 @@ const Short = ({data, id}) => {
 	if (data.embed) {
 		if (data.embed.includes('twitter') > 0) {
 			embed = <Embed identifier="tweet" attributes={{id: data.embed.match(/https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/)[3]}}/>;
+		} else if (data.embed.includes('youtube') > 0) {
+			embed = <Embed identifier="youtube" attributes={{id: data.embed.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|v\/)?)([\w-]+)(\S+)?$/)[5]}}/>;
 		} else {
 			embed = <Embed identifier="instagram" attributes={{url: data.embed}}/>;
 		}

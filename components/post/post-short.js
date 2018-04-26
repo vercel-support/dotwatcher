@@ -20,7 +20,7 @@ const Short = ({data, id}) => {
 	let body;
 	if (data.body) {
 		body = (
-			<Div lh_copy pt4>
+			<Div lh_copy>
 				<ReactMarkdown
 					source={data.body}
 					plugins={[shortcodes]}
@@ -32,7 +32,7 @@ const Short = ({data, id}) => {
 	return (
 		<Article bb bw1 f5 measure_wide mt4_l pb2 id={slugify(data.title)} className="cf">
 			{ data.image ? <Image data={data.image.fields}/> : null }
-			{ body ? <Div lh_copy mv4>{body}</Div> : null }
+			{ body ? body : null }
 			<Div lh_copy mv4>
 				{data.title}
 			</Div>
