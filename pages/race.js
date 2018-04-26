@@ -35,7 +35,7 @@ class Race extends React.Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Wrapper fixed_l z_0 w_100 w_40_l className="cf">
+				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white className="cf">
 					<Iframe raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
 					<Div fixed_l bottom_0_l left_0_l w_40_l z_2 bg_black_80 near_white pa2 tc>
 						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A near_white underline>Click here for tracker tips</A></Link>
