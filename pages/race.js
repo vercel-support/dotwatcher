@@ -3,7 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-
+import {StickyContainer, Sticky} from 'react-sticky';
 import PropTypes from 'prop-types';
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
@@ -40,15 +40,21 @@ class Race extends React.Component {
 					title="dotwatcher.cc"
 					raceName={this.props.posts[0].data.categories[0].fields.title}
 				/>
-				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
+				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative className="cf">
 					<Iframe raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
 					<Tips absolute_l z_2 tc>
 						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>Click here for tracker tips</A></Link>
 					</Tips>
 				</Wrapper>
 				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
-					<TopRiders raceID={this.props.posts[0].data.categories[0].sys.id}/>
-					<KeyEvents posts={this.props.posts}/>
+					<StickyContainer>
+						<TopRiders raceID={this.props.posts[0].data.categories[0].sys.id}/>
+						<Sticky>
+							{
+								({isSticky}) => <KeyEvents posts={this.props.posts}isSticky={isSticky}/>
+							}
+						</Sticky>
+					</StickyContainer>
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l mt5_l>
 					{

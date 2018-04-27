@@ -5,8 +5,6 @@ import tachyons from 'styled-components-tachyons';
 import Event from './event';
 
 const H2 = styled.h2`${tachyons}`;
-const Header = styled.header`${tachyons}`;
-const Div = styled.div`${tachyons}`;
 const List = styled.ul`${tachyons}`;
 const Toggle = styled.a`${tachyons}`;
 
@@ -20,16 +18,22 @@ class KeyEvents extends Component {
 	}
 
 	render() {
+		const Div = styled.div`
+			position: ${this.props.isSticky ? 'fixed' : 'relative'};
+			top: ${this.props.isSticky ? '90px' : '0'};
+			width: ${this.props.isSticky ? '20%' : '100%'};
+		${tachyons}`;
+
 		const keyEvents = this.props.posts.filter(post => post.data.keyEvent === true);
-		const lessKeyEvents = keyEvents.slice(0, 5);
+		const lessKeyEvents = keyEvents.slice(0, 2);
 		const keyEventsToShow = this.state.showMore ? keyEvents : lessKeyEvents;
 		return (
 			<Div>
-				<Header pt4>
+				<header>
 					<H2 pt3>
-						Key moments
+						Key moments {this.props.isSticky ? 'hi' : 'no'}
 					</H2>
-				</Header>
+				</header>
 				<List list="true" pa0>
 					{
 						keyEventsToShow
@@ -59,7 +63,8 @@ class KeyEvents extends Component {
 }
 
 KeyEvents.propTypes = {
-	posts: PropTypes.array.isRequired
+	posts: PropTypes.array.isRequired,
+	isSticky: PropTypes.bool.isRequired
 };
 
 export default KeyEvents;
