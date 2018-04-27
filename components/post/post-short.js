@@ -11,10 +11,18 @@ import {Link} from '../../routes';
 import SocialButtons from '../social-buttons';
 import slugify from '../../utils/slugify';
 
-const Article = styled.article`${tachyons}`;
 const Div = styled.div`
 	iframe {
 		max-width: 100%;
+	}
+	img {
+		max-width: 100%;
+	}
+	a:link {
+		color: var(--blue)
+	}
+	a:hover {
+		color: var(--light-blue)
 	}
 ${tachyons}`;
 const A = styled.a`${tachyons}`;
@@ -35,7 +43,7 @@ const Short = ({data, id}) => {
 		);
 	}
 	return (
-		<Article bb bw1 f5 measure_wide mt4_l pb2 id={slugify(data.title)} className="cf">
+		<React.Fragment>
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			{ body ? body : null }
 			<Div lh_copy mv4>
@@ -47,7 +55,7 @@ const Short = ({data, id}) => {
 				</A>
 			</Link>
 			<SocialButtons url={url}/>
-		</Article>
+		</React.Fragment>
 	);
 };
 

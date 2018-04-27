@@ -8,7 +8,7 @@ const H1 = styled.h1`${tachyons}`;
 const H2 = styled.h2`${tachyons}`;
 
 const Hero = ({title, byline}) => (
-	<Header bg_washed_blue black_90 ph4 pb4 cf className="cf">
+	<Header bg_washed_blue black_90 ph4 pb4 className="cf">
 		<H1 f_headline mb0>{title}</H1>
 		<H2 f1 mt0 measure_narrow>{byline}</H2>
 	</Header>

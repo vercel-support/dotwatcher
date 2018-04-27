@@ -11,11 +11,19 @@ import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
 import SocialButtons from '../social-buttons';
 
-const Article = styled.article`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`
+	iframe {
+		max-width: 100%;
+	}
 	img {
 		max-width: 100%;
+	}
+	a:link {
+		color: var(--blue)
+	}
+	a:hover {
+		color: var(--light-blue)
 	}
 ${tachyons}`;
 const A = styled.a`${tachyons}`;
@@ -25,7 +33,7 @@ const Long = ({data, id}) => {
 	const url = `${host}/post/${id}?slug=${slugify(data.title)}`;
 
 	return (
-		<Article bb bw1 f5 measure_wide mt4_l pb2 id={slugify(data.title)} className="cf">
+		<React.Fragment>
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<H1 f2 lh_title>
 				<Link route="post" params={{type: 'post', id, slug: slugify(data.title)}} passHref prefetch>
@@ -46,7 +54,7 @@ const Long = ({data, id}) => {
 				</A>
 			</Link>
 			<SocialButtons url={url}/>
-		</Article>
+		</React.Fragment>
 	);
 };
 Long.propTypes = {

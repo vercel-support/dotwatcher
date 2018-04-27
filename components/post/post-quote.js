@@ -11,7 +11,6 @@ import {Link} from '../../routes';
 import SocialButtons from '../social-buttons';
 import slugify from '../../utils/slugify';
 
-const Article = styled.article`${tachyons}`;
 const P = styled.p`${tachyons}`;
 const Cite = styled.cite`${tachyons}`;
 const Blockquote = styled.blockquote`${tachyons}`;
@@ -31,7 +30,7 @@ const Short = ({data, id}) => {
 		);
 	}
 	return (
-		<Article bb bw1 f5 measure_wide mt4_l pb2 id={slugify(data.title)} className="cf">
+		<React.Fragment>
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<Blockquote ma0 mt4 pl3 bl bw3 b__near_black>
 				<P lh_title f3 fw6 ma0 pa0>{data.title}</P>
@@ -43,7 +42,7 @@ const Short = ({data, id}) => {
 				</A>
 			</Link>
 			<SocialButtons url={url}/>
-		</Article>
+		</React.Fragment>
 	);
 };
 

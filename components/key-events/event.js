@@ -12,7 +12,7 @@ const event = ({data}) => {
 	return (
 		<Item mb4>
 			<DateTime datetime={data.date} type="inline"/>
-			<A f6 lh_title link dim near_black underline db href={'#' + slugify(data.title)}>{data.title}</A>
+			<A f6 lh_title link dim near_black hover_blue underline db href={'#' + slugify(data.title)}>{data.title}</A>
 		</Item>
 	);
 };
