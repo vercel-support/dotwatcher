@@ -18,7 +18,7 @@ const Div = styled.div`
 `;
 
 const Banner = ({title, raceName}) => (
-	<Header bg_near_black near_white cf w_100 fixed_l z_1 flex self_start>
+	<Header bg_near_black near_white w_100 fixed_l z_1 flex self_start className="cf">
 		<H1 flex items_center f2 pv3 ma0 fw5 lh_solid w_40_l>
 			<Div>
 				<Logo>{title}</Logo>

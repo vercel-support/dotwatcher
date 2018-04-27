@@ -9,7 +9,7 @@ const RiderName = styled.dt`${tachyons}`;
 const Rider = ({rider}) => {
 	return (
 		<Wrap f6 mt0 mb2 lh_copy className="cf">
-			<RiderName fl b>{rider.name}</RiderName>
+			<RiderName fl f6 b>{rider.name}</RiderName>
 		</Wrap>
 	);
 };

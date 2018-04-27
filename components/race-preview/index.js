@@ -18,7 +18,7 @@ const P = styled.p`${tachyons}`;
 
 const RacePreview = ({data, id}) => {
 	return (
-		<Div mb4 className="cf">
+		<Div mb4 cf>
 			<Figure ma0 pa0 fl ph3 w_20 w_third_ns>
 				<Link route="race" params={{type: 'race', id, raceID: data.raceID, slug: slugify(data.title)}} passHref prefetch>
 					<a>

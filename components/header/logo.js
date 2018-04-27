@@ -11,7 +11,7 @@ const Logo = ({children}) => (
 		<A near_white hover_white no_underline dib>
 			<svg style={{width: '100%'}} viewBox="0 0 399 76">
 				<title>{children}</title>
-				<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				<g>
 				    <g id="Dotwatcher---04" fill="#fff">
 				        <g id="Group">
 				            <path d="M16.0865306,10.3102041 L25.7763265,27.1444898 L30.922449,18.2040816 L40.2481633,34.4065306 C42.1126531,29.1787755 43.36,24.6155102 43.36,21.7469388 C43.36,9.75836735 33.6293878,0 21.6816327,0 C9.72897959,0 0,9.75836735 0,21.7469388 C0,24.4326531 1.10857143,28.6204082 2.77877551,33.4285714 L16.0865306,10.3102041 Z" id="Fill-1"></path>
