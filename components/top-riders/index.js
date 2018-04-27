@@ -1,46 +1,80 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import {createClient} from 'contentful';
+import vars from '../../data/api-vars';
+
+import Rider from './rider';
 
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
 const Div = styled.div`${tachyons}`;
-const Rider = styled.dl`${tachyons}`;
-const RiderName = styled.dt`${tachyons}`;
-const RiderDist = styled.dd`${tachyons}`;
 
-const keyEvents = () => {
-	return (
-		<Div>
-			<Header pt4_l>
-				<H2 pt3>
-					Top riders
-				</H2>
-			</Header>
+class topRiders extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			leaderboard: []
+		};
+	}
+
+	setStateAsync(state) {
+		return new Promise((resolve) => {
+			this.setState(state, resolve)
+		});
+	}
+
+	async componentDidMount() {
+		this.state.leaderboard = []
+		const client = createClient({
+			space: vars.space,
+			accessToken: vars.accessToken
+		});
+
+		const contenfulQuery = {
+			content_type: 'leaderboard', // eslint-disable-line camelcase
+			'fields.race.sys.id': this.props.raceID
+		};
+
+		const response = await client.getEntries(contenfulQuery);
+		const leaderboard = [];
+		for (const item of response.items) {
+			const entry = {
+				sys: {
+					id: item.sys.id
+				},
+				riders: item.fields.leaders
+			};
+
+			leaderboard.push(entry);
+		}
+		await this.setStateAsync({leaderboard});
+	}
+
+	render() {
+		console.log(this.state.leaderboard);
+		return (
 			<Div>
-				<Rider f6 mt0 mb2 lh_copy className="cf">
-					<RiderName fl b underline>Thomas Hagler</RiderName>
-					<RiderDist fr tr gray>735km</RiderDist>
-				</Rider>
-				<Rider f6 mt0 mb2 lh_copy className="cf">
-					<RiderName fl b underline>Polly Fox</RiderName>
-					<RiderDist fr tr gray>732km</RiderDist>
-				</Rider>
-				<Rider f6 mt0 mb2 lh_copy className="cf">
-					<RiderName fl b underline>Kenneth Lira</RiderName>
-					<RiderDist fr tr gray>730km</RiderDist>
-				</Rider>
-				<Rider f6 mt0 mb2 lh_copy className="cf">
-					<RiderName fl b underline>Tom Pritchard</RiderName>
-					<RiderDist fr tr gray>701km</RiderDist>
-				</Rider>
-				<Rider f6 mt0 mb2 lh_copy className="cf">
-					<RiderName fl b underline>Millie Bowen</RiderName>
-					<RiderDist fr tr gray>693km</RiderDist>
-				</Rider>
+				<Header pt4_l>
+					<H2 pt3>
+						Top riders
+					</H2>
+				</Header>
+				<Div>
+					{
+						this.state.leaderboard.length ? this.state.leaderboard[0].riders.map(rider => (
+							<Rider key={rider.sys.id} rider={rider.fields}/>
+						)) : 'Loading...'
+					}
+				</Div>
 			</Div>
-		</Div>
-	);
+		);
+	}
+}
+
+topRiders.propTypes = {
+	raceID: PropTypes.string.isRequired
 };
 
-export default keyEvents;
+export default topRiders;

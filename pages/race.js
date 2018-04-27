@@ -47,7 +47,7 @@ class Race extends React.Component {
 					</Tips>
 				</Wrapper>
 				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
-					<TopRiders/>
+					<TopRiders raceID={this.props.posts[0].data.categories[0].sys.id}/>
 					<KeyEvents posts={this.props.posts}/>
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l mt5_l>
