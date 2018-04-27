@@ -7,24 +7,42 @@ import Logo from './logo';
 
 const Header = styled.header`${tachyons}`;
 const A = styled.a`${tachyons}`;
-const Nav = styled.div`${tachyons}`;
+const Nav = styled.div`
+	margin-left: auto;
+${tachyons}`;
+const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
+const Div = styled.div`
+	width: 200px;
+	margin-left: var(--spacing-large)
+`;
 
-const Banner = ({title}) => (
-	<Header bg_near_black near_white ph4 pv3 cf dt w_100 fixed_l z_1>
-		<Logo>{title}</Logo>
-		<Nav dtc tr ma0 v_mid>
+const Banner = ({title, raceName}) => (
+	<Header bg_near_black near_white cf w_100 fixed_l z_1 flex self_start>
+		<H1 flex items_center f2 pv3 ma0 fw5 lh_solid w_40_l>
+			<Div>
+				<Logo>{title}</Logo>
+			</Div>
+		</H1>
+		<H2 ph3 pv3 flex items_center f3 ma0 lh_solid fw5>{raceName}</H2>
+		<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 			<Link href="/" as="/" passHref prefetch>
-				<A mr3 f4 lh_copy white>Races</A>
+				<A dib mr3 f4 white fw5>Races</A>
 			</Link>
 			<Link route="page" params={{type: 'page', id: '1BgGLGEpckYcmoEE6Cqc0I'}} passHref>
-				<A ml3 f4 lh_copy white>About</A>
+				<A dib ml3 f4 white fw5>About</A>
 			</Link>
 		</Nav>
 	</Header>
 );
 
 Banner.propTypes = {
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	raceName: PropTypes.string
+};
+
+Banner.defaultProps = {
+	raceName: ''
 };
 
 export default Banner;

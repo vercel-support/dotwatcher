@@ -20,26 +20,31 @@ const KeyEventsWrapper = styled.div`
 	margin-left: 40%;
 }
 ${tachyons}`;
-const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
+const Tips = styled.div`
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: var(--spacing-small);
+${tachyons}`;
 
 class Race extends React.Component {
 	render() {
 		return (
 			<Page sans_serif near_black pa0 ma0>
 				<Head>
-					<title>Race name</title>
-					<meta property="og:title" content="Race name"/>
+					<title>{this.props.posts[0].data.categories[0].fields.title} – dotwatcher.cc</title>
+					<meta property="og:title" content={`${this.props.posts[0].data.categories[0].fields.title} – dotwatcher.cc`}/>
 					<meta property="og:image" content=""/>
 				</Head>
 				<Header
 					title="dotwatcher.cc"
+					raceName={this.props.posts[0].data.categories[0].fields.title}
 				/>
-				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white className="cf">
+				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
 					<Iframe raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
-					<Div fixed_l bottom_0_l left_0_l w_40_l z_2 bg_black_80 near_white pa2 tc>
-						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A near_white underline>Click here for tracker tips</A></Link>
-					</Div>
+					<Tips absolute_l z_2 tc>
+						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>Click here for tracker tips</A></Link>
+					</Tips>
 				</Wrapper>
 				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
 					<TopRiders/>
