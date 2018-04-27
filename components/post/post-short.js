@@ -12,7 +12,11 @@ import SocialButtons from '../social-buttons';
 import slugify from '../../utils/slugify';
 
 const Article = styled.article`${tachyons}`;
-const Div = styled.div`${tachyons}`;
+const Div = styled.div`
+	iframe {
+		max-width: 100%;
+	}
+${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Short = ({data, id}) => {
 	const host = typeof window !== 'undefined' ? window.location.host : '';
@@ -24,6 +28,7 @@ const Short = ({data, id}) => {
 				<ReactMarkdown
 					source={data.body}
 					plugins={[shortcodes]}
+					escapeHtml={false}
 					renderers={{shortcode: Embed}}
 				/>
 			</Div>

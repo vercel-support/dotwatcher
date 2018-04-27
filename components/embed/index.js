@@ -23,7 +23,9 @@ class Embed extends Component {
 		} else if (this.state.inBrowser && this.props.identifier === 'instagram') {
 			embed = <Instagram url={this.props.attributes.url}/>;
 		} else if (this.state.inBrowser && this.props.identifier === 'youtube') {
-			embed = <iframe width="560" height="315" style={{maxWidth: '100%'}} src={`https://www.youtube.com/embed/${this.props.attributes.id}`} frameBorder="0" allowFullscreen/>;
+			embed = <iframe width="560" height="315" style={{maxWidth: '100%'}} src={`https://www.youtube.com/embed/${this.props.attributes.id}`} frameBorder="0" allowFullScreen/>;
+		} else if (this.state.inBrowser && this.props.identifier === 'iframe') {
+			embed = this.props.attributes.iframe;
 		} else {
 			embed = <Placeholder/>;
 		}

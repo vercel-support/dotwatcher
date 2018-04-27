@@ -36,6 +36,7 @@ const Long = ({data, id}) => {
 				<ReactMarkdown
 					source={data.body}
 					plugins={[shortcodes]}
+					escapeHtml={false}
 					renderers={{shortcode: Embed}}
 				/>
 			</Div>
