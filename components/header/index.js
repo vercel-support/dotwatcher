@@ -13,7 +13,10 @@ ${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const H2 = styled.h2`${tachyons}`;
 const Div = styled.div`
-	width: 200px;
+	@media (min-width: 64em) {
+		width: 200px;
+	}
+	width: 120px;
 	margin-left: var(--spacing-large)
 `;
 
@@ -24,13 +27,13 @@ const Banner = ({title, raceName}) => (
 				<Logo>{title}</Logo>
 			</Div>
 		</H1>
-		<H2 ph3 pv3 flex items_center f3 ma0 lh_solid fw5>{raceName}</H2>
+		{ raceName ? <H2 ph3 pv3 flex items_center f3 ma0 lh_solid fw5>{raceName}</H2> : null}
 		<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 			<Link href="/" as="/" passHref prefetch>
-				<A dib mr3 f4 white fw5>Races</A>
+				<A dib mr3 f5 f4_l white fw5>Races</A>
 			</Link>
 			<Link route="page" params={{type: 'page', id: '1BgGLGEpckYcmoEE6Cqc0I'}} passHref>
-				<A dib ml3 f4 white fw5>About</A>
+				<A dib ml3 f5 f4_l white fw5>About</A>
 			</Link>
 		</Nav>
 	</Header>

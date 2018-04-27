@@ -26,7 +26,7 @@ const RacePreview = ({data, id}) => {
 					</a>
 				</Link>
 			</Figure>
-			<Div fl ph3 w_80 w_two_thirds_ns>
+			<Div fl_l ph3 w_80_l w_two_thirds_ns>
 				<H1 f3 ma0 lh_title>{data.title}</H1>
 				<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
 				<P measure_wide lh_copy>{data.description}</P>

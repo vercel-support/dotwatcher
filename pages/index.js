@@ -30,10 +30,10 @@ class App extends Component {
 					title="dotwatcher.cc"
 				/>
 				<Wrapper fixed_l z_0 w_100 w_40_l className="cf">
-					<Placeholder relative w_100 vh_40 vh_100_l bg_light_gray/>
+					<Placeholder raceID="A nice picture" relative w_100 vh_40 vh_100_l bg_light_gray/>
 				</Wrapper>
 				<Div fl ph3 pb2 w_100 w_60_l mt5_l>
-					<H1 f2 ph3 ttu tracked>Upcoming races</H1>
+					<H1 fl w_100 f2 ph3 ttu tracked>Upcoming races</H1>
 					{
 						this.props.races.map(race => {
 							if (moment(race.data.raceEndDate).isAfter()) {
@@ -42,7 +42,7 @@ class App extends Component {
 						})
 					}
 
-					<H1 f2 ph3 ttu tracked>Past races</H1>
+					<H1 fl w_100 f2 ph3 mt4 ttu tracked>Past races</H1>
 					{
 						this.props.races.map(race => {
 							if (moment(race.data.raceEndDate).isBefore()) {

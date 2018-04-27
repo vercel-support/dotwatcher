@@ -5,8 +5,11 @@ import tachyons from 'styled-components-tachyons';
 
 const Map = styled.iframe`${tachyons}`;
 const Container = styled.div`
-	height: calc(100vh - 75px);
-	margin-top: 75px;
+	height: 100vh;
+	@media (min-width: 64em) {
+		height: calc(100vh - 75px);
+		margin-top: 75px;
+	}
 ${tachyons}`;
 
 const Iframe = ({raceID}) => (
