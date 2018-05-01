@@ -8,10 +8,9 @@ import PropTypes from 'prop-types';
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
 import TopRiders from '../components/top-riders';
-import {Link} from '../routes';
+import MapContainer from '../components/map-container';
 import Page from '../components/shared/page';
 import Post from '../components/post';
-import Iframe from '../components/iframe';
 import Wrapper from '../components/shared/wrapper';
 import {withEntries} from '../data/with-entries';
 
@@ -19,12 +18,6 @@ const KeyEventsWrapper = styled.div`
 @media (min-width: 64em) {
 	margin-left: 40%;
 }
-${tachyons}`;
-const A = styled.a`${tachyons}`;
-const Tips = styled.div`
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: var(--spacing-small);
 ${tachyons}`;
 
 class Race extends React.Component {
@@ -40,12 +33,7 @@ class Race extends React.Component {
 					title="dotwatcher.cc"
 					raceName={this.props.posts[0].data.categories[0].fields.title}
 				/>
-				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
-					<Iframe raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
-					<Tips absolute_l z_2 tc>
-						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>Click here for tracker tips</A></Link>
-					</Tips>
-				</Wrapper>
+				<MapContainer raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
 				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
 					<TopRiders raceID={this.props.posts[0].data.categories[0].sys.id}/>
 					<KeyEvents posts={this.props.posts}/>
