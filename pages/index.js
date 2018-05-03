@@ -44,7 +44,7 @@ class App extends Component {
 
 					<H1 fl w_100 f2 ph3 mt4 ttu tracked>Past races</H1>
 					{
-						this.props.races.map(race => {
+						this.props.races.slice(0).reverse().map(race => {
 							if (moment(race.data.raceEndDate).isBefore()) {
 								return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
 							}
