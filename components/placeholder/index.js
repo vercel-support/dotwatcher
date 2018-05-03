@@ -11,7 +11,7 @@ const Placeholder = ({raceID, ...styles}) => {
 		${styles ? '' : 'width: 500px;'}
 	`;
 	return (
-		<Div ba b__light_gray br2 pa3 h5 dt {...styles}>
+		<Div ba b__light_gray pa3 h5 dt {...styles}>
 			<P f3 fw6 moon_gray ttu tracked lh_copy measure_wide dtc v_mid tc>{raceID}</P>
 		</Div>
 	);

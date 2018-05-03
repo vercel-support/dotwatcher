@@ -306,3 +306,10 @@ input[type="tel"], input[type="text"], input[type="url"], .border-box { box-sizi
   --spacing-extra-extra-large: 8rem;
   --spacing-extra-extra-extra-large: 16rem;
 }
+
+.with-divider + .with-divider:before {
+  content: '';
+  width: calc(100% - var(--spacing-medium)*2);
+  margin: var(--spacing-large) var(--spacing-medium);
+  border-top: .125rem solid var(--light-gray);
+}

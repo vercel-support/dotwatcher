@@ -10,14 +10,18 @@ import Page from '../components/shared/page';
 import Wrapper from '../components/shared/wrapper';
 import Placeholder from '../components/placeholder';
 import RacePreview from '../components/race-preview';
+import Footer from '../components/footer';
 import {withCategories} from '../data/with-categories';
 
-const Div = styled.div`
-@media (min-width: 64em) {
-	margin-left: 40%;
-}
-${tachyons}`;
+const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
+const Div = styled.div`${tachyons}`;
+const RaceWrap = styled.div`
+	@media (min-width: 64em) {
+		margin-left: 16.666666667%;
+	}
+${tachyons}`;
 
 class App extends Component {
 	render() {
@@ -29,28 +33,40 @@ class App extends Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Wrapper fixed_l z_0 w_100 w_40_l className="cf">
-					<Placeholder raceID="A nice picture" relative w_100 vh_40 vh_100_l bg_light_gray/>
-				</Wrapper>
-				<Div fl ph3 pb2 w_100 w_60_l mt5_l>
-					<H1 fl w_100 f2 ph3 ttu tracked>Upcoming races</H1>
-					{
-						this.props.races.map(race => {
-							if (moment(race.data.raceEndDate).isAfter()) {
-								return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
-							}
-						})
-					}
+				<Div mt3 mt6_l>
+					<Div mh4_m mh6_l className="cf">
+						<Wrapper w_100 w_50_ns ph3 className="cf">
+							<Placeholder raceID="A nice picture" relative w_100 bg_light_gray/>
+						</Wrapper>
+						<Wrapper w_100 w_50_ns ph3 mv4 mv0_ns className="cf">
+							<H2 f1 f_subheadline_l lh_title ma0 bt bw4 b__light_blue>Dotwatcher is a place on the internet</H2>
+						</Wrapper>
+					</Div>
+					<RaceWrap fl ph3_l pb2 w_100 w_two_thirds_l center mt5_ns className="cf">
+						<Heading fl w_100 mb4 ph3>
+							<H1 f4 fw4 ttu tracked bg_light_blue pa1 white>Upcoming races</H1>
+						</Heading>
+						{
+							this.props.races.map(race => {
+								if (moment(race.data.raceEndDate).isAfter()) {
+									return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
+								}
+							})
+						}
 
-					<H1 fl w_100 f2 ph3 mt4 ttu tracked>Past races</H1>
-					{
-						this.props.races.slice(0).reverse().map(race => {
-							if (moment(race.data.raceEndDate).isBefore()) {
-								return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
-							}
-						})
-					}
+						<Heading fl w_100 mv4 ph3>
+							<H1 f4 fw4 mt4 ttu tracked bg_light_blue pa1 white>Past races</H1>
+						</Heading>
+						{
+							this.props.races.slice(0).reverse().map(race => {
+								if (moment(race.data.raceEndDate).isBefore()) {
+									return <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/>;
+								}
+							})
+						}
+					</RaceWrap>
 				</Div>
+			<Footer/>
 			</Page>
 		);
 	}

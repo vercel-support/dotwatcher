@@ -31,10 +31,10 @@ const Banner = ({title, raceName}) => (
 			{ raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5>{raceName}</H2> : null}
 			<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 				<Link href="/" as="/" passHref prefetch>
-					<A dib mr3 f5 f4_l white fw5>Races</A>
+					<A dib mr3 f5 f4_l white fw4>Races</A>
 				</Link>
 				<Link route="page" params={{type: 'page', id: '1BgGLGEpckYcmoEE6Cqc0I'}} passHref>
-					<A dib ml3 f5 f4_l white fw5>About</A>
+					<A dib ml3 f5 f4_l white fw4>About</A>
 				</Link>
 			</Nav>
 		</Header>

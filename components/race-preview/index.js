@@ -18,7 +18,7 @@ const P = styled.p`${tachyons}`;
 
 const RacePreview = ({data, id}) => {
 	return (
-		<Div mb4 className="cf">
+		<Div className="with-divider cf">
 			<Figure ma0 pa0 fl ph3 w_20 w_third_ns>
 				<Link route="race" params={{type: 'race', id, raceID: data.raceID, slug: slugify(data.title)}} passHref prefetch>
 					<a>
@@ -26,15 +26,17 @@ const RacePreview = ({data, id}) => {
 					</a>
 				</Link>
 			</Figure>
-			<Div fl_l ph3 w_80_l w_two_thirds_ns>
-				<H1 f3 ma0 lh_title>{data.title}</H1>
-				<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
-				<P measure_wide lh_copy>{data.description}</P>
+			<Div fl_ns ph3 w_80_l w_two_thirds_ns>
 				<Link route="race" params={{type: 'race', id, raceID: data.raceID, slug: slugify(data.title)}} passHref prefetch>
-					<A link dim near_black underline>
-						{
-							moment(data.raceEndDate).isBefore() ? `Look back at the race` : `Follow the race`
-						}
+					<A link near_black>
+						<H1 f2 ma0 lh_title link hover_blue>{data.title}</H1>
+						<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
+						<P measure_wide lh_copy>{data.description}</P>
+						<Span link underline hover_blue>
+							{
+								moment(data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
+							}
+						</Span>
 					</A>
 				</Link>
 			</Div>
