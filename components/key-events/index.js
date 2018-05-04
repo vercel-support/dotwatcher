@@ -26,7 +26,7 @@ class KeyEvents extends Component {
 		return (
 			<Div>
 				<Header pt4>
-					<H2 pt3>
+					<H2 pt3 bb bw1 b__light_blue measure_narrow>
 						Key moments
 					</H2>
 				</Header>
@@ -39,7 +39,7 @@ class KeyEvents extends Component {
 					}
 					{
 						keyEvents.length > 5 ? (
-							<Toggle link f6 underline_hover onClick={this.toggleHidden}>
+							<Toggle link f6 underline_hover hover_blue onClick={this.toggleHidden}>
 								{
 									this.state.showMore ? '▲ Show less' : '▼ Show more'
 								}

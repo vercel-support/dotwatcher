@@ -8,6 +8,7 @@ import Short from './post-short';
 import Quote from './post-quote';
 import Embed from './post-embed';
 import Photo from './post-photo';
+import Meta from './meta';
 
 const Article = styled.article`${tachyons}`;
 
@@ -25,8 +26,9 @@ const Post = ({data, id}) => {
 		post = <Short key={id} id={id} data={data}/>;
 	}
 	return (
-		<Article bb bw1 f5 measure_wide mt4_l pb2 id={slugify(data.title)} className="cf">
+		<Article bb bw1 b__light_gray f5 measure_wide mt5_l pb3 overflow_hidden id={slugify(data.title)} className="cf">
 			{post}
+			<Meta id={id} data={data}/>
 		</Article>
 	);
 };

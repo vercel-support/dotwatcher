@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import Placeholder from '../placeholder';
 
 const Map = styled.iframe`${tachyons}`;
 const Container = styled.div`
@@ -14,7 +15,9 @@ ${tachyons}`;
 
 const Iframe = ({raceID}) => (
 	<Container bg_near_white>
-		<Map id="trackleaders-iframe" w_100 h_100 ba bw0 src={`https://trackleaders.com/${raceID}f.php`} frameborder="0"/>
+		{
+			raceID ? <Map id="trackleaders-iframe" w_100 h_100 ba bw0 src={`https://trackleaders.com/${raceID}f.php`} frameborder="0"/> : <Placeholder raceID="No race found" w_100 h_100/>
+		}
 	</Container>
 );
 

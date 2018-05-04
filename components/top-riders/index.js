@@ -53,11 +53,10 @@ class topRiders extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.leaderboard);
 		return (
 			<Div>
 				<Header pt4_l>
-					<H2 pt3>
+					<H2 pt3 bb bw1 b__light_blue measure_narrow>
 						Top riders
 					</H2>
 				</Header>

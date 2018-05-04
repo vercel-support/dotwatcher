@@ -8,6 +8,7 @@ const InlineTimeAgo = styled(TimeAgo)`
 	margin-bottom: var(--spacing-extra-small);
 	font-size: .875rem;
 	font-weight: bold;
+	text-decoration: none;
 `;
 
 const FloatedTimeAgo = styled(TimeAgo)`

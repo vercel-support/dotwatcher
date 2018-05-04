@@ -16,6 +16,7 @@ import {withCategories} from '../data/with-categories';
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const H2 = styled.h2`${tachyons}`;
+const P = styled.p`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const RaceWrap = styled.div`
 	@media (min-width: 64em) {
@@ -41,10 +42,13 @@ class App extends Component {
 						<Wrapper w_100 w_50_ns ph3 mv4 mv0_ns className="cf">
 							<H2 f1 f_subheadline_l lh_title ma0 bt bw4 b__light_blue>Dotwatcher is a place on the internet</H2>
 						</Wrapper>
+						<Wrapper w_100 ph3 mv4 mv0_ns className="cf">
+							<P f2 lh_copy measure_narrow center pl4 bl bw3 b__light_blue mb0>Dotwatcher exists to be the number one place to come and get the latest on unsupported long distance bike races.</P>
+						</Wrapper>
 					</Div>
 					<RaceWrap fl ph3_l pb2 w_100 w_two_thirds_l center mt5_ns className="cf">
 						<Heading fl w_100 mb4 ph3>
-							<H1 f4 fw4 ttu tracked bg_light_blue pa1 white>Upcoming races</H1>
+							<H1 f4 fw6 ttu tracked bg_light_gray pa1>Upcoming races</H1>
 						</Heading>
 						{
 							this.props.races.map(race => {
@@ -55,7 +59,7 @@ class App extends Component {
 						}
 
 						<Heading fl w_100 mv4 ph3>
-							<H1 f4 fw4 mt4 ttu tracked bg_light_blue pa1 white>Past races</H1>
+							<H1 f4 fw6 mt4 ttu tracked bg_light_gray pa1>Past races</H1>
 						</Heading>
 						{
 							this.props.races.slice(0).reverse().map(race => {

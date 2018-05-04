@@ -12,6 +12,9 @@ import {withProfile} from '../data/with-profile';
 
 const Img = styled.img`${tachyons}`;
 const A = styled.a`${tachyons}`;
+const Div = styled.div`${tachyons}`;
+const Span = styled.span`${tachyons}`;
+const H1 = styled.h1`${tachyons}`;
 
 class Profile extends React.Component {
 	render () {
@@ -31,26 +34,31 @@ class Profile extends React.Component {
 					</Wrapper>
 				}
 				{this.props.profile &&
-					<div>
+					<Div mt5>
 						{this.props.profile.data.profilePhoto &&
-							<Wrapper w_100 w_20_ns mt4>
+							<Wrapper w_100 w_20_ns pa4>
 								<Img img db src={this.props.profile.data.profilePhoto.fields.file.url}/>
 							</Wrapper>
 						}
 						<Wrapper w_100 w_40_ns mt4>
-							<h1>{this.props.profile.data.name}</h1>
-							{this.props.profile.data.biography}
+							<H1 lh_title ma0 f2 mb4>{this.props.profile.data.name}</H1>
+							<Div lh_copy measure>
+								{this.props.profile.data.biography}
+							</Div>
+							<Div lh_copy mv4>
 							{this.props.profile.data.twitterUsername &&
-								<a href={`http://twitter.com/${this.props.profile.data.twitterUsername}`}>
+								<A link near_black underline mr3 href={`http://twitter.com/${this.props.profile.data.twitterUsername}`}>
 									Twitter
-								</a>
+								</A>
 							}
 							{this.props.profile.data.instagramUsername &&
-								<a href={`http://instagram.com/${this.props.profile.data.instagramUsername}`}>
+								<A link near_black underline mr3 href={`http://instagram.com/${this.props.profile.data.instagramUsername}`}>
 									Instagram
-								</a>
+								</A>
 							}
-							<br/>Races done:
+							</Div>
+							<Div lh_copy>
+							<Span mr2>Races done:</Span>
 							{
 								this.props.profile.data.categories.map(category => (
 									<Link key={category.sys.id} route="race" params={{type: 'race', id: category.sys.id, slug: slugify(category.fields.title)}} passHref prefetch>
@@ -58,8 +66,9 @@ class Profile extends React.Component {
 									</Link>
 								))
 							}
+							</Div>
 						</Wrapper>
-					</div>
+					</Div>
 				}
 			</Page>
 		);

@@ -22,27 +22,35 @@ ${tachyons}`;
 
 class Race extends React.Component {
 	render() {
+		let raceName;
+		let raceID;
+		let trackleadersID;
+		if (this.props.posts.length) {
+			raceName = this.props.posts[0].data.categories[0].fields.title
+			raceID = this.props.posts[0].data.categories[0].sys.id
+			trackleadersID = this.props.posts[0].data.categories[0].fields.trackleadersRaceId
+		}
 		return (
 			<Page sans_serif near_black pa0 ma0>
 				<Head>
-					<title>{this.props.posts[0].data.categories[0].fields.title} – dotwatcher.cc</title>
-					<meta property="og:title" content={`${this.props.posts[0].data.categories[0].fields.title} – dotwatcher.cc`}/>
+					<title>{raceName} – dotwatcher.cc</title>
+					<meta property="og:title" content={`${raceName} – dotwatcher.cc`}/>
 					<meta property="og:image" content=""/>
 				</Head>
 				<Header
 					title="dotwatcher.cc"
-					raceName={this.props.posts[0].data.categories[0].fields.title}
+					raceName={raceName}
 				/>
-				<MapContainer raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
-				<KeyEventsWrapper fl ph3 pb2 w_100 w_30_m w_20_l mt4_l>
-					<TopRiders raceID={this.props.posts[0].data.categories[0].sys.id}/>
+				<MapContainer raceID={trackleadersID}/>
+				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l>
+					<TopRiders raceID={raceID}/>
 					<KeyEvents posts={this.props.posts}/>
 				</KeyEventsWrapper>
-				<Wrapper ph3 pb2 w_100 w_70_m w_40_l mt5_l>
+				<Wrapper ph3 pb2 w_100 w_70_m w_40_l mt4_l>
 					{
-						this.props.posts.map(item => (
+						this.props.posts.length ? this.props.posts.map(item => (
 							<Post key={item.sys.id} id={item.sys.id} data={item.data}/>
-						))
+						)) : <h1>No posts found</h1>
 					}
 				</Wrapper>
 			</Page>

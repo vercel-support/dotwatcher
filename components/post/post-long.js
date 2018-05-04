@@ -4,12 +4,10 @@ import ReactMarkdown from 'react-markdown-with-shortcodes';
 import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-import DateTime from '../datetime';
 import Embed from '../embed';
 import Image from '../image';
 import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
-import SocialButtons from '../social-buttons';
 
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`
@@ -35,9 +33,9 @@ const Long = ({data, id}) => {
 	return (
 		<React.Fragment>
 			{ data.image ? <Image data={data.image.fields}/> : null }
-			<H1 f2 lh_title>
+			<H1 f2 lh_title mt0>
 				<Link route="post" params={{type: 'post', id, slug: slugify(data.title)}} passHref prefetch>
-					<A link dim near_black underline>{data.title}</A>
+					<A link near_black hover_blue>{data.title}</A>
 				</Link>
 			</H1>
 			<Div lh_copy pb3>
@@ -48,12 +46,6 @@ const Long = ({data, id}) => {
 					renderers={{shortcode: Embed}}
 				/>
 			</Div>
-			<Link route="post" params={{type: 'post', id, slug: slugify(data.title)}} passHref prefetch>
-				<A link near_black>
-					<DateTime datetime={data.date}/>
-				</A>
-			</Link>
-			<SocialButtons url={url}/>
 		</React.Fragment>
 	);
 };
