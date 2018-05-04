@@ -15,7 +15,7 @@ import Wrapper from '../components/shared/wrapper';
 import {withEntries} from '../data/with-entries';
 
 const KeyEventsWrapper = styled.div`
-@media (min-width: 64em) {
+@media screen and (min-width: 60em) {
 	margin-left: 40%;
 }
 ${tachyons}`;

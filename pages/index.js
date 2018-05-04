@@ -19,7 +19,7 @@ const H2 = styled.h2`${tachyons}`;
 const P = styled.p`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const RaceWrap = styled.div`
-	@media (min-width: 64em) {
+	@media screen and (min-width: 60em) {
 		margin-left: 16.666666667%;
 	}
 ${tachyons}`;

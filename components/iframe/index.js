@@ -7,7 +7,7 @@ import Placeholder from '../placeholder';
 const Map = styled.iframe`${tachyons}`;
 const Container = styled.div`
 	height: 100vh;
-	@media (min-width: 64em) {
+	@media screen and (min-width: 60em) {
 		height: calc(100vh - 75px);
 		margin-top: 75px;
 	}

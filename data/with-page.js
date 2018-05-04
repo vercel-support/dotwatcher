@@ -16,14 +16,33 @@ export const withPage = Page => {
 
 		const response = await client.getEntries({'sys.id': id});
 
-		console.log(response)
-
 		if (response.items[0]) {
 			page = {
 				id: response.items[0].sys.id,
 				title: response.items[0].fields.title,
-				text: response.items[0].fields.text
+				text: response.items[0].fields.text,
+				blocks: []
 			};
+
+			if (response.items[0].fields.contentBlock) {
+				for (const contentBlock of response.items[0].fields.contentBlock) {
+					const block = {
+						sys: {
+							id: contentBlock.sys.id
+						},
+						heading: contentBlock.fields.heading,
+						layout: contentBlock.fields.layout,
+						words: contentBlock.fields.words
+					};
+
+					if (contentBlock.fields.image) {
+						block.image = lodash.find(response.includes.Asset, obj => {
+							return obj.sys.id === contentBlock.fields.image.sys.id;
+						});
+					}
+					page.blocks.push(block);
+				}
+			}
 		}
 
 		return {
