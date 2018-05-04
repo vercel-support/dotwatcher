@@ -9,6 +9,7 @@ import tachyons from 'styled-components-tachyons';
 import Embed from '../components/embed';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import Block from '../components/content-block';
 import Page from '../components/shared/page';
 import Wrapper from '../components/shared/wrapper';
 import {withPage} from '../data/with-page';
@@ -49,41 +50,8 @@ class ContentPage extends React.Component {
 					</Div>
 					{
 						this.props.page.blocks.map(block => {
-							const float = block.layout === 'Image right' ? 'right' : 'left';
-							const ImageWrap = styled.div`
-								float: ${block.layout === 'Image right' ? 'right' : 'left'};
-								@media screen and (min-width: 30em) and (max-width: 60em) {
-									padding: ${block.layout === 'Image right' ? '0 0 0 var(--spacing-medium)' : '0 var(--spacing-medium) 0 0'};
-								}
-								@media screen and (min-width: 60em) {
-									padding: ${block.layout === 'Image right' ? '0 0 0 var(--spacing-large)' : '0 var(--spacing-large) 0 0'};
-								}
-							${tachyons}`;
-							const WordsWrap = styled.div`
-								@media screen and (min-width: 30em) and (max-width: 60em) {
-									padding: ${block.layout === 'Image right' ? '0 var(--spacing-medium) 0 0' : '0 0 0 var(--spacing-medium)'};
-								}
-								@media screen and (min-width: 60em) {
-									padding: ${block.layout === 'Image right' ? '0 var(--spacing-large) 0 0' : '0 0 0 var(--spacing-large)'};
-								}
-							${tachyons}`;
-							return (
-								<Wrapper fl w_100 mb4 mb5_ns bb bw1 pb4_ns b__light_gray className="with-divider cf">
-									<ImageWrap w_100 w_40_ns w_50_l pb4>
-										{ block.image ? <Img mw_100 src={block.image.fields.file.url} alt={block.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
-									</ImageWrap>
-									<WordsWrap fl w_100 w_60_m w_50_l>
-										<H2 f2 ma0>{block.heading}</H2>
-										<Wrapper measure lh_copy f4>
-											<ReactMarkdown
-												source={block.words}
-												plugins={[shortcodes]}
-												renderers={{shortcode: Embed}}
-											/>
-										</Wrapper>
-									</WordsWrap>
-								</Wrapper>
-							)}
+							return <Block block={block} />
+						}
 						)
 					}
 				</Wrapper>
