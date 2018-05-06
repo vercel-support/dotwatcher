@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
 import Header from '../components/header';
+import Homepage from '../components/content-block/homepage';
 import Page from '../components/shared/page';
 import Wrapper from '../components/shared/wrapper';
 import Placeholder from '../components/placeholder';
@@ -35,17 +36,7 @@ class App extends Component {
 					title="dotwatcher.cc"
 				/>
 				<Div mt3 mt6_l>
-					<Div mh4_m mh6_l className="cf">
-						<Wrapper w_100 w_50_ns ph3 className="cf">
-							<Placeholder raceID="A nice picture" relative w_100 bg_light_gray/>
-						</Wrapper>
-						<Wrapper w_100 w_50_ns ph3 mv4 mv0_ns className="cf">
-							<H2 f1 f_subheadline_l lh_title ma0 bt bw4 b__light_blue>Dotwatcher is a place on the internet</H2>
-						</Wrapper>
-						<Wrapper w_100 ph3 mv4 mv0_ns className="cf">
-							<P f2 lh_copy measure_narrow center pl4 bl bw3 b__light_blue mb0>Dotwatcher exists to be the number one place to come and get the latest on unsupported long distance bike races.</P>
-						</Wrapper>
-					</Div>
+					<Homepage block={this.props.page.blocks[0]} />
 					<RaceWrap fl ph3_l pb2 w_100 w_two_thirds_l center mt5_ns className="cf">
 						<Heading fl w_100 mb4 ph3>
 							<H1 f4 fw6 ttu tracked bg_light_gray pa1>Upcoming races</H1>
