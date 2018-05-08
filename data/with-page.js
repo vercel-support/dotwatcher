@@ -11,7 +11,7 @@ export const withPage = Page => {
 
 		const client = createClient({
 			space: vars.space,
-			accessToken: vars.accessToken
+			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
 		const response = await client.getEntries({'sys.id': id});

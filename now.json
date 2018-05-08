@@ -1,0 +1,5 @@
+{
+  "env": {
+    "CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token"
+  }
+}

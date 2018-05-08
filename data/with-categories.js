@@ -11,7 +11,7 @@ export const withCategories = Page => {
 	WithCategories.getInitialProps = async () => {
 		const client = createClient({
 			space: vars.space,
-			accessToken: vars.accessToken
+			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
 		const racesQuery = {
