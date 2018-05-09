@@ -2,7 +2,7 @@ import React from 'react';
 
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown-with-shortcodes';
+import ReactMarkdown from 'react-markdown';
 import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';

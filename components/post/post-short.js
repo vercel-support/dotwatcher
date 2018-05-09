@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactMarkdown from 'react-markdown-with-shortcodes';
+import ReactMarkdown from 'react-markdown';
 import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
