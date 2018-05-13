@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import {Link} from '../../routes';
+import Button from '../shared/button';
 import Wrapper from '../shared/wrapper';
 import Iframe from '../iframe';
 import Placeholder from '../placeholder';
 
 const A = styled.a`${tachyons}`;
-const Toggle = styled.a`${tachyons}`;
 const Tips = styled.div`
 	left: 50%;
 	transform: translateX(-50%);
@@ -67,9 +67,9 @@ class MapContainer extends Component {
 		} else if (this.state.inBrowser && this.state.width < 1024) {
 			content = (
 				<Wrapper w_100 tc pa3>
-					<Toggle f6 link dim br2 ph3 pv2 mb2 dib w4 tc white bg_blue hover_bg_light_blue tracked ttu onClick={this.toggleMap}>
+					<Button dib w4 loading={false} onClick={this.toggleMap}>
 						{this.state.showMap ? 'Hide map' : 'Show map'}
-					</Toggle>
+					</Button>
 					{this.state.showMap ? <Iframe raceID={this.props.raceID}/> : null}
 				</Wrapper>
 			);

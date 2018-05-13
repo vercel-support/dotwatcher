@@ -26,7 +26,7 @@ const Post = ({data, id}) => {
 		post = <Short key={id} id={id} data={data}/>;
 	}
 	return (
-		<Article bb bw1 b__light_gray f5 measure_wide mt5_l pb3 overflow_hidden id={slugify(data.title)} className="cf">
+		<Article bb bw1 b__light_gray f5 measure_wide mt3 mb5_l pb3 overflow_hidden id={slugify(data.title)} className="cf">
 			{post}
 			<Meta id={id} data={data}/>
 		</Article>

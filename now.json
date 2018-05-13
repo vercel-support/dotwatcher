@@ -1,5 +1,8 @@
 {
   "env": {
-    "CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token"
+    "CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
+    "PUSHER_APP_ID": "@pusher-app-id",
+    "PUSHER_KEY": "@pusher-key",
+    "PUSHER_SECRET": "@pusher-secret"
   }
 }
