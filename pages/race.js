@@ -122,11 +122,11 @@ class Race extends React.Component {
 
 	componentDidMount() {
 		this.fetchPosts()
-		channel.bind('new-post', data => {
-			if (data.fields.category['en-US'][0].sys.id === this.state.posts[0].data.categories[0].sys.id) {
+		channel.bind('new-post', newPostEvent => {
+			if (newPostEvent.category === this.state.posts[0].data.categories[0].sys.id) {
 				this.setState({
 					newPost: true,
-					newPostIDs: [data.sys.id, ...this.state.newPostIDs]
+					newPostIDs: [newPostEvent.post, ...this.state.newPostIDs]
 				})
 			}
 		})
