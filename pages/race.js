@@ -2,7 +2,7 @@ import React from 'react';
 
 import Head from 'next/head';
 import find from 'lodash/find';
-import {withRouter} from 'next/router'
+import {withRouter} from 'next/router';
 import {createClient} from 'contentful';
 import Pusher from 'pusher-js';
 import styled from 'styled-components';
@@ -15,7 +15,6 @@ import MapContainer from '../components/map-container';
 import Button from '../components/shared/button';
 import Page from '../components/shared/page';
 import Post from '../components/post';
-import Wrapper from '../components/shared/wrapper';
 import vars from '../data/api-vars';
 
 const H1 = styled.h1`${tachyons}`;
@@ -45,8 +44,8 @@ const Notification = styled(Button)`
 const pusher = new Pusher(process.env.PUSHER_KEY, {
 	cluster: 'eu',
 	encrypted: true
-})
-const channel = pusher.subscribe('dotwatcher')
+});
+const channel = pusher.subscribe('dotwatcher');
 
 class Race extends React.Component {
 	constructor(props) {
@@ -62,7 +61,7 @@ class Race extends React.Component {
 	}
 
 	async fetchPosts(id) {
-		this.setState({loading: true})
+		this.setState({loading: true});
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
@@ -75,7 +74,7 @@ class Race extends React.Component {
 			limit: 5,
 			skip: this.state.skip
 		};
-		let response
+		let response;
 		if (id) {
 			response = await client.getEntries({'sys.id': id});
 		} else {
@@ -108,7 +107,7 @@ class Race extends React.Component {
 		}
 		if (id) {
 			await this.setState({
-				posts: [ ...newPosts, ...this.state.posts],
+				posts: [...newPosts, ...this.state.posts],
 				loading: false
 			});
 		} else {
@@ -121,15 +120,15 @@ class Race extends React.Component {
 	}
 
 	componentDidMount() {
-		this.fetchPosts()
+		this.fetchPosts();
 		channel.bind('new-post', newPostEvent => {
 			if (newPostEvent.category === this.state.posts[0].data.categories[0].sys.id) {
 				this.setState({
 					newPost: true,
 					newPostIDs: [newPostEvent.post, ...this.state.newPostIDs]
-				})
+				});
 			}
-		})
+		});
 	}
 
 	loadNextPageOfPosts() {
@@ -141,8 +140,8 @@ class Race extends React.Component {
 
 	loadPost() {
 		this.state.newPostIDs.forEach(postID => {
-			this.fetchPosts(postID)
-		})
+			this.fetchPosts(postID);
+		});
 		this.setState({
 			newPost: false,
 			newPostIDs: []
@@ -154,9 +153,9 @@ class Race extends React.Component {
 		let raceID;
 		let trackleadersID;
 		if (this.state.posts.length) {
-			raceName = this.state.posts[0].data.categories[0].fields.title
-			raceID = this.state.posts[0].data.categories[0].sys.id
-			trackleadersID = this.state.posts[0].data.categories[0].fields.trackleadersRaceId
+			raceName = this.state.posts[0].data.categories[0].fields.title;
+			raceID = this.state.posts[0].data.categories[0].sys.id;
+			trackleadersID = this.state.posts[0].data.categories[0].fields.trackleadersRaceId;
 		}
 
 		const morePostsButton = (
@@ -165,25 +164,27 @@ class Race extends React.Component {
 					this.state.loading ? 'Loading...' : 'Load more posts'
 				}
 			</Button>
-		)
+		);
 
-		let morePosts = null
+		let morePosts = null;
 		if (this.state.totalPosts > this.state.posts.length) {
-			morePosts = morePostsButton
+			morePosts = morePostsButton;
 		} else if (this.state.posts.length === 0) {
-			morePosts = null
+			morePosts = null;
 		} else {
-			morePosts = <H1 mt3 tc moon_gray tracked ttu i>Fin</H1>
+			morePosts = <H1 mt3 tc moon_gray tracked ttu i>Fin</H1>;
 		}
 
-		let newPostsNotification = null
-		const updateMessageQualifier = this.state.newPostIDs.length > 1 ? 'updates' : 'update'
+		let newPostsNotification = null;
+		const updateMessageQualifier = this.state.newPostIDs.length > 1 ? 'updates' : 'update';
 		if (this.state.newPost) {
-			newPostsNotification = <Notification fixed z_1 loading={this.state.loading} onClick={this.loadPost.bind(this)} href="#posts">
-				{
-					this.state.loading ? `Loading...` : `${this.state.newPostIDs.length} new ${updateMessageQualifier}`
-				}
-			</Notification>
+			newPostsNotification = (
+				<Notification fixed z_1 loading={this.state.loading} onClick={this.loadPost.bind(this)} href="#posts">
+					{
+						this.state.loading ? `Loading...` : `${this.state.newPostIDs.length} new ${updateMessageQualifier}`
+					}
+				</Notification>
+			);
 		}
 
 		return (
