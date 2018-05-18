@@ -13,22 +13,26 @@ const H2 = styled.h2`${tachyons}`;
 const VerticallyCenter = styled.div`
 	position: absolute;
 	top: 50%;
-	left: var(--spacing-large);
-	right: var(--spacing-large);
+	left: var(--spacing-medium);
+	right: var(--spacing-medium);
 	transform: translate(0, -50%);
+	@media screen and (min-width: 60em) {
+		left: var(--spacing-large);
+		right: var(--spacing-large);
+	}
 ${tachyons}`;
 const P = styled.p`${tachyons}`;
 
 const Box = ({block}) => (
-	<Wrapper w_100 w_third_ns ph4 mt4 mb5 className="cf">
+	<Wrapper w_100 w_third_ns ph4 mt4_ns mb5_ns className="cf">
 		<Div aspect_ratio aspect_ratio__1x1 mb4 bg_near_black>
 			<Div aspect_ratio__object z_1>
 				<VerticallyCenter>
-					<H2 f3 f3_l ttu tracked white tc lh_title ma0>{block.heading}</H2>
-					<P f4 white lh_copy tc mt3 mb0>{block.words}</P>
+					<H2 f3 f4_m f3_l fw6 ttu tracked white tc lh_title ma0>{block.heading}</H2>
+					<P f4 f5_m white lh_copy tc mt3 mb0>{block.words}</P>
 				</VerticallyCenter>
 			</Div>
-			<Div aspect_ratio__object z_0 cover bg_center className="dim" style={{backgroundImage: `url(${block.image.fields.file.url})`}}/>
+			<Div o_80 o_100_l aspect_ratio__object z_0 cover bg_center className="dim" style={{backgroundImage: `url(${block.image.fields.file.url})`}}/>
 		</Div>
 	</Wrapper>
 );

@@ -47,7 +47,7 @@ class App extends Component {
 					}
 					<RaceWrap fl ph3_l pb2 w_100 w_two_thirds_l center mt5_ns className="cf">
 						<Heading fl w_100 mb4 ph3>
-							<H1 f4 fw6 ttu tracked bg_light_gray pa1>Upcoming races</H1>
+							<H1 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Upcoming races</H1>
 						</Heading>
 						{
 							this.props.races.map(race => {
@@ -55,8 +55,8 @@ class App extends Component {
 							})
 						}
 
-						<Heading fl w_100 mv4 ph3>
-							<H1 f4 fw6 mt4 ttu tracked bg_light_gray pa1>Past races</H1>
+						<Heading fl w_100 mv4 mt5_ns ph3>
+							<H1 f4 fw6 mt4 ttu tracked bb bw1 b__light_gray pb1>Past races</H1>
 						</Heading>
 						{
 							this.props.races.slice(0).reverse().map(race => {
