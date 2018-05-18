@@ -20,7 +20,7 @@
     "contentful": "^6.1.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
-    "next": "^6.0.2",
+    "next": "^6.0.3",
     "next-routes": "^1.4.1",
     "path-match": "^1.2.4",
     "postcss-easy-import": "^3.0.0",
