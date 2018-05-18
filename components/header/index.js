@@ -22,7 +22,7 @@ const Div = styled.div`
 
 const Banner = ({title, raceName}) => (
 	<React.Fragment>
-		<Header bg_near_black near_white w_100 fixed_l z_1 flex self_start className="cf" id="banner">
+		<Header bg_white bb b__light_gray near_black w_100 z_1 relative flex self_start className="cf">
 			<H1 flex items_center f2 pv3 ma0 fw5 lh_solid w_40_l>
 				<Div>
 					<Logo>{title}</Logo>
@@ -31,10 +31,10 @@ const Banner = ({title, raceName}) => (
 			{ raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5>{raceName}</H2> : null}
 			<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 				<Link href="/" as="/" passHref prefetch>
-					<A dib mr3 f5 f4_l white fw4>Races</A>
+					<A dib mr3 f5 f4_l near_black fw4>Races</A>
 				</Link>
 				<Link route="page" params={{type: 'page', id: '1BgGLGEpckYcmoEE6Cqc0I'}} passHref>
-					<A dib ml3 f5 f4_l white fw4>About</A>
+					<A dib ml3 f5 f4_l near_black fw4>About</A>
 				</Link>
 			</Nav>
 		</Header>

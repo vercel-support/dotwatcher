@@ -8,8 +8,7 @@ const Map = styled.iframe`${tachyons}`;
 const Container = styled.div`
 	height: 100vh;
 	@media screen and (min-width: 60em) {
-		height: calc(100vh - 75px);
-		margin-top: 75px;
+		height: 100vh;
 	}
 ${tachyons}`;
 

@@ -13,16 +13,12 @@ import KeyEvents from '../components/key-events';
 import TopRiders from '../components/top-riders';
 import MapContainer from '../components/map-container';
 import Button from '../components/shared/button';
+import Wrapper from '../components/shared/wrapper';
 import Page from '../components/shared/page';
 import Post from '../components/post';
 import vars from '../data/api-vars';
 
 const H1 = styled.h1`${tachyons}`;
-const PostsWrapper = styled.div`
-@media screen and (min-width: 60em) {
-	margin-top: 4.6875rem
-}
-${tachyons}`;
 const KeyEventsWrapper = styled.div`
 @media screen and (min-width: 60em) {
 	margin-left: 40%;
@@ -203,7 +199,7 @@ class Race extends React.Component {
 					<TopRiders raceID={raceID}/>
 					<KeyEvents posts={this.state.posts}/>
 				</KeyEventsWrapper>
-				<PostsWrapper fl ph3 pb2 w_100 w_70_m w_40_l id="posts">
+				<Wrapper ph3 pb2 w_100 w_70_m w_40_l id="posts">
 					{ newPostsNotification }
 					{
 						this.state.posts.length ? this.state.posts.map(item => (
@@ -211,7 +207,7 @@ class Race extends React.Component {
 						)) : null
 					}
 					{ morePosts }
-				</PostsWrapper>
+				</Wrapper>
 			</Page>
 		);
 	}

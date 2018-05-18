@@ -70,6 +70,10 @@ export const withCategories = Page => {
 						words: contentBlock.fields.words
 					};
 
+					if (contentBlock.fields.race) {
+						block.race = contentBlock.fields.race.sys.id;
+					}
+
 					if (contentBlock.fields.image) {
 						block.image = lodash.find(homepageResponse.includes.Asset, obj => {
 							return obj.sys.id === contentBlock.fields.image.sys.id;

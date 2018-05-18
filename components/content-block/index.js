@@ -1,56 +1,34 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import shortcodes from 'remark-shortcodes';
-import styled from 'styled-components';
-import tachyons from 'styled-components-tachyons';
-import Embed from '../embed';
-import Wrapper from '../shared/wrapper';
+import PropTypes from 'prop-types';
+import Homepage from './homepage';
+import ImageRightLeft from './image-right-left';
+import RacePromo from './race-promo';
+import Box from './box';
+import EmailSignup from './email-signup';
 
-const Div = styled.div`
-	p {
-		margin: 0;
+const ContentBlock = ({block, race}) => {
+	if (block.layout === 'Homepage') {
+		return <Homepage block={block}/>;
 	}
-${tachyons}`;
-const H1 = styled.h1`${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
-const Img = styled.img`${tachyons}`;
+	if (block.layout === 'Race promo') {
+		return <RacePromo block={block} race={race[0]}/>;
+	}
+	if (block.layout === 'Box') {
+		return <Box block={block}/>;
+	}
+	if (block.layout === 'Email signup') {
+		return <EmailSignup block={block}/>;
+	}
+	return <ImageRightLeft block={block}/>;
+};
 
-const Block = ({block}) => {
-	const float = block.layout === 'Image right' ? 'right' : 'left';
-	const ImageWrap = styled.div`
-		float: ${block.layout === 'Image right' ? 'right' : 'left'};
-		@media screen and (min-width: 30em) and (max-width: 60em) {
-			padding: ${block.layout === 'Image right' ? '0 0 0 var(--spacing-medium)' : '0 var(--spacing-medium) 0 0'};
-		}
-		@media screen and (min-width: 60em) {
-			padding: ${block.layout === 'Image right' ? '0 0 0 var(--spacing-large)' : '0 var(--spacing-large) 0 0'};
-		}
-	${tachyons}`;
-	const WordsWrap = styled.div`
-		@media screen and (min-width: 30em) and (max-width: 60em) {
-			padding: ${block.layout === 'Image right' ? '0 var(--spacing-medium) 0 0' : '0 0 0 var(--spacing-medium)'};
-		}
-		@media screen and (min-width: 60em) {
-			padding: ${block.layout === 'Image right' ? '0 var(--spacing-large) 0 0' : '0 0 0 var(--spacing-large)'};
-		}
-	${tachyons}`;
-	return (
-		<Wrapper fl w_100 mb4 mb5_ns bb bw1 pb4_ns b__light_gray className="with-divider cf">
-			<ImageWrap w_100 w_40_ns w_50_l pb4>
-				{ block.image ? <Img mw_100 src={block.image.fields.file.url} alt={block.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
-			</ImageWrap>
-			<WordsWrap fl w_100 w_60_m w_50_l>
-				<H2 f2 ma0>{block.heading}</H2>
-				<Wrapper measure lh_copy f4>
-					<ReactMarkdown
-						source={block.words}
-						plugins={[shortcodes]}
-						renderers={{shortcode: Embed}}
-					/>
-				</Wrapper>
-			</WordsWrap>
-		</Wrapper>
-	)
-}
+ContentBlock.propTypes = {
+	block: PropTypes.object.isRequired,
+	race: PropTypes.object
+};
 
-export default Block
+ContentBlock.defaultProps = {
+	race: {}
+};
+
+export default ContentBlock;

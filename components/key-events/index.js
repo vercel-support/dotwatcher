@@ -16,7 +16,6 @@ class KeyEvents extends Component {
 			showMore: false,
 			keyEventsOffset: 0,
 			keyEventsWidth: 0,
-			bannerHeight: 0,
 			fixed: false,
 			width: 320
 		};
@@ -39,13 +38,12 @@ class KeyEvents extends Component {
 		const keyEventsContainer = document.querySelector('#key-events-wrap');
 		this.setState({
 			keyEventsOffset: keyEventsContainer.offsetTop,
-			keyEventsWidth: keyEventsContainer.offsetWidth,
-			bannerHeight: document.getElementById('banner').offsetHeight
+			keyEventsWidth: keyEventsContainer.offsetWidth
 		});
 	}
 
 	handleScroll() {
-		const scroll = window.pageYOffset - this.state.bannerHeight;
+		const scroll = window.pageYOffset;
 		this.setState({
 			fixed: scroll > this.state.keyEventsOffset
 		});
@@ -55,7 +53,7 @@ class KeyEvents extends Component {
 		const Div = styled.div`
 		@media screen and (min-width: 60em) {
 			position: ${this.state.fixed ? 'fixed' : 'relative'};
-			top: ${this.state.fixed ? this.state.keyEventsOffset - this.state.bannerHeight - 4 + 'px' : 'inherit'};
+			top: ${this.state.fixed ? '0px' : 'inherit'};
 			width: ${this.state.fixed ? this.state.keyEventsWidth + 'px' : '100%'};
 			overflow: scroll;
 			height: 90vh;
@@ -66,8 +64,8 @@ class KeyEvents extends Component {
 		const keyEventsToShow = this.state.showMore ? keyEvents : lessKeyEvents;
 		return (
 			<Div id="key-events-wrap">
-				<Header pt4>
-					<H2 pt3 bb bw1 b__light_blue measure_narrow>
+				<Header>
+					<H2 bb bw1 b__light_blue measure_narrow>
 						Key moments
 					</H2>
 				</Header>

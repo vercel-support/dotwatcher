@@ -57,7 +57,7 @@ class MapContainer extends Component {
 		);
 		if (this.state.inBrowser && this.state.width >= 1024) {
 			content = (
-				<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
+				<Wrapper fixed_l z_0 top_0 w_100 w_40_l bg_near_white relative cf>
 					<Iframe raceID={this.props.raceID}/>
 					<Tips absolute_l z_2 tc>
 						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>Click here for tracker tips</A></Link>
