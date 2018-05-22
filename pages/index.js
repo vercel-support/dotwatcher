@@ -73,12 +73,12 @@ class App extends Component {
 
 App.propTypes = {
 	races: PropTypes.array,
-	page: PropTypes.array
+	page: PropTypes.object
 };
 
 App.defaultProps = {
-	page: [],
-	races: []
+	races: [],
+	page: {}
 };
 
 export default withCategories(App);

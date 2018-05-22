@@ -24,11 +24,11 @@ const ContentBlock = ({block, race}) => {
 
 ContentBlock.propTypes = {
 	block: PropTypes.object.isRequired,
-	race: PropTypes.object
+	race: PropTypes.array
 };
 
 ContentBlock.defaultProps = {
-	race: {}
+	race: []
 };
 
 export default ContentBlock;
