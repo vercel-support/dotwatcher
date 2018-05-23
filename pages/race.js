@@ -184,7 +184,7 @@ class Race extends React.Component {
 		}
 
 		return (
-			<Page sans_serif near_black pa0 ma0>
+			<Page>
 				<Head>
 					<title>{raceName} – dotwatcher.cc</title>
 					<meta property="og:title" content={`${raceName} – dotwatcher.cc`}/>

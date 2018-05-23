@@ -11,7 +11,7 @@ import {withEntries} from '../data/with-entries';
 class PostPage extends React.Component {
 	render() {
 		return (
-			<Page sans_serif near_black pa0 ma0>
+			<Page>
 				<Head>
 					<title>{this.props.posts[0].data.title}</title>
 					<meta property="og:title" content={this.props.posts[0].data.title} />

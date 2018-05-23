@@ -24,7 +24,7 @@ ${tachyons}`;
 class App extends Component {
 	render() {
 		return (
-			<Page sans_serif near_black pa0 ma0>
+			<Page>
 				<Head>
 					<title>🏔 Dotwatcher</title>
 				</Head>

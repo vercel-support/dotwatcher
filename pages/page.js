@@ -26,7 +26,7 @@ const Img = styled.img`${tachyons}`;
 class ContentPage extends React.Component {
 	render() {
 		return (
-			<Page sans_serif near_black pa0 ma0>
+			<Page>
 				<Head>
 					<title>{this.props.page.title} - dotwatcher.cc</title>
 					<meta property="og:title" content={`${this.props.page.title} - dotwatcher.cc`}/>

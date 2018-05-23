@@ -19,7 +19,7 @@ const H1 = styled.h1`${tachyons}`;
 class Profile extends React.Component {
 	render () {
 		return (
-			<Page sans_serif near_black pa0 ma0>
+			<Page>
 				<Head>
 					<title></title>
 					<meta property="og:title" content="" />
