@@ -52,7 +52,7 @@ const CustomForm = ({status, message, onValidated}) => {
 
 	return (
 		<Form fl w_100 w_60_m
-			w_60_l onSubmit={
+			w_50_l onSubmit={
 				e => {
 					e.preventDefault();
 					submit();
@@ -86,8 +86,8 @@ const CustomForm = ({status, message, onValidated}) => {
 
 const EmailSignup = ({block}) => (
 	<Div mh4_m mh6_l mb4 ph4 ph0_ns className="cf">
-		<Header fl w_100 w_40_m w_40_l>
-			<H2 mt0 mb2 lh_title>{block.heading}</H2>
+		<Header fl w_100 w_40_m w_50_l ph3>
+			<H2 mt0 mb2 pb1 lh_title>{block.heading}</H2>
 			<P mt0 lh_copy>{block.words}</P>
 		</Header>
 		<MailchimpSubscribe

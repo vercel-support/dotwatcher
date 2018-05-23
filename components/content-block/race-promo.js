@@ -62,10 +62,10 @@ const RacePromo = ({block, race}) => {
 	${tachyons}`;
 
 	return (
-		<Div mh4_m mh6_l mb4 mb5_ns className="cf">
+		<Div mh4_m mb4 mb5_ns className="cf">
 			<Link route="race" params={{type: 'race', id: race.sys.id, raceID: race.data.raceID, slug: slugify(race.data.title)}} passHref prefetch>
 				<A db cover bg_center style={{backgroundImage: `url(${block.image.fields.file.url})`}} className="cf">
-					<Wrapper fr w_100 w_two_thirds_m w_60_l ph4 pv6 mv4 mv0_ns className="cf">
+					<Wrapper fr w_100 w_two_thirds_m w_50_l pa4 pv6_ns mv4 mv0_ns className="cf">
 						<Div bg_white_50 pb3>
 							{ Title }
 							<WordsWrap mr4>

@@ -29,8 +29,8 @@ const Box = ({block}) => (
 			<a href={block.link}>
 				<Div aspect_ratio__object z_1>
 					<VerticallyCenter>
-						<H2 f3 f4_m f3_l fw6 ttu tracked white tc lh_title ma0>{block.heading}</H2>
-						<P f4 f5_m white lh_copy tc mt3 mb0>{block.words}</P>
+						<H2 f3 f4_ns fw6 ttu tracked white tc lh_title ma0>{block.heading}</H2>
+						<P f4 f5_ns white lh_copy tc mt3 mb0>{block.words}</P>
 					</VerticallyCenter>
 				</Div>
 				<Div o_80 o_100_l aspect_ratio__object z_0 cover bg_center className="dim" style={{backgroundImage: `url(${block.image.fields.file.url})`}}/>
