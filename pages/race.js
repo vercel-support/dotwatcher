@@ -148,10 +148,12 @@ class Race extends React.Component {
 		let raceName;
 		let raceID;
 		let trackleadersID;
+		let race;
 		if (this.state.posts.length) {
 			raceName = this.state.posts[0].data.categories[0].fields.title;
 			raceID = this.state.posts[0].data.categories[0].sys.id;
 			trackleadersID = this.state.posts[0].data.categories[0].fields.trackleadersRaceId;
+			race = this.state.posts[0].data.categories[0];
 		}
 
 		const morePostsButton = (
@@ -193,6 +195,7 @@ class Race extends React.Component {
 				<Header
 					title="dotwatcher.cc"
 					raceName={raceName}
+					race={race}
 				/>
 				<MapContainer raceID={trackleadersID}/>
 				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l relative>
