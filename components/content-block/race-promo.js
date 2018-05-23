@@ -56,25 +56,30 @@ const Span = styled.span`${tachyons}`;
 
 const RacePromo = ({block, race}) => {
 	const isRaceLive = moment().isBetween(moment(race.data.raceStartDate), moment(race.data.raceEndDate));
-	const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 near_black relative>{block.heading}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 near_black>{block.heading}</H2>;
+	const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 pr4 near_black relative>{block.heading}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 ph4 near_black>{block.heading}</H2>;
+	const WordsWrap = styled.div`
+		margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large' });
+	${tachyons}`;
 
 	return (
 		<Div mh4_m mh6_l mb4 mb5_ns className="cf">
 			<Link route="race" params={{type: 'race', id: race.sys.id, raceID: race.data.raceID, slug: slugify(race.data.title)}} passHref prefetch>
 				<A db cover bg_center style={{backgroundImage: `url(${block.image.fields.file.url})`}} className="cf">
-					<Wrapper fr w_100 w_two_thirds_m w_50_l ph4 pv6 mv4 mv0_ns className="cf">
+					<Wrapper fr w_100 w_two_thirds_m w_60_l ph4 pv6 mv4 mv0_ns className="cf">
 						<Div bg_white_50 pb3>
 							{ Title }
-							<P f3 lh_copy measure_narrow near_black ml5>
-								{block.words}
-							</P>
-							<P f4	 ml5>
-								<Span link underline near_black hover_white>
-									{
-										moment(race.data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
-									}
-								</Span>
-							</P>
+							<WordsWrap mr4>
+								<P f3 lh_copy measure_narrow near_black>
+									{block.words}
+								</P>
+								<P f4>
+									<Span link underline near_black hover_white>
+										{
+											moment(race.data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
+										}
+									</Span>
+								</P>
+							</WordsWrap>
 						</Div>
 					</Wrapper>
 				</A>
