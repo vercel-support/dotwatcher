@@ -43,13 +43,13 @@ const CustomForm = ({status, message, onValidated}) => {
 			EMAIL: email.value
 		});
 
-		if (message && message.startsWith('0 - ')) {
-			message = message.split('0 - ')[1];
-		}
+	if (message && message.startsWith('0 - ')) {
+		message = message.split('0 - ')[1];
+	}
 
 	return (
-		<Form fl w_100 w_50_ns
-			onSubmit={
+		<Form fl w_100 w_50_m
+			w_70_l onSubmit={
 				e => {
 					e.preventDefault();
 					submit();
@@ -60,30 +60,32 @@ const CustomForm = ({status, message, onValidated}) => {
 				innerRef={node => email = node}
 				type="email"
 				placeholder="your.name@email.com"
-				input_reset ba bw1
-				b__light_silver br2 ph3
-				pv2 mv3 w5
-				br__left f5 br_0
+				input_reset bb bw1
+				b__light_silver ph3
+				pv2 mr4 mt4
+				mb2 f5 br_0
+				bt_0 bl_0
+				f4 fl w_50
 			/>
-			<SubmitButton f5 bg_blue ph3 pv2 mv3 center tc white tracked ttu br2 br__right ba b__blue hover_bg_light_blue type="submit">
-				Submit
+			<SubmitButton f5 bg_white fl ph3 pv2 mt4 mb2 center tc blue tracked ttu ba b__blue hover_white hover_bg_blue type="submit">
+				Subscribe
 			</SubmitButton>
-			{status === 'sending' && <Message f6 lh_copy>sending...</Message>}
+			{status === 'sending' && <Message fl w_50 ph3 f6 lh_copy>sending...</Message>}
 			{status === 'error' && (
-				<Message f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
+				<Message fl w_50 red ph3 f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
 			)}
 			{status === 'success' && (
-				<Message f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
+				<Message fl w_50 ph3 f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
 			)}
 		</Form>
 	);
 };
 
 const EmailSignup = ({block}) => (
-	<Div mh4_m mh6_l mb4 mb5_ns ph4 ph0_ns className="cf">
-		<Header fl w_100 w_50_ns>
-			<H2 mt0>{block.heading}</H2>
-			<P mt0>{block.words}</P>
+	<Div mh4_m mh6_l mb4 ph4 ph0_ns className="cf">
+		<Header fl w_100 w_50m w_30_l>
+			<H2 mt0 mb2 lh_title>{block.heading}</H2>
+			<P mt0 lh_copy>{block.words}</P>
 		</Header>
 		<MailchimpSubscribe
 			url={mailchimpURL}
