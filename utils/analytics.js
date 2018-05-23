@@ -1,5 +1,7 @@
 import ReactGA from 'react-ga';
 
+// Hat tip: https://malloc.fi/using-google-analytics-with-next-js
+
 export const initGA = () => {
 	// console.log('GA init');
 	ReactGA.initialize(process.env.ANALYTICS);
