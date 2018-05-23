@@ -4,7 +4,7 @@ import React from 'react';
 import stylesheet from '../styles/index.css';
 
 export default class Document extends NextDocument {
-	static getInitialProps ({renderPage}) {
+	static getInitialProps({renderPage}) {
 		const sheet = new ServerStyleSheet();
 		const page = renderPage(App => props => sheet.collectStyles(<App {...props}/>));
 		const styleTags = sheet.getStyleElement();
@@ -17,8 +17,8 @@ export default class Document extends NextDocument {
 				<Head>
 					{this.props.styleTags}
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
-					<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-					<script src="//www.instagram.com/embed.js"></script>
+					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+					<script src="//www.instagram.com/embed.js"/>
 				</Head>
 				<body>
 					<Main/>
