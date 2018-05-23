@@ -67,7 +67,8 @@ export const withCategories = Page => {
 						},
 						heading: contentBlock.fields.heading,
 						layout: contentBlock.fields.layout,
-						words: contentBlock.fields.words
+						words: contentBlock.fields.words,
+						link: contentBlock.fields.link
 					};
 
 					if (contentBlock.fields.race) {
