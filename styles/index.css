@@ -221,7 +221,7 @@ template { display: none; }
 [hidden] { display: none; }
 /* Modules */
 /*
- 
+
   BOX SIZING
 
 */
@@ -230,6 +230,13 @@ fieldset, legend, pre, code, a, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt,
 dd, blockquote, figcaption, figure, textarea, table, td, th, tr,
 input[type="email"], input[type="number"], input[type="password"],
 input[type="tel"], input[type="text"], input[type="url"], .border-box { box-sizing: border-box; }
+
+hr {
+  height: 2px;
+  border: 0;
+  color: var(--light-gray);
+  background-color: var(--light-gray);
+}
 
 :root {
   --black: #000;
