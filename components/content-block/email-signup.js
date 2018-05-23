@@ -19,7 +19,10 @@ const EmailInput = styled.input`
 ${tachyons}`;
 const SubmitButton = styled.button`
 	&:focus, &:hover {
-		border-color: var(--light-blue);
+		border-color: var(--blue);
+		color: var(--white);
+		background-color: var(--blue);
+		outline: 0;
 	}
 	&:active {
 		border-color: var(--gold);
@@ -48,8 +51,8 @@ const CustomForm = ({status, message, onValidated}) => {
 	}
 
 	return (
-		<Form fl w_100 w_50_m
-			w_70_l onSubmit={
+		<Form fl w_100 w_60_m
+			w_60_l onSubmit={
 				e => {
 					e.preventDefault();
 					submit();
@@ -62,20 +65,20 @@ const CustomForm = ({status, message, onValidated}) => {
 				placeholder="your.name@email.com"
 				input_reset bb bw1
 				b__light_silver ph3
-				pv2 mr4 mt4
+				pv2 mt4
 				mb2 f5 br_0
-				bt_0 bl_0
-				f4 fl w_50
+				bt_0 bl_0 f4
+				fl w_100 w_70_ns
 			/>
-			<SubmitButton f5 bg_white fl ph3 pv2 mt4 mb2 center tc blue tracked ttu ba b__blue hover_white hover_bg_blue type="submit">
+			<SubmitButton f4 bg_white fl w_100 w_30_ns ph3 pv2 mt4 mb2 center tc blue tracked ttl small_caps ba bw1 br_0_ns bt_0_ns bl_0_ns b__blue type="submit">
 				Subscribe
 			</SubmitButton>
-			{status === 'sending' && <Message fl w_50 ph3 f6 lh_copy>sending...</Message>}
+			{status === 'sending' && <Message fl w_70 ph3 f6 lh_copy>sending...</Message>}
 			{status === 'error' && (
-				<Message fl w_50 red ph3 f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
+				<Message fl w_70 red ph3 f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
 			)}
 			{status === 'success' && (
-				<Message fl w_50 ph3 f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
+				<Message fl w_70 ph3 f6 lh_copy dangerouslySetInnerHTML={{__html: message}}/>
 			)}
 		</Form>
 	);
@@ -83,7 +86,7 @@ const CustomForm = ({status, message, onValidated}) => {
 
 const EmailSignup = ({block}) => (
 	<Div mh4_m mh6_l mb4 ph4 ph0_ns className="cf">
-		<Header fl w_100 w_50m w_30_l>
+		<Header fl w_100 w_40_m w_40_l>
 			<H2 mt0 mb2 lh_title>{block.heading}</H2>
 			<P mt0 lh_copy>{block.words}</P>
 		</Header>
