@@ -13,7 +13,7 @@ const Footer = () => {
 			<Div pv3 mh6_l>
 				<Div fl w_100 w_50_ns ph3 mb4>
 					<H2 f4 ttu tracked fw7>About</H2>
-					<P lh_copy measure dark_gray>Dotwatcher is here to showcase the best of long distance unsupported bike racing.</P>
+					<P lh_copy measure dark_gray>DotWatcher is here to showcase the best of long distance self-supported bike racing.</P>
 				</Div>
 				<Div fl w_100 w_25_ns ph3 mb4>
 					<H2 f4 ttu tracked fw7>Partner</H2>
