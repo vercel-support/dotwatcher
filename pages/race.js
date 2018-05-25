@@ -149,11 +149,13 @@ class Race extends React.Component {
 		let raceID;
 		let trackleadersID;
 		let race;
+		let raceImage;
 		if (this.state.posts.length) {
 			raceName = this.state.posts[0].data.categories[0].fields.title;
 			raceID = this.state.posts[0].data.categories[0].sys.id;
 			trackleadersID = this.state.posts[0].data.categories[0].fields.trackleadersRaceId;
 			race = this.state.posts[0].data.categories[0];
+			raceImage = this.state.posts[0].data.categories[0].fields.icon.fields.file.url;
 		}
 
 		const morePostsButton = (
@@ -188,9 +190,10 @@ class Race extends React.Component {
 		return (
 			<Page>
 				<Head>
-					<title>{raceName} – dotwatcher.cc</title>
-					<meta property="og:title" content={`${raceName} – dotwatcher.cc`}/>
-					<meta property="og:image" content=""/>
+					<title>{raceName} – DotWatcher.cc</title>
+					<meta property="og:title" content={`${raceName} – DotWatcher.cc`}/>
+					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
+					<meta property="og:image" content={raceImage}/>
 				</Head>
 				<Header
 					title="dotwatcher.cc"
