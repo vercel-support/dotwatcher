@@ -36,7 +36,7 @@ class PostPage extends React.Component {
 				/>
 				<MapContainer raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
 				<PostWrapper fl w_50 pa4>
-					<Link route="race" params={{ type: 'race', id: this.props.posts[0].data.categories[0].sys.id, raceID: this.props.posts[0].data.categories[0].fields.trackleadersRaceId, slug: slugify(this.props.posts[0].data.categories[0].fields.title) }} passHref prefetch>
+					<Link route="race" params={{ type: 'race', id: this.props.posts[0].data.categories[0].sys.id}} passHref prefetch>
 						<A near_black f6 href="#">« Back to {this.props.posts[0].data.categories[0].fields.title} feed</A>
 					</Link>
 					<Post key={this.props.posts[0].sys.id} id={this.props.posts[0].sys.id} data={this.props.posts[0].data}/>
