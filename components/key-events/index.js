@@ -37,7 +37,7 @@ class KeyEvents extends Component {
 		document.addEventListener('scroll', this.handleScroll.bind(this));
 		const keyEventsContainer = document.querySelector('#key-events-wrap');
 		this.setState({
-			keyEventsOffset: keyEventsContainer.offsetTop,
+			keyEventsOffset: keyEventsContainer.getBoundingClientRect().top,
 			keyEventsWidth: keyEventsContainer.offsetWidth
 		});
 	}

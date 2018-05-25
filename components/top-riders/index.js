@@ -10,6 +10,9 @@ import Rider from './rider';
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
 const Div = styled.div`${tachyons}`;
+const TopRidersWrap = styled.div`
+min-height: 10rem;
+${tachyons}`;
 
 class topRiders extends React.Component {
 	constructor(props) {
@@ -54,7 +57,7 @@ class topRiders extends React.Component {
 
 	render() {
 		return (
-			<Div mb4>
+			<TopRidersWrap mb4>
 				<Header>
 					<H2 mt0 bb bw1 b__light_blue measure_narrow>
 						Top riders
@@ -67,7 +70,7 @@ class topRiders extends React.Component {
 						)) : 'Loading...'
 					}
 				</Div>
-			</Div>
+			</TopRidersWrap>
 		);
 	}
 }

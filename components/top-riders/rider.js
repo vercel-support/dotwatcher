@@ -5,6 +5,8 @@ import tachyons from 'styled-components-tachyons';
 
 const Wrap = styled.dl`${tachyons}`;
 const RiderName = styled.dt`${tachyons}`;
+const RiderStat = styled.dt`${tachyons}`;
+// <RiderStat fr f6 gray>199km</RiderStat>
 
 const Rider = ({rider}) => {
 	return (
