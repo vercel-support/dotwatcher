@@ -65,7 +65,7 @@ class KeyEvents extends Component {
 		return (
 			<Div id="key-events-wrap">
 				<Header>
-					<H2 bb bw1 b__light_blue measure_narrow>
+					<H2 ttu tracked f5 bb bw1 pb1 b__light_gray measure_narrow>
 						Key moments
 					</H2>
 				</Header>

@@ -59,7 +59,7 @@ class topRiders extends React.Component {
 		return (
 			<TopRidersWrap mb4>
 				<Header>
-					<H2 mt0 bb bw1 b__light_blue measure_narrow>
+					<H2 ttu tracked f5 mt0 pb1 bb bw1 b__light_gray measure_narrow>
 						Top riders
 					</H2>
 				</Header>
