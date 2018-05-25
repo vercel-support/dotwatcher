@@ -3,13 +3,24 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Wrapper from '../shared/wrapper';
+import widont from '../../utils/widont';
 
 const Div = styled.div`
 	&:hover .dim {
 		opacity: .6;
 	}
 ${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
+const H2 = styled.h2`
+&:before {
+	content: '';
+	width: 50%;
+	border-top: .125rem solid white;
+	position: absolute;
+	top: -1rem;
+	left: 25%;
+	height: 25%;
+}
+${tachyons}`;
 const VerticallyCenter = styled.div`
 	position: absolute;
 	top: 50%;
@@ -29,8 +40,8 @@ const Box = ({block}) => (
 			<a href={block.link}>
 				<Div aspect_ratio__object z_1>
 					<VerticallyCenter>
-						<H2 f3 f4_ns fw6 ttu tracked white tc lh_title ma0>{block.heading}</H2>
-						<P f4 f5_ns white lh_copy tc mt3 mb0>{block.words}</P>
+						<H2 f3 f4_ns fw6 ttu tracked white tc lh_title ma0 relative>{widont(block.heading)}</H2>
+						<P f4 f5_ns white lh_copy tc mt3 mb0>{widont(block.words)}</P>
 					</VerticallyCenter>
 				</Div>
 				<Div o_80 o_100_l aspect_ratio__object z_0 cover bg_center className="dim" style={{backgroundImage: `url(${block.image.fields.file.url})`}}/>

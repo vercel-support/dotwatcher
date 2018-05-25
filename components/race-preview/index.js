@@ -6,6 +6,7 @@ import tachyons from 'styled-components-tachyons';
 import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
 import Placeholder from '../placeholder';
+import widont from '../../utils/widont';
 
 const A = styled.a`${tachyons}`;
 const Div = styled.div`${tachyons}`;
@@ -31,7 +32,7 @@ const RacePreview = ({data, id}) => {
 					<A link near_black>
 						<H1 f2 ma0 lh_title link hover_blue>{data.title}</H1>
 						<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
-						<P measure_wide lh_copy>{data.description}</P>
+						<P measure_wide lh_copy>{widont(data.description)}</P>
 						<Span link underline hover_blue>
 							{
 								moment(data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`

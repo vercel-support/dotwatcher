@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
 import Image from '../image';
+import widont from '../../utils/widont';
 
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
@@ -28,7 +29,7 @@ const Short = ({data, id}) => {
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			{ embed }
 			<Div lh_copy mv4>
-				{data.title}
+				{widont(data.title)}
 			</Div>
 		</React.Fragment>
 	);

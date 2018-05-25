@@ -6,6 +6,7 @@ import moment from 'moment';
 import Wrapper from '../shared/wrapper';
 import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
+import widont from '../../utils/widont';
 
 const onAir = keyframes`
   0%, 100% {
@@ -56,7 +57,7 @@ const Span = styled.span`${tachyons}`;
 
 const RacePromo = ({block, race}) => {
 	const isRaceLive = moment().isBetween(moment(race.data.raceStartDate), moment(race.data.raceEndDate));
-	const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 pr4 near_black relative>{block.heading}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 ph4 near_black>{block.heading}</H2>;
+	const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 pr4 near_black relative>{widont(block.heading)}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 ph4 near_black>{widont(block.heading)}</H2>;
 	const WordsWrap = styled.div`
 		margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large' });
 	${tachyons}`;
@@ -67,10 +68,10 @@ const RacePromo = ({block, race}) => {
 				<A db cover bg_center style={{backgroundImage: `url(${block.image.fields.file.url})`}} className="cf">
 					<Wrapper fr w_100 w_two_thirds_m w_50_l pa4 pv6_ns mv4 mv0_ns className="cf">
 						<Div bg_white_50 pb3>
-							{ Title }
+							{Title}
 							<WordsWrap mr4>
 								<P f3 lh_copy measure_narrow near_black>
-									{block.words}
+									{widont(block.words)}
 								</P>
 								<P f4>
 									<Span link underline near_black hover_white>

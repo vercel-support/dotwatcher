@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
 import Image from '../image';
+import widont from '../../utils/widont';
 
 const P = styled.p`${tachyons}`;
 const Cite = styled.cite`${tachyons}`;
@@ -27,7 +28,7 @@ const Short = ({data, id}) => {
 		<React.Fragment>
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<Blockquote ma0 mt4 pl3 bl bw3 b__near_black>
-				<P lh_title f3 fw6 ma0 pa0>{data.title}</P>
+				<P lh_title f3 fw6 ma0 pa0>{widont(data.title)}</P>
 				<Cite lh_copy ma0 pa0>{body}</Cite>
 			</Blockquote>
 		</React.Fragment>
