@@ -33,6 +33,12 @@ const VerticallyCenter = styled.div`
 	}
 ${tachyons}`;
 const P = styled.p`${tachyons}`;
+const BGimage = styled.div`
+	background-image: url(${props => props.bg}?w=600&h=600&fit=fill);
+	@media screen and (min-width: 60em) {
+		background-image: url(${props => props.bg}?w=800&h=800&fit=fill);
+	}
+ ${tachyons}`
 
 const Box = ({block}) => (
 	<Wrapper w_100 w_third_ns ph4 mt4_ns mb5_ns className="cf">
@@ -44,7 +50,7 @@ const Box = ({block}) => (
 						<P f4 f5_ns white lh_copy tc mt3 mb0>{widont(block.words)}</P>
 					</VerticallyCenter>
 				</Div>
-				<Div o_80 o_100_l aspect_ratio__object z_0 cover bg_center className="dim" style={{backgroundImage: `url(${block.image.fields.file.url})`}}/>
+				<BGimage o_80 o_100_l aspect_ratio__object z_0 cover bg_center className="dim" bg={block.image.fields.file.url}/>
 			</a>
 		</Div>
 	</Wrapper>

@@ -35,7 +35,7 @@ class PostPage extends React.Component {
 					race={this.props.posts[0].data.categories[0]}
 				/>
 				<MapContainer raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId}/>
-				<PostWrapper fl w_50 pa4>
+				<PostWrapper fl w_100 w_50_l pa4>
 					<Link route="race" params={{ type: 'race', id: this.props.posts[0].data.categories[0].sys.id}} passHref prefetch>
 						<A near_black f6 href="#">« Back to {this.props.posts[0].data.categories[0].fields.title} feed</A>
 					</Link>

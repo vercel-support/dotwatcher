@@ -17,7 +17,12 @@ const onAir = keyframes`
     opacity: .5;
   }
 `;
-const A = styled.a`${tachyons}`;
+const A = styled.a`
+	background-image: url(${props => props.bg}?w=800);
+	@media screen and (min-width: 60em) {
+		background-image: url(${props => props.bg}?w=1800);
+	}
+${tachyons}`;
 const H2 = styled.h2`${tachyons}`;
 const H2Live = styled.h2`
 	&:before {
@@ -65,7 +70,7 @@ const RacePromo = ({block, race}) => {
 	return (
 		<Div mh4_m mb4 mb5_ns className="cf">
 			<Link route="race" params={{type: 'race', id: race.sys.id}} passHref prefetch>
-				<A db cover bg_center style={{backgroundImage: `url(${block.image.fields.file.url})`}} className="cf">
+				<A db cover bg_center bg={block.image.fields.file.url} className="cf">
 					<Wrapper fr w_100 w_two_thirds_m w_50_l pa4 pv6_ns mv4 mv0_ns className="cf">
 						<Div bg_white_50 pb3>
 							{Title}
