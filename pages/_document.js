@@ -17,8 +17,9 @@ export default class Document extends NextDocument {
 				<Head>
 					{this.props.styleTags}
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
+					<meta name="description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
 					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-					<script src="//www.instagram.com/embed.js"/>
+					<script defer src="//www.instagram.com/embed.js"/>
 				</Head>
 				<body>
 					<Main/>
