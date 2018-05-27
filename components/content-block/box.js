@@ -34,9 +34,9 @@ const VerticallyCenter = styled.div`
 ${tachyons}`;
 const P = styled.p`${tachyons}`;
 const BGimage = styled.div`
-	background-image: url(${props => props.bg}?w=600&h=600&fit=fill);
+	background-image: url(${props => props.bg}?w=600&h=600&fit=fill&fm=jpg&q=50);
 	@media screen and (min-width: 60em) {
-		background-image: url(${props => props.bg}?w=800&h=800&fit=fill);
+		background-image: url(${props => props.bg}?w=800&h=800&fit=fill&fm=jpg&q=50);
 	}
  ${tachyons}`
 

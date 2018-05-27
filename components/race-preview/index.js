@@ -20,10 +20,10 @@ const P = styled.p`${tachyons}`;
 const RacePreview = ({data, id}) => {
 	return (
 		<Div className="with-divider cf">
-			<Figure ma0 pa0 fl ph3 w_20 w_third_ns>
+			<Figure ma0 pa0 fl ph3 w_20>
 				<Link route="race" params={{type: 'race', id}} passHref prefetch>
 					<a>
-						{ data.icon ? <Img mw_100 src={data.icon.fields.file.url} alt={data.icon.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
+						{ data.icon ? <Img mw_100 src={`${data.icon.fields.file.url}?w=300&h=300&fm=jpg&q=50`} alt={data.icon.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
 					</a>
 				</Link>
 			</Figure>
