@@ -13,6 +13,7 @@ const H2 = styled.h2`${tachyons}`;
 const P = styled.p`${tachyons}`;
 const EmailInput = styled.input`
 	&:focus {
+		outline: 0;
 		border-color: var(--gold);
 		background-color: var(--light-yellow);
 	}
