@@ -12,15 +12,15 @@ const Footer = () => {
 		<Div fl w_100 bg_near_white mt5 className="cf">
 			<Div pv3 mh6_l>
 				<Div fl w_100 w_50_ns ph3 mb4>
-					<H2 f4 ttu tracked fw7>About</H2>
+					<H2 f4 ttu tracked fw6>About</H2>
 					<P lh_copy measure dark_gray>DotWatcher is here to showcase the best of long distance self-supported bike racing.</P>
 				</Div>
 				<Div fl w_100 w_25_ns ph3 mb4>
-					<H2 f4 ttu tracked fw7>Partner</H2>
+					<H2 f4 ttu tracked fw6>Partner</H2>
 					<P lh_copy measure_narrow dark_gray>If you have a race you would like us to cover email us at <A link near_black underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A></P>
 				</Div>
 				<Div fl w_100 w_25_ns ph3 mb4>
-					<H2 f4 ttu tracked fw7>Contact</H2>
+					<H2 f4 ttu tracked fw6>Contact</H2>
 					<P lh_copy measure_narrow dark_gray>If you would like to get in touch email us at <A link near_black underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A></P>
 				</Div>
 			</Div>
