@@ -27,11 +27,14 @@ class MapContainer extends Component {
 	}
 
 	updateWindowWidth() {
-		this.setState({
-			showMap: window.innerWidth >= 1024,
-			width: window.innerWidth,
-			inBrowser: true
-		});
+		const width = window.innerWidth
+		if ( width !== this.state.width) {
+			this.setState({
+				showMap: window.innerWidth >= 1024,
+				width: window.innerWidth,
+				inBrowser: true
+			});
+		}
 	}
 
 	toggleMap() {
