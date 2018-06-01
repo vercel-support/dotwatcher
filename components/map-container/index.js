@@ -38,6 +38,7 @@ class MapContainer extends Component {
 	}
 
 	toggleMap() {
+		window.scroll(0,0)
 		this.setState(
 			prevState => ({...prevState, showMap: !prevState.showMap})
 		);
@@ -73,10 +74,10 @@ class MapContainer extends Component {
 		} else if (this.state.inBrowser && this.state.width < 1024) {
 			content = (
 				<Wrapper w_100 tc pa3>
+					{this.state.showMap ? <Iframe raceID={this.props.raceID}/> : null}
 					<Button dib w4 loading={false} onClick={this.toggleMap}>
 						{this.state.showMap ? 'Hide map' : 'Show map'}
 					</Button>
-					{this.state.showMap ? <Iframe raceID={this.props.raceID}/> : null}
 				</Wrapper>
 			);
 		}
