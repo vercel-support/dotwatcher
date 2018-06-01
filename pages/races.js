@@ -10,7 +10,7 @@ import ContentBlock from '../components/content-block';
 import Page from '../components/shared/page';
 import RacePreview from '../components/race-preview';
 import Footer from '../components/footer';
-import {withCategories} from '../data/with-categories';
+import {withRaces} from '../data/with-races';
 
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
@@ -71,4 +71,4 @@ App.defaultProps = {
 	page: {}
 };
 
-export default withCategories(App);
+export default withRaces(App);

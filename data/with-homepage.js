@@ -5,10 +5,10 @@ import {createClient} from 'contentful';
 import lodash from 'lodash';
 import vars from './api-vars';
 
-export const withCategories = Page => {
-	const WithCategories = props => <Page {...props}/>;
+export const withHomepage = Page => {
+	const WithHomepage = props => <Page {...props}/>;
 
-	WithCategories.getInitialProps = async () => {
+	WithHomepage.getInitialProps = async () => {
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
@@ -92,5 +92,5 @@ export const withCategories = Page => {
 		};
 	};
 
-	return WithCategories;
+	return WithHomepage;
 };
