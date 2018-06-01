@@ -10,13 +10,14 @@ import Rider from './rider';
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
 const Div = styled.div`${tachyons}`;
+const P = styled.p`${tachyons}`;
 const TopRidersWrap = styled.div`${tachyons}`;
 
 class topRiders extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			leaderboard: []
+			leaderboard: {}
 		};
 	}
 
@@ -39,16 +40,22 @@ class topRiders extends React.Component {
 		};
 
 		const response = await client.getEntries(contenfulQuery);
-		const leaderboard = [];
+		let leaderboard = {};
 		for (const item of response.items) {
-			const entry = {
-				sys: {
-					id: item.sys.id
-				},
-				riders: item.fields.leaders
-			};
-
-			leaderboard.push(entry);
+			if (item.fields.leaders) {
+				leaderboard = item.fields.leaders;
+			} else {
+				leaderboard = [
+					{
+						sys: {
+							id: 0
+						},
+						fields: {
+							name: 'No report yet'
+						}
+					}
+				]
+			}
 		}
 		await this.setStateAsync({leaderboard});
 	}
@@ -63,9 +70,9 @@ class topRiders extends React.Component {
 				</Header>
 				<Div>
 					{
-						this.state.leaderboard.length ? this.state.leaderboard[0].riders.map(rider => (
+						Object.keys(this.state.leaderboard).length !== 0 ? this.state.leaderboard.map(rider => (
 							<Rider key={rider.sys.id} rider={rider.fields}/>
-						)) : 'Loading...'
+						)) : <P f6 b>Loading...</P>
 					}
 				</Div>
 			</TopRidersWrap>
