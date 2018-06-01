@@ -48,7 +48,7 @@ class KeyEvents extends Component {
 		const lessKeyEvents = keyEvents.slice(0, 5);
 		const keyEventsToShow = this.state.showMore ? keyEvents : lessKeyEvents;
 		return (
-			<Div>
+			<Div id="sticky">
 				<Header>
 					<H2 ttu tracked f5 bb bw1 pb1 b__light_gray measure_narrow>
 						Key moments
