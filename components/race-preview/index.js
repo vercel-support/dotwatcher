@@ -27,10 +27,10 @@ const RacePreview = ({data, id}) => {
 					</a>
 				</Link>
 			</Figure>
-			<Div fl_ns ph3 w_80_l w_two_thirds_ns>
+			<Div fl_ns ph3 w_80_ns>
 				<Link route="race" params={{type: 'race', id}} passHref prefetch>
 					<A link near_black>
-						<H1 f2 ma0 lh_title link hover_blue>{data.title}</H1>
+						<H1 f2 ma0 lh_title link hover_blue>{widont(data.title)}</H1>
 						<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
 						<P measure_wide lh_copy>{widont(data.description)}</P>
 						<Span link underline hover_blue>

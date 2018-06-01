@@ -26,8 +26,8 @@ class App extends Component {
 		return (
 			<Page>
 				<Head>
-					<title>DotWatcher.cc</title>
-					<meta property="og:title" content="DotWatcher.cc" />
+					<title>Races - DotWatcher.cc</title>
+					<meta property="og:title" content="Races - DotWatcher.cc" />
 					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
 					<meta property="og:image" content="https://images.ctfassets.net/6hyijb95boju/KQ7Yj247Go6KOIm60SeQ2/9315aa310eee6a72088c9c37de8aa1e6/DotWatcher---Logo---Pin-_1_.jpg" />
 				</Head>
@@ -35,19 +35,25 @@ class App extends Component {
 					title="dotwatcher.cc"
 				/>
 				<Div mt3 mt4_l>
-					{
-						this.props.page.blocks.map(block => {
-							return (
-								<ContentBlock
-									key={block.sys.id}
-									block={block}
-									race={this.props.races.filter(race => {
-										return race.sys.id === block.race ? race : null;
-									})}
-								/>
-							);
-						})
-					}
+					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
+						<Heading fl w_100 mb4 ph3>
+							<H1 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Upcoming races</H1>
+						</Heading>
+						{
+							this.props.races.map(race => {
+								return moment(race.data.raceEndDate).isAfter() ? <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/> : null;
+							})
+						}
+
+						<Heading fl w_100 mv4 mt5_ns ph3>
+							<H1 f4 fw6 mt4 ttu tracked bb bw1 b__light_gray pb1>Past races</H1>
+						</Heading>
+						{
+							this.props.races.slice(0).reverse().map(race => {
+								return moment(race.data.raceEndDate).isBefore() ? <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/> : null;
+							})
+						}
+					</RaceWrap>
 				</Div>
 				<Footer/>
 			</Page>
