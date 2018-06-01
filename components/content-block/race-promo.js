@@ -19,7 +19,7 @@ const onAir = keyframes`
 `;
 const A = styled.a`
 	background-image: url(${props => props.bg}?w=800);
-	@media screen and (min-width: 60em) {
+	@media screen and (min-width: 64em) {
 		background-image: url(${props => props.bg}?w=1800);
 	}
 ${tachyons}`;
@@ -49,7 +49,7 @@ const H2Live = styled.h2`
 	// 	text-transform: uppercase;
 	// }
 
-	@media screen and (min-width: 60em) {
+	@media screen and (min-width: 64em) {
 		&:before {
 			left: .9rem;
 			margin: .75rem 0;

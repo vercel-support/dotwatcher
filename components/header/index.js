@@ -13,7 +13,7 @@ ${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const H2 = styled.h2`${tachyons}`;
 const Div = styled.div`
-	@media screen and (min-width: 60em) {
+	@media screen and (min-width: 64em) {
 		width: 170px;
 	}
 	width: 120px;

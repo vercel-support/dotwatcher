@@ -19,18 +19,18 @@ const Img = styled.img`${tachyons}`;
 const Block = ({block}) => {
 	const ImageWrap = styled.div`
 		float: ${block.layout === 'Image right' ? 'right' : 'left'};
-		@media screen and (min-width: 30em) and (max-width: 60em) {
+		@media screen and (min-width: 30em) and (max-width: 64em) {
 			padding: ${block.layout === 'Image right' ? '0 0 0 var(--spacing-medium)' : '0 var(--spacing-medium) 0 0'};
 		}
-		@media screen and (min-width: 60em) {
+		@media screen and (min-width: 64em) {
 			padding: ${block.layout === 'Image right' ? '0 0 0 var(--spacing-large)' : '0 var(--spacing-large) 0 0'};
 		}
 	${tachyons}`;
 	const WordsWrap = styled.div`
-		@media screen and (min-width: 30em) and (max-width: 60em) {
+		@media screen and (min-width: 30em) and (max-width: 64em) {
 			padding: ${block.layout === 'Image right' ? '0 var(--spacing-medium) 0 0' : '0 0 0 var(--spacing-medium)'};
 		}
-		@media screen and (min-width: 60em) {
+		@media screen and (min-width: 64em) {
 			padding: ${block.layout === 'Image right' ? '0 var(--spacing-large) 0 0' : '0 0 0 var(--spacing-large)'};
 		}
 	${tachyons}`;

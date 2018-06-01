@@ -19,8 +19,20 @@ import Post from '../components/post';
 import vars from '../data/api-vars';
 
 const H1 = styled.h1`${tachyons}`;
+const P = styled.p`${tachyons}`;
+const A = styled.a`${tachyons}`;
 const KeyEventsWrapper = styled.div`
-@media screen and (min-width: 60em) {
+&:after {
+	content: '';
+	border-top: .125rem solid var(--light-gray);
+	position: absolute;
+	width: calc(100% - 2 * var(--spacing-medium));
+	bottom: 0;
+	left: var(--spacing-medium);
+	height: var(--spacing-medium);
+}
+
+@media screen and (min-width: 64em) {
 	margin-left: 40%;
 }
 ${tachyons}`;
@@ -31,7 +43,7 @@ const Notification = styled(Button)`
 	@media screen and (min-width: 48em) {
 		top: inherit;
 	}
-	@media screen and (min-width: 60em) {
+	@media screen and (min-width: 64em) {
 		left: 80%;
 	}
 `;
@@ -201,7 +213,7 @@ class Race extends React.Component {
 					race={race}
 				/>
 				<MapContainer raceID={trackleadersID}/>
-				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l id="events-wrap">
+				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l relative id="events-wrap">
 					<TopRiders raceID={raceID}/>
 					<KeyEvents posts={this.state.posts}/>
 				</KeyEventsWrapper>
@@ -213,6 +225,9 @@ class Race extends React.Component {
 						)) : null
 					}
 					{ morePosts }
+					<P measure lh_copy f6 silver>
+						If you would like to get in touch email us at <A link gray underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A>
+					</P>
 				</Wrapper>
 			</Page>
 		);

@@ -13,7 +13,7 @@ import {withEntries} from '../data/with-entries';
 import MapContainer from '../components/map-container';
 
 const PostWrapper = styled.div`
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 64em) {
 	margin-left: 40%;
 }
 ${tachyons}`;

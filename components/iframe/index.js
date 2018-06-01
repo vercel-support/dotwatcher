@@ -9,7 +9,7 @@ const Map = styled.iframe`${tachyons}`;
 const Iframe = ({raceID, offset}) => {
 	const Container = styled.div`
 		height: 100vh;
-		@media screen and (min-width: 60em) {
+		@media screen and (min-width: 64em) {
 			height: ${offset ? 'calc(100vh - 75px)' : '100vh'};
 		}
 	${tachyons}`;

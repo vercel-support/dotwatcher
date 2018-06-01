@@ -27,7 +27,7 @@ const VerticallyCenter = styled.div`
 	left: var(--spacing-medium);
 	right: var(--spacing-medium);
 	transform: translate(0, -50%);
-	@media screen and (min-width: 60em) {
+	@media screen and (min-width: 64em) {
 		left: var(--spacing-large);
 		right: var(--spacing-large);
 	}
@@ -35,7 +35,7 @@ ${tachyons}`;
 const P = styled.p`${tachyons}`;
 const BGimage = styled.div`
 	background-image: url(${props => props.bg}?w=600&h=600&fit=fill&fm=jpg&q=50);
-	@media screen and (min-width: 60em) {
+	@media screen and (min-width: 64em) {
 		background-image: url(${props => props.bg}?w=800&h=800&fit=fill&fm=jpg&q=50);
 	}
  ${tachyons}`

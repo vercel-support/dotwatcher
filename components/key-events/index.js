@@ -35,22 +35,26 @@ class KeyEvents extends Component {
 	}
 
 	handleScroll() {
-		const windowHeight = document.body.scrollHeight;
-		document.getElementById('events-wrap').style.height = windowHeight - 400 + 'px'
+		if (this.state.width >= 1024) {
+			const windowHeight = document.body.scrollHeight;
+			document.getElementById('events-wrap').style.height = windowHeight - 400 + 'px'
+		}
 	}
 
 	render() {
 		const Div = styled.div`
-			position: sticky;
-			top: var(--spacing-large);
+			@media screen and (min-width: 64em) {
+				position: sticky;
+				top: var(--spacing-large);
+			}
 		${tachyons}`;
 		const keyEvents = this.props.posts.filter(post => post.data.keyEvent === true);
 		const lessKeyEvents = keyEvents.slice(0, 5);
 		const keyEventsToShow = this.state.showMore ? keyEvents : lessKeyEvents;
 		return (
-			<Div id="sticky">
+			<Div fl w_50 w_100_ns pl3 pl0_ns id="sticky">
 				<Header>
-					<H2 ttu tracked f5 bb bw1 pb1 b__light_gray measure_narrow>
+					<H2 ttu tracked f5 bb bw1 pb1 b__light_gray measure_narrow mt0 mt3_ns>
 						Key moments
 					</H2>
 				</Header>
