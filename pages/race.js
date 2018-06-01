@@ -201,7 +201,7 @@ class Race extends React.Component {
 					race={race}
 				/>
 				<MapContainer raceID={trackleadersID}/>
-				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l relative>
+				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l id="events-wrap">
 					<TopRiders raceID={raceID}/>
 					<KeyEvents posts={this.state.posts}/>
 				</KeyEventsWrapper>
