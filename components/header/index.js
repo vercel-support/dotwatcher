@@ -53,16 +53,23 @@ class Banner extends Component {
 	headerPop() {
 		const {lastScrollY} = this.state;
 		const currentScrollY = window.scrollY;
+		const stickyBar = document.getElementById('sticky')
 
 		if (currentScrollY < this.state.bannerHeight) {
 			this.setState({ fixed: false });
-				document.getElementById('sticky').style.top = 'var(--spacing-large)'
+			if (stickyBar) {
+				stickyBar.style.top = 'var(--spacing-large)'
+			}
 		} else if (currentScrollY < lastScrollY) {
 				this.setState({ fixed: true });
-				document.getElementById('sticky').style.top = this.state.bannerHeight + 32 + 'px'
+			if (stickyBar) {
+				stickyBar.style.top = this.state.bannerHeight + 32 + 'px'
+			}
 		} else {
 			this.setState({ fixed: false });
-				document.getElementById('sticky').style.top = 'var(--spacing-large)'
+			if (stickyBar) {
+				stickyBar.style.top = 'var(--spacing-large)'
+			}
 		}
 		this.setState({ lastScrollY: currentScrollY });
 	}
