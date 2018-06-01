@@ -1,6 +1,7 @@
 {
 	"alias": [
-		"beta.dotwatcher.cc"
+		"beta.dotwatcher.cc",
+		"dotwatcher"
 	],
 	"env": {
     "CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
