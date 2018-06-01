@@ -158,7 +158,7 @@ class Race extends React.Component {
 
 	render() {
 		let raceName;
-		let raceID;
+		let raceID = this.props.router.query.id;
 		let trackleadersID;
 		let race;
 		let raceImage;
