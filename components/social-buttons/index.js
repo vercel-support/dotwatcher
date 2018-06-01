@@ -46,7 +46,7 @@ class SocialButtons extends Component {
 		return (
 			<Div fl w_two_thirds tr>
 				<StyledFacebookButton
-					url={this.props.router.url}
+					url={this.props.url ? this.props.url : this.props.router.url}
 					appId="2041612559415974"
 					windowOptions={[
 						'status=0',
@@ -60,7 +60,7 @@ class SocialButtons extends Component {
 					{'Share'}
 				</StyledFacebookButton>
 				<StyledTwitterButton
-					url={this.props.router.url}
+					url={this.props.url ? this.props.url : this.props.router.url}
 					windowOptions={[
 						'status=0',
 						'toolbar=0',
