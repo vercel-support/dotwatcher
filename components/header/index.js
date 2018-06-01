@@ -29,6 +29,7 @@ class Banner extends Component {
 			width: 320,
 			lastScrollY: 0
 		};
+		this.boundHeaderPop = this.headerPop.bind(this)
 	}
 
 	componentDidMount() {
@@ -38,12 +39,12 @@ class Banner extends Component {
 
 	componentWillUnmount() {
 		if (this.state.width > 1024) {
-			document.removeEventListener('scroll', this.handleScroll);
+			document.removeEventListener('scroll', this.boundHeaderPop);
 		}
 	}
 
 	setupStickyHeader() {
-		document.addEventListener('scroll', this.headerPop.bind(this));
+		document.addEventListener('scroll', this.boundHeaderPop);
 		const banner = document.querySelector('#banner');
 		this.setState({
 			bannerHeight: banner.offsetHeight
