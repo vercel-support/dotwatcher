@@ -23,7 +23,7 @@ const RacePreview = ({data, id}) => {
 			<Figure ma0 pa0 fl ph3 w_20>
 				<Link route="race" params={{type: 'race', id}} passHref prefetch>
 					<a>
-						{ data.icon ? <Img mw_100 src={`${data.icon.fields.file.url}?w=300&h=300&fm=jpg&q=50`} alt={data.icon.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
+						{ data.icon ? <Img mw_100 srcSet={`${data.icon.fields.file.url}?w=150&h=150&fm=jpg&q=50 768w, ${data.icon.fields.file.url}?w=300&h=300&fm=jpg&q=50 769w`} src={`${data.icon.fields.file.url}?w=300&h=300&fm=jpg&q=50`} alt={data.icon.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
 					</a>
 				</Link>
 			</Figure>
