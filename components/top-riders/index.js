@@ -39,7 +39,7 @@ class topRiders extends React.Component {
 			'fields.race.sys.id': this.props.raceID
 		};
 
-		const leaderboardUrl = `http://dotwatcher.scrapey.xyz/api/pages`
+		const leaderboardUrl = `https://dotwatcher.scrapey.xyz/api/pages`
 
 		let leaderboard = [];
 		request
