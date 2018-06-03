@@ -1,11 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import Rider from './rider';
+import {createClient} from 'contentful';
+import request from 'superagent'
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-import {createClient} from 'contentful';
 import vars from '../../data/api-vars';
-
-import Rider from './rider';
 
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
@@ -39,25 +39,56 @@ class topRiders extends React.Component {
 			'fields.race.sys.id': this.props.raceID
 		};
 
-		const response = await client.getEntries(contenfulQuery);
-		let leaderboard = {};
-		for (const item of response.items) {
-			if (item.fields.leaders) {
-				leaderboard = item.fields.leaders;
-			} else {
-				leaderboard = [
-					{
+		const leaderboardUrl = `http://dotwatcher.scrapey.xyz/api/pages`
+
+		let leaderboard = [];
+		request
+			.get(leaderboardUrl)
+			.query({ access_token: process.env.SCRAPEY_API_KEY, 'filter[order]': 'timestamp DESC' })
+			.end((err, res) => {
+				if (err) return
+				let data = res.body.filter(item => item.data.url === `http://trackleaders.com/${this.props.trackleadersID}`)
+				if (data.length === 0) return
+				data = data[0].data.leaderboard.sort((a, b) => parseFloat(b.mile) - parseFloat(a.mile))
+				data = data.slice(0, 10)
+
+				leaderboard = data.map(item => {
+					return {
 						sys: {
-							id: 0
+							id: ''
 						},
 						fields: {
-							name: 'No report yet'
+							name: item.name,
+							mile: parseFloat(item.mile)
 						}
 					}
-				]
+				})
+
+				this.setStateAsync({leaderboard});
+			});
+
+		if (this.state.leaderboard.length === 0) {
+			leaderboard = [];
+			const response = await client.getEntries(contenfulQuery);
+			let leaderboard = {};
+			for (const item of response.items) {
+				if (item.fields.leaders) {
+					leaderboard = item.fields.leaders;
+				} else {
+					leaderboard = [
+						{
+							sys: {
+								id: 0
+							},
+							fields: {
+								name: 'No report yet'
+							}
+						}
+					]
+				}
 			}
+			await this.setStateAsync({leaderboard});
 		}
-		await this.setStateAsync({leaderboard});
 	}
 
 	render() {
@@ -81,11 +112,13 @@ class topRiders extends React.Component {
 }
 
 topRiders.propTypes = {
-	raceID: PropTypes.string
+	raceID: PropTypes.string,
+	trackleadersID: PropTypes.string
 };
 
 topRiders.defaultProp = {
-	raceID: ''
+	raceID: '',
+	trackleadersID: ''
 };
 
 export default topRiders;

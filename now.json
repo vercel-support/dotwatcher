@@ -9,6 +9,7 @@
     "PUSHER_KEY": "@pusher-key",
     "PUSHER_SECRET": "@pusher-secret",
     "MAILCHIMP": "@mailchimp",
-    "ANALYTICS": "@analytics"
+		"ANALYTICS": "@analytics",
+		"SCRAPEY_API_KEY": "@scrapey-api-key"
   }
 }

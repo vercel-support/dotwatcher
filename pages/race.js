@@ -1,22 +1,20 @@
-import React from 'react';
-
+import Button from '../components/shared/button';
 import Head from 'next/head';
-import find from 'lodash/find';
-import {withRouter} from 'next/router';
-import {createClient} from 'contentful';
-import Pusher from 'pusher-js';
-import styled from 'styled-components';
-import tachyons from 'styled-components-tachyons';
-
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
-import TopRiders from '../components/top-riders';
 import MapContainer from '../components/map-container';
-import Button from '../components/shared/button';
-import Wrapper from '../components/shared/wrapper';
 import Page from '../components/shared/page';
 import Post from '../components/post';
+import Pusher from 'pusher-js';
+import React from 'react';
+import TopRiders from '../components/top-riders';
+import Wrapper from '../components/shared/wrapper';
+import {createClient} from 'contentful';
+import find from 'lodash/find';
+import styled from 'styled-components';
+import tachyons from 'styled-components-tachyons';
 import vars from '../data/api-vars';
+import {withRouter} from 'next/router';
 
 const H1 = styled.h1`${tachyons}`;
 const P = styled.p`${tachyons}`;
@@ -214,7 +212,7 @@ class Race extends React.Component {
 				/>
 				<MapContainer raceID={trackleadersID}/>
 				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l relative id="events-wrap">
-					<TopRiders raceID={raceID}/>
+					{trackleadersID && <TopRiders raceID={raceID} trackleadersID={trackleadersID}/>}
 					<KeyEvents posts={this.state.posts}/>
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l id="posts">
