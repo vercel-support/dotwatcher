@@ -52,10 +52,10 @@ class topRiders extends React.Component {
 				data = data[0].data.leaderboard.sort((a, b) => parseFloat(b.mile) - parseFloat(a.mile))
 				data = data.slice(0, 10)
 
-				leaderboard = data.map(item => {
+				leaderboard = data.map((item, index) => {
 					return {
 						sys: {
-							id: ''
+							id: index
 						},
 						fields: {
 							name: item.name,
