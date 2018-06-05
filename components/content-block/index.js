@@ -5,6 +5,7 @@ import ImageRightLeft from './image-right-left';
 import RacePromo from './race-promo';
 import Box from './box';
 import EmailSignup from './email-signup';
+import IconLeft from './icon-left';
 
 const ContentBlock = ({block, race}) => {
 	if (block.layout === 'Homepage') {
@@ -18,6 +19,9 @@ const ContentBlock = ({block, race}) => {
 	}
 	if (block.layout === 'Email signup') {
 		return <EmailSignup block={block}/>;
+	}
+	if (block.layout === 'Icon left') {
+		return <IconLeft block={block}/>;
 	}
 	return <ImageRightLeft block={block}/>;
 };
