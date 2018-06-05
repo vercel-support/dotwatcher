@@ -59,7 +59,7 @@ class topRiders extends React.Component {
 						},
 						fields: {
 							name: item.name,
-							mile: parseFloat(item.mile)
+							distance: parseFloat(item.kilometre).toFixed(0)
 						}
 					}
 				})

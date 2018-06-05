@@ -12,7 +12,7 @@ const Rider = ({rider}) => {
 		<Wrap f6 mt0 mb2 lh_copy className="cf">
 			<RiderName fl f6 b>{rider.name}</RiderName>
 			{
-				rider.mile ? <RiderStat fr f6 gray>{rider.mile}mi</RiderStat> : null
+				rider.distance ? <RiderStat fr f6 gray>{rider.distance}km</RiderStat> : null
 			}
 		</Wrap>
 	);
