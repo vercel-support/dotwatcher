@@ -37,7 +37,7 @@ class App extends Component {
 				<Div mt3 mt4_l>
 					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
 						<Heading fl w_100 mb4 ph3>
-							<H1 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Upcoming races</H1>
+							<H1 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Live coverage</H1>
 						</Heading>
 						{
 							this.props.races.map(race => {

@@ -52,6 +52,7 @@ class topRiders extends React.Component {
 				data = data[0].data.leaderboard.sort((a, b) => parseFloat(b.mile) - parseFloat(a.mile))
 				data = data.slice(0, 10)
 
+<<<<<<< HEAD
 				leaderboard = data.map(item => {
 					return {
 						sys: {
@@ -60,6 +61,16 @@ class topRiders extends React.Component {
 						fields: {
 							name: item.name,
 							mile: parseFloat(item.mile)
+=======
+				leaderboard = data.map((item, index) => {
+					return {
+						sys: {
+							id: index
+						},
+						fields: {
+							name: item.name,
+							distance: parseFloat(item.kilometre).toFixed(0)
+>>>>>>> 783c17f20ed786816544a0c81038af3bf8f28e7c
 						}
 					}
 				})
@@ -96,7 +107,7 @@ class topRiders extends React.Component {
 			<TopRidersWrap fl w_50 w_100_ns pr3 pr0_ns mb4>
 				<Header>
 					<H2 ttu tracked f5 mt0 pb1 bb bw1 b__light_gray measure_narrow>
-						Top riders
+						Leaderboard
 					</H2>
 				</Header>
 				<Div>
