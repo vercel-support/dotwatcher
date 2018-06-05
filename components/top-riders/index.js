@@ -96,7 +96,7 @@ class topRiders extends React.Component {
 			<TopRidersWrap fl w_50 w_100_ns pr3 pr0_ns mb4>
 				<Header>
 					<H2 ttu tracked f5 mt0 pb1 bb bw1 b__light_gray measure_narrow>
-						Top riders
+						Leaderboard
 					</H2>
 				</Header>
 				<Div>
