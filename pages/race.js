@@ -20,14 +20,16 @@ const H1 = styled.h1`${tachyons}`;
 const P = styled.p`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const KeyEventsWrapper = styled.div`
-&:after {
-	content: '';
-	border-top: .125rem solid var(--light-gray);
-	position: absolute;
-	width: calc(100% - 2 * var(--spacing-medium));
-	bottom: 0;
-	left: var(--spacing-medium);
-	height: var(--spacing-medium);
+@media screen and (max-width: 30em) {
+	&:after {
+		content: '';
+		border-top: .125rem solid var(--light-gray);
+		position: absolute;
+		width: calc(100% - 2 * var(--spacing-medium));
+		bottom: 0;
+		left: var(--spacing-medium);
+		height: var(--spacing-medium);
+	}
 }
 
 @media screen and (min-width: 64em) {
