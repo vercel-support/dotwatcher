@@ -41,6 +41,7 @@ class App extends Component {
 								<ContentBlock
 									key={block.sys.id}
 									block={block}
+									segments={this.props.page.segments}
 									race={this.props.races.filter(race => {
 										return race.sys.id === block.race ? race : null;
 									})}

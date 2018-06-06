@@ -25,7 +25,6 @@ export const withHomepage = Page => {
 
 		const racesResponse = await client.getEntries(racesQuery);
 		const homepageResponse = await client.getEntries(homepageQuery);
-
 		const races = [];
 		let page;
 
@@ -56,7 +55,8 @@ export const withHomepage = Page => {
 				id: homepageResponse.items[0].sys.id,
 				title: homepageResponse.items[0].fields.title,
 				text: homepageResponse.items[0].fields.text,
-				blocks: []
+				blocks: [],
+				segments: []
 			};
 
 			if (homepageResponse.items[0].fields.contentBlock) {
@@ -68,7 +68,8 @@ export const withHomepage = Page => {
 						heading: contentBlock.fields.heading,
 						layout: contentBlock.fields.layout,
 						words: contentBlock.fields.words,
-						link: contentBlock.fields.link
+						link: contentBlock.fields.link,
+						callToAction: contentBlock.fields.callToAction
 					};
 
 					if (contentBlock.fields.race) {
@@ -80,7 +81,31 @@ export const withHomepage = Page => {
 							return obj.sys.id === contentBlock.fields.image.sys.id;
 						});
 					}
+					if (contentBlock.fields.logoOverlay) {
+						block.logoOverlay = lodash.find(homepageResponse.includes.Asset, obj => {
+							return obj.sys.id === contentBlock.fields.logoOverlay.sys.id;
+						});
+					}
+
 					page.blocks.push(block);
+				}
+			}
+
+			if (homepageResponse.items[0].fields.homepageSegment) {
+				for (const homepageSegment of homepageResponse.items[0].fields.homepageSegment) {
+					const segment = {
+						sys: {
+							id: homepageSegment.sys.id
+						},
+						title: homepageSegment.fields.title,
+						body: homepageSegment.fields.body,
+						callToAction: homepageSegment.fields.callToAtion
+					};
+
+					if (homepageSegment.fields.race) {
+						segment.race = homepageSegment.fields.race.sys.id;
+					}
+					page.segments.push(segment);
 				}
 			}
 		}
