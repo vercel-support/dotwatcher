@@ -45,6 +45,11 @@ class MapContainer extends Component {
 	}
 
 	componentDidMount() {
+		this.setState({
+			showMap: window.innerWidth >= 1024,
+			width: window.innerWidth,
+			inBrowser: true
+		});
 		this.updateWindowWidth();
 		window.addEventListener('resize', this.updateWindowWidth.bind(this));
 	}
