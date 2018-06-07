@@ -14,6 +14,7 @@ import find from 'lodash/find';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import vars from '../data/api-vars';
+import {WithEntries} from '../data/with-entries';
 import {withRouter} from 'next/router';
 
 const H1 = styled.h1`${tachyons}`;
@@ -79,7 +80,7 @@ class Race extends React.Component {
 			content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
 			'fields.category.sys.id': this.props.router.query.id,
 			order: '-sys.createdAt',
-			limit: 5,
+			limit: 10,
 			skip: this.state.skip
 		};
 		let response;
@@ -141,7 +142,7 @@ class Race extends React.Component {
 
 	loadNextPageOfPosts() {
 		this.setState(
-			prevState => ({...prevState, skip: this.state.skip + 5}),
+			prevState => ({...prevState, skip: this.state.skip + 10}),
 			() => (this.fetchPosts())
 		);
 	}
@@ -157,18 +158,11 @@ class Race extends React.Component {
 	}
 
 	render() {
-		let raceName;
-		let raceID = this.props.router.query.id;
-		let trackleadersID;
-		let race;
-		let raceImage;
-		if (this.state.posts.length) {
-			raceName = this.state.posts[0].data.categories[0].fields.title;
-			raceID = this.state.posts[0].data.categories[0].sys.id;
-			trackleadersID = this.state.posts[0].data.categories[0].fields.trackleadersRaceId;
-			race = this.state.posts[0].data.categories[0];
-			raceImage = this.state.posts[0].data.categories[0].fields.icon.fields.file.url;
-		}
+		const raceName = this.props.posts[0].data.categories[0].fields.title;
+		const raceID = this.props.posts[0].data.categories[0].sys.id;
+		const trackleadersID = this.props.posts[0].data.categories[0].fields.trackleadersRaceId;
+		const race = this.props.posts[0].data.categories[0];
+		const raceImage = this.props.posts[0].data.categories[0].fields.icon.fields.file.url;
 
 		const morePostsButton = (
 			<Button db w5 loading={this.state.loading} onClick={this.loadNextPageOfPosts.bind(this)}>
@@ -234,4 +228,4 @@ class Race extends React.Component {
 	}
 }
 
-export default withRouter(Race);
+export default withRouter(WithEntries(Race));

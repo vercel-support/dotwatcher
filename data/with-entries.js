@@ -5,7 +5,7 @@ import {createClient} from 'contentful';
 import lodash from 'lodash';
 import vars from './api-vars';
 
-export const withEntries = Page => {
+export const WithEntries = Page => {
 	const WithEntries = props => <Page {...props}/>;
 
 	WithEntries.getInitialProps = async ({query: {id, type}}) => {
@@ -15,13 +15,12 @@ export const withEntries = Page => {
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
-		if (id && type === 'post') {
-			contenfulQuery = {'sys.id': id};
-		} else if (id && type === 'race') {
+		if (id && type === 'race') {
 			contenfulQuery = {
 				content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
 				'fields.category.sys.id': id,
-				order: '-sys.createdAt'
+				order: '-sys.createdAt',
+				limit: 10,
 			};
 		} else {
 			contenfulQuery = {
