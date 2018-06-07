@@ -9,7 +9,7 @@ import {Link} from '../routes';
 import slugify from '../utils/slugify';
 import Page from '../components/shared/page';
 import Post from '../components/post';
-import {withEntries} from '../data/with-entries';
+import {withEntry} from '../data/with-entry';
 import MapContainer from '../components/map-container';
 
 const PostWrapper = styled.div`
@@ -50,4 +50,4 @@ PostPage.propTypes = {
 	posts: PropTypes.array.isRequired
 };
 
-export default withEntries(PostPage);
+export default withEntry(PostPage);
