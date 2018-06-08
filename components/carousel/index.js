@@ -12,9 +12,6 @@ const Div = styled.div`${tachyons}`;
 const CarouselImageWrap = styled.div`
 	order: 2;
 ${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
-const P = styled.p`${tachyons}`;
-const Span = styled.span`${tachyons}`;
 
 class Carousel extends Component {
 	constructor(props) {
