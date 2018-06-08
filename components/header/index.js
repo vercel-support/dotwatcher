@@ -29,7 +29,7 @@ class Banner extends Component {
 			width: 320,
 			lastScrollY: 0
 		};
-		this.boundHeaderPop = this.headerPop.bind(this)
+		this.boundHeaderPop = this.debounce(this.headerPop.bind(this), 50)
 	}
 
 	componentDidMount() {
@@ -49,6 +49,17 @@ class Banner extends Component {
 		this.setState({
 			bannerHeight: banner.offsetHeight
 		});
+	}
+
+	debounce(fn, delay) {
+		var timer = null;
+		return () => {
+			var context = this, args = arguments;
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				fn.apply(context, args);
+			}, delay);
+		};
 	}
 
 	headerPop() {
