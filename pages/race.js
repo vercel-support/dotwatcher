@@ -8,6 +8,7 @@ import Post from '../components/post';
 import Pusher from 'pusher-js';
 import React from 'react';
 import TopRiders from '../components/top-riders';
+import FactFile from '../components/fact-file';
 import Wrapper from '../components/shared/wrapper';
 import {createClient} from 'contentful';
 import find from 'lodash/find';
@@ -195,7 +196,8 @@ class Race extends React.Component {
 				/>
 				<MapContainer raceID={this.props.trackleadersID}/>
 				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l relative id="events-wrap">
-					{this.props.trackleadersID && <TopRiders raceID={this.props.raceID} trackleadersID={this.props.trackleadersID}/>}
+					<TopRiders raceID={this.props.raceID} trackleadersID={this.props.trackleadersID}/>
+					<FactFile race={this.props.race}/>
 					<KeyEvents posts={this.props.posts}/>
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l id="posts">
