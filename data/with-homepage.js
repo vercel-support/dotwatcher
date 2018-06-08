@@ -55,8 +55,7 @@ export const withHomepage = Page => {
 				id: homepageResponse.items[0].sys.id,
 				title: homepageResponse.items[0].fields.title,
 				text: homepageResponse.items[0].fields.text,
-				blocks: [],
-				segments: []
+				blocks: []
 			};
 
 			if (homepageResponse.items[0].fields.contentBlock) {
@@ -69,11 +68,13 @@ export const withHomepage = Page => {
 						layout: contentBlock.fields.layout,
 						words: contentBlock.fields.words,
 						link: contentBlock.fields.link,
-						callToAction: contentBlock.fields.callToAction
+						callToAction: contentBlock.fields.callToActionText
 					};
 
 					if (contentBlock.fields.race) {
-						block.race = contentBlock.fields.race.sys.id;
+						block.race = lodash.find(races, obj => {
+							return obj.sys.id === contentBlock.fields.race.sys.id;
+						});
 					}
 
 					if (contentBlock.fields.image) {
@@ -86,33 +87,13 @@ export const withHomepage = Page => {
 							return obj.sys.id === contentBlock.fields.logoOverlay.sys.id;
 						});
 					}
-
 					page.blocks.push(block);
-				}
-			}
-
-			if (homepageResponse.items[0].fields.homepageSegment) {
-				for (const homepageSegment of homepageResponse.items[0].fields.homepageSegment) {
-					const segment = {
-						sys: {
-							id: homepageSegment.sys.id
-						},
-						title: homepageSegment.fields.title,
-						body: homepageSegment.fields.body,
-						callToAction: homepageSegment.fields.callToAtion
-					};
-
-					if (homepageSegment.fields.race) {
-						segment.race = homepageSegment.fields.race.sys.id;
-					}
-					page.segments.push(segment);
 				}
 			}
 		}
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
-			races,
 			page
 		};
 	};

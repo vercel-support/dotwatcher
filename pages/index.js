@@ -10,6 +10,7 @@ import ContentBlock from '../components/content-block';
 import Page from '../components/shared/page';
 import RacePreview from '../components/race-preview';
 import Footer from '../components/footer';
+import Carousel from '../components/carousel';
 import {withHomepage} from '../data/with-homepage';
 
 const Heading = styled.header`${tachyons}`;
@@ -23,6 +24,9 @@ ${tachyons}`;
 
 class App extends Component {
 	render() {
+		const carouselSlides = this.props.page.blocks.filter(block => block.layout === 'Carousel slide');
+		const carousel = carouselSlides.length ? <Carousel slides={carouselSlides}/> : null
+		const blocksWithoutSlides = this.props.page.blocks.filter(block => block.layout !== 'Carousel slide');
 		return (
 			<Page>
 				<Head>
@@ -35,16 +39,13 @@ class App extends Component {
 					title="dotwatcher.cc"
 				/>
 				<Div mt3 mt4_l>
+					{carousel}
 					{
-						this.props.page.blocks.map(block => {
+						blocksWithoutSlides.map(block => {
 							return (
 								<ContentBlock
 									key={block.sys.id}
 									block={block}
-									segments={this.props.page.segments}
-									race={this.props.races.filter(race => {
-										return race.sys.id === block.race ? race : null;
-									})}
 								/>
 							);
 						})

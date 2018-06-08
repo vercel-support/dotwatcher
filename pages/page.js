@@ -9,7 +9,8 @@ import tachyons from 'styled-components-tachyons';
 import Embed from '../components/embed';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import Block from '../components/content-block';
+import ContentBlock from '../components/content-block';
+import Carousel from '../components/carousel';
 import Page from '../components/shared/page';
 import Wrapper from '../components/shared/wrapper';
 import {withPage} from '../data/with-page';
@@ -25,6 +26,9 @@ const Img = styled.img`${tachyons}`;
 
 class ContentPage extends React.Component {
 	render() {
+		const carouselSlides = this.props.page.blocks.filter(block => block.layout === 'Carousel slide');
+		const carousel = carouselSlides.length ? <Carousel slides={carouselSlides}/> : null
+		const blocksWithoutSlides = this.props.page.blocks.filter(block => block.layout !== 'Carousel slide');
 		return (
 			<Page>
 				<Head>
@@ -36,7 +40,7 @@ class ContentPage extends React.Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Wrapper mt4 ph4>
+			<Wrapper mt4 ph4>
 					<Div bl bw3 b__light_blue mt5_l mb4 mb6_l pl4>
 						<H1 f2 f1_ns lh_solid mt0 mb3>
 							{this.props.page.title}
@@ -49,13 +53,20 @@ class ContentPage extends React.Component {
 							/>
 						</Div>
 					</Div>
-					{
-						this.props.page.blocks.map(block => {
-							return <Block block={block} />
-						}
-						)
-					}
 				</Wrapper>
+				<Div fl w_100 mt3 mt4_l cf>
+					{carousel}
+					{
+						blocksWithoutSlides.map(block => {
+							return (
+								<ContentBlock
+									key={block.sys.id}
+									block={block}
+								/>
+							);
+						})
+					}
+				</Div>
 				<Footer/>
 			</Page>
 		);

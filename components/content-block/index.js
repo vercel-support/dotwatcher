@@ -2,21 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Homepage from './homepage';
 import ImageRightLeft from './image-right-left';
-import BannerWithSegments from './banner-with-segments';
 import RacePromo from './race-promo';
 import Box from './box';
 import EmailSignup from './email-signup';
 import IconLeft from './icon-left';
 
-const ContentBlock = ({block, segments, race}) => {
+const ContentBlock = ({block}) => {
 	if (block.layout === 'Homepage') {
 		return <Homepage block={block}/>;
 	}
-	if (block.layout === 'Banner with segments') {
-		return <RacePromo block={block} race={race[0]} segments={segments}/>;
-	}
 	if (block.layout === 'Race promo') {
-		return <RacePromo block={block} race={race[0]}/>;
+		return <RacePromo block={block}/>;
 	}
 	if (block.layout === 'Box') {
 		return <Box block={block}/>;
@@ -31,14 +27,7 @@ const ContentBlock = ({block, segments, race}) => {
 };
 
 ContentBlock.propTypes = {
-	block: PropTypes.object.isRequired,
-	race: PropTypes.array,
-	segments: PropTypes.array
-};
-
-ContentBlock.defaultProps = {
-	race: [],
-	segments: []
+	block: PropTypes.object.isRequired
 };
 
 export default ContentBlock;

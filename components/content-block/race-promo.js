@@ -60,8 +60,8 @@ const Div = styled.div`${tachyons}`;
 const P = styled.p`${tachyons}`;
 const Span = styled.span`${tachyons}`;
 
-const RacePromo = ({block, race}) => {
-	const isRaceLive = moment().isBetween(moment(race.data.raceDate), moment(race.data.raceEndDate));
+const RacePromo = ({block}) => {
+	const isRaceLive = moment().isBetween(moment(block.race.data.raceDate), moment(block.race.data.raceEndDate));
 	const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 pr4 near_black relative>{widont(block.heading)}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 ph4 near_black>{widont(block.heading)}</H2>;
 	const WordsWrap = styled.div`
 		margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large' });
@@ -69,7 +69,7 @@ const RacePromo = ({block, race}) => {
 
 	return (
 		<Div mh4_m mb4 mb5_ns className="cf">
-			<Link route="race" params={{type: 'race', id: race.sys.id}} passHref prefetch>
+			<Link route="race" params={{type: 'race', id: block.race.sys.id}} passHref prefetch>
 				<A db cover bg_center bg={block.image.fields.file.url} className="cf">
 					<Wrapper fr w_100 w_two_thirds_m w_50_l pa4 pv6_ns mv4 mv0_ns className="cf">
 						<Div bg_white_50 pb3>
@@ -81,7 +81,7 @@ const RacePromo = ({block, race}) => {
 								<P f4>
 									<Span link underline near_black hover_white>
 										{
-											moment(race.data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
+											moment(block.race.data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
 										}
 									</Span>
 								</P>
@@ -95,12 +95,7 @@ const RacePromo = ({block, race}) => {
 };
 
 RacePromo.propTypes = {
-	block: PropTypes.object.isRequired,
-	race: PropTypes.object
-};
-
-RacePromo.defaultProps = {
-	race: {}
+	block: PropTypes.object.isRequired
 };
 
 export default RacePromo;

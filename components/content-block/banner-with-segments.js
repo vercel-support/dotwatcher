@@ -18,7 +18,7 @@ const onAir = keyframes`
   }
 `;
 const A = styled.a`
-	&:hover .hightlight {
+	&:hover .highlight {
 		color: var(--blue);
 	}
 	&+a {
@@ -56,8 +56,8 @@ const Div = styled.div`${tachyons}`;
 const P = styled.p`${tachyons}`;
 const Span = styled.span`${tachyons}`;
 
-const BannerWithSegments = ({block, segments, race}) => {
-	const isRaceLive = moment().isBetween(moment(race.data.raceDate), moment(race.data.raceEndDate));
+const BannerWithSegments = ({block, segments}) => {
+	const isRaceLive = moment().isBetween(moment(block.race.data.raceDate), moment(block.race.data.raceEndDate));
 	const Title = isRaceLive ? <H2Live f4 f3_ns bt bw1 b__white pt2 lh_title ma0 pl4 pr4 near_black relative>{widont(block.heading)}</H2Live> : <H2 f4 f3_ns bt bw1 b__white pt2 lh_title ma0 ph4 near_black>{widont(block.heading)}</H2>;
 	const WordsWrap = styled.div`
 		margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large' });
@@ -65,7 +65,7 @@ const BannerWithSegments = ({block, segments, race}) => {
 	return (
 		<Div mh3 mh6_l mb4 mb5_ns flex_ns className="cf">
 			<Wrapper fl w_100 w_50_ns flex_auto_ns>
-				<Link route="race" params={{type: 'race', id: race.sys.id}} passHref prefetch>
+				<Link route="race" params={{type: 'race', id: block.race.sys.id}} passHref prefetch>
 					<A db className="cf">
 						<Div aspect_ratio aspect_ratio__3x4 aspect_ratio__1x1_l z_0>
 							<BackgroundImage aspect_ratio__object cover bg_center bg={block.image.fields.file.url}>
@@ -98,7 +98,7 @@ const BannerWithSegments = ({block, segments, race}) => {
 										{widont(segment.body)}
 									</P>
 									<P f5 mt2 mb0>
-										<Span className="hightlight" link underline near_black>
+										<Span className="highlight" link underline near_black>
 											{segment.callToAction}
 										</Span>
 									</P>
@@ -113,12 +113,10 @@ const BannerWithSegments = ({block, segments, race}) => {
 
 BannerWithSegments.propTypes = {
 	block: PropTypes.object.isRequired,
-	race: PropTypes.object,
 	segments: PropTypes.array
 };
 
 BannerWithSegments.defaultProps = {
-	race: {},
 	segments: []
 };
 
