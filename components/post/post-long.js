@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
 import Image from '../image';
+import BodyImage from '../image/markdown';
 import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
 import widont from '../../utils/widont';
@@ -43,7 +44,7 @@ const Long = ({data, id}) => {
 					source={data.body}
 					plugins={[shortcodes]}
 					escapeHtml={false}
-					renderers={{shortcode: Embed}}
+					renderers={{shortcode: Embed, image: BodyImage}}
 				/>
 			</Div>
 		</React.Fragment>
