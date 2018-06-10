@@ -25,7 +25,6 @@ export const withHomepage = Page => {
 
 		const racesResponse = await client.getEntries(racesQuery);
 		const homepageResponse = await client.getEntries(homepageQuery);
-
 		const races = [];
 		let page;
 
@@ -68,16 +67,24 @@ export const withHomepage = Page => {
 						heading: contentBlock.fields.heading,
 						layout: contentBlock.fields.layout,
 						words: contentBlock.fields.words,
-						link: contentBlock.fields.link
+						link: contentBlock.fields.link,
+						callToAction: contentBlock.fields.callToActionText
 					};
 
 					if (contentBlock.fields.race) {
-						block.race = contentBlock.fields.race.sys.id;
+						block.race = lodash.find(races, obj => {
+							return obj.sys.id === contentBlock.fields.race.sys.id;
+						});
 					}
 
 					if (contentBlock.fields.image) {
 						block.image = lodash.find(homepageResponse.includes.Asset, obj => {
 							return obj.sys.id === contentBlock.fields.image.sys.id;
+						});
+					}
+					if (contentBlock.fields.logoOverlay) {
+						block.logoOverlay = lodash.find(homepageResponse.includes.Asset, obj => {
+							return obj.sys.id === contentBlock.fields.logoOverlay.sys.id;
 						});
 					}
 					page.blocks.push(block);
@@ -87,7 +94,6 @@ export const withHomepage = Page => {
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
-			races,
 			page
 		};
 	};

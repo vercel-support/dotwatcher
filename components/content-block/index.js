@@ -7,12 +7,12 @@ import Box from './box';
 import EmailSignup from './email-signup';
 import IconLeft from './icon-left';
 
-const ContentBlock = ({block, race}) => {
+const ContentBlock = ({block}) => {
 	if (block.layout === 'Homepage') {
 		return <Homepage block={block}/>;
 	}
 	if (block.layout === 'Race promo') {
-		return <RacePromo block={block} race={race[0]}/>;
+		return <RacePromo block={block}/>;
 	}
 	if (block.layout === 'Box') {
 		return <Box block={block}/>;
@@ -27,12 +27,7 @@ const ContentBlock = ({block, race}) => {
 };
 
 ContentBlock.propTypes = {
-	block: PropTypes.object.isRequired,
-	race: PropTypes.array
-};
-
-ContentBlock.defaultProps = {
-	race: []
+	block: PropTypes.object.isRequired
 };
 
 export default ContentBlock;

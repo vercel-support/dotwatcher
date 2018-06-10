@@ -1,13 +1,13 @@
 import Head from 'next/head';
-import Header from '../components/header';
-import { Link, Router } from '../routes'
-import Page from '../components/shared/page';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Wrapper from '../components/shared/wrapper';
-import slugify from '../utils/slugify';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import Header from '../components/header';
+import {Link} from '../routes';
+import Page from '../components/shared/page';
+import Wrapper from '../components/shared/wrapper';
+import slugify from '../utils/slugify';
 import {withProfile} from '../data/with-profile';
 
 const Img = styled.img`${tachyons}`;
@@ -17,13 +17,13 @@ const Span = styled.span`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 
 class Profile extends React.Component {
-	render () {
+	render() {
 		return (
 			<Page>
 				<Head>
-					<title></title>
-					<meta property="og:title" content="" />
-					<meta property="og:image" content="" />
+					<title/>
+					<meta property="og:title" content=""/>
+					<meta property="og:image" content=""/>
 				</Head>
 				<Header
 					title="dotwatcher.cc"
@@ -46,26 +46,26 @@ class Profile extends React.Component {
 								{this.props.profile.data.biography}
 							</Div>
 							<Div lh_copy mv4>
-							{this.props.profile.data.twitterUsername &&
+								{this.props.profile.data.twitterUsername &&
 								<A link near_black underline mr3 href={`http://twitter.com/${this.props.profile.data.twitterUsername}`}>
 									Twitter
 								</A>
-							}
-							{this.props.profile.data.instagramUsername &&
+								}
+								{this.props.profile.data.instagramUsername &&
 								<A link near_black underline mr3 href={`http://instagram.com/${this.props.profile.data.instagramUsername}`}>
 									Instagram
 								</A>
-							}
+								}
 							</Div>
 							<Div lh_copy>
-							<Span mr2>Races done:</Span>
-							{
-								this.props.profile.data.categories.map(category => (
-									<Link key={category.sys.id} route="race" params={{type: 'race', id: category.sys.id, slug: slugify(category.fields.title)}} passHref prefetch>
-										<A link dim near_black underline>{category.fields.title}</A>
-									</Link>
-								))
-							}
+								<Span mr2>Races done:</Span>
+								{
+									this.props.profile.data.categories.map(category => (
+										<Link key={category.sys.id} route="race" params={{type: 'race', id: category.sys.id, slug: slugify(category.fields.title)}} passHref prefetch>
+											<A link dim near_black underline>{category.fields.title}</A>
+										</Link>
+									))
+								}
 							</Div>
 						</Wrapper>
 					</Div>

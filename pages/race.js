@@ -1,20 +1,23 @@
-import Button from '../components/shared/button';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+import Pusher from 'pusher-js';
+import React from 'react';
+import {createClient} from 'contentful';
+import find from 'lodash/find';
+import styled from 'styled-components';
+import tachyons from 'styled-components-tachyons';
+import {withRouter} from 'next/router';
+import Button from '../components/shared/button';
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
 import MapContainer from '../components/map-container';
 import Page from '../components/shared/page';
 import Post from '../components/post';
-import Pusher from 'pusher-js';
-import React from 'react';
 import TopRiders from '../components/top-riders';
+import FactFile from '../components/fact-file';
 import Wrapper from '../components/shared/wrapper';
-import {createClient} from 'contentful';
-import find from 'lodash/find';
-import styled from 'styled-components';
-import tachyons from 'styled-components-tachyons';
 import vars from '../data/api-vars';
-import {withRouter} from 'next/router';
+import {WithEntries} from '../data/with-entries';
 
 const H1 = styled.h1`${tachyons}`;
 const P = styled.p`${tachyons}`;
@@ -59,10 +62,8 @@ class Race extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			posts: [],
 			skip: 0,
-			totalPosts: 0,
-			loading: true,
+			loading: false,
 			newPost: false,
 			newPostIDs: []
 		};
@@ -79,7 +80,7 @@ class Race extends React.Component {
 			content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
 			'fields.category.sys.id': this.props.router.query.id,
 			order: '-sys.createdAt',
-			limit: 5,
+			limit: 10,
 			skip: this.state.skip
 		};
 		let response;
@@ -88,7 +89,6 @@ class Race extends React.Component {
 		} else {
 			response = await client.getEntries(getPageOfPosts);
 		}
-		const newPosts = [];
 		for (const item of response.items) {
 			const entry = {
 				sys: {
@@ -111,26 +111,24 @@ class Race extends React.Component {
 					return obj.sys.id === item.fields.featuredImage.sys.id;
 				});
 			}
-			newPosts.push(entry);
+			if (id) {
+				this.props.posts.unshift(entry);
+			} else {
+				this.props.posts.push(entry);
+			}
 		}
-		if (id) {
-			await this.setState({
-				posts: [...newPosts, ...this.state.posts],
-				loading: false
-			});
-		} else {
-			await this.setState({
-				posts: [...this.state.posts, ...newPosts],
-				totalPosts: response.total,
-				loading: false
-			});
-		}
+		await this.setState({
+			loading: false
+		});
 	}
 
 	componentDidMount() {
-		this.fetchPosts();
 		channel.bind('new-post', newPostEvent => {
-			if (newPostEvent.category === this.state.posts[0].data.categories[0].sys.id) {
+			const isNewPost = find(this.props.posts, obj => {
+				return obj.sys.id === newPostEvent.post;
+			}) === undefined;
+
+			if (newPostEvent.category === this.props.raceID && isNewPost ) {
 				this.setState({
 					newPost: true,
 					newPostIDs: [newPostEvent.post, ...this.state.newPostIDs]
@@ -141,7 +139,7 @@ class Race extends React.Component {
 
 	loadNextPageOfPosts() {
 		this.setState(
-			prevState => ({...prevState, skip: this.state.skip + 5}),
+			prevState => ({...prevState, skip: this.state.skip + 10}),
 			() => (this.fetchPosts())
 		);
 	}
@@ -157,19 +155,6 @@ class Race extends React.Component {
 	}
 
 	render() {
-		let raceName;
-		let raceID = this.props.router.query.id;
-		let trackleadersID;
-		let race;
-		let raceImage;
-		if (this.state.posts.length) {
-			raceName = this.state.posts[0].data.categories[0].fields.title;
-			raceID = this.state.posts[0].data.categories[0].sys.id;
-			trackleadersID = this.state.posts[0].data.categories[0].fields.trackleadersRaceId;
-			race = this.state.posts[0].data.categories[0];
-			raceImage = this.state.posts[0].data.categories[0].fields.icon.fields.file.url;
-		}
-
 		const morePostsButton = (
 			<Button db w5 loading={this.state.loading} onClick={this.loadNextPageOfPosts.bind(this)}>
 				{
@@ -179,9 +164,9 @@ class Race extends React.Component {
 		);
 
 		let morePosts = null;
-		if (this.state.totalPosts > this.state.posts.length) {
+		if (this.props.totalPosts > this.props.posts.length) {
 			morePosts = morePostsButton;
-		} else if (this.state.posts.length === 0) {
+		} else if (this.props.posts.length === 0) {
 			morePosts = null;
 		} else {
 			morePosts = <H1 mt3 tc moon_gray tracked ttu i>Fin</H1>;
@@ -202,25 +187,26 @@ class Race extends React.Component {
 		return (
 			<Page>
 				<Head>
-					<title>{raceName} – DotWatcher.cc</title>
-					<meta property="og:title" content={`${raceName} – DotWatcher.cc`}/>
-					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
-					<meta property="og:image" content={raceImage}/>
+					<title>{this.props.raceName} – DotWatcher.cc</title>
+					<meta property="og:title" content={`${this.props.raceName} – DotWatcher.cc`}/>
+					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
+					<meta property="og:image" content={this.props.raceImage}/>
 				</Head>
 				<Header
 					title="dotwatcher.cc"
-					raceName={raceName}
-					race={race}
+					raceName={this.props.raceName}
+					race={this.props.race}
 				/>
-				<MapContainer raceID={trackleadersID}/>
+				<MapContainer raceID={this.props.trackleadersID}/>
 				<KeyEventsWrapper fl ph3 ph4_ns pb2 w_100 w_30_m w_20_l mt4_l relative id="events-wrap">
-					{trackleadersID && <TopRiders raceID={raceID} trackleadersID={trackleadersID}/>}
-					<KeyEvents posts={this.state.posts}/>
+					<TopRiders raceID={this.props.raceID} trackleadersID={this.props.trackleadersID}/>
+					<FactFile race={this.props.race}/>
+					<KeyEvents posts={this.props.posts}/>
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l id="posts">
 					{ newPostsNotification }
 					{
-						this.state.posts.length ? this.state.posts.map(item => (
+						this.props.posts.length ? this.props.posts.map(item => (
 							<Post key={item.sys.id} id={item.sys.id} data={item.data}/>
 						)) : null
 					}
@@ -234,4 +220,15 @@ class Race extends React.Component {
 	}
 }
 
-export default withRouter(Race);
+Race.propTypes = {
+	posts: PropTypes.object.isRequired,
+	router: PropTypes.object.isRequired,
+	totalPosts: PropTypes.number.isRequired,
+	trackleadersID: PropTypes.string.isRequired,
+	raceName: PropTypes.string.isRequired,
+	raceID: PropTypes.string.isRequired,
+	race: PropTypes.object.isRequired,
+	raceImage: PropTypes.string.isRequired
+};
+
+export default withRouter(WithEntries(Race));

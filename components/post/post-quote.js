@@ -11,9 +11,8 @@ import widont from '../../utils/widont';
 const P = styled.p`${tachyons}`;
 const Cite = styled.cite`${tachyons}`;
 const Blockquote = styled.blockquote`${tachyons}`;
-const A = styled.a`${tachyons}`;
 
-const Short = ({data, id}) => {
+const Short = ({data}) => {
 	let body;
 	if (data.body) {
 		body = (
@@ -36,8 +35,7 @@ const Short = ({data, id}) => {
 };
 
 Short.propTypes = {
-	data: PropTypes.object.isRequired,
-	id: PropTypes.string.isRequired
+	data: PropTypes.object.isRequired
 };
 
 export default Short;

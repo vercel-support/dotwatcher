@@ -51,6 +51,6 @@
     "eslint-plugin-react": "^7.7.0",
     "now-env": "^3.0.4",
     "superagent": "^3.8.3",
-    "xo": "^0.21.0"
+    "xo": "^0.21.1"
   }
 }

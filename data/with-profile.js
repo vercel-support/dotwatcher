@@ -7,7 +7,7 @@ export const withProfile = Page => {
 	const withProfile = props => <Page {...props}/>;
 
 	withProfile.getInitialProps = async ({query: {id}}) => {
-		let profile
+		let profile;
 
 		const client = createClient({
 			space: vars.space,

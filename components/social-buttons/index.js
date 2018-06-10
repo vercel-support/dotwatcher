@@ -1,7 +1,7 @@
 import {FacebookButton, TwitterButton} from 'react-social';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'next/router'
+import {withRouter} from 'next/router';
 
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
@@ -53,8 +53,8 @@ class SocialButtons extends Component {
 						'toolbar=0',
 						'width=480',
 						'height=350',
-						`top=${this.state.inBrowser ? window.screen.height / 2 - 175 : 10}px`,
-						`left=${this.state.inBrowser ? window.screen.width / 2 - 240 : 10}px`
+						`top=${this.state.inBrowser ? ((window.screen.height / 2) - 175) : 10}px`,
+						`left=${this.state.inBrowser ? ((window.screen.width / 2) - 240) : 10}px`
 					]}
 				>
 					{'Share'}
@@ -66,8 +66,8 @@ class SocialButtons extends Component {
 						'toolbar=0',
 						'width=480',
 						'height=350',
-						`top=${this.state.inBrowser ? window.screen.height / 2 - 175 : 10}px`,
-						`left=${this.state.inBrowser ? window.screen.width / 2 - 240 : 10}px`
+						`top=${this.state.inBrowser ? ((window.screen.height / 2) - 175) : 10}px`,
+						`left=${this.state.inBrowser ? ((window.screen.width / 2) - 240) : 10}px`
 					]}
 				>
 					{'Tweet'}
@@ -78,7 +78,8 @@ class SocialButtons extends Component {
 }
 
 SocialButtons.propTypes = {
-	url: PropTypes.string.isRequired
+	url: PropTypes.string.isRequired,
+	router: PropTypes.object.isRequired
 };
 
 export default withRouter(SocialButtons);

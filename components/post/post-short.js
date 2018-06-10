@@ -22,8 +22,7 @@ const Div = styled.div`
 		color: var(--light-blue)
 	}
 ${tachyons}`;
-const A = styled.a`${tachyons}`;
-const Short = ({data, id}) => {
+const Short = ({data}) => {
 	let body;
 	if (data.body) {
 		body = (
@@ -49,8 +48,7 @@ const Short = ({data, id}) => {
 };
 
 Short.propTypes = {
-	data: PropTypes.object.isRequired,
-	id: PropTypes.string.isRequired
+	data: PropTypes.object.isRequired
 };
 
 export default Short;

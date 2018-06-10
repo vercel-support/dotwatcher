@@ -7,9 +7,8 @@ import Image from '../image';
 import widont from '../../utils/widont';
 
 const Div = styled.div`${tachyons}`;
-const A = styled.a`${tachyons}`;
 
-const Short = ({data, id}) => {
+const Short = ({data}) => {
 	let embed;
 	if (data.embed) {
 		if (data.embed.includes('twitter') > 0) {
@@ -36,8 +35,7 @@ const Short = ({data, id}) => {
 };
 
 Short.propTypes = {
-	data: PropTypes.object.isRequired,
-	id: PropTypes.string.isRequired
+	data: PropTypes.object.isRequired
 };
 
 export default Short;

@@ -16,7 +16,7 @@ const event = ({data}) => {
 				<DateTime datetime={data.date} type="inline"/>
 				<Title db measure_narrow>
 					{
-						data.title.split(' ').length > 14 ? `${data.title.split(' ').splice(0,14).join(' ')}...` : data.title
+						data.title.split(' ').length > 14 ? `${data.title.split(' ').splice(0, 14).join(' ')}...` : data.title
 					}
 				</Title>
 			</A>

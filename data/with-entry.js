@@ -5,28 +5,22 @@ import {createClient} from 'contentful';
 import lodash from 'lodash';
 import vars from './api-vars';
 
-export const WithEntries = Page => {
-	const WithEntries = props => <Page {...props}/>;
+export const withEntry = Page => {
+	const WithEntry = props => <Page {...props}/>;
 
-	WithEntries.getInitialProps = async ({query: {id, type}}) => {
+	WithEntry.getInitialProps = async ({query: {id, type}}) => {
 		let contenfulQuery;
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
-		if (id && type === 'race') {
-			contenfulQuery = {
-				content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
-				'fields.category.sys.id': id,
-				order: '-sys.createdAt',
-				limit: 10
-			};
+		if (id && type === 'post') {
+			contenfulQuery = {'sys.id': id};
 		}
 
 		const response = await client.getEntries(contenfulQuery);
 
-		const totalPosts = response.total;
 		const posts = [];
 
 		for (const item of response.items) {
@@ -56,15 +50,9 @@ export const WithEntries = Page => {
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
-			posts,
-			totalPosts,
-			trackleadersID: posts[0].data.categories[0].fields.trackleadersRaceId,
-			raceName: posts[0].data.categories[0].fields.title,
-			raceID: posts[0].data.categories[0].sys.id,
-			race: posts[0].data.categories[0],
-			raceImage: posts[0].data.categories[0].fields.icon.fields.file.url
+			posts
 		};
 	};
 
-	return WithEntries;
+	return WithEntry;
 };

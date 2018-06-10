@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Rider from './rider';
 import {createClient} from 'contentful';
-import request from 'superagent'
+import request from 'superagent';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import vars from '../../data/api-vars';
+import Rider from './rider';
 
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
@@ -22,13 +22,13 @@ class topRiders extends React.Component {
 	}
 
 	setStateAsync(state) {
-		return new Promise((resolve) => {
-			this.setState(state, resolve)
+		return new Promise(resolve => {
+			this.setState(state, resolve);
 		});
 	}
 
 	async componentDidMount() {
-		this.state.leaderboard = []
+		this.state.leaderboard = [];
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
@@ -39,18 +39,22 @@ class topRiders extends React.Component {
 			'fields.race.sys.id': this.props.raceID
 		};
 
-		const leaderboardUrl = `https://dotwatcher.scrapey.xyz/api/pages`
+		const leaderboardUrl = `https://dotwatcher.scrapey.xyz/api/pages`;
 
 		let leaderboard = [];
 		request
 			.get(leaderboardUrl)
-			.query({ access_token: process.env.SCRAPEY_API_KEY, 'filter[order]': 'timestamp DESC' })
+			.query({access_token: process.env.SCRAPEY_API_KEY, 'filter[order]': 'timestamp DESC'})
 			.end((err, res) => {
-				if (err) return
-				let data = res.body.filter(item => item.data.url === `http://trackleaders.com/${this.props.trackleadersID}`)
-				if (data.length === 0) return
-				data = data[0].data.leaderboard.sort((a, b) => parseFloat(b.mile) - parseFloat(a.mile))
-				data = data.slice(0, 10)
+				if (err) {
+					return;
+				}
+				let data = res.body.filter(item => item.data.url === `http://trackleaders.com/${this.props.trackleadersID}`);
+				if (data.length === 0) {
+					return;
+				}
+				data = data[0].data.leaderboard.sort((a, b) => parseFloat(b.mile) - parseFloat(a.mile));
+				data = data.slice(0, 10);
 
 <<<<<<< HEAD
 				leaderboard = data.map(item => {
@@ -72,8 +76,8 @@ class topRiders extends React.Component {
 							distance: parseFloat(item.kilometre).toFixed(0)
 >>>>>>> 783c17f20ed786816544a0c81038af3bf8f28e7c
 						}
-					}
-				})
+					};
+				});
 
 				this.setStateAsync({leaderboard});
 			});
@@ -95,7 +99,7 @@ class topRiders extends React.Component {
 								name: 'No report yet'
 							}
 						}
-					]
+					];
 				}
 			}
 			await this.setStateAsync({leaderboard});
@@ -127,7 +131,7 @@ topRiders.propTypes = {
 	trackleadersID: PropTypes.string
 };
 
-topRiders.defaultProp = {
+topRiders.defaultProps = {
 	raceID: '',
 	trackleadersID: ''
 };

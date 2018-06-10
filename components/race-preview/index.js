@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import {Link} from '../../routes';
-import slugify from '../../utils/slugify';
 import Placeholder from '../placeholder';
 import widont from '../../utils/widont';
 

@@ -17,12 +17,12 @@ class KeyEvents extends Component {
 			width: 320
 		};
 		this.toggleHidden = this.toggleHidden.bind(this);
-		this.boundHandleScroll = this.handleScroll.bind(this)
+		this.boundHandleScroll = this.handleScroll.bind(this);
 	}
 
 	componentDidMount() {
 		this.setState({width: window.innerWidth});
-		this.setupStickyScroll()
+		this.setupStickyScroll();
 	}
 
 	componentWillUnmount() {
@@ -36,7 +36,7 @@ class KeyEvents extends Component {
 	handleScroll() {
 		if (this.state.width >= 1024) {
 			const windowHeight = document.body.scrollHeight;
-			document.getElementById('events-wrap').style.height = windowHeight - 400 + 'px'
+			document.getElementById('events-wrap').style.height = windowHeight - 400 + 'px';
 		}
 	}
 
