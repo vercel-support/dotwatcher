@@ -1,22 +1,23 @@
-import Button from '../components/shared/button';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+import Pusher from 'pusher-js';
+import React from 'react';
+import {createClient} from 'contentful';
+import find from 'lodash/find';
+import styled from 'styled-components';
+import tachyons from 'styled-components-tachyons';
+import {withRouter} from 'next/router';
+import Button from '../components/shared/button';
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
 import MapContainer from '../components/map-container';
 import Page from '../components/shared/page';
 import Post from '../components/post';
-import Pusher from 'pusher-js';
-import React from 'react';
 import TopRiders from '../components/top-riders';
 import FactFile from '../components/fact-file';
 import Wrapper from '../components/shared/wrapper';
-import {createClient} from 'contentful';
-import find from 'lodash/find';
-import styled from 'styled-components';
-import tachyons from 'styled-components-tachyons';
 import vars from '../data/api-vars';
 import {WithEntries} from '../data/with-entries';
-import {withRouter} from 'next/router';
 
 const H1 = styled.h1`${tachyons}`;
 const P = styled.p`${tachyons}`;
@@ -61,7 +62,6 @@ class Race extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			posts: [],
 			skip: 0,
 			loading: false,
 			newPost: false,
@@ -89,7 +89,6 @@ class Race extends React.Component {
 		} else {
 			response = await client.getEntries(getPageOfPosts);
 		}
-		const newPosts = [];
 		for (const item of response.items) {
 			const entry = {
 				sys: {
@@ -161,7 +160,7 @@ class Race extends React.Component {
 		);
 
 		let morePosts = null;
-		if (this.props.total_posts > this.props.posts.length) {
+		if (this.props.totalPosts > this.props.posts.length) {
 			morePosts = morePostsButton;
 		} else if (this.props.posts.length === 0) {
 			morePosts = null;
@@ -186,7 +185,7 @@ class Race extends React.Component {
 				<Head>
 					<title>{this.props.raceName} – DotWatcher.cc</title>
 					<meta property="og:title" content={`${this.props.raceName} – DotWatcher.cc`}/>
-					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
+					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
 					<meta property="og:image" content={this.props.raceImage}/>
 				</Head>
 				<Header
@@ -216,5 +215,16 @@ class Race extends React.Component {
 		);
 	}
 }
+
+Race.propTypes = {
+	posts: PropTypes.object.isRequired,
+	router: PropTypes.object.isRequired,
+	totalPosts: PropTypes.number.isRequired,
+	trackleadersID: PropTypes.string.isRequired,
+	raceName: PropTypes.string.isRequired,
+	raceID: PropTypes.string.isRequired,
+	race: PropTypes.object.isRequired,
+	raceImage: PropTypes.string.isRequired
+};
 
 export default withRouter(WithEntries(Race));

@@ -39,4 +39,8 @@ Embed.propTypes = {
 	attributes: PropTypes.object
 };
 
+Embed.defaultProps = {
+	attributes: {}
+};
+
 export default Embed;

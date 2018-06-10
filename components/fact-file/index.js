@@ -2,13 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-import Wrapper from '../shared/wrapper';
-import widont from '../../utils/widont';
 
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
-const Div = styled.div`${tachyons}`;
-const P = styled.p`${tachyons}`;
 const FactFileWrap = styled.div`${tachyons}`;
 const Wrap = styled.dl`${tachyons}`;
 const Label = styled.dt`${tachyons}`;
@@ -34,7 +30,7 @@ const FactFile = ({race}) => (
 			<Stat dib f6 ml1 b>{race.fields.riders}</Stat>
 		</Wrap>
 		<Wrap>
-			<Label dib f6>Last year's winner:</Label>
+			<Label dib f6>Last year’s winner:</Label>
 			<Stat dib f6 ml1 b>{race.fields.lastYearsWinner}</Stat>
 		</Wrap>
 		<Wrap>

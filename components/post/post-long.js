@@ -29,7 +29,6 @@ const A = styled.a`${tachyons}`;
 
 const Long = ({data, id}) => {
 	const host = typeof window !== 'undefined' ? window.location.host : '';
-	const url = `${host}/post/${id}?slug=${slugify(data.title)}`;
 
 	return (
 		<React.Fragment>

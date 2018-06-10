@@ -26,7 +26,7 @@ export const WithEntries = Page => {
 
 		const response = await client.getEntries(contenfulQuery);
 
-		const total_posts = response.total
+		const totalPosts = response.total;
 		const posts = [];
 
 		for (const item of response.items) {
@@ -57,7 +57,7 @@ export const WithEntries = Page => {
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 			posts,
-			total_posts,
+			totalPosts,
 			trackleadersID: posts[0].data.categories[0].fields.trackleadersRaceId,
 			raceName: posts[0].data.categories[0].fields.title,
 			raceID: posts[0].data.categories[0].sys.id,

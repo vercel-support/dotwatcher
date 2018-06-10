@@ -27,8 +27,8 @@ class MapContainer extends Component {
 	}
 
 	updateWindowWidth() {
-		const width = window.innerWidth
-		if ( width !== this.state.width) {
+		const width = window.innerWidth;
+		if (width !== this.state.width) {
 			this.setState({
 				showMap: window.innerWidth >= 1024,
 				width: window.innerWidth,
@@ -38,7 +38,7 @@ class MapContainer extends Component {
 	}
 
 	toggleMap() {
-		window.scroll(0,0)
+		window.scroll(0, 0);
 		this.setState(
 			prevState => ({...prevState, showMap: !prevState.showMap})
 		);
@@ -61,7 +61,7 @@ class MapContainer extends Component {
 	render() {
 		const DesktopWrapper = styled.div`
 			top: ${this.props.offset ? 'inherit' : 0};
-		${tachyons}`
+		${tachyons}`;
 		let content = (
 			<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
 				<Placeholder raceID="Loading" w_100 h_100/>
@@ -98,6 +98,6 @@ MapContainer.propTypes = {
 MapContainer.defaultProps = {
 	raceID: '',
 	offset: false
-}
+};
 
 export default MapContainer;

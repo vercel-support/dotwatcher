@@ -38,7 +38,7 @@ const BGimage = styled.div`
 	@media screen and (min-width: 64em) {
 		background-image: url(${props => props.bg}?w=800&h=800&fit=fill&fm=jpg&q=50);
 	}
- ${tachyons}`
+ ${tachyons}`;
 
 const Box = ({block}) => (
 	<Wrapper w_100 w_third_ns ph4 mt4_ns mb5_ns className="cf">

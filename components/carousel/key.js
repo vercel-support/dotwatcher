@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled, {keyframes} from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import moment from 'moment';
-import Wrapper from '../shared/wrapper';
 import widont from '../../utils/widont';
 import {Link} from '../../routes';
 
@@ -65,7 +64,7 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 			</Link>
 		</Div>
 	);
-}
+};
 
 CarouselKey.propTypes = {
 	slide: PropTypes.object.isRequired,

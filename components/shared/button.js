@@ -16,14 +16,16 @@ const Button = ({children, loading, ...styles}) => {
 			{children}
 		</StyledButton>
 	);
-}
+};
 
 Button.propTypes = {
-	children: PropTypes.node
+	children: PropTypes.node,
+	loading: PropTypes.bool
 };
 
 Button.defaultProps = {
-	children: ''
+	children: '',
+	loading: false
 };
 
 export default Button;

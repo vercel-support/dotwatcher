@@ -17,8 +17,8 @@ const Image = ({data}) => {
 				data.description ?
 					<Figcaption tr pv1 lh_solid gray>
 						{data.description}
-					</Figcaption>
-					: null
+					</Figcaption> :
+					null
 			}
 		</Figure>
 	);

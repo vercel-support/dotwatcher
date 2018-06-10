@@ -4,7 +4,6 @@ import {find} from 'lodash';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Wrapper from '../shared/wrapper';
-import widont from '../../utils/widont';
 import CarouselKey from './key';
 import CarouselImage from './image';
 

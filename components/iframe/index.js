@@ -19,8 +19,8 @@ const Iframe = ({raceID, offset}) => {
 				raceID ? <Map id="trackleaders-iframe" w_100 h_100 ba bw0 src={`https://trackleaders.com/${raceID}f.php`} frameborder="0"/> : <Placeholder raceID="No race found" w_100 h_100/>
 			}
 		</Container>
-		)
-}
+	);
+};
 
 Iframe.propTypes = {
 	raceID: PropTypes.string,
@@ -30,6 +30,6 @@ Iframe.propTypes = {
 Iframe.defaultProps = {
 	raceID: '',
 	offset: false
-}
+};
 
 export default Iframe;

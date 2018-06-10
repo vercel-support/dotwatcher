@@ -4,7 +4,6 @@ import styled, {css} from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import {Link} from '../../routes';
 import Logo from './logo';
-import slugify from '../../utils/slugify';
 
 const A = styled.a`${tachyons}`;
 const Nav = styled.div`
@@ -29,12 +28,12 @@ class Banner extends Component {
 			width: 320,
 			lastScrollY: 0
 		};
-		this.boundHeaderPop = this.debounce(this.headerPop.bind(this), 50)
+		this.boundHeaderPop = this.debounce(this.headerPop.bind(this), 50);
 	}
 
 	componentDidMount() {
-		this.setState({ width: window.innerWidth });
-		this.setupStickyHeader()
+		this.setState({width: window.innerWidth});
+		this.setupStickyHeader();
 	}
 
 	componentWillUnmount() {
@@ -52,9 +51,10 @@ class Banner extends Component {
 	}
 
 	debounce(fn, delay) {
-		var timer = null;
+		let timer = null;
 		return () => {
-			var context = this, args = arguments;
+			const context = this;
+			const args = arguments;
 			clearTimeout(timer);
 			timer = setTimeout(() => {
 				fn.apply(context, args);
@@ -65,32 +65,32 @@ class Banner extends Component {
 	headerPop() {
 		const {lastScrollY} = this.state;
 		const currentScrollY = window.scrollY;
-		const stickyBar = document.getElementById('sticky')
+		const stickyBar = document.getElementById('sticky');
 
 		if (currentScrollY < this.state.bannerHeight) {
-			this.setState({ fixed: false });
+			this.setState({fixed: false});
 			if (stickyBar) {
-				stickyBar.style.top = 'var(--spacing-large)'
+				stickyBar.style.top = 'var(--spacing-large)';
 			}
 		} else if (currentScrollY < lastScrollY) {
-				this.setState({ fixed: true });
+			this.setState({fixed: true});
 			if (stickyBar) {
-				stickyBar.style.top = this.state.bannerHeight + 32 + 'px'
+				stickyBar.style.top = this.state.bannerHeight + 32 + 'px';
 			}
 		} else {
-			this.setState({ fixed: false });
+			this.setState({fixed: false});
 			if (stickyBar) {
-				stickyBar.style.top = 'var(--spacing-large)'
+				stickyBar.style.top = 'var(--spacing-large)';
 			}
 		}
-		this.setState({ lastScrollY: currentScrollY });
+		this.setState({lastScrollY: currentScrollY});
 	}
 
 	render() {
 		const Header = styled.header`
 			position: relative;
 			top: 0;
-			${ props => props.isFixed && css`
+			${props => props.isFixed && css`
 				position: fixed;
 			`}
 			${tachyons}`;
@@ -104,7 +104,7 @@ class Banner extends Component {
 							<Logo>{this.props.title}</Logo>
 						</Div>
 					</H1>
-					{this.props.raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5><Link route="race" params={{ type: 'race', id: this.props.race.sys.id}} passHref prefetch><A no_underline near_black hover_blue>{this.props.race.fields.title}</A></Link></H2> : null}
+					{this.props.raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5><Link route="race" params={{type: 'race', id: this.props.race.sys.id}} passHref prefetch><A no_underline near_black hover_blue>{this.props.race.fields.title}</A></Link></H2> : null}
 					<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 						<Link href="/races" as="/races" passHref prefetch>
 							<A dib mr3 f5 f4_l near_black fw4>Races</A>

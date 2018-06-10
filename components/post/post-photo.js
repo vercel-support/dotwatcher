@@ -3,12 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Image from '../image';
-import slugify from '../../utils/slugify';
 
 const Div = styled.div`${tachyons}`;
-const A = styled.a`${tachyons}`;
 
-const Short = ({data, id}) => {
+const Short = ({data}) => {
 	return (
 		<React.Fragment>
 			{ data.image ? <Image data={data.image.fields}/> : null }
@@ -20,8 +18,7 @@ const Short = ({data, id}) => {
 };
 
 Short.propTypes = {
-	data: PropTypes.object.isRequired,
-	id: PropTypes.string.isRequired
+	data: PropTypes.object.isRequired
 };
 
 export default Short;

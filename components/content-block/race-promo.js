@@ -5,7 +5,6 @@ import tachyons from 'styled-components-tachyons';
 import moment from 'moment';
 import Wrapper from '../shared/wrapper';
 import {Link} from '../../routes';
-import slugify from '../../utils/slugify';
 import widont from '../../utils/widont';
 
 const onAir = keyframes`
@@ -64,7 +63,7 @@ const RacePromo = ({block}) => {
 	const isRaceLive = moment().isBetween(moment(block.race.data.raceDate), moment(block.race.data.raceEndDate));
 	const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 pr4 near_black relative>{widont(block.heading)}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 ph4 near_black>{widont(block.heading)}</H2>;
 	const WordsWrap = styled.div`
-		margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large' });
+		margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large'});
 	${tachyons}`;
 
 	return (
