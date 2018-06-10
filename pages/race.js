@@ -124,7 +124,11 @@ class Race extends React.Component {
 
 	componentDidMount() {
 		channel.bind('new-post', newPostEvent => {
-			if (newPostEvent.category === this.props.raceID) {
+			const isNewPost = find(this.props.posts, obj => {
+				return obj.sys.id === newPostEvent.post;
+			}) === undefined;
+
+			if (newPostEvent.category === this.props.raceID && isNewPost ) {
 				this.setState({
 					newPost: true,
 					newPostIDs: [newPostEvent.post, ...this.state.newPostIDs]
