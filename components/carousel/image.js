@@ -4,21 +4,26 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import {Link} from '../../routes';
 
-const Div = styled.div`${tachyons}`;
-const A = styled.a`${tachyons}`;
-const BackgroundImage = styled.div`
+const A = styled.a`
 	background-image: url(${props => props.bg}?w=600&fm=jpg&q=80);
+	min-height: 66vw;
+	@media screen and (min-width: 32em) {
+		min-height: 34vw;
+	}
+	@media screen and (min-width: 48em) {
+		background-image: url(${props => props.bg}?w=800&h=800&fm=jpg&q=80);
+	}
 	@media screen and (min-width: 64em) {
 		background-image: url(${props => props.bg}?w=800&fm=jpg&q=80);
+	}
+	@media screen and (min-width: 75em) {
+		background-image: url(${props => props.bg}?w=1200&fm=jpg&q=80);
 	}
 ${tachyons}`;
 
 const CarouselImage = ({slide}) => (
 	<Link route="race" params={{type: 'race', id: slide.race.sys.id}} passHref prefetch>
-		<A db className="cf">
-			<Div aspect_ratio aspect_ratio__8x5 z_0>
-				<BackgroundImage aspect_ratio__object cover bg_center bg={slide.image.fields.file.url}/>
-			</Div>
+		<A db h_100 cover bg_center bg={slide.image.fields.file.url} className="cf">
 		</A>
 	</Link>
 );
