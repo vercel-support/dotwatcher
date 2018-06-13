@@ -15,6 +15,11 @@ const Figure = styled.figure`${tachyons}`;
 const Img = styled.img`${tachyons}`;
 const Span = styled.span`${tachyons}`;
 const P = styled.p`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
+const Header = styled.header`${tachyons}`;
+const Wrap = styled.dl`${tachyons}`;
+const Label = styled.dt`${tachyons}`;
+const Stat = styled.dt`${tachyons}`;
 
 const RacePreview = ({data, id}) => {
 	return (
@@ -26,19 +31,46 @@ const RacePreview = ({data, id}) => {
 					</a>
 				</Link>
 			</Figure>
-			<Div fl_ns ph3 w_80_ns>
+			<Div fl_ns ph3 w_50_m w_60_l>
 				<Link route="race" params={{type: 'race', id}} passHref prefetch>
 					<A link near_black>
 						<H1 f2 ma0 lh_title link hover_blue>{widont(data.title)}</H1>
 						<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
 						<P measure_wide lh_copy>{widont(data.description)}</P>
-						<Span link underline hover_blue>
+						<Span dib f6 ttu fw5 tracked ba bw1 pv2 ph3 hover_blue>
 							{
 								moment(data.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
 							}
 						</Span>
 					</A>
 				</Link>
+			</Div>
+			<Div fl_ns ph3 w_30_m w_20_l>
+				<Header>
+					<H2 ttu tracked f5 mt4 mt2_ns pb1 bb bw1 b__light_gray measure_narrow>
+						Fact file
+					</H2>
+				</Header>
+				<Wrap>
+					<Label dib f6>Location:</Label>
+					<Stat dib f6 ml1 b>{data.location}</Stat>
+				</Wrap>
+				<Wrap>
+					<Label dib f6>Length:</Label>
+					<Stat dib f6 ml1 b>{data.length}</Stat>
+				</Wrap>
+				<Wrap>
+					<Label dib f6>Riders:</Label>
+					<Stat dib f6 ml1 b>{data.riders}</Stat>
+				</Wrap>
+				<Wrap>
+					<Label dib f6>Last year’s winner:</Label>
+					<Stat dib f6 ml1 b>{data.lastYearsWinner}</Stat>
+				</Wrap>
+				<Wrap>
+					<Label dib f6>Terrain:</Label>
+					<Stat dib f6 ml1 b>{data.terrain}</Stat>
+				</Wrap>
 			</Div>
 		</Div>
 	);

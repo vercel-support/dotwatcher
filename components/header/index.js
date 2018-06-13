@@ -107,10 +107,10 @@ class Banner extends Component {
 					{this.props.raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5><Link route="race" params={{type: 'race', id: this.props.race.sys.id}} passHref prefetch><A no_underline near_black hover_blue>{this.props.race.fields.title}</A></Link></H2> : null}
 					<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 						<Link href="/races" as="/races" passHref prefetch>
-							<A dib mr3 f5 f4_l near_black fw4>Races</A>
+							<A dib mr3 f5 f4_l near_black hover_blue no_underline fw4>Races</A>
 						</Link>
 						<Link route="page" params={{type: 'page', id: '1BgGLGEpckYcmoEE6Cqc0I'}} passHref>
-							<A dib ml3 f5 f4_l near_black fw4>About</A>
+							<A dib ml3 f5 f4_l near_black hover_blue no_underline fw4>About</A>
 						</Link>
 					</Nav>
 				</Header>

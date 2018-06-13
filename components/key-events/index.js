@@ -6,7 +6,10 @@ import Event from './event';
 
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
-const List = styled.ul`${tachyons}`;
+const List = styled.ul`
+	height: 80vh;
+	overflow: scroll;
+${tachyons}`;
 const Toggle = styled.a`${tachyons}`;
 
 class KeyEvents extends Component {
@@ -60,8 +63,8 @@ class KeyEvents extends Component {
 				<List list="true" pa0>
 					{
 						keyEventsToShow
-							.map(post => (
-								<Event key={post.sys.id} data={post.data}/>
+							.map((post, index) => (
+								<Event key={post.sys.id} id={post.sys.id} data={post.data} index={index} skip={this.props.skip}/>
 							))
 					}
 					{
@@ -86,7 +89,8 @@ class KeyEvents extends Component {
 }
 
 KeyEvents.propTypes = {
-	posts: PropTypes.array.isRequired
+	posts: PropTypes.array.isRequired,
+	skip: PropTypes.number.isRequired
 };
 
 export default KeyEvents;

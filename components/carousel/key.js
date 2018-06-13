@@ -50,14 +50,14 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 	const Title = isRaceLive ? <H2Live f4 f3_ns lh_title ma0 near_black relative>{widont(slide.heading)}</H2Live> : <H2 f4 f3_ns lh_title ma0 near_black>{widont(slide.heading)}</H2>;
 
 	return (
-		<Div flex_auto pt3 pb3 pb1_ns pr3 pl4 db no_underline hover_bg_near_white bw1 b__near_white className="cf" onClick={setActiveKey}>
+		<Div flex_auto pt3 pb3 pb1_ns pr3 pl4 db no_underline hover_bg_near_white bw1 b__white className="cf" onClick={setActiveKey}>
 			{Title}
-			<P f6 f5_l measure ma0 lh_copy near_black>
+			<P f6 f5_l measure ma0 mt2 lh_copy near_black>
 				{widont(slide.words)}
 			</P>
 			<Link route="race" params={{type: 'race', id: slide.race.sys.id}} passHref prefetch>
-				<A dib f6 f5_l mt2 mb0>
-					<Span className="highlight" link underline near_black>
+				<A dib f6 f5_l mt2 mb0 no_underline>
+					<Span near_black hover_blue bb bw1>
 						{slide.callToAction ? slide.callToAction : 'Read more'} »
 					</Span>
 				</A>

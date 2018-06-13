@@ -33,7 +33,12 @@ export const withRaces = Page => {
 					description: item.fields.shortDescription,
 					raceID: item.fields.trackleadersRaceId,
 					raceDate: item.fields.raceDate,
-					raceEndDate: item.fields.raceEndDate
+					raceEndDate: item.fields.raceEndDate,
+					location: item.fields.location,
+					length: item.fields.length,
+					riders: item.fields.riders,
+					lastYearsWinner: item.fields.lastYearsWinner,
+					terrain: item.fields.terrain
 				}
 			};
 
