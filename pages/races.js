@@ -4,6 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import slugify from 'slugify';
 
 import Header from '../components/header';
 import Page from '../components/shared/page';
@@ -40,7 +41,7 @@ class App extends Component {
 						</Heading>
 						{
 							this.props.races.map(race => {
-								return moment(race.data.raceEndDate).isAfter() ? <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/> : null;
+								return moment(race.data.raceEndDate).isAfter() ? <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/> : null;
 							})
 						}
 
@@ -49,7 +50,7 @@ class App extends Component {
 						</Heading>
 						{
 							this.props.races.slice(0).reverse().map(race => {
-								return moment(race.data.raceEndDate).isBefore() ? <RacePreview key={race.sys.id} id={race.sys.id} data={race.data}/> : null;
+								return moment(race.data.raceEndDate).isBefore() ? <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/> : null;
 							})
 						}
 					</RaceWrap>

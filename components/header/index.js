@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import slugify from 'slugify';
 import {Link} from '../../routes';
 import Logo from './logo';
 
@@ -104,7 +105,7 @@ class Banner extends Component {
 							<Logo>{this.props.title}</Logo>
 						</Div>
 					</H1>
-					{this.props.raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5><Link route="race" params={{type: 'race', id: this.props.race.sys.id}} passHref prefetch><A no_underline near_black hover_blue>{this.props.race.fields.title}</A></Link></H2> : null}
+					{this.props.raceName ? <H2 dn pa3 flex_ns items_center f3 ma0 lh_solid fw5><Link route="race" params={{type: 'race', id: slugify(this.props.race.fields.title, {lower: true})}} passHref prefetch><A no_underline near_black hover_blue>{this.props.race.fields.title}</A></Link></H2> : null}
 					<Nav ph4 pv3 lh_solid f2 flex_grow flex items_center>
 						<Link href="/races" as="/races" passHref prefetch>
 							<A dib mr3 f5 f4_l near_black hover_blue no_underline fw4>Races</A>

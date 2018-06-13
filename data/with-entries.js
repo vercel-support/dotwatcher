@@ -3,25 +3,46 @@
 import React from 'react';
 import {createClient} from 'contentful';
 import lodash from 'lodash';
+import slugify from 'slugify';
 import vars from './api-vars';
 
 export const WithEntries = Page => {
 	const WithEntries = props => <Page {...props}/>;
 
-	WithEntries.getInitialProps = async ({query: {id, type}}) => {
-		let contenfulQuery;
+	WithEntries.getInitialProps = async ({query: {id}}) => {
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
-		if (id && type === 'race') {
-			contenfulQuery = {
-				content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
-				'fields.category.sys.id': id,
-				order: '-sys.createdAt'
+		const racesQuery = {
+			content_type: vars.contentTypes.categories, // eslint-disable-line camelcase
+			order: 'fields.raceDate'
+		};
+
+		const racesResponse = await client.getEntries(racesQuery);
+		const races = [];
+		for (const item of racesResponse.items) {
+			const entry = {
+				sys: {
+					id: item.sys.id
+				},
+				data: {
+					title: item.fields.title
+				}
 			};
+			races.push(entry);
 		}
+
+		const race = await lodash.find(races, obj => {
+			return slugify(obj.data.title, {lower: true}) === id || obj.sys.id === id;
+		});
+
+		const contenfulQuery = {
+			content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
+			'fields.category.sys.id': race.sys.id,
+			order: '-sys.createdAt'
+		};
 
 		const response = await client.getEntries(contenfulQuery);
 
