@@ -19,8 +19,7 @@ export const WithEntries = Page => {
 			contenfulQuery = {
 				content_type: vars.contentTypes.posts, // eslint-disable-line camelcase
 				'fields.category.sys.id': id,
-				order: '-sys.createdAt',
-				limit: 10
+				order: '-sys.createdAt'
 			};
 		}
 

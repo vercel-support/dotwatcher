@@ -9,10 +9,14 @@ const Title = styled.span`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Item = styled.li`${tachyons}`;
 
-const event = ({data}) => {
+const event = ({data, index, skip, id}) => {
+	let href = `#${slugify(data.title)}`
+	if (index > skip) {
+		href = `/post/${id}`
+	}
 	return (
 		<Item mb4>
-			<A f6 lh_title link near_black hover_blue db underline_hover href={'#' + slugify(data.title)}>
+			<A f6 lh_title link near_black hover_blue db underline_hover href={href}>
 				<DateTime datetime={data.date} type="inline"/>
 				<Title db measure_narrow>
 					{
@@ -25,7 +29,9 @@ const event = ({data}) => {
 };
 
 event.propTypes = {
-	data: PropTypes.object.isRequired
+	data: PropTypes.object.isRequired,
+	index: PropTypes.number.isRequired,
+	skip: PropTypes.number.isRequired
 };
 
 export default event;
