@@ -27,15 +27,18 @@ export const WithEntries = Page => {
 				sys: {
 					id: item.sys.id
 				},
-				data: {
-					title: item.fields.title
-				}
+				fields: item.fields
 			};
+			if (item.fields.icon) {
+				entry.fields.icon = lodash.find(racesResponse.includes.Asset, obj => {
+					return obj.sys.id === item.fields.icon.sys.id;
+				});
+			}
 			races.push(entry);
 		}
 
 		const race = await lodash.find(races, obj => {
-			return slugify(obj.data.title, {lower: true}) === id || obj.sys.id === id;
+			return slugify(obj.fields.title, {lower: true}) === id || obj.sys.id === id;
 		});
 
 		const contenfulQuery = {
@@ -78,11 +81,11 @@ export const WithEntries = Page => {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 			posts,
 			totalPosts,
-			trackleadersID: posts[0].data.categories[0].fields.trackleadersRaceId,
-			raceName: posts[0].data.categories[0].fields.title,
-			raceID: posts[0].data.categories[0].sys.id,
-			race: posts[0].data.categories[0],
-			raceImage: posts[0].data.categories[0].fields.icon.fields.file.url
+			race: race,
+			raceID: race.sys.id,
+			raceName: race.fields.title,
+			trackleadersID: race.fields.trackleadersRaceId,
+			raceImage: race.fields.icon.fields.file.url
 		};
 	};
 
