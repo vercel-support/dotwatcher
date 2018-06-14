@@ -46,9 +46,9 @@ class topRiders extends React.Component {
 			.get(leaderboardUrl)
 			.query({
 				'access_token': process.env.SCRAPEY_API_KEY,
-				'order': 'timestamp DESC',
+				'filter[order]': 'timestamp DESC',
 				'filter[where][url]': `http://trackleaders.com/${this.props.trackleadersID}`,
-				'limit': 1
+				'filter[limit]': 1
 			})
 			.end((err, res) => {
 				if (err) {
