@@ -5,7 +5,7 @@ import tachyons from 'styled-components-tachyons';
 import moment from 'moment';
 import widont from '../../utils/widont';
 import slugify from 'slugify';
-import {Link} from '../../routes';
+import Link from 'next/link';
 
 const onAir = keyframes`
   0%, 100% {
@@ -56,7 +56,7 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 			<P f6 f5_l measure ma0 mt2 lh_copy near_black>
 				{widont(slide.words)}
 			</P>
-			<Link route="race" params={{type: 'race', id: slugify(slide.race.data.title, {lower: true})}} passHref prefetch>
+			<Link as={`race/${slugify(slide.race.data.title, {lower: true})}`} href={`race?id=${slide.race.sys.id}`} passHref prefetch>
 				<A dib f6 f5_l mt2 mb0 no_underline>
 					<Span near_black hover_blue bb bw1>
 						{slide.callToAction ? slide.callToAction : 'Read more'} »
