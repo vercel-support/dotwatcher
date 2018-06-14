@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import slugify from '../../utils/slugify';
+import quotes from '../../utils/quotes';
 import DateTime from '../datetime';
 
 const Title = styled.span`${tachyons}`;
@@ -20,7 +21,7 @@ const event = ({data, index, skip, id}) => {
 				<DateTime datetime={data.date} type="inline"/>
 				<Title db measure_narrow>
 					{
-						data.title.split(' ').length > 14 ? `${data.title.split(' ').splice(0, 14).join(' ')}...` : data.title
+						quotes(data.title.split(' ').length > 14 ? `${data.title.split(' ').splice(0, 14).join(' ')}...` : data.title)
 					}
 				</Title>
 			</A>

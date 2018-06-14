@@ -10,6 +10,7 @@ import BodyImage from '../image/markdown';
 import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
 import widont from '../../utils/widont';
+import quotes from '../../utils/quotes';
 
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`
@@ -36,7 +37,7 @@ const Long = ({data, id}) => {
 			{ data.image ? <Image data={data.image.fields}/> : null }
 			<H1 f2 lh_title mt0>
 				<Link route="post" params={{type: 'post', id, slug: slugify(data.title)}} passHref prefetch>
-					<A link near_black hover_blue>{widont(data.title)}</A>
+					<A link near_black hover_blue>{quotes(widont(data.title))}</A>
 				</Link>
 			</H1>
 			<Div lh_copy pb3>
