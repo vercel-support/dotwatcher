@@ -18,7 +18,9 @@ class Iframe extends Component {
 
 	componentDidMount() {
 		const iframe = ReactDOM.findDOMNode(this.refs.iframe);
-		iframe.addEventListener('load', this.props.onLoad);
+		if (iframe) {
+			iframe.addEventListener('load', this.props.onLoad);
+		}
 	}
 
 	render() {
