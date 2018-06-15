@@ -5,7 +5,6 @@ import {createClient} from 'contentful';
 import request from 'superagent';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-import vars from '../../data/api-vars';
 
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
@@ -17,7 +16,7 @@ class topRiders extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			leaderboard: {}
+			leaderboard: []
 		};
 	}
 
@@ -28,17 +27,6 @@ class topRiders extends React.Component {
 	}
 
 	async componentDidMount() {
-		this.state.leaderboard = [];
-		const client = createClient({
-			space: vars.space,
-			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-		});
-
-		const contenfulQuery = {
-			content_type: 'leaderboard', // eslint-disable-line camelcase
-			'fields.race.sys.id': this.props.raceID
-		};
-
 		const leaderboardUrl = `https://dotwatcher.scrapey.xyz/api/pages`;
 
 		let leaderboard = [];
@@ -74,29 +62,6 @@ class topRiders extends React.Component {
 
 				this.setStateAsync({leaderboard});
 			});
-
-		if (this.state.leaderboard.length === 0) {
-			leaderboard = [];
-			const response = await client.getEntries(contenfulQuery);
-			let leaderboard = {};
-			for (const item of response.items) {
-				if (item.fields.leaders) {
-					leaderboard = item.fields.leaders;
-				} else {
-					leaderboard = [
-						{
-							sys: {
-								id: 0
-							},
-							fields: {
-								name: 'No report yet'
-							}
-						}
-					];
-				}
-			}
-			await this.setStateAsync({leaderboard});
-		}
 	}
 
 	render() {
