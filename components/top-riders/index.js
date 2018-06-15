@@ -66,7 +66,7 @@ class topRiders extends React.Component {
 
 	render() {
 		return (
-			<TopRidersWrap fl w_50 w_100_ns pr3 pr0_ns mb4>
+			<TopRidersWrap fl w_100 pr3 pr0_ns mb4>
 				<Header>
 					<H2 ttu tracked f5 mt0 pb1 bb bw1 b__light_gray measure_narrow>
 						Leaderboard
