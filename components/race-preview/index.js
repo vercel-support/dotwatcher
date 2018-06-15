@@ -51,26 +51,46 @@ const RacePreview = ({data, id, slug}) => {
 						Fact file
 					</H2>
 				</Header>
-				<Wrap>
-					<Label dib f6>Location:</Label>
-					<Stat dib f6 ml1 b>{data.location}</Stat>
-				</Wrap>
-				<Wrap>
-					<Label dib f6>Length:</Label>
-					<Stat dib f6 ml1 b>{data.length}</Stat>
-				</Wrap>
-				<Wrap>
-					<Label dib f6>Riders:</Label>
-					<Stat dib f6 ml1 b>{data.riders}</Stat>
-				</Wrap>
-				<Wrap>
-					<Label dib f6>Last year’s winner:</Label>
-					<Stat dib f6 ml1 b>{data.lastYearsWinner}</Stat>
-				</Wrap>
-				<Wrap>
-					<Label dib f6>Terrain:</Label>
-					<Stat dib f6 ml1 b>{data.terrain}</Stat>
-				</Wrap>
+				{
+					data.location ? (
+						<Wrap>
+							<Label dib f6>Location:</Label>
+							<Stat dib f6 ml1 b>{data.location}</Stat>
+						</Wrap>
+					) : null
+				}
+				{
+					data.length ? (
+						<Wrap>
+							<Label dib f6>Length:</Label>
+							<Stat dib f6 ml1 b>{data.length}</Stat>
+						</Wrap>
+					) : null
+				}
+				{
+					data.riders ? (
+						<Wrap>
+							<Label dib f6>Riders:</Label>
+							<Stat dib f6 ml1 b>{data.riders}</Stat>
+						</Wrap>
+					) : null
+				}
+				{
+					data.lastYearsWinner ? (
+						<Wrap>
+							<Label dib f6>Last year’s winner:</Label>
+							<Stat dib f6 ml1 b>{data.lastYearsWinner}</Stat>
+						</Wrap>
+					) : null
+				}
+				{
+					data.terrain ? (
+						<Wrap>
+							<Label dib f6>Terrain:</Label>
+							<Stat dib f6 ml1 b>{data.terrain}</Stat>
+						</Wrap>
+					) : null
+				}
 			</Div>
 		</Div>
 	);
