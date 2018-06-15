@@ -45,7 +45,10 @@ const Long = ({data, id}) => {
 					source={data.body}
 					plugins={[shortcodes]}
 					escapeHtml={false}
-					renderers={{shortcode: Embed, image: BodyImage}}
+					renderers={{
+						shortcode: Embed,
+						image: BodyImage
+					}}
 				/>
 			</Div>
 		</React.Fragment>
