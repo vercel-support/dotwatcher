@@ -21,7 +21,8 @@ class MapContainer extends Component {
 		this.state = {
 			showMap: false,
 			inBrowser: false,
-			width: 320
+			width: 320,
+			loading: true
 		};
 		this.toggleMap = this.toggleMap.bind(this);
 	}
@@ -32,7 +33,8 @@ class MapContainer extends Component {
 			this.setState({
 				showMap: window.innerWidth >= 1024,
 				width: window.innerWidth,
-				inBrowser: true
+				inBrowser: true,
+				loading: true
 			});
 		}
 	}
@@ -58,6 +60,16 @@ class MapContainer extends Component {
 		window.removeEventListener('resize', this.updateWindowWidth.bind(this));
 	}
 
+	shouldComponentUpdate() {
+		return this.state.loading
+	}
+
+	iframeLoaded() {
+		this.setState(
+			prevState => ({...prevState, loading: false})
+		);
+	}
+
 	render() {
 		const DesktopWrapper = styled.div`
 			top: ${this.props.offset ? 'inherit' : 0};
@@ -70,7 +82,7 @@ class MapContainer extends Component {
 		if (this.state.inBrowser && this.state.width >= 1024) {
 			content = (
 				<DesktopWrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
-					<Iframe raceID={this.props.raceID} offset={this.props.offset}/>
+					<Iframe onLoad={this.iframeLoaded.bind(this)} raceID={this.props.raceID} offset={this.props.offset}/>
 					<Tips absolute_l z_2 tc>
 						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>Click here for tracker tips</A></Link>
 					</Tips>
@@ -91,13 +103,11 @@ class MapContainer extends Component {
 }
 
 MapContainer.propTypes = {
-	raceID: PropTypes.string,
-	offset: PropTypes.bool
+	raceID: PropTypes.string
 };
 
 MapContainer.defaultProps = {
-	raceID: '',
-	offset: false
+	raceID: ''
 };
 
 export default MapContainer;
