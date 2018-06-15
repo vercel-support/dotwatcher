@@ -94,7 +94,11 @@ class KeyEvents extends Component {
 
 KeyEvents.propTypes = {
 	posts: PropTypes.array.isRequired,
-	skip: PropTypes.number.isRequired
+	skip: PropTypes.number
+};
+
+KeyEvents.defaultProps = {
+	skip: 5
 };
 
 export default KeyEvents;

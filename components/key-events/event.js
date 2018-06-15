@@ -28,8 +28,8 @@ const event = ({data, id, loaded}) => {
 
 event.propTypes = {
 	data: PropTypes.object.isRequired,
-	index: PropTypes.number.isRequired,
-	skip: PropTypes.number.isRequired
+	id: PropTypes.string.isRequired,
+	loaded: PropTypes.bool.isRequired
 };
 
 export default event;
