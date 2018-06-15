@@ -10,11 +10,8 @@ const Title = styled.span`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Item = styled.li`${tachyons}`;
 
-const event = ({data, index, skip, id}) => {
-	let href = `#${slugify(data.title)}`
-	if (index > skip) {
-		href = `/post/${id}`
-	}
+const event = ({data, id, loaded}) => {
+	const href = loaded ? `#${slugify(data.title)}` : `/post/${id}`;
 	return (
 		<Item mb4>
 			<A f6 lh_title link near_black hover_blue db underline_hover href={href}>

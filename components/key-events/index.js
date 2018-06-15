@@ -50,7 +50,11 @@ class KeyEvents extends Component {
 				top: var(--spacing-large);
 			}
 		${tachyons}`;
-		const keyEvents = this.props.posts.filter(post => post.data.keyEvent === true);
+		const posts = this.props.posts.map((post, index) => {
+			post.loaded = index <= this.props.skip
+			return post
+		})
+		const keyEvents = posts.filter(post => post.data.keyEvent === true);
 		const lessKeyEvents = keyEvents.slice(0, 5);
 		const keyEventsToShow = this.state.showMore ? keyEvents : lessKeyEvents;
 		return (
@@ -63,8 +67,8 @@ class KeyEvents extends Component {
 				<List list="true" pa0>
 					{
 						keyEventsToShow
-							.map((post, index) => (
-								<Event key={post.sys.id} id={post.sys.id} data={post.data} index={index} skip={this.props.skip}/>
+							.map(post => (
+								<Event key={post.sys.id} id={post.sys.id} data={post.data} loaded={post.loaded}/>
 							))
 					}
 					{
