@@ -26,7 +26,7 @@ const Block = ({block}) => {
 				<ImageWrap fl w_20>
 					{ block.image ? <Img mw_100 src={block.image.fields.file.url} alt={block.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
 				</ImageWrap>
-				<H2 f3 ma0 mb4>{widont(block.heading)}</H2>
+				<H2 f3 fw6 ma0 mb4>{widont(block.heading)}</H2>
 			</WordsWrap>
 			<WordsWrap fl_ns pl3 w_100 w_75_m w_50_l>
 				<Div fl measure lh_copy f4 mb4>

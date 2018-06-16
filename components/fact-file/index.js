@@ -13,7 +13,7 @@ const Stat = styled.dt`${tachyons}`;
 const FactFile = ({race}) => (
 	<FactFileWrap fl w_50 w_100_ns pr3 pr0_ns mb4>
 		<Header>
-			<H2 ttu tracked f5 mt0 pb1 bb bw1 b__light_gray measure_narrow>
+			<H2 ttu tracked f5 fw6 mt0 pb1 bb bw1 b__light_gray measure_narrow>
 				Fact file
 			</H2>
 		</Header>
@@ -21,7 +21,7 @@ const FactFile = ({race}) => (
 			race.fields.location ? (
 				<Wrap>
 					<Label dib f6>Location:</Label>
-					<Stat dib f6 ml1 b>{race.fields.location}</Stat>
+					<Stat dib f6 ml1 fw6>{race.fields.location}</Stat>
 				</Wrap>
 			) : null
 		}
@@ -29,7 +29,7 @@ const FactFile = ({race}) => (
 			race.fields.length ? (
 				<Wrap>
 					<Label dib f6>Length:</Label>
-					<Stat dib f6 ml1 b>{race.fields.length}</Stat>
+					<Stat dib f6 ml1 fw6>{race.fields.length}</Stat>
 				</Wrap>
 			) : null
 		}
@@ -37,7 +37,7 @@ const FactFile = ({race}) => (
 			race.fields.riders ? (
 				<Wrap>
 					<Label dib f6>Riders:</Label>
-					<Stat dib f6 ml1 b>{race.fields.riders}</Stat>
+					<Stat dib f6 ml1 fw6>{race.fields.riders}</Stat>
 				</Wrap>
 			) : null
 		}
@@ -45,7 +45,7 @@ const FactFile = ({race}) => (
 			race.fields.lastYearsWinner ? (
 				<Wrap>
 					<Label dib f6>Last year’s winner:</Label>
-					<Stat dib f6 ml1 b>{race.fields.lastYearsWinner}</Stat>
+					<Stat dib f6 ml1 fw6>{race.fields.lastYearsWinner}</Stat>
 				</Wrap>
 			) : null
 		}
@@ -53,7 +53,7 @@ const FactFile = ({race}) => (
 			race.fields.terrain ? (
 				<Wrap>
 					<Label dib f6>Terrain:</Label>
-					<Stat dib f6 ml1 b>{race.fields.terrain}</Stat>
+					<Stat dib f6 ml1 fw6>{race.fields.terrain}</Stat>
 				</Wrap>
 			) : null
 		}

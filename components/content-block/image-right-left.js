@@ -40,7 +40,7 @@ const Block = ({block}) => {
 				{ block.image ? <Img mw_100 src={block.image.fields.file.url} alt={block.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
 			</ImageWrap>
 			<WordsWrap fl w_100 w_60_m w_50_l>
-				<H2 f2 ma0>{block.heading}</H2>
+				<H2 f2 fw6 ma0>{block.heading}</H2>
 				<Div fl measure lh_copy f4>
 					<ReactMarkdown
 						source={block.words}

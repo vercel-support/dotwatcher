@@ -7,8 +7,10 @@ import Event from './event';
 const H2 = styled.h2`${tachyons}`;
 const Header = styled.header`${tachyons}`;
 const List = styled.ul`
+@media screen and (min-width: 48em) {
 	height: 80vh;
 	overflow: scroll;
+}
 ${tachyons}`;
 const Toggle = styled.a`${tachyons}`;
 
@@ -55,12 +57,13 @@ class KeyEvents extends Component {
 			return post
 		})
 		const keyEvents = posts.filter(post => post.data.keyEvent === true);
-		const lessKeyEvents = keyEvents.slice(0, 5);
+		const count = this.state.width >= 1024 ? 5 : 3;
+		const lessKeyEvents = keyEvents.slice(0, count);
 		const keyEventsToShow = this.state.showMore ? keyEvents : lessKeyEvents;
 		return (
 			<Div fl w_50 w_100_ns pl3 pl0_ns id="sticky">
 				<Header>
-					<H2 ttu tracked f5 bb bw1 pb1 b__light_gray measure_narrow mt0 mt3_ns>
+					<H2 ttu tracked f5 fw6 bb bw1 pb1 b__light_gray measure_narrow mt0 mt3_ns>
 						Key moments
 					</H2>
 				</Header>

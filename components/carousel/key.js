@@ -48,7 +48,7 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 		}
 	${tachyons}`;
 	const isRaceLive = moment().isBetween(moment(slide.race.data.raceDate), moment(slide.race.data.raceEndDate));
-	const Title = isRaceLive ? <H2Live f4 f3_ns lh_title ma0 near_black relative>{widont(slide.heading)}</H2Live> : <H2 f4 f3_ns lh_title ma0 near_black>{widont(slide.heading)}</H2>;
+	const Title = isRaceLive ? <H2Live f4 f3_ns fw6 lh_title ma0 near_black relative>{widont(slide.heading)}</H2Live> : <H2 f4 f3_ns fw6 lh_title ma0 near_black>{widont(slide.heading)}</H2>;
 
 	return (
 		<Div flex_auto pt3 pb3 pb1_ns pr3 pl4 db no_underline hover_bg_near_white bw1 b__white className="cf" onClick={setActiveKey}>

@@ -68,11 +68,11 @@ class topRiders extends React.Component {
 		return (
 			<TopRidersWrap fl w_100 pr3 pr0_ns mb4>
 				<Header>
-					<H2 ttu tracked f5 mt0 pb1 bb bw1 b__light_gray measure_narrow>
+					<H2 ttu tracked f5 fw6 mt0 pb1 bb bw1 b__light_gray measure_narrow>
 						Leaderboard
 					</H2>
 				</Header>
-				<Div>
+				<Div measure_narrow>
 					{
 						Object.keys(this.state.leaderboard).length !== 0 ? this.state.leaderboard.map(rider => (
 							<Rider key={rider.sys.id} rider={rider.fields}/>

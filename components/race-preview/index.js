@@ -34,7 +34,7 @@ const RacePreview = ({data, id, slug}) => {
 			<Div fl_ns ph3 w_50_m w_60_l>
 				<Link route="race" params={{type: 'race', id: slug}} passHref prefetch>
 					<A link near_black>
-						<H1 f2 ma0 lh_title link hover_blue>{widont(data.title)}</H1>
+						<H1 f2 fw6 ma0 lh_title link hover_blue>{widont(data.title)}</H1>
 						<H3 ma0 mt2 f6 fw4><Span fw6>Start:</Span> {moment(data.raceDate).format('LLLL')}</H3>
 						<P measure_wide lh_copy>{widont(data.description)}</P>
 						<Span dib f6 ttu fw5 tracked ba bw1 pv2 ph3 hover_blue>
@@ -47,7 +47,7 @@ const RacePreview = ({data, id, slug}) => {
 			</Div>
 			<Div fl_ns ph3 w_30_m w_20_l>
 				<Header>
-					<H2 ttu tracked f5 mt4 mt2_ns pb1 bb bw1 b__light_gray measure_narrow>
+					<H2 ttu tracked f5 fw6 mt4 mt2_ns pb1 bb bw1 b__light_gray measure_narrow>
 						Fact file
 					</H2>
 				</Header>
@@ -55,7 +55,7 @@ const RacePreview = ({data, id, slug}) => {
 					data.location ? (
 						<Wrap>
 							<Label dib f6>Location:</Label>
-							<Stat dib f6 ml1 b>{data.location}</Stat>
+							<Stat dib f6 ml1 fw6 >{data.location}</Stat>
 						</Wrap>
 					) : null
 				}
@@ -63,7 +63,7 @@ const RacePreview = ({data, id, slug}) => {
 					data.length ? (
 						<Wrap>
 							<Label dib f6>Length:</Label>
-							<Stat dib f6 ml1 b>{data.length}</Stat>
+							<Stat dib f6 ml1 fw6>{data.length}</Stat>
 						</Wrap>
 					) : null
 				}
@@ -71,7 +71,7 @@ const RacePreview = ({data, id, slug}) => {
 					data.riders ? (
 						<Wrap>
 							<Label dib f6>Riders:</Label>
-							<Stat dib f6 ml1 b>{data.riders}</Stat>
+							<Stat dib f6 ml1 fw6>{data.riders}</Stat>
 						</Wrap>
 					) : null
 				}
@@ -79,7 +79,7 @@ const RacePreview = ({data, id, slug}) => {
 					data.lastYearsWinner ? (
 						<Wrap>
 							<Label dib f6>Last year’s winner:</Label>
-							<Stat dib f6 ml1 b>{data.lastYearsWinner}</Stat>
+							<Stat dib f6 ml1 fw6>{data.lastYearsWinner}</Stat>
 						</Wrap>
 					) : null
 				}
@@ -87,7 +87,7 @@ const RacePreview = ({data, id, slug}) => {
 					data.terrain ? (
 						<Wrap>
 							<Label dib f6>Terrain:</Label>
-							<Stat dib f6 ml1 b>{data.terrain}</Stat>
+							<Stat dib f6 ml1 fw6>{data.terrain}</Stat>
 						</Wrap>
 					) : null
 				}

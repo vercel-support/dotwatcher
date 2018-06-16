@@ -39,8 +39,8 @@ class ContentPage extends React.Component {
 					title="dotwatcher.cc"
 				/>
 				<Wrapper mt4 ph4>
-					<Div bl bw3 b__light_blue mt5_l mb4 mb6_l pl4>
-						<H1 f2 f1_ns lh_solid mt0 mb3>
+					<Div mt5_l mb4 mb6_l pl4>
+						<H1 f2 f1_ns fw6 lh_solid mt0 mb4>
 							{this.props.page.title}
 						</H1>
 						<Div f3 measure lh_copy>

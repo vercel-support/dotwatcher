@@ -12,8 +12,8 @@ const Footer = () => {
 		<Div fl w_100 bg_near_white mt5 className="cf">
 			<Div pv3 mh6_l>
 				<Div fl w_100 w_50_ns ph3 mb4>
-					<H2 f4 ttu tracked fw6>About</H2>
-					<P lh_copy measure dark_gray>DotWatcher is here to showcase the best of long distance self-supported bike racing.</P>
+					<H2 f3 mb2 fw6>About</H2>
+					<P lh_copy measure_narrow dark_gray>DotWatcher is here to showcase the best of long distance self-supported bike racing.</P>
 					<A link near_black grow hover_blue h2 w2 fl mr3 href="https://www.instagram.com/dotwatcher.cc/" title="Follow us on instagram">
 						<svg data-icon="instagram" viewBox="0 0 256 256" style={{fill:'currentcolor'}}>
 							<title>instagram icon</title>
@@ -34,11 +34,11 @@ const Footer = () => {
 					</A>
 				</Div>
 				<Div fl w_100 w_25_ns ph3 mb4>
-					<H2 f4 ttu tracked fw6>Partner</H2>
+					<H2 f3 mb2 fw6>Partner</H2>
 					<P lh_copy measure_narrow dark_gray>If you have a race you would like us to cover email us at <A link near_black underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A></P>
 				</Div>
 				<Div fl w_100 w_25_ns ph3 mb4>
-					<H2 f4 ttu tracked fw6>Contact</H2>
+					<H2 f3 mb2 fw6>Contact</H2>
 					<P lh_copy measure_narrow dark_gray>If you would like to get in touch email us at <A link near_black underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A></P>
 				</Div>
 			</Div>

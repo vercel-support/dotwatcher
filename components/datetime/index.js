@@ -7,7 +7,7 @@ const InlineTimeAgo = styled(TimeAgo)`
 	display: inline-block;
 	margin-bottom: var(--spacing-extra-small);
 	font-size: .875rem;
-	font-weight: bold;
+	font-weight: 600;
 	text-decoration: none;
 `;
 
