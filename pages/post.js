@@ -7,6 +7,7 @@ import tachyons from 'styled-components-tachyons';
 import Header from '../components/header';
 import {Link} from '../routes';
 import Page from '../components/shared/page';
+import SocialIcons from '../components/shared/social-icons';
 import Post from '../components/post';
 import {withEntry} from '../data/with-entry';
 import MapContainer from '../components/map-container';
@@ -16,6 +17,8 @@ const PostWrapper = styled.div`
 	margin-left: 40%;
 }
 ${tachyons}`;
+const P = styled.p`${tachyons}`;
+const Span = styled.span`${tachyons}`;
 const A = styled.a`${tachyons}`;
 
 class PostPage extends React.Component {
@@ -39,6 +42,12 @@ class PostPage extends React.Component {
 						<A near_black f6 href="#">« Back to {this.props.posts[0].data.categories[0].fields.title} feed</A>
 					</Link>
 					<Post key={this.props.posts[0].sys.id} id={this.props.posts[0].sys.id} data={this.props.posts[0].data}/>
+					<P measure lh_copy f6 silver>
+						If you would like to get in touch email us at <A link gray underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A>
+					</P>
+					<P measure f6 silver>
+						<Span silver dib mr2 v_btm>Follow along at</Span> <SocialIcons size="1" colour="gray"/>
+					</P>
 				</PostWrapper>
 			</Page>
 		);

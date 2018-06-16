@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import {withRouter} from 'next/router';
 import Button from '../components/shared/button';
+import SocialIcons from '../components/shared/social-icons';
 import Header from '../components/header';
 import KeyEvents from '../components/key-events';
 import MapContainer from '../components/map-container';
@@ -21,6 +22,7 @@ import {WithEntries} from '../data/with-entries';
 
 const H1 = styled.h1`${tachyons}`;
 const P = styled.p`${tachyons}`;
+const Span = styled.span`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const KeyEventsWrapper = styled.div`
 @media screen and (max-width: 30em) {
@@ -202,6 +204,9 @@ class Race extends React.Component {
 					{ morePosts }
 					<P measure lh_copy f6 silver>
 						If you would like to get in touch email us at <A link gray underline hover_blue href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A>
+					</P>
+					<P measure f6 silver>
+						<Span silver dib mr2 v_btm>Follow along at</Span> <SocialIcons size="1" colour="gray"/>
 					</P>
 				</Wrapper>
 			</Page>
