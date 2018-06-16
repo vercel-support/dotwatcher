@@ -5,13 +5,23 @@
 		"dotwatcher.cc",
 		"dotwatcher"
 	],
+	"scale": {
+		"bru1": {
+			"min": 1,
+			"max": "auto"
+		},
+		"sfo1": {
+			"min": 1,
+			"max": "auto"
+		}
+	},
 	"env": {
-    "CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
-    "PUSHER_APP_ID": "@pusher-app-id",
-    "PUSHER_KEY": "@pusher-key",
-    "PUSHER_SECRET": "@pusher-secret",
-    "MAILCHIMP": "@mailchimp",
+		"CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
+		"PUSHER_APP_ID": "@pusher-app-id",
+		"PUSHER_KEY": "@pusher-key",
+		"PUSHER_SECRET": "@pusher-secret",
+		"MAILCHIMP": "@mailchimp",
 		"ANALYTICS": "@analytics",
 		"SCRAPEY_API_KEY": "@scrapey-api-key"
-  }
+	}
 }
