@@ -33,7 +33,7 @@ class Iframe extends Component {
 		return (
 			<Container bg_near_white>
 				{
-					this.props.raceID ? <Map ref="iframe" id="trackleaders-iframe" w_100 h_100 ba bw0 src={`https://trackleaders.com/${this.props.raceID}f.php`} frameborder="0" {...this.props}/> : <Placeholder raceID="No race found" w_100 h_100/>
+					this.props.raceID ? <Map ref="iframe" id="trackleaders-iframe" w_100 h_100 ba bw0 src={`https://trackleaders.com/${this.props.raceID}f.php`} frameborder="0" {...this.props.onLoad}/> : <Placeholder raceID="No race found" w_100 h_100/>
 				}
 			</Container>
 		);
@@ -42,12 +42,12 @@ class Iframe extends Component {
 
 Iframe.propTypes = {
 	raceID: PropTypes.string,
-	offset: PropTypes.number
+	offset: PropTypes.bool
 };
 
 Iframe.defaultProps = {
 	raceID: '',
-	offset: 0
+	offset: false
 };
 
 export default Iframe;

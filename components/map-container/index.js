@@ -103,11 +103,13 @@ class MapContainer extends Component {
 }
 
 MapContainer.propTypes = {
-	raceID: PropTypes.string
+	raceID: PropTypes.string,
+	offset: PropTypes.bool
 };
 
 MapContainer.defaultProps = {
-	raceID: ''
+	raceID: '',
+	offset: false
 };
 
 export default MapContainer;
