@@ -37,6 +37,7 @@ export const withRaces = Page => {
 					location: item.fields.location,
 					length: item.fields.length,
 					riders: item.fields.riders,
+					winnerLabel: item.fields.winnerLabel,
 					lastYearsWinner: item.fields.lastYearsWinner,
 					terrain: item.fields.terrain
 				}

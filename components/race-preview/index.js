@@ -78,7 +78,11 @@ const RacePreview = ({data, id, slug}) => {
 				{
 					data.lastYearsWinner ? (
 						<Wrap>
-							<Label dib f6>Last year’s winner:</Label>
+							<Label dib f6>
+								{
+									data.winnerLabel ? `${data.winnerLabel}:` : `Last year’s winner:`
+								}
+							</Label>
 							<Stat dib f6 ml1 fw6>{data.lastYearsWinner}</Stat>
 						</Wrap>
 					) : null
