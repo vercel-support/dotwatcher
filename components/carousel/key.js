@@ -51,7 +51,7 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 	const Title = isRaceLive ? <H2Live f4 f3_ns fw6 lh_title ma0 near_black relative>{widont(slide.heading)}</H2Live> : <H2 f4 f3_ns fw6 lh_title ma0 near_black>{widont(slide.heading)}</H2>;
 
 	return (
-		<Div flex_auto pt3 pb3 pb1_ns pr3 pl4 db no_underline hover_bg_near_white bw1 b__white className="cf" onClick={setActiveKey}>
+		<Div flex_auto pv3 pr3 pl4 db no_underline hover_bg_near_white bw1 b__white className="cf" onClick={setActiveKey} onMouseOver={setActiveKey}>
 			{Title}
 			<P f6 f5_l measure ma0 mt2 lh_copy near_black>
 				{widont(slide.words)}
