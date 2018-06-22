@@ -33,7 +33,7 @@ const Block = ({block}) => {
 	if (block.heading) {
 		heading = (
 			<Header measure_wide>
-				<H2 f2 fw6 ma0 mb4>{widont(block.heading)}</H2>
+				<H2 f2 fw6 ma0 mb3 lh_title>{widont(block.heading)}</H2>
 			</Header>
 		)
 	}

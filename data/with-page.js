@@ -54,6 +54,12 @@ export const withPage = Page => {
 				blocks: []
 			};
 
+			if (pageResponse.items[0].fields.bannerImage) {
+				page.image = lodash.find(pageResponse.includes.Asset, obj => {
+					return obj.sys.id === pageResponse.items[0].fields.bannerImage.sys.id;
+				});
+			}
+
 			if (pageResponse.items[0].fields.contentBlock) {
 				for (const contentBlock of pageResponse.items[0].fields.contentBlock) {
 					const block = {

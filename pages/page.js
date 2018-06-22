@@ -12,7 +12,6 @@ import Footer from '../components/footer';
 import ContentBlock from '../components/content-block';
 import Carousel from '../components/carousel';
 import Page from '../components/shared/page';
-import Wrapper from '../components/shared/wrapper';
 import {withPage} from '../data/with-page';
 
 const Div = styled.div`
@@ -24,6 +23,17 @@ const H1 = styled.h1`${tachyons}`;
 
 class ContentPage extends React.Component {
 	render() {
+		const StyledWrapper = styled.div`
+			background-image: ${this.props.page.image ? `url(${this.props.page.image.fields.file.url})` : 'none' };
+			background-repeat: no-repeat;
+			background-size: cover;
+			padding: ${this.props.page.image ? `var(--spacing-extra-extra-large)` : ``} 0;
+
+			&> div {
+				background-color: rgba(255, 255, 255, .3)
+			}
+		${tachyons}`
+
 		const carouselSlides = this.props.page.blocks.filter(block => block.layout === 'Carousel slide');
 		const carousel = carouselSlides.length ? <Carousel slides={carouselSlides}/> : null;
 		const blocksWithoutSlides = this.props.page.blocks.filter(block => block.layout !== 'Carousel slide');
@@ -38,8 +48,8 @@ class ContentPage extends React.Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Wrapper mt4 ph4>
-					<Div mt5_l mb4 pl4>
+				<StyledWrapper fl ph4 w_100>
+					<Div fl mt5_l pa4>
 						<H1 f2 f1_ns fw6 lh_solid mt0 mb4>
 							{this.props.page.title}
 						</H1>
@@ -51,7 +61,7 @@ class ContentPage extends React.Component {
 							/>
 						</Div>
 					</Div>
-				</Wrapper>
+				</StyledWrapper>
 				<Div fl w_100 mt3 mt4_l cf>
 					{carousel}
 					{
