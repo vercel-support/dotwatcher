@@ -16,7 +16,7 @@ const Image = ({data}) => {
 				alt={data.title}
 				src={`${data.file.url}?w=400fm=jpg&q=60`}
 				srcSet={`${data.file.url}?w=400&fm=jpg&q=60 768w,
-					${data.file.url}?w=600&fm=jpg&q=60 1024w`}
+					${data.file.url}?w=800&fm=jpg&q=60 1024w`}
 				sizes="200vw"
 			/>
 			{
