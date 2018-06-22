@@ -30,7 +30,7 @@ class ContentPage extends React.Component {
 			padding: ${this.props.page.image ? `var(--spacing-extra-extra-large)` : ``} 0;
 
 			&> div {
-				background-color: rgba(255, 255, 255, .3)
+				background-color: rgba(255, 255, 255, .66)
 			}
 		${tachyons}`
 
@@ -48,8 +48,8 @@ class ContentPage extends React.Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<StyledWrapper fl ph4 w_100>
-					<Div fl mt5_l pa4>
+				<StyledWrapper fl w_100>
+					<Div fl mt5_ns pa3 pa4_ns pl5_ns>
 						<H1 f2 f1_ns fw6 lh_solid mt0 mb4>
 							{this.props.page.title}
 						</H1>
