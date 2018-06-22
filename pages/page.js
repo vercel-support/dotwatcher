@@ -13,6 +13,7 @@ import ContentBlock from '../components/content-block';
 import Carousel from '../components/carousel';
 import Page from '../components/shared/page';
 import {withPage} from '../data/with-page';
+import widont from '../utils/widont';
 
 const Div = styled.div`
 	p {
@@ -51,7 +52,9 @@ class ContentPage extends React.Component {
 				<StyledWrapper fl w_100>
 					<Div fl mt5_ns pa3 pa4_ns pl5_ns>
 						<H1 f2 f1_ns fw6 lh_solid mt0 mb4>
-							{this.props.page.title}
+							{
+								widont(this.props.page.title)
+							}
 						</H1>
 						<Div f4 f3_ns measure lh_copy>
 							<ReactMarkdown
