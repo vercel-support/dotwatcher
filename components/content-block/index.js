@@ -33,6 +33,8 @@ const ContentBlock = ({block}) => {
 		return <ImageRightLeft block={block}/>;
 	}
 	if (block.layout === 'Image') {
+		const imageData = block.image.fields
+		imageData.description = block.words
 		return (
 			<Div ml5>
 				<Image data={block.image.fields}/>
