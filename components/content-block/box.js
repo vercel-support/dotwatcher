@@ -11,12 +11,12 @@ const Div = styled.div`
 	}
 ${tachyons}`;
 const H2 = styled.h2`
-&:before {
+&:after {
 	content: '';
 	width: 50%;
 	border-top: .125rem solid white;
 	position: absolute;
-	top: -1rem;
+	bottom: -1rem;
 	left: 25%;
 	height: 25%;
 }
