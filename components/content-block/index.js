@@ -36,7 +36,7 @@ const ContentBlock = ({block}) => {
 		const imageData = block.image.fields
 		imageData.description = block.words
 		return (
-			<Div ml5>
+			<Div mh3 mh4_m ml5_l>
 				<Image data={block.image.fields}/>
 			</Div>
 		);

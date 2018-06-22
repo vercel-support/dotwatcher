@@ -33,14 +33,14 @@ const Block = ({block}) => {
 	if (block.heading) {
 		heading = (
 			<Header measure_wide>
-				<H2 f2 fw6 ma0 mb3 lh_title>{widont(block.heading)}</H2>
+				<H2 f3 f2_ns fw6 ma0 mb3 lh_title>{widont(block.heading)}</H2>
 			</Header>
 		)
 	}
 	return (
-		<Div mh5 mb4 className="cf">
+		<Div mh3 mh5_ns mb4 className="cf">
 			{ heading }
-			<Div measure lh_copy f3>
+			<Div measure lh_copy f4 f3_ns>
 				<ReactMarkdown
 					source={block.words}
 					plugins={[shortcodes]}
