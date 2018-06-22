@@ -35,7 +35,7 @@ const Block = ({block}) => {
 		}
 	${tachyons}`;
 	return (
-		<Wrapper fl w_100 mb4 mb5_ns bb bw1 pb4_ns b__light_gray className="with-divider cf">
+		<Wrapper mh5 mb4 mb5_ns bb bw1 pb4_ns b__light_gray className="with-divider cf">
 			<ImageWrap w_100 w_40_ns w_50_l pb4>
 				{ block.image ? <Img mw_100 src={block.image.fields.file.url} alt={block.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
 			</ImageWrap>
