@@ -36,11 +36,11 @@ class Carousel extends Component {
 		});
 
 		return (
-			<Div mh3 mh6_l mb4 mb5_ns flex_ns className="cf">
-				<CarouselImageWrap fr w_100 w_70_ns bg_near_black>
+			<Div mh4 mb4 mb5_ns flex_ns className="cf">
+				<CarouselImageWrap fr w_100 w_70_ns bg_near_black z_0>
 					<CarouselImage key={activeSlide.sys.id} slide={activeSlide}/>
 				</CarouselImageWrap>
-				<Wrapper fl w_100 w_30_ns flex_auto flex_ns flex_column_ns>
+				<Wrapper fl w_100 w_30_ns flex_auto flex_ns flex_column_ns z_1>
 					{keys}
 				</Wrapper>
 			</Div>
