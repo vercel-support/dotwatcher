@@ -20,44 +20,44 @@ const FactFile = ({race}) => (
 		{
 			race.fields.location ? (
 				<Wrap>
-					<Label dib f6>Location:</Label>
-					<Stat dib f6 ml1 fw6>{race.fields.location}</Stat>
+					<Label dib f6 mr1>Location:</Label>
+					<Stat dib f6 fw6>{race.fields.location}</Stat>
 				</Wrap>
 			) : null
 		}
 		{
 			race.fields.length ? (
 				<Wrap>
-					<Label dib f6>Length:</Label>
-					<Stat dib f6 ml1 fw6>{race.fields.length}</Stat>
+					<Label dib f6 mr1>Length:</Label>
+					<Stat dib f6 fw6>{race.fields.length}</Stat>
 				</Wrap>
 			) : null
 		}
 		{
 			race.fields.riders ? (
 				<Wrap>
-					<Label dib f6>Riders:</Label>
-					<Stat dib f6 ml1 fw6>{race.fields.riders}</Stat>
+					<Label dib f6 mr1>Riders:</Label>
+					<Stat dib f6 fw6>{race.fields.riders}</Stat>
 				</Wrap>
 			) : null
 		}
 		{
 			race.fields.lastYearsWinner ? (
 				<Wrap>
-					<Label dib f6>
+					<Label dib f6 mr1>
 						{
 							race.fields.winnerLabel ? `${race.fields.winnerLabel}:` : `Last year’s winner:`
 						}
 					</Label>
-					<Stat dib f6 ml1 fw6>{race.fields.lastYearsWinner}</Stat>
+					<Stat dib f6 fw6>{race.fields.lastYearsWinner}</Stat>
 				</Wrap>
 			) : null
 		}
 		{
 			race.fields.terrain ? (
 				<Wrap>
-					<Label dib f6>Terrain:</Label>
-					<Stat dib f6 ml1 fw6>{race.fields.terrain}</Stat>
+					<Label dib f6 mr1>Terrain:</Label>
+					<Stat dib f6 fw6>{race.fields.terrain}</Stat>
 				</Wrap>
 			) : null
 		}
