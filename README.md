@@ -31,9 +31,16 @@ This file is only used for local development. In production the secrets are stor
 
 Now run `npm run dev` to get going.
 
+## Technologies used
+
+- Styles — [styled-components] with [Tachyons]
+- Realtime updates — [Pusher] which connects to [stream.dotwatcher.cc]
+- Content — [Contentful API] to get all data and images
+- Maps — Right now maps are just iFrames from [Trackleaders]
+
 ## Deploying
 
-To deploy changes you’ll need an account with [Zeit.co] and then someone needs to add you to the dotwatchers team.
+To deploy changes you’ll need an account with [zeit.co] and then someone needs to add you to the dotwatchers team.
 
 You’ll need to download the [Now cli] and then switch teams with `now switch`
 
@@ -46,3 +53,9 @@ To alias that to our domains run `now alias` (the aliases are stored in now.json
 [node client]: https://github.com/contentful/contentful.js/
 [Zeit.co]: https://zeit.co
 [Now cli]: https://zeit.co/now
+[styled-components]: https://www.styled-components.com/
+[Tachyons]: http://tachyons.io/
+[Pusher]: https://pusher.com/
+[stream.dotwatcher.cc]: https://github.com/jonheslop/dotwatcher-stream
+[Contentful API]: https://www.contentful.com/developers/docs/references/content-delivery-api
+[Trackleaders]: http://trackleaders.com/
