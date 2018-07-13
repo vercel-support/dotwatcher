@@ -49,8 +49,19 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 		}
 		transform: ${activeKey === slide.sys.id ? 'translate(1rem, 0)' : 'translate(0px ,0px)' };
 	${tachyons}`;
-	const isRaceLive = moment().isBetween(moment(slide.race.data.raceDate), moment(slide.race.data.raceEndDate));
+	const isRaceLive = slide.race ? moment().isBetween(moment(slide.race.data.raceDate), moment(slide.race.data.raceEndDate)) : false;
 	const Title = isRaceLive ? <H2Live f4 f3_ns fw6 lh_title ma0 near_black relative>{widont(slide.heading)}</H2Live> : <H2 f4 f3_ns fw6 lh_title ma0 near_black>{widont(slide.heading)}</H2>;
+
+	let cta;
+	if (slide.race) {
+		cta = <Link route="race" params={{type: 'race', id: slugify(slide.race.data.title, {lower: true})}} passHref prefetch>
+			<A dib f6 f5_l mt2 mb0 no_underline>
+				<Span near_black hover_blue bb bw1>
+					{slide.callToAction ? slide.callToAction : 'Read more'} »
+				</Span>
+			</A>
+		</Link>
+	}
 
 	return (
 		<Div flex_auto pv4 pr3 pl4 db no_underline hover_bg_near_white bw1 b__white relative className="cf" onClick={setActiveKey}>
@@ -58,13 +69,7 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 			<P f6 f5_l measure ma0 mt2 lh_copy near_black>
 				{widont(slide.words)}
 			</P>
-			<Link route="race" params={{type: 'race', id: slugify(slide.race.data.title, {lower: true})}} passHref prefetch>
-				<A dib f6 f5_l mt2 mb0 no_underline>
-					<Span near_black hover_blue bb bw1>
-						{slide.callToAction ? slide.callToAction : 'Read more'} »
-					</Span>
-				</A>
-			</Link>
+			{cta}
 		</Div>
 	);
 };
