@@ -28,6 +28,13 @@ class topRiders extends React.Component {
 
 	async componentDidMount() {
 		const leaderboardUrl = `https://dotwatcher.scrapey.xyz/api/pages`;
+		let filterUrl
+
+		if (`http://trackleaders.com/${this.props.trackleadersID}` === 'http://trackleaders.com/transconrace18') {
+			filterUrl = 'https://frrt.org/tcrno6/riders'
+		} else {
+			filterUrl = `http://trackleaders.com/${this.props.trackleadersID}`
+		}
 
 		let leaderboard = [];
 		request
@@ -35,7 +42,7 @@ class topRiders extends React.Component {
 			.query({
 				'access_token': process.env.SCRAPEY_API_KEY,
 				'filter[order]': 'timestamp DESC',
-				'filter[where][url]': `http://trackleaders.com/${this.props.trackleadersID}`,
+				'filter[where][url]': filterUrl,
 				'filter[limit]': 1
 			})
 			.end((err, res) => {
@@ -45,7 +52,13 @@ class topRiders extends React.Component {
 				if (res.body.length === 0) {
 					return;
 				}
-				let data = res.body[0].data.leaderboard.sort((a, b) => parseFloat(b.mile) - parseFloat(a.mile));
+				let data = res.body[0].data.leaderboard.sort((a, b) => {
+					if (typeof (a.mile) !== 'undefined') {
+						return parseFloat(b.mile) - parseFloat(a.mile);
+					} else {
+						return parseFloat(a.dtf) - parseFloat(b.dtf);
+					}
+				})
 				data = data.slice(0, 10);
 
 				leaderboard = data.map((item, index) => {
@@ -55,7 +68,7 @@ class topRiders extends React.Component {
 						},
 						fields: {
 							name: item.name,
-							distance: parseFloat(item.kilometre).toFixed(0)
+							distance: typeof item.kilometre !== 'undefined' ? parseFloat(item.kilometre).toFixed(0) : null
 						}
 					};
 				});
