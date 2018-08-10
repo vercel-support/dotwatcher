@@ -17,7 +17,8 @@ export const WithEntries = Page => {
 
 		const racesQuery = {
 			content_type: vars.contentTypes.categories, // eslint-disable-line camelcase
-			order: 'fields.raceDate'
+			order: 'fields.raceDate',
+			include: 2
 		};
 
 		const racesResponse = await client.getEntries(racesQuery);
