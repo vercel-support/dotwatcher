@@ -20,7 +20,7 @@ export const withPage = Page => {
 		};
 
 		const racesResponse = await client.getEntries(racesQuery);
-		const pageResponse = await client.getEntries({'sys.id': id});
+		const pageResponse = await client.getEntry(id);
 		const races = [];
 		let page;
 
@@ -46,22 +46,22 @@ export const withPage = Page => {
 			races.push(entry);
 		}
 
-		if (pageResponse.items[0]) {
+		if (pageResponse) {
 			page = {
-				id: pageResponse.items[0].sys.id,
-				title: pageResponse.items[0].fields.title,
-				text: pageResponse.items[0].fields.text,
+				id: pageResponse.sys.id,
+				title: pageResponse.fields.title,
+				text: pageResponse.fields.text,
 				blocks: []
 			};
 
-			if (pageResponse.items[0].fields.bannerImage) {
+			if (pageResponse.fields.bannerImage) {
 				page.image = lodash.find(pageResponse.includes.Asset, obj => {
-					return obj.sys.id === pageResponse.items[0].fields.bannerImage.sys.id;
+					return obj.sys.id === pageResponse.fields.bannerImage.sys.id;
 				});
 			}
 
-			if (pageResponse.items[0].fields.contentBlock) {
-				for (const contentBlock of pageResponse.items[0].fields.contentBlock) {
+			if (pageResponse.fields.contentBlock) {
+				for (const contentBlock of pageResponse.fields.contentBlock) {
 					const block = {
 						sys: {
 							id: contentBlock.sys.id

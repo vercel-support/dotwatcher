@@ -9,40 +9,35 @@ export const withEntry = Page => {
 	const WithEntry = props => <Page {...props}/>;
 
 	WithEntry.getInitialProps = async ({query: {id, type}}) => {
-		let contenfulQuery;
+		const posts = [];
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
 		if (id && type === 'post') {
-			contenfulQuery = {'sys.id': id};
-		}
+			const response = await client.getEntry(id);
 
-		const response = await client.getEntries(contenfulQuery);
 
-		const posts = [];
-
-		for (const item of response.items) {
 			const entry = {
 				sys: {
-					id: item.sys.id
+					id: response.sys.id
 				},
 				data: {
-					title: item.fields.title,
-					format: item.fields.format,
-					slug: item.fields.slug,
-					date: item.sys.createdAt,
-					body: item.fields.body,
-					categories: item.fields.category,
-					keyEvent: item.fields.keyPost,
-					embed: item.fields.embed
+					title: response.fields.title,
+					format: response.fields.format,
+					slug: response.fields.slug,
+					date: response.sys.createdAt,
+					body: response.fields.body,
+					categories: response.fields.category,
+					keyEvent: response.fields.keyPost,
+					embed: response.fields.embed
 				}
 			};
 
-			if (item.fields.featuredImage) {
+			if (response.fields.featuredImage) {
 				entry.data.image = lodash.find(response.includes.Asset, obj => {
-					return obj.sys.id === item.fields.featuredImage.sys.id;
+					return obj.sys.id === response.fields.featuredImage.sys.id;
 				});
 			}
 			posts.push(entry);
