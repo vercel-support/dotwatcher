@@ -80,6 +80,7 @@ class topRiders extends React.Component {
 
 	render() {
 		let leaderboard = {}
+		let isFinalResult = 'staticLeaderboard' in this.props.race.fields
 		if ('staticLeaderboard' in this.props.race.fields) {
 			leaderboard = this.props.race.fields.staticLeaderboard.fields.leaders
 		}
@@ -97,8 +98,8 @@ class topRiders extends React.Component {
 						</Header>
 						<Div measure_narrow>
 							{
-								leaderboard.length ? leaderboard.map(rider => (
-									<Rider key={rider.sys.id} rider={rider.fields}/>
+								leaderboard.length ? leaderboard.map((rider, index) => (
+									<Rider numbered={isFinalResult} position={index + 1} key={rider.sys.id} rider={rider.fields}/>
 								)) : <P f6 b>Loading...</P>
 							}
 						</Div>
@@ -112,7 +113,7 @@ class topRiders extends React.Component {
 }
 
 topRiders.propTypes = {
-	race: PropTypes.object,
+	race: PropTypes.object
 };
 
 topRiders.defaultProps = {
