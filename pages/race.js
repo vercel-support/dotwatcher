@@ -122,6 +122,10 @@ class Race extends React.Component {
 	}
 
 	componentDidMount() {
+		if (location.hash === '#chat') {
+			this.setActiveTab('community')
+		}
+
 		channel.bind('new-post', newPostEvent => {
 			const isNewPost = find(this.props.posts, obj => {
 				return obj.sys.id === newPostEvent.post;
