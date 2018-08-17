@@ -25,9 +25,13 @@ class Community extends Component {
 			discourseUrl: 'https://community.dotwatcher.cc/',
 			topicId: this.props.id
 		};
-		const script = document.createElement('script');
-		script.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js'
-		document.body.appendChild(script);
+
+		if (this.props.active) {
+			const script = document.createElement('script');
+			script.id = 'discourse-embed-script';
+			script.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js'
+			document.body.appendChild(script);
+		}
 	}
 
 	render() {

@@ -9,13 +9,12 @@ const Tabs = styled.ul`
 ${tachyons}`;
 const Tab = styled.li`${tachyons}`;
 
-const TabbedNav = ({setActiveTabFeed, setActiveTabCommunity, activeTab, id}) => {
+const TabbedNav = ({setActiveTabFeed, setActiveTabCommunity, activeTab}) => {
 
 const FeedButton = styled.a`
 	background-color: var(--${activeTab === 'feed' ? 'light-gray' : 'white' });
 ${tachyons}`;
 const CommunityButton = styled.a`
-	display: ${id ? 'block' : 'none'};
 	background-color: var(--${activeTab === 'community' ? 'light-gray' : 'white' });
 ${tachyons}`;
 
@@ -27,7 +26,7 @@ ${tachyons}`;
 				</FeedButton>
 			</Tab>
 			<Tab dib>
-				<CommunityButton onClick={setActiveTabCommunity} ttu tracked fw5 f6 pa2 hover_bg_near_white>
+				<CommunityButton onClick={setActiveTabCommunity} db ttu tracked fw5 f6 pa2 hover_bg_near_white>
 					Chat
 				</CommunityButton>
 			</Tab>
