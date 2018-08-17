@@ -28,7 +28,7 @@ ${tachyons}`;
 			</Tab>
 			<Tab dib>
 				<CommunityButton onClick={setActiveTabCommunity} ttu tracked fw5 f6 pa2 hover_bg_near_white>
-					Community
+					Chat
 				</CommunityButton>
 			</Tab>
 		</Tabs>
