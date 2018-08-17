@@ -82,13 +82,12 @@ export const WithEntries = Page => {
 		const discourseReplyCount = await fetch(`https://community.dotwatcher.cc/t/${race.fields.discourseId}.json`)
 		.then(response => {
 			if (response.status >= 400) {
-				console.log('Bad response from server');
-				return
+				return null
 			}
 			return response.json();
 		})
 		.then(data => {
-			return data.posts_count
+			return data ? data.posts_count : null
 		});
 
 		return {
