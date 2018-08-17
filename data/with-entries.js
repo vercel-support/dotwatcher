@@ -5,6 +5,7 @@ import {createClient} from 'contentful';
 import lodash from 'lodash';
 import slugify from 'slugify';
 import vars from './api-vars';
+import fetch from 'isomorphic-fetch';
 
 export const WithEntries = Page => {
 	const WithEntries = props => <Page {...props}/>;
@@ -78,6 +79,18 @@ export const WithEntries = Page => {
 			posts.push(entry);
 		}
 
+		const discourseReplyCount = await fetch(`https://community.dotwatcher.cc/t/${race.fields.discourseId}.json`)
+		.then(response => {
+			if (response.status >= 400) {
+				console.log('Bad response from server');
+				return
+			}
+			return response.json();
+		})
+		.then(data => {
+			return data.posts_count
+		});
+
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 			posts,
@@ -86,7 +99,8 @@ export const WithEntries = Page => {
 			raceID: race.sys.id,
 			raceName: race.fields.title,
 			trackleadersID: race.fields.trackleadersRaceId,
-			raceImage: race.fields.icon.fields.file.url
+			raceImage: race.fields.icon.fields.file.url,
+			replies: discourseReplyCount
 		};
 	};
 
