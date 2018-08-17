@@ -217,7 +217,7 @@ class Race extends React.Component {
 						this.props.race.fields.discourseId ?
 						(
 							<React.Fragment>
-								<Tabs setActiveTabFeed={() => this.setActiveTab('feed')} setActiveTabCommunity={() => this.setActiveTab('community')} activeTab={this.state.activeTab} count={this.props.replies}/>
+								<Tabs setActiveTabFeed={() => this.setActiveTab('feed')} setActiveTabCommunity={() => this.setActiveTab('community')} activeTab={this.state.activeTab} count={this.props.replies} promo={this.props.race.fields.chatPromo}/>
 								<CommunityWrap>
 									<Community id={this.props.race.fields.discourseId} active={this.state.activeTab === 'community'} />
 								</CommunityWrap>
