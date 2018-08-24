@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Placeholder from '../placeholder';
+import GoogleMap from '../google-map';
 
 const Map = styled.iframe`${tachyons}`;
 
@@ -25,14 +26,13 @@ class Iframe extends Component {
 
 	render() {
 		const Container = styled.div`
-			margin-top: ${this.props.raceID.indexOf('maprogress') !== -1 ? '75px' : '0'};
 			@media screen and (min-width: 64em) {
 				height: ${this.props.raceID.indexOf('maprogress') !== -1 ? 'calc(100vh - 75px)' : '100vh'};
 			}
 		${tachyons}`;
 		let iframe = <Placeholder raceID="No race found" w_100 h_100/>
 		if (this.props.raceID && this.props.raceID.indexOf('maprogress') !== -1) {
-			iframe = <Map ref="iframe" id="trackleaders-iframe" w_100 h_100 ba bw0 src={`${this.props.raceID}viewswitcher/switchview?mobile=true&returnurl=%2F`} frameborder="0" {...this.props.onLoad}/>
+			iframe = <GoogleMap raceID={this.props.raceID} />
 		} else if (this.props.raceID && this.props.raceID.indexOf('http') !== -1) {
 			iframe = <Map ref="iframe" id="trackleaders-iframe" w_100 h_100 ba bw0 src={`${this.props.raceID}`} frameborder="0" {...this.props.onLoad}/>
 		} else if (this.props.raceID) {
@@ -48,13 +48,11 @@ class Iframe extends Component {
 }
 
 Iframe.propTypes = {
-	raceID: PropTypes.string,
-	offset: PropTypes.bool
+	raceID: PropTypes.string
 };
 
 Iframe.defaultProps = {
-	raceID: '',
-	offset: false
+	raceID: ''
 };
 
 export default Iframe;

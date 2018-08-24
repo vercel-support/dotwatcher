@@ -72,7 +72,7 @@ class MapContainer extends Component {
 
 	render() {
 		const DesktopWrapper = styled.div`
-			top: ${this.props.offset ? 'inherit' : 0};
+			top: 0;
 		${tachyons}`;
 		let content = (
 			<Wrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
@@ -81,11 +81,14 @@ class MapContainer extends Component {
 		);
 		if (this.state.inBrowser && this.state.width >= 1024) {
 			content = (
-				<DesktopWrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf>
-					<Iframe onLoad={this.iframeLoaded.bind(this)} raceID={this.props.raceID} offset={this.props.offset}/>
-					<Tips absolute_l z_2 tc>
+				<DesktopWrapper fixed_l z_0 w_100 w_40_l bg_near_white relative cf vh_100>
+					<Iframe onLoad={this.iframeLoaded.bind(this)} raceID={this.props.raceID}/>
+					{ this.props.raceID.indexOf('maprogress') === -1 ? <Tips absolute_l z_2 tc>
 						<Link route="page" params={{type: 'page', id: '6CO2ZfSWlyOkcQsG62iGaE'}} passHref><A bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>Click here for tracker tips</A></Link>
+					</Tips> : <Tips absolute_l bottom_0 z_2 tc>
+						<A target="_blank" href={this.props.raceID} bg_black_80 hover_bg_near_black f6 lh_solid pa2 near_white underline>View on MAProgress.com</A>
 					</Tips>
+					}
 				</DesktopWrapper>
 			);
 		} else if (this.state.inBrowser && this.state.width < 1024) {
@@ -103,13 +106,11 @@ class MapContainer extends Component {
 }
 
 MapContainer.propTypes = {
-	raceID: PropTypes.string,
-	offset: PropTypes.bool
+	raceID: PropTypes.string
 };
 
 MapContainer.defaultProps = {
-	raceID: '',
-	offset: false
+	raceID: ''
 };
 
 export default MapContainer;
