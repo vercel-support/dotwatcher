@@ -1,4 +1,4 @@
-// HOC for fetching entries from contentful
+// HOC for fetching features from contentful
 
 import React from 'react';
 import {createClient} from 'contentful';

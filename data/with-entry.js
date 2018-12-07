@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {createClient} from 'contentful';
-import lodash from 'lodash';
 import vars from './api-vars';
 
 export const withEntry = Page => {
@@ -36,7 +35,7 @@ export const withEntry = Page => {
 			};
 
 			if (response.fields.featuredImage) {
-				entry.data.image = lodash.find(response.includes.Asset, obj => {
+				entry.data.image = response.includes.Asset.find(obj => {
 					return obj.sys.id === response.fields.featuredImage.sys.id;
 				});
 			}

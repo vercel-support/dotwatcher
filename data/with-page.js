@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {createClient} from 'contentful';
-import lodash from 'lodash';
 import vars from './api-vars';
 
 export const withPage = Page => {
@@ -39,7 +38,7 @@ export const withPage = Page => {
 			};
 
 			if (item.fields.icon) {
-				entry.data.icon = lodash.find(racesResponse.includes.Asset, obj => {
+				entry.data.icon = racesResponse.includes.Asset.find(obj => {
 					return obj.sys.id === item.fields.icon.sys.id;
 				});
 			}
@@ -55,7 +54,7 @@ export const withPage = Page => {
 			};
 
 			if (pageResponse.fields.bannerImage) {
-				page.image = lodash.find(pageResponse.includes.Asset, obj => {
+				page.image = pageResponse.includes.Asset.find(obj => {
 					return obj.sys.id === pageResponse.fields.bannerImage.sys.id;
 				});
 			}
@@ -74,18 +73,18 @@ export const withPage = Page => {
 					};
 
 					if (contentBlock.fields.race) {
-						block.race = lodash.find(races, obj => {
+						block.race = races.find(obj => {
 							return obj.sys.id === contentBlock.fields.race.sys.id;
 						});
 					}
 
 					if (contentBlock.fields.image) {
-						block.image = lodash.find(pageResponse.includes.Asset, obj => {
+						block.image = pageResponse.includes.Asset.find(obj => {
 							return obj.sys.id === contentBlock.fields.image.sys.id;
 						});
 					}
 					if (contentBlock.fields.logoOverlay) {
-						block.logoOverlay = lodash.find(pageResponse.includes.Asset, obj => {
+						block.logoOverlay = pageResponse.includes.Asset.find(obj => {
 							return obj.sys.id === contentBlock.fields.logoOverlay.sys.id;
 						});
 					}

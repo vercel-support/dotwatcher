@@ -1,6 +1,5 @@
 import React from 'react';
 import {createClient} from 'contentful';
-import lodash from 'lodash';
 import vars from './api-vars';
 
 export const withProfile = Page => {
@@ -32,7 +31,7 @@ export const withProfile = Page => {
 			};
 
 			if (response.items[0].fields.profilePhoto) {
-				profile.data.profilePhoto = lodash.find(response.includes.Asset, obj => {
+				profile.data.profilePhoto = response.includes.Asset.find(obj => {
 					return obj.sys.id === response.items[0].fields.profilePhoto.sys.id;
 				});
 			}

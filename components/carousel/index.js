@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {find} from 'lodash';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Wrapper from '../shared/wrapper';
@@ -31,7 +30,7 @@ class Carousel extends Component {
 		const keys = this.props.slides.map(slide => (
 			<CarouselKey key={slide.sys.id} slide={slide} setActiveKey={() => this.setActiveKey(slide.sys.id)} activeKey={this.state.activeKey}/>
 		));
-		const activeSlide = find(this.props.slides, obj => {
+		const activeSlide = this.props.slides.find(obj => {
 			return obj.sys.id === this.state.activeKey;
 		});
 

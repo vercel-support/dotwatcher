@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {createClient} from 'contentful';
-import lodash from 'lodash';
 import vars from './api-vars';
 
 export const withRaces = Page => {
@@ -44,7 +43,7 @@ export const withRaces = Page => {
 			};
 
 			if (item.fields.icon) {
-				entry.data.icon = lodash.find(racesResponse.includes.Asset, obj => {
+				entry.data.icon = racesResponse.includes.Asset.find(obj => {
 					return obj.sys.id === item.fields.icon.sys.id;
 				});
 			}

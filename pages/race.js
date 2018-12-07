@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Pusher from 'pusher-js';
 import React from 'react';
 import {createClient} from 'contentful';
-import find from 'lodash/find';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import {withRouter} from 'next/router';
@@ -109,7 +108,7 @@ class Race extends React.Component {
 			};
 
 			if (item.fields.featuredImage) {
-				entry.data.image = find(response.includes.Asset, obj => {
+				entry.data.image = response.includes.Asset.find(obj => {
 					return obj.sys.id === item.fields.featuredImage.sys.id;
 				});
 			}
@@ -127,7 +126,7 @@ class Race extends React.Component {
 		}
 
 		channel.bind('new-post', newPostEvent => {
-			const isNewPost = find(this.props.posts, obj => {
+			const isNewPost = this.props.posts.find(obj => {
 				return obj.sys.id === newPostEvent.post;
 			}) === undefined;
 

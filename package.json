@@ -21,7 +21,6 @@
     "babel-plugin-styled-components": "^1.6.3",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "contentful": "^7.0.5",
-    "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "next": "^7.0.2",
     "next-routes": "^1.4.2",
