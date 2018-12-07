@@ -1,21 +1,21 @@
 {
-	"version": 1,
+	"version": 2,
 	"alias": [
 		"beta.dotwatcher.cc",
 		"www.dotwatcher.cc",
 		"dotwatcher.cc",
 		"dotwatcher"
 	],
-	"scale": {
-		"bru1": {
-			"min": 1,
-			"max": "auto"
-		},
-		"sfo1": {
-			"min": 1,
-			"max": "auto"
+	"regions": [
+		"sfo1",
+		"bru"
+	],
+	"builds": [
+		{
+			"src": "server.js",
+			"use": "@now/next"
 		}
-	},
+	],
 	"env": {
 		"CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
 		"PUSHER_APP_ID": "@pusher-app-id",
