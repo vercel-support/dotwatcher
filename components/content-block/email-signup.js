@@ -61,7 +61,7 @@ const CustomForm = ({status, message, onValidated}) => {
 			}
 		>
 			<EmailInput
-				innerRef={node => email = node}
+				ref={node => email = node}
 				type="email"
 				placeholder="your.name@email.com"
 				input_reset bb bw1
