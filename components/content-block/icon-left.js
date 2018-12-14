@@ -21,21 +21,12 @@ const WordsWrap = styled.div`${tachyons}`;
 
 const Block = ({block}) => {
 	return (
-		<Wrapper fl mh3 mh6_ns mb4 className="with-divider cf">
-			<WordsWrap fl_ns pr3 w_100 w_75_m w_50_l>
+		<Wrapper mhw_100 w_50_ns ph4 mt4_ns mb5_ns className="with-divider cf">
+			<WordsWrap fl_ns pr3 w_100>
 				<ImageWrap fl w_20>
 					{ block.image ? <Img mw_100 src={block.image.fields.file.url} alt={block.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
 				</ImageWrap>
 				<H2 lh_title f3 fw6 ma0 mb4>{widont(block.heading)}</H2>
-			</WordsWrap>
-			<WordsWrap fl_ns pl3 w_100 w_75_m w_50_l>
-				<Div fl measure lh_copy f4 mb4>
-					<ReactMarkdown
-						source={block.words}
-						plugins={[shortcodes]}
-						renderers={{shortcode: Embed}}
-					/>
-				</Div>
 			</WordsWrap>
 		</Wrapper>
 	);

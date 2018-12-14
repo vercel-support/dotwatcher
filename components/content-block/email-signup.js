@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import Wrapper from '../shared/wrapper';
 
 const mailchimpURL = process.env.MAILCHIMP || '';
 
@@ -52,8 +53,8 @@ const CustomForm = ({status, message, onValidated}) => {
 	}
 
 	return (
-		<Form fl w_100 w_60_m
-			w_50_l onSubmit={
+		<Form
+			onSubmit={
 				e => {
 					e.preventDefault();
 					submit();
@@ -86,8 +87,8 @@ const CustomForm = ({status, message, onValidated}) => {
 };
 
 const EmailSignup = ({block}) => (
-	<Div mh4_m mh6_l mb4 ph4 ph0_ns className="cf">
-		<Header fl w_100 w_40_m w_50_l ph3>
+	<Wrapper mhw_100 w_50_ns ph4 mt4_ns mb5_ns className="cf">
+		<Header>
 			<H2 f3 fw6 mt0 mb2 pb1 lh_title>{block.heading}</H2>
 			<P mt0 lh_copy>{block.words}</P>
 		</Header>
@@ -102,7 +103,7 @@ const EmailSignup = ({block}) => (
 				/>
 			)}
 		/>
-	</Div>
+	</Wrapper>
 );
 
 EmailSignup.propTypes = {
