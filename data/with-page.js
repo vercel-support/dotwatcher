@@ -19,7 +19,7 @@ export const withPage = Page => {
 		};
 
 		const racesResponse = await client.getEntries(racesQuery);
-		const pageResponse = await client.getEntry(id);
+		const pageResponse = await client.getEntries({'sys.id': id});
 		const races = [];
 		let page;
 
@@ -45,22 +45,22 @@ export const withPage = Page => {
 			races.push(entry);
 		}
 
-		if (pageResponse) {
+		if (pageResponse.items[0]) {
 			page = {
-				id: pageResponse.sys.id,
-				title: pageResponse.fields.title,
-				text: pageResponse.fields.text,
+				id: pageResponse.items[0].sys.id,
+				title: pageResponse.items[0].fields.title,
+				text: pageResponse.items[0].fields.text,
 				blocks: []
 			};
 
-			if (pageResponse.fields.bannerImage) {
+			if (pageResponse.items[0].fields.bannerImage) {
 				page.image = pageResponse.includes.Asset.find(obj => {
-					return obj.sys.id === pageResponse.fields.bannerImage.sys.id;
+					return obj.sys.id === pageResponse.items[0].fields.bannerImage.sys.id;
 				});
 			}
 
-			if (pageResponse.fields.contentBlock) {
-				for (const contentBlock of pageResponse.fields.contentBlock) {
+			if (pageResponse.items[0].fields.contentBlock) {
+				for (const contentBlock of pageResponse.items[0].fields.contentBlock) {
 					const block = {
 						sys: {
 							id: contentBlock.sys.id
