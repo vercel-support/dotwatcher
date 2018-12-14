@@ -23,6 +23,16 @@ ${tachyons}`;
 
 class App extends Component {
 	render() {
+		const currentRaces = this.props.races.filter(race => moment(race.data.raceEndDate).isAfter())
+		const pastRaces = this.props.races.slice(0).reverse().filter(race => moment(race.data.raceEndDate).isBefore())
+
+		const PastHeading = styled.header`
+			margin-top: ${currentRaces.length > 0 ? 'var(--spacing-large)' : 0};
+			@media screen and (min-width: 64em) {
+				margin-top: ${currentRaces.length > 0 ? 'var(--spacing-extra-large)' : 0};
+			}
+		${tachyons}`;
+
 		return (
 			<Page>
 				<Head>
@@ -36,21 +46,21 @@ class App extends Component {
 				/>
 				<Div mt3 mt4_l>
 					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
-						<Heading fl w_100 mb4 ph3>
-							<H1 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Live coverage</H1>
-						</Heading>
 						{
-							this.props.races.map(race => {
-								return moment(race.data.raceEndDate).isAfter() ? <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/> : null;
+							currentRaces.length > 0 ? <Heading fl w_100 mb4 ph3><H1 ma0 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Live coverage</H1></Heading> : null
+						}
+						{
+							currentRaces.map(race => {
+								return <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/>;
 							})
 						}
 
-						<Heading fl w_100 mv4 mt5_ns ph3>
-							<H1 f4 fw6 mt4 ttu tracked bb bw1 b__light_gray pb1>Past races</H1>
-						</Heading>
+						<PastHeading fl w_100 mb4 ph3>
+							<H1 ma0 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Past races</H1>
+						</PastHeading>
 						{
-							this.props.races.slice(0).reverse().map(race => {
-								return moment(race.data.raceEndDate).isBefore() ? <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/> : null;
+							pastRaces.map(race => {
+								return <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/>;
 							})
 						}
 					</RaceWrap>
