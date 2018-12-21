@@ -28,6 +28,7 @@ class FeaturePage extends React.Component {
 			background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url})` : 'none' };
 			background-repeat: no-repeat;
 			background-size: cover;
+			background-position: center center;
 			height: ${this.props.feature.image ? `75vh` : `20vh`};
 
 			&> h1 {
