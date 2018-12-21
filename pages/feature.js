@@ -20,6 +20,7 @@ const Div = styled.div`
 		margin: 0;
 	}
 ${tachyons}`;
+const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 
 class FeaturePage extends React.Component {
@@ -51,9 +52,11 @@ class FeaturePage extends React.Component {
 					title="dotwatcher.cc"
 				/>
 				<StyledWrapper fl w_100 />
-				<H1 f2 f_headline_ns fw6 lh_solid mv0 ml5>
-					{ widont(this.props.feature.title) }
-				</H1>
+				<Heading mh3>
+					<H1 f2 f_headline_ns fw6 lh_solid mv0 mh3 mh6_ns>
+						{ widont(this.props.feature.title) }
+					</H1>
+				</Heading>
 				<Div fl w_100 mt3 mt4_l cf>
 					{carousel}
 					{
@@ -62,6 +65,7 @@ class FeaturePage extends React.Component {
 								<ContentBlock
 									key={block.sys.id}
 									block={block}
+									feature={true}
 								/>
 							);
 						})

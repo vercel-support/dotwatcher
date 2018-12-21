@@ -13,7 +13,7 @@ import Image from '../image';
 
 const Div = styled.div`${tachyons}`;
 
-const ContentBlock = ({block}) => {
+const ContentBlock = ({block, feature}) => {
 	if (block.layout === 'Homepage') {
 		return <Homepage block={block}/>;
 	}
@@ -41,11 +41,16 @@ const ContentBlock = ({block}) => {
 			</Div>
 		);
 	}
-	return <Basic block={block}/>;
+	return <Basic block={block} feature={feature}/>;
 };
 
 ContentBlock.propTypes = {
-	block: PropTypes.object.isRequired
+	block: PropTypes.object.isRequired,
+	feature: PropTypes.bool
 };
+
+ContentBlock.defaultProps = {
+	feature: false
+}
 
 export default ContentBlock;
