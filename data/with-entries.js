@@ -87,6 +87,9 @@ export const WithEntries = Page => {
 		})
 		.then(data => {
 			return data ? data.posts_count : null
+		})
+		.catch(error => {
+			return null
 		});
 
 		return {

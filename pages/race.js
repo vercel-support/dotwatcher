@@ -213,7 +213,7 @@ class Race extends React.Component {
 				</KeyEventsWrapper>
 				<Wrapper ph3 pb2 w_100 w_70_m w_40_l>
 					{
-						this.props.race.fields.discourseId ?
+						this.props.race.fields.discourseId && this.props.replies ?
 						(
 							<React.Fragment>
 								<Tabs setActiveTabFeed={() => this.setActiveTab('feed')} setActiveTabCommunity={() => this.setActiveTab('community')} activeTab={this.state.activeTab} count={this.props.replies} promo={this.props.race.fields.chatPromo}/>
