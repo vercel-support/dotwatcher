@@ -37,7 +37,7 @@ const Block = ({block, feature}) => {
 	let heading = null;
 	if (block.heading) {
 		heading = (
-			<Header measure_wide>
+			<Header measure_wide mh3>
 				<H2 f3 f2_ns fw6 ma0 mb3 lh_title>{widont(block.heading)}</H2>
 			</Header>
 		)
@@ -45,7 +45,7 @@ const Block = ({block, feature}) => {
 	return (
 		<Wrap margin mb4 className="cf">
 			{ heading }
-			<Div measure mh3 lh_copy f4 f3_ns>
+			<Div measure mh3 lh_copy f4>
 				<ReactMarkdown
 					source={block.words}
 					plugins={[shortcodes]}
