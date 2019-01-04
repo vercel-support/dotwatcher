@@ -27,7 +27,13 @@ const CarouselImage = ({slide}) => {
 	if (slide.race) {
 		image = (
 			<Link route="race" params={{type: 'race', id: slugify(slide.race.data.title, {lower: true})}} passHref prefetch>
-					<A db h_100 cover bg_center bg={slide.image.fields.file.url} className="cf"></A>
+				<A db h_100 cover bg_center bg={slide.image.fields.file.url} className="cf"></A>
+			</Link>
+		)
+	} else if (slide.feature) {
+		image = (
+			<Link route="feature" params={{type: 'feature', id: slide.feature}} passHref prefetch>
+				<A db h_100 cover bg_center bg={slide.image.fields.file.url} className="cf"></A>
 			</Link>
 		)
 	} else {
