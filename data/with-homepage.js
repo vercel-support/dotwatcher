@@ -76,6 +76,10 @@ export const withHomepage = Page => {
 						});
 					}
 
+					if (contentBlock.fields.feature) {
+						block.feature = contentBlock.fields.feature.sys.id;
+					}
+
 					if (contentBlock.fields.image) {
 						block.image = homepageResponse.includes.Asset.find(obj => {
 							return obj.sys.id === contentBlock.fields.image.sys.id;
