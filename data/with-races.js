@@ -1,6 +1,7 @@
 // HOC for fetching entries from contentful
 
 import React from 'react';
+import moment from 'moment';
 import {createClient} from 'contentful';
 import vars from './api-vars';
 
@@ -38,7 +39,8 @@ export const withRaces = Page => {
 					riders: item.fields.riders,
 					winnerLabel: item.fields.winnerLabel,
 					lastYearsWinner: item.fields.lastYearsWinner,
-					terrain: item.fields.terrain
+					terrain: item.fields.terrain,
+					year: moment(item.fields.raceDate).format('YYYY'),
 				}
 			};
 
