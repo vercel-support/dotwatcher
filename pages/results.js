@@ -37,7 +37,7 @@ class App extends Component {
 				<Div mt3 mt4_l>
 					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
 						<Heading fl w_100 mb3 ph3>
-							<H1 f3 f2_l fw6>{ this.props.race } Results { this.props.year }</H1>
+							<H1 f3 f2_l fw6>{ this.props.race } { this.props.year } results</H1>
 						</Heading>
 						<ResultsTable results={this.props.results} />
 					</RaceWrap>
