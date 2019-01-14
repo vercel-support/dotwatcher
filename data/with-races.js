@@ -2,6 +2,7 @@
 
 import React from 'react';
 import moment from 'moment';
+import fetch from 'isomorphic-fetch';
 import {createClient} from 'contentful';
 import vars from './api-vars';
 
@@ -40,7 +41,7 @@ export const withRaces = Page => {
 					winnerLabel: item.fields.winnerLabel,
 					lastYearsWinner: item.fields.lastYearsWinner,
 					terrain: item.fields.terrain,
-					year: moment(item.fields.raceDate).format('YYYY'),
+					year: moment(item.fields.raceDate).format('YYYY')
 				}
 			};
 
@@ -49,6 +50,17 @@ export const withRaces = Page => {
 					return obj.sys.id === item.fields.icon.sys.id;
 				});
 			}
+
+			if (moment(entry.data.raceEndDate).isBefore()) {
+				entry.data.past = true;
+
+				// https://data.dotwatcher.cc/data-d6ac28d/results.json?_facet=Year&_facet=Event&Event=${entry.data.title}&Year=${entry.data.year}&_shape=array&_size=3
+				const raceResultsResponse = await fetch(`https://data.dotwatcher.cc/data-d6ac28d/results.json?Event=${entry.data.title}&Year=${entry.data.year}&_shape=array&_size=3`)
+				const raceResultsJSON = await raceResultsResponse.json()
+				if (raceResultsJSON)
+				entry.data.raceResults = raceResultsJSON
+			}
+
 			races.push(entry);
 		}
 

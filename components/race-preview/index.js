@@ -6,6 +6,7 @@ import tachyons from 'styled-components-tachyons';
 import {Link} from '../../routes';
 import Placeholder from '../placeholder';
 import widont from '../../utils/widont';
+import Section from './section';
 
 const A = styled.a`${tachyons}`;
 const Div = styled.div`${tachyons}`;
@@ -15,11 +16,16 @@ const Figure = styled.figure`${tachyons}`;
 const Img = styled.img`${tachyons}`;
 const Span = styled.span`${tachyons}`;
 const P = styled.p`${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
-const Header = styled.header`${tachyons}`;
 const Wrap = styled.dl`${tachyons}`;
 const Label = styled.dt`${tachyons}`;
 const Stat = styled.dt`${tachyons}`;
+const Results = styled.table`
+    border:none;
+    border-collapse:collapse;
+    border-spacing:0;
+${tachyons}`;
+const ResultsRow = styled.tr`${tachyons}`;
+const ResultsCell = styled.td`${tachyons}`;
 
 const RacePreview = ({data, id, slug}) => {
 	return (
@@ -45,12 +51,7 @@ const RacePreview = ({data, id, slug}) => {
 					</A>
 				</Link>
 			</Div>
-			<Div fl_ns ph3 w_30_m w_20_l>
-				<Header>
-					<H2 ttu tracked f5 fw6 mt4 mt2_ns pb1 bb bw1 b__light_gray measure_narrow>
-						Fact file
-					</H2>
-				</Header>
+			<Section title="Fact file">
 				{
 					data.location ? (
 						<Wrap>
@@ -95,7 +96,24 @@ const RacePreview = ({data, id, slug}) => {
 						</Wrap>
 					) : null
 				}
-			</Div>
+			</Section>
+			{ data.past && data.raceResults.length > 0 ?
+				<Section title={ data.year + ' Results'}>
+					<Results w_100 ma0 pa0>
+					{
+						data.raceResults.map((result, i) => {
+							return (
+								<ResultsRow>
+									<ResultsCell f6 lh_copy fw6>{i+1}. { result.Rider }</ResultsCell>
+									<ResultsCell tr f6 lh_copy v_top><abbr title="(D:H:MM)">{ result["Finish Time (D:H:MM)"] }</abbr></ResultsCell>
+								</ResultsRow>
+							)
+						})
+					}
+					</Results>
+				</Section>
+				: ''
+			}
 		</Div>
 	);
 };
