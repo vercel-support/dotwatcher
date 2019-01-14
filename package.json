@@ -8,10 +8,11 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
+    "now-build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
   "engines": {
-    "node": ">8.14.0"
+    "node": "8.10.0"
   },
   "xo": {
     "extends": "xo-react"
@@ -22,7 +23,7 @@
     "babel-plugin-wrap-in-js": "^1.1.1",
     "contentful": "^7.0.5",
     "moment": "^2.22.2",
-    "next": "^7.0.2",
+    "next": "^8.0.0-canary.6",
     "next-routes": "^1.4.2",
     "path-match": "^1.2.4",
     "postcss-easy-import": "^3.0.0",

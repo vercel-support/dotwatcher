@@ -1,28 +1,50 @@
 {
-	"version": 2,
-	"alias": [
-		"beta.dotwatcher.cc",
-		"www.dotwatcher.cc",
-		"dotwatcher.cc",
-		"dotwatcher"
-	],
-	"regions": [
-		"sfo1",
-		"bru"
-	],
-	"builds": [
-		{
-			"src": "server.js",
-			"use": "@now/next"
-		}
-	],
-	"env": {
-		"CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
-		"PUSHER_APP_ID": "@pusher-app-id",
-		"PUSHER_KEY": "@pusher-key",
-		"PUSHER_SECRET": "@pusher-secret",
-		"MAILCHIMP": "@mailchimp",
-		"ANALYTICS": "@analytics",
-		"SCRAPEY_API_KEY": "@scrapey-api-key"
-	}
+  "version": 2,
+  "alias": [
+    "beta.dotwatcher.cc",
+    "www.dotwatcher.cc",
+    "dotwatcher.cc",
+    "dotwatcher"
+  ],
+  "regions": [
+    "sfo1",
+    "bru"
+  ],
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "env": {
+    "CONTENTFUL_ACCESS_TOKEN": "@contentful-api-token",
+    "PUSHER_APP_ID": "@pusher-app-id",
+    "PUSHER_KEY": "@pusher-key",
+    "PUSHER_SECRET": "@pusher-secret",
+    "MAILCHIMP": "@mailchimp",
+    "ANALYTICS": "@analytics",
+    "SCRAPEY_API_KEY": "@scrapey-api-key"
+  },
+  "routes": [
+    {
+      "src": "^\\/(page)\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/page?type=$1&id=$2"
+    },
+    {
+      "src": "^\\/(post)\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/post?type=$1&id=$2"
+    },
+    {
+      "src": "^\\/profile\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/profile?id=$1"
+    },
+    {
+      "src": "^\\/(race)\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/race?type=$1&id=$2"
+    },
+    {
+      "src": "^\\/(feature)\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/feature?type=$1&id=$2"
+    }
+  ]
 }
