@@ -46,7 +46,8 @@ const ResultsTable = ({results}) => {
 			<Results w_100>
 				<thead>
 					<HeadRow bb bw1>
-						<ResultsHeadCell colspan="2">Rider</ResultsHeadCell>
+						<ResultsHeadCell>Rank</ResultsHeadCell>
+						<ResultsHeadCell>Rider</ResultsHeadCell>
 						{
 							withCapNo ? <ResultsHeadCell>Cap/Bib</ResultsHeadCell> : null
 						}
