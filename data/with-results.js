@@ -34,7 +34,6 @@ export const WithResults = Page => {
 				}
 			});
 
-			console.log('raceResultsByYear', raceResultsByYear)
 			return {
 				...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 				race,

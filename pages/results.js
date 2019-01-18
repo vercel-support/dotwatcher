@@ -38,7 +38,7 @@ class App extends Component {
 				{
 					this.props.results.length > 1 ? <Div mt3 mt4_l>
 					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center className="cf">
-							<Link route="results-index" params={{ type: 'results' }} passHref prefetch>
+							<Link route="results" params={{ type: 'results' }} passHref prefetch>
 							<A near_black hover_blue>← All results</A>
 						</Link>
 						<Heading fl w_100 mb3 ph3>
