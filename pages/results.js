@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import Head from 'next/head';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
-import slugify from 'slugify';
 
 import Header from '../components/header';
 import Page from '../components/shared/page';
 import Footer from '../components/footer';
+import ResultsIndex from '../components/results-index';
 import ResultsTable from '../components/results-table';
 import {WithResults} from '../data/with-results';
 
@@ -34,14 +33,15 @@ class App extends Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Div mt3 mt4_l>
+				{
+					this.props.results.length > 1 ? <Div mt3 mt4_l>
 					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
 						<Heading fl w_100 mb3 ph3>
 							<H1 f3 f2_l fw6>{ this.props.race } { this.props.year } results</H1>
 						</Heading>
 						<ResultsTable results={this.props.results} />
 					</RaceWrap>
-				</Div>
+					</Div> : <ResultsIndex raceResultsByYear={this.props.raceResultsByYear} /> }
 				<Footer/>
 			</Page>
 		);
@@ -49,11 +49,17 @@ class App extends Component {
 }
 
 App.propTypes = {
-	results: PropTypes.array
+	race: PropTypes.string,
+	year: PropTypes.string,
+	results: PropTypes.array,
+	raceResultsByYear: PropTypes.array
 };
 
 App.defaultProps = {
-	results: []
+	race: '',
+	year: '',
+	results: [],
+	raceResultsByYear: []
 };
 
 export default WithResults(App);
