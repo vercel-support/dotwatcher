@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
+import { Link } from '../routes';
 import Header from '../components/header';
 import Page from '../components/shared/page';
 import Footer from '../components/footer';
@@ -14,6 +15,7 @@ import {WithResults} from '../data/with-results';
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`${tachyons}`;
+const A = styled.a`${tachyons}`;
 const RaceWrap = styled.div`
 	@media screen and (min-width: 64em) {
 		margin-left: 10%;
@@ -35,7 +37,10 @@ class App extends Component {
 				/>
 				{
 					this.props.results.length > 1 ? <Div mt3 mt4_l>
-					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
+					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center className="cf">
+							<Link route="results-index" params={{ type: 'results' }} passHref prefetch>
+							<A near_black hover_blue>← All results</A>
+						</Link>
 						<Heading fl w_100 mb3 ph3>
 							<H1 f3 f2_l fw6>{ this.props.race } { this.props.year } results</H1>
 						</Heading>
