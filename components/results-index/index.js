@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import ResultsSummary from '../results-summary';
+import ResultsContribute from '../results-contribute';
 
 const Div = styled.div`${tachyons}`;
 const Header = styled.header`${tachyons}`;
@@ -26,11 +27,12 @@ const ResultsIndex = ({ raceResultsByYear }) => {
 				<Header mv3>
 					<H1 ma0 f2 fw6>Browse race results</H1>
 				</Header>
-				<Grid>
+				<Grid pb4 bb bw1 b__light_gray>
 					{
 						raceResultsByYear.map(result => <ResultsSummary event={result} />)
 					}
 				</Grid>
+				<ResultsContribute />
 			</RaceWrap>
 		</React.Fragment>
 	);

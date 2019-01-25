@@ -10,10 +10,13 @@ import Page from '../components/shared/page';
 import Footer from '../components/footer';
 import ResultsIndex from '../components/results-index';
 import ResultsTable from '../components/results-table';
+import ResultsContribute from '../components/results-contribute';
 import {WithResults} from '../data/with-results';
 
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
+const P = styled.p`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const RaceWrap = styled.div`
@@ -39,12 +42,16 @@ class App extends Component {
 					this.props.results.length > 1 ? <Div mt3 mt4_l>
 					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center className="cf">
 							<Link route="results" params={{ type: 'results' }} passHref prefetch>
-							<A near_black hover_blue>← All results</A>
+							<A link near_black hover_blue>← All results</A>
 						</Link>
 						<Heading fl w_100 mb3 ph3>
-							<H1 f3 f2_l fw6>{ this.props.race } { this.props.year } results</H1>
+							<H1 f3 f2_l fw6 lh_copy>
+								{ this.props.race } { this.props.year } results
+								<A fr f6 fw4 mt3 link near_black hover_blue href="#contact">Report an error</A>
+							</H1>
 						</Heading>
 						<ResultsTable type="race" results={this.props.results} />
+						<ResultsContribute/>
 					</RaceWrap>
 					</Div> : <ResultsIndex raceResultsByYear={this.props.raceResultsByYear} /> }
 				<Footer/>
