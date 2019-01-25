@@ -30,7 +30,7 @@ const ResultsCell = styled.td`
 	padding: var(--spacing-extra-small);
 ${tachyons}`;
 
-const ResultsTable = ({results}) => {
+const ResultsTable = ({type, results}) => {
 	if (results.length < 1) {
 		return (
 		<Div fl w_100 ph3>
@@ -46,7 +46,7 @@ const ResultsTable = ({results}) => {
 			<Results w_100>
 				<thead>
 					<HeadRow bb bw1>
-						<ResultsHeadCell>Rank</ResultsHeadCell>
+						{ <ResultsHeadCell>Rank</ResultsHeadCell>}
 						<ResultsHeadCell>Rider</ResultsHeadCell>
 						{
 							withCapNo ? <ResultsHeadCell>Cap/Bib</ResultsHeadCell> : null
@@ -101,11 +101,13 @@ const ResultsTable = ({results}) => {
 };
 
 ResultsTable.propTypes = {
-	results: PropTypes.array
+	results: PropTypes.array,
+	type: PropTypes.string
 };
 
 ResultsTable.defaultProps = {
-	results: []
+	results: [],
+	type: 'race'
 };
 
 export default ResultsTable;

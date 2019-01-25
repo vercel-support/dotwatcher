@@ -1,47 +1,21 @@
 import React from 'react';
-import {createClient} from 'contentful';
-import vars from './api-vars';
+import fetch from 'isomorphic-fetch';
 
-export const withProfile = Page => {
-	const withProfile = props => <Page {...props}/>;
+export const WithProfile = Page => {
+	const WithProfile = props => <Page {...props}/>;
+	const baseURL = 'https://data.dotwatcher.cc/data-d6ac28d';
 
-	withProfile.getInitialProps = async ({query: {id}}) => {
-		let profile;
+	WithProfile.getInitialProps = async ({query: { name }}) => {
 
-		const client = createClient({
-			space: vars.space,
-			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-		});
-
-		const response = await client.getEntries({'sys.id': id});
-
-		if (response.items[0]) {
-			profile = {
-				sys: {
-					id: response.sys.id
-				},
-				data: {
-					name: response.items[0].fields.name,
-					profilePhoto: response.items[0].fields.profilePhoto,
-					biography: response.items[0].fields.biography,
-					twitterUsername: response.items[0].fields.twitterUsername,
-					instagramUsername: response.items[0].fields.instagramUsername,
-					categories: response.items[0].fields.category
-				}
-			};
-
-			if (response.items[0].fields.profilePhoto) {
-				profile.data.profilePhoto = response.includes.Asset.find(obj => {
-					return obj.sys.id === response.items[0].fields.profilePhoto.sys.id;
-				});
-			}
-		}
+		const profileResponse = await fetch(`${baseURL}.json?sql=select+*+from+results+where+%22Rider%22+like+%22${name}%22+order+by+Year+DESC&_shape=array`);
+		const profile = await profileResponse.json();
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
+			name,
 			profile
 		};
 	};
 
-	return withProfile;
+	return WithProfile;
 };

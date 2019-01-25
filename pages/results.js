@@ -44,7 +44,7 @@ class App extends Component {
 						<Heading fl w_100 mb3 ph3>
 							<H1 f3 f2_l fw6>{ this.props.race } { this.props.year } results</H1>
 						</Heading>
-						<ResultsTable results={this.props.results} />
+						<ResultsTable type="race" results={this.props.results} />
 					</RaceWrap>
 					</Div> : <ResultsIndex raceResultsByYear={this.props.raceResultsByYear} /> }
 				<Footer/>

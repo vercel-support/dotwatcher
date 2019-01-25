@@ -1,82 +1,64 @@
+import React, { Component } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import React from 'react';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+
+import { Link } from '../routes';
 import Header from '../components/header';
-import {Link} from '../routes';
 import Page from '../components/shared/page';
-import Wrapper from '../components/shared/wrapper';
-import slugify from '../utils/slugify';
-import {withProfile} from '../data/with-profile';
+import Footer from '../components/footer';
+import ResultsTable from '../components/results-table';
+import { WithProfile } from '../data/with-profile';
 
-const Img = styled.img`${tachyons}`;
-const A = styled.a`${tachyons}`;
-const Div = styled.div`${tachyons}`;
-const Span = styled.span`${tachyons}`;
+const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
+const Div = styled.div`${tachyons}`;
+const A = styled.a`${tachyons}`;
+const RaceWrap = styled.div`
+	@media screen and (min-width: 64em) {
+		margin-left: 10%;
+	}
+${tachyons}`;
 
-class Profile extends React.Component {
+class App extends Component {
 	render() {
 		return (
 			<Page>
 				<Head>
-					<title/>
-					<meta property="og:title" content=""/>
-					<meta property="og:image" content=""/>
+					<title>Rider profile - DotWatcher.cc</title>
+					<meta property="og:title" content="Rider profile - DotWatcher.cc" />
+					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
+					<meta property="og:image" content="https://images.ctfassets.net/6hyijb95boju/KQ7Yj247Go6KOIm60SeQ2/9315aa310eee6a72088c9c37de8aa1e6/DotWatcher---Logo---Pin-_1_.jpg" />
 				</Head>
 				<Header
 					title="dotwatcher.cc"
 				/>
-				{!this.props.profile &&
-					<Wrapper w_100 w_20_ns mt4>
-						User not found
-					</Wrapper>
-				}
-				{this.props.profile &&
-					<Div mt5>
-						{this.props.profile.data.profilePhoto &&
-							<Wrapper w_100 w_20_ns pa4>
-								<Img img db src={this.props.profile.data.profilePhoto.fields.file.url}/>
-							</Wrapper>
-						}
-						<Wrapper w_100 w_40_ns mt4>
-							<H1 lh_title ma0 f2 mb4>{this.props.profile.data.name}</H1>
-							<Div lh_copy measure>
-								{this.props.profile.data.biography}
-							</Div>
-							<Div lh_copy mv4>
-								{this.props.profile.data.twitterUsername &&
-								<A link near_black underline mr3 href={`http://twitter.com/${this.props.profile.data.twitterUsername}`}>
-									Twitter
-								</A>
-								}
-								{this.props.profile.data.instagramUsername &&
-								<A link near_black underline mr3 href={`http://instagram.com/${this.props.profile.data.instagramUsername}`}>
-									Instagram
-								</A>
-								}
-							</Div>
-							<Div lh_copy>
-								<Span mr2>Races done:</Span>
-								{
-									this.props.profile.data.categories.map(category => (
-										<Link key={category.sys.id} route="race" params={{type: 'race', id: category.sys.id, slug: slugify(category.fields.title)}} passHref prefetch>
-											<A link dim near_black underline>{category.fields.title}</A>
-										</Link>
-									))
-								}
-							</Div>
-						</Wrapper>
-					</Div>
-				}
+				<Div mt3 mt4_l>
+					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center className="cf">
+						<Link route="results" params={{ type: 'results' }} passHref prefetch>
+							<A near_black hover_blue>← All results</A>
+						</Link>
+						<Heading fl w_100 mb3 ph3>
+							<H1 f3 f2_l fw6>{this.props.name}’s results</H1>
+						</Heading>
+						<ResultsTable type="profile" results={this.props.profile} />
+					</RaceWrap>
+				</Div>
+				<Footer />
 			</Page>
 		);
 	}
 }
 
-Profile.propTypes = {
-	profile: PropTypes.object.isRequired
+App.propTypes = {
+	name: PropTypes.string,
+	profile: PropTypes.array
 };
 
-export default withProfile(Profile);
+App.defaultProps = {
+	name: '',
+	profile: [],
+};
+
+export default WithProfile(App);
