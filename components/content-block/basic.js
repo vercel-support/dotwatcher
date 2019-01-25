@@ -18,7 +18,7 @@ const Block = ({block, feature}) => {
 	const Wrap = styled.div`
 		margin: 0 var(--spacing-medium);
 		@media screen and (min-width: 48em) {
-			margin: 0 ${feature ? 'var(--spacing-extra-extra-large)': 'var(--spacing-extra-large)'};
+			margin: 0 ${feature ? 'var(--spacing-extra-extra-large)' : 'var(--spacing-extra-large)'} var(--spacing-large);
 		}
 		p {
 			margin: 0;
@@ -43,7 +43,7 @@ const Block = ({block, feature}) => {
 		)
 	}
 	return (
-		<Wrap margin mb4 className="cf">
+		<Wrap margin className="cf">
 			{ heading }
 			<Div measure mh3 lh_copy f4>
 				<ReactMarkdown
