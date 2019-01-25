@@ -114,6 +114,12 @@ class Banner extends Component {
 						<Link href="/races" as="/races" passHref prefetch>
 							<A dib pt2 mr3 f5 f4_l near_black hover_blue no_underline fw5>Races</A>
 						</Link>
+						<Link href="/results" as="/results" passHref prefetch>
+							<A dib pt2 mh3 f5 f4_l near_black hover_blue no_underline fw5>Results</A>
+						</Link>
+						<Link href="/features" as="/features" passHref prefetch>
+							<A dib pt2 mh3 f5 f4_l near_black hover_blue no_underline fw5>Features</A>
+						</Link>
 						<Link route="page" params={{type: 'page', id: '1BgGLGEpckYcmoEE6Cqc0I'}} passHref>
 							<A dib pt2 ml3 f5 f4_l near_black hover_blue no_underline fw5>About</A>
 						</Link>
