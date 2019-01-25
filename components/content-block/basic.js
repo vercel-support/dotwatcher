@@ -33,6 +33,12 @@ const Block = ({block, feature}) => {
 			border-left: .5rem solid var(--light-blue);
 			padding-left: 1rem;
 		}
+		a:link, a:visited {
+			color: var(--blue)
+		}
+		a:hover {
+			color: var(--light-blue)
+		}
 	${tachyons}`;
 	let heading = null;
 	if (block.heading) {
