@@ -47,7 +47,6 @@ class App extends Component {
 						<Heading fl w_100 mb3 ph3>
 							<H1 f3 f2_l fw6 lh_copy>
 								{ this.props.race } { this.props.year } results
-								<A fr f6 fw4 mt3 link near_black hover_blue href="#contact">Report an error</A>
 							</H1>
 						</Heading>
 						<ResultsTable type="race" results={this.props.results} />

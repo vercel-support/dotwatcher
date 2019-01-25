@@ -43,7 +43,7 @@ const ResultsTable = ({type, results}) => {
 
 	return (
 		<Div fl w_100 ph3>
-			<Results w_100>
+			<Results w_100 f6 f5_l>
 				<thead>
 					<HeadRow bb bw1>
 						{ <ResultsHeadCell>Rank</ResultsHeadCell>}
