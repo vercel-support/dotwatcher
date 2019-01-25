@@ -49,11 +49,11 @@ const ResultsTable = ({type, results}) => {
 						{ <ResultsHeadCell>Rank</ResultsHeadCell>}
 						<ResultsHeadCell>Rider</ResultsHeadCell>
 						{
-							withCapNo ? <ResultsHeadCell>Cap/Bib</ResultsHeadCell> : null
+							withCapNo ? <ResultsHeadCell dn db_ns>Cap/Bib</ResultsHeadCell> : null
 						}
-						<ResultsHeadCell>Class</ResultsHeadCell>
+						<ResultsHeadCell dn db_ns>Class</ResultsHeadCell>
 						<ResultsHeadCell>Result</ResultsHeadCell>
-						<ResultsHeadCell>Bike</ResultsHeadCell>
+						<ResultsHeadCell dn db_ns>Bike</ResultsHeadCell>
 						<ResultsHeadCell tr><abbr title="Finish Time in days, hours and minutes">Finish Time</abbr></ResultsHeadCell>
 					</HeadRow>
 				</thead>
@@ -68,14 +68,14 @@ const ResultsTable = ({type, results}) => {
 									<ResultsCell fw6>
 										{result['Rider']}
 									</ResultsCell>
-									{ withCapNo ? <ResultsCell>{ result['Cap/Bib'] }</ResultsCell> : null }
-									<ResultsCell>
+									{ withCapNo ? <ResultsCell dn db_ns>{ result['Cap/Bib'] }</ResultsCell> : null }
+									<ResultsCell dn db_ns>
 										{result['Class']}
 									</ResultsCell>
 									<ResultsCell>
 										{result['Result']}
 									</ResultsCell>
-									<ResultsCell>
+									<ResultsCell dn db_ns>
 										{result['Bike']}
 									</ResultsCell>
 									<ResultsCell tr title="Finish Time in days, hours and minutes">
