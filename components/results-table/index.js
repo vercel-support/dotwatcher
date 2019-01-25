@@ -80,15 +80,15 @@ const ResultsTable = ({type, results}) => {
 									</ResultsCell>
 									<ResultsCell tr title="Finish Time in days, hours and minutes">
 										{
-											result['Days'] ? result['Days'] + ':' : '--'
+											result['Days'] ? result['Days'] + 'd:' : '--'
 										}
 										{
 											parseInt(result['Hours']) < 10 ? '0' + result['Hours'] : result['Hours']
 										}
-										{ result['Hours'] ? ':' : '--' }
+										{ result['Hours'] ? 'h:' : '--' }
 										{
 											parseInt(result['Minutes']) < 10 ? '0' + result['Minutes'] : result['Minutes']
-										}
+										}m
 									</ResultsCell>
 								</ResultsRow>
 							)
