@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import ReactMarkdown from 'react-markdown';
 import Wrapper from '../shared/wrapper';
 
 const mailchimpURL = process.env.MAILCHIMP || '';
 
-const Div = styled.div`${tachyons}`;
 const Form = styled.form`${tachyons}`;
-const Header = styled.header`${tachyons}`;
+const Header = styled.header`
+	p {
+		margin-top: 0;
+		line-height: 1.5;
+	}
+${tachyons}`;
 const H2 = styled.h2`${tachyons}`;
-const P = styled.p`${tachyons}`;
 const EmailInput = styled.input`
 	&:focus {
 		outline: 0;
@@ -90,7 +94,9 @@ const EmailSignup = ({block}) => (
 	<Wrapper mhw_100 w_50_ns ph4 mt4_ns mb5_ns className="cf">
 		<Header>
 			<H2 f3 fw6 mt0 mb2 pb1 lh_title>{block.heading}</H2>
-			<P mt0 lh_copy>{block.words}</P>
+			<ReactMarkdown
+				source={block.words}
+			/>
 		</Header>
 		<MailchimpSubscribe
 			url={mailchimpURL}

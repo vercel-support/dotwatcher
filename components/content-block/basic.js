@@ -5,8 +5,6 @@ import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
-import Placeholder from '../placeholder';
-import Wrapper from '../shared/wrapper';
 import widont from '../../utils/widont';
 
 const Div = styled.div`${tachyons}`;
