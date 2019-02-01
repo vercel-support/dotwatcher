@@ -2,14 +2,14 @@
 
 import React from 'react';
 import fetch from 'isomorphic-fetch';
+import vars from './api-vars';
 
 export const WithResults = Page => {
 	const WithResults = props => <Page {...props} />
-	const baseURL = 'https://data.dotwatcher.cc/data-d6ac28d';
 
 	WithResults.getInitialProps = async ({ query: { year, race } }) => {
 		if (year && race) {
-			const raceResultsResponse = await fetch(`${baseURL}/results.json?Event=${race}&Year=${year}&_shape=array`);
+			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${race}&Year=${year}&_shape=array`);
 			const results = await raceResultsResponse.json();
 
 			return {
@@ -19,7 +19,7 @@ export const WithResults = Page => {
 				results
 			};
 		} else {
-			const allResultsResponse = await fetch(`${baseURL}.json?sql=select+DISTINCT+Event%2C+year+from+results+order+by+Event+ASC%2C+year+Desc&_shape=array`);
+			const allResultsResponse = await fetch(`${vars.data.baseUrl}.json?sql=select+DISTINCT+Event%2C+year+from+results+order+by+Event+ASC%2C+year+Desc&_shape=array`);
 			const rawResults = await allResultsResponse.json();
 			const raceResultsByYear = [];
 

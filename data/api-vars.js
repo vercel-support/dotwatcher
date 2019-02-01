@@ -10,6 +10,9 @@ const contentful = {
 	pages: {
 		homepage: 't21qqU9uHAqaOUKW0WAIa',
 		tips: '6CO2ZfSWlyOkcQsG62iGaE'
+	},
+	data: {
+		baseUrl: 'https://data.dotwatcher.cc/data-b60d77f'
 	}
 };
 
