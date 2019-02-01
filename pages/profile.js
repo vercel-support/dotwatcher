@@ -40,7 +40,7 @@ class App extends Component {
 							<A near_black hover_blue>← All results</A>
 						</Link>
 						<Heading fl w_100 mb3 ph3>
-							<H1 f3 f2_l fw6>{this.props.name}’s results</H1>
+							<H1 f3 f1_l fw6>{this.props.name}’s results</H1>
 						</Heading>
 						<ResultsTable type="profile" results={this.props.profile} />
 					</RaceWrap>
