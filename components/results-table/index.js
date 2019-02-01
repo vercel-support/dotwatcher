@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
+import { Link } from '../../routes';
 
 const Div = styled.div`${tachyons}`;
+const A = styled.a`${tachyons}`;
 const Results = styled.table`
     border:none;
     border-collapse:collapse;
@@ -58,7 +60,9 @@ const ResultsTable = ({type, results}) => {
 						{
 							type === 'profile' ? <ResultsHeadCell>Year</ResultsHeadCell> : null
 						}
-						{ <ResultsHeadCell>Rank</ResultsHeadCell>}
+						{
+							type !== 'profile' ? <ResultsHeadCell>Rank</ResultsHeadCell> : null
+						}
 						<ResultsHeadCell>Rider</ResultsHeadCell>
 						{
 							withCapNo ? <ResultsHeadCell dn dtc_ns>Cap/Bib</ResultsHeadCell> : null
@@ -75,16 +79,20 @@ const ResultsTable = ({type, results}) => {
 							return (
 								<ResultsRow key={result['rowid']}>
 									{
-										type === 'profile' ? <ResultsCell>{result['Event']}</ResultsCell> : null
+										type === 'profile' ? <ResultsCell><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'] }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
 									}
 									{
 										type === 'profile' ? <ResultsCell>{result['Year']}</ResultsCell> : null
 									}
-									<ResultsCell pa0 pr2 className="rank">
-										{ i+1 }
-									</ResultsCell>
+									{
+										type !== 'profile' ? <ResultsCell pa0 pr2 className="rank">{ i+1 }</ResultsCell> : null
+									}
 									<ResultsCell fw6>
-										{result['Rider']}
+										<Link route="profile" params={{ type: 'profile', name: result['Rider'] }} passHref>
+											<A link near_black hover_blue underline>
+												{result['Rider']}
+											</A>
+										</Link>
 									</ResultsCell>
 									{ withCapNo ? <ResultsCell dn dtc_ns tc>{ result['Cap/Bib'] }</ResultsCell> : null }
 									<ResultsCell dn dtc_ns>
