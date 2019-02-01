@@ -14,27 +14,22 @@ const Grid = styled.div`
 	grid-gap: var(--spacing-large);
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr) );
 ${tachyons}`;
-const RaceWrap = styled.div`
-	@media screen and (min-width: 64em) {
-		margin-left: 10%;
-	}
-${tachyons}`;
 
 const ResultsIndex = ({ raceResultsByYear }) => {
 	return (
-		<React.Fragment>
-			<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
-				<Header mv3>
-					<H1 ma0 f2 fw6>Browse race results</H1>
+		<Div mt3 mh6_l>
+			<Div pb5 className="cf">
+				<Header ma3>
+					<H1 ma0 f1 fw6>Browse race results</H1>
 				</Header>
-				<Grid pb4 bb bw1 b__light_gray>
+				<Grid mh3 pb4 bb bw1 b__light_gray>
 					{
 						raceResultsByYear.map((result, i) => <ResultsSummary event={result} key={i} />)
 					}
 				</Grid>
 				<ResultsContribute />
-			</RaceWrap>
-		</React.Fragment>
+			</Div>
+		</Div>
 	);
 };
 

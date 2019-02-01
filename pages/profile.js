@@ -15,11 +15,6 @@ const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
-const RaceWrap = styled.div`
-	@media screen and (min-width: 64em) {
-		margin-left: 10%;
-	}
-${tachyons}`;
 
 class App extends Component {
 	render() {
@@ -34,16 +29,16 @@ class App extends Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Div mt3 mt4_l>
-					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center className="cf">
+				<Div mt3 mh6_l>
+					<Div pb5 className="cf">
 						<Link route="results" params={{ type: 'results' }} passHref prefetch>
-							<A near_black hover_blue>← All results</A>
+							<A ph3 near_black hover_blue>← All results</A>
 						</Link>
 						<Heading fl w_100 mb3 ph3>
-							<H1 f3 f1_l fw6>{this.props.name}’s results</H1>
+							<H1 f3 f1_l fw6 lh_title>{this.props.name}’s results</H1>
 						</Heading>
 						<ResultsTable type="profile" results={this.props.profile} />
-					</RaceWrap>
+					</Div>
 				</Div>
 				<Footer />
 			</Page>
