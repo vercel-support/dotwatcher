@@ -33,6 +33,10 @@ const ResultsTable = ({type, results}) => {
 		font-variant-numeric: tabular-nums;
 		padding: var(--spacing-extra-small);
 
+		@media screen and (min-width:64em){
+			padding: var(--spacing-small) var(--spacing-extra-small);
+		}
+
 		&.rank {
 			text-align: ${type === 'profile' ? 'center' : 'right'};
 		}
