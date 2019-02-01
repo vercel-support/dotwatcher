@@ -24,13 +24,19 @@ const ResultsRow = styled.tr`
 		background-color: var(--lightest-blue);
 	}
 ${tachyons}`;
-const ResultsCell = styled.td`
-	line-height: 1.5;
-	font-variant-numeric: tabular-nums;
-	padding: var(--spacing-extra-small);
-${tachyons}`;
 
 const ResultsTable = ({type, results}) => {
+	const ResultsCell = styled.td`
+		line-height: 1.5;
+		font-variant-numeric: tabular-nums;
+		padding: var(--spacing-extra-small);
+
+		&.rank {
+			text-align: ${type === 'profile' ? 'center' : 'right'};
+		}
+	${tachyons}`;
+
+
 	if (results.length < 1) {
 		return (
 		<Div fl w_100 ph3>
@@ -46,14 +52,20 @@ const ResultsTable = ({type, results}) => {
 			<Results w_100 f6 f5_l>
 				<thead>
 					<HeadRow bb bw1>
+						{
+							type === 'profile' ? <ResultsHeadCell>Race</ResultsHeadCell> : null
+						}
+						{
+							type === 'profile' ? <ResultsHeadCell>Year</ResultsHeadCell> : null
+						}
 						{ <ResultsHeadCell>Rank</ResultsHeadCell>}
 						<ResultsHeadCell>Rider</ResultsHeadCell>
 						{
-							withCapNo ? <ResultsHeadCell dn db_ns>Cap/Bib</ResultsHeadCell> : null
+							withCapNo ? <ResultsHeadCell dn dtc_ns>Cap/Bib</ResultsHeadCell> : null
 						}
-						<ResultsHeadCell dn db_ns>Class</ResultsHeadCell>
+						<ResultsHeadCell dn dtc_ns>Class</ResultsHeadCell>
 						<ResultsHeadCell>Result</ResultsHeadCell>
-						<ResultsHeadCell dn db_ns>Bike</ResultsHeadCell>
+						<ResultsHeadCell dn dtc_ns>Bike</ResultsHeadCell>
 						<ResultsHeadCell tr><abbr title="Finish Time in days, hours and minutes">Finish Time</abbr></ResultsHeadCell>
 					</HeadRow>
 				</thead>
@@ -62,20 +74,26 @@ const ResultsTable = ({type, results}) => {
 						results.map((result, i) => {
 							return (
 								<ResultsRow key={result['rowid']}>
-									<ResultsCell tr pa0 pr2>
+									{
+										type === 'profile' ? <ResultsCell>{result['Event']}</ResultsCell> : null
+									}
+									{
+										type === 'profile' ? <ResultsCell>{result['Year']}</ResultsCell> : null
+									}
+									<ResultsCell pa0 pr2 className="rank">
 										{ i+1 }
 									</ResultsCell>
 									<ResultsCell fw6>
 										{result['Rider']}
 									</ResultsCell>
-									{ withCapNo ? <ResultsCell dn db_ns>{ result['Cap/Bib'] }</ResultsCell> : null }
-									<ResultsCell dn db_ns>
+									{ withCapNo ? <ResultsCell dn dtc_ns tc>{ result['Cap/Bib'] }</ResultsCell> : null }
+									<ResultsCell dn dtc_ns>
 										{result['Class']}
 									</ResultsCell>
 									<ResultsCell>
-										{result['Result']}
+										{result['Result'].replace('(within time limit)','')}
 									</ResultsCell>
-									<ResultsCell dn db_ns>
+									<ResultsCell dn dtc_ns>
 										{result['Bike']}
 									</ResultsCell>
 									<ResultsCell tr title="Finish Time in days, hours and minutes">
@@ -88,7 +106,10 @@ const ResultsTable = ({type, results}) => {
 										{ result['Hours'] ? 'h:' : '--' }
 										{
 											parseInt(result['Minutes']) < 10 ? '0' + result['Minutes'] : result['Minutes']
-										}m
+										}
+										{
+											result['Minutes'] ? 'm' : '--'
+										}
 									</ResultsCell>
 								</ResultsRow>
 							)
