@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import { Link } from '../../routes';
+import slugify from '../../utils/slugify';
 
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
@@ -18,16 +19,18 @@ const ResultsHeadCell = styled.th`
 	text-transform: uppercase;
 ${tachyons}`;
 const HeadRow = styled.tr`${tachyons}`;
-const ResultsRow = styled.tr`
-	&:nth-child(even) {
-		background-color: var(--near-white);
-	}
-	&:hover {
-		background-color: var(--lightest-blue);
-	}
-${tachyons}`;
 
-const ResultsTable = ({type, results}) => {
+const ResultsTable = ({type, results, focus}) => {
+	const ResultsRow = styled.tr`
+		&:nth-child(even) {
+			background-color: var(--near-white);
+		}
+		&[id="${focus}"],
+		&:hover,
+		&:target {
+			background-color: var(--lightest-blue);
+		}
+	${tachyons}`;
 	const ResultsCell = styled.td`
 		line-height: 1.5;
 		font-variant-numeric: tabular-nums;
@@ -88,10 +91,11 @@ const ResultsTable = ({type, results}) => {
 				<tbody>
 					{
 						results.map((result, i) => {
+							const id = type === 'profile' ? `${slugify(result['Event'])}-${slugify(result['Year'].toString())}` : slugify(result['Rider'])
 							return (
-								<ResultsRow key={result['rowid']}>
+								<ResultsRow key={result['rowid']} id={id}>
 									{
-										type === 'profile' ? <ResultsCell className="race-name"><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'] }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
+										type === 'profile' ? <ResultsCell className="race-name"><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'], 'focus': slugify(result['Rider']) }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
 									}
 									{
 										type === 'profile' ? <ResultsCell>{result['Year']}</ResultsCell> : null
@@ -143,12 +147,14 @@ const ResultsTable = ({type, results}) => {
 
 ResultsTable.propTypes = {
 	results: PropTypes.array,
-	type: PropTypes.string
+	type: PropTypes.string,
+	focus: PropTypes.string
 };
 
 ResultsTable.defaultProps = {
 	results: [],
-	type: 'race'
+	type: 'race',
+	focus: ''
 };
 
 export default ResultsTable;

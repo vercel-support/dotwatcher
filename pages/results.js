@@ -44,7 +44,7 @@ class App extends Component {
 								{ this.props.race } { this.props.year } results
 							</H1>
 						</Heading>
-						<ResultsTable type="race" results={this.props.results} />
+						<ResultsTable type="race" results={this.props.results} focus={this.props.focus} />
 						<ResultsContribute/>
 					</Div>
 					</Div> : <ResultsIndex raceResultsByYear={this.props.raceResultsByYear} /> }
@@ -58,14 +58,16 @@ App.propTypes = {
 	race: PropTypes.string,
 	year: PropTypes.string,
 	results: PropTypes.array,
-	raceResultsByYear: PropTypes.array
+	raceResultsByYear: PropTypes.array,
+	focus: PropTypes.string
 };
 
 App.defaultProps = {
 	race: '',
 	year: '',
 	results: [],
-	raceResultsByYear: []
+	raceResultsByYear: [],
+	focus: ''
 };
 
 export default WithResults(App);
