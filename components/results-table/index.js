@@ -36,6 +36,14 @@ const ResultsTable = ({type, results}) => {
 		&.rank {
 			text-align: ${type === 'profile' ? 'center' : 'right'};
 		}
+
+		&.race-name {
+			font-weight: ${type === 'race' ? '400' : '600'}
+		}
+
+		&.rider-name {
+			font-weight: ${type === 'profile' ? '400' : '600'}
+		}
 	${tachyons}`;
 
 
@@ -50,7 +58,7 @@ const ResultsTable = ({type, results}) => {
 	const withCapNo = results[0]['Cap/Bib'];
 
 	return (
-		<Div fl w_100 ph3>
+		<Div ph3>
 			<Results w_100 f6 f5_l>
 				<thead>
 					<HeadRow bb bw1>
@@ -79,7 +87,7 @@ const ResultsTable = ({type, results}) => {
 							return (
 								<ResultsRow key={result['rowid']}>
 									{
-										type === 'profile' ? <ResultsCell><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'] }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
+										type === 'profile' ? <ResultsCell className="race-name"><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'] }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
 									}
 									{
 										type === 'profile' ? <ResultsCell>{result['Year']}</ResultsCell> : null
@@ -87,7 +95,7 @@ const ResultsTable = ({type, results}) => {
 									{
 										type !== 'profile' ? <ResultsCell pa0 pr2 className="rank">{ i+1 }</ResultsCell> : null
 									}
-									<ResultsCell fw6>
+									<ResultsCell className="rider-name">
 										<Link route="profile" params={{ type: 'profile', name: result['Rider'] }} passHref>
 											<A link near_black hover_blue underline>
 												{result['Rider']}
