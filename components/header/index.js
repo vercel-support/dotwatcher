@@ -122,7 +122,7 @@ class Banner extends Component {
 						) : null
 					}
 
-					<ResponsiveMenu 
+					<ResponsiveMenu
 						menuOpenButton={<Button f5 pt2 fw5 bg_white tc near_black hover_blue bn>Menu</Button>}
 						changeMenuOn="800px"
 						largeMenuClassName=""
@@ -130,7 +130,7 @@ class Banner extends Component {
 						menu={
 							<React.Fragment>
 								<Link href="/races" as="/races" passHref prefetch>
-									<A dib pt2 mr3 f5 f4_l near_black hover_blue no_underline fw5>Races</A>
+									<A dib pt2 mr3 f5 f4_l near_black hover_blue no_underline fw5>Live</A>
 								</Link>
 								<Link href="/results" as="/results" passHref prefetch>
 									<A dib pt2 mh3 f5 f4_l near_black hover_blue no_underline fw5>Results</A>
