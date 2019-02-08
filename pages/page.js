@@ -41,8 +41,8 @@ class ContentPage extends React.Component {
 		return (
 			<Page>
 				<Head>
-					<title>{this.props.page.title} - dotwatcher.cc</title>
-					<meta property="og:title" content={`${this.props.page.title} - dotwatcher.cc`}/>
+					<title>{this.props.page.title} – DotWatcher.cc</title>
+					<meta property="og:title" content={`${this.props.page.title} – DotWatcher.cc`}/>
 					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
 					<meta property="og:image" content="https://images.ctfassets.net/6hyijb95boju/KQ7Yj247Go6KOIm60SeQ2/9315aa310eee6a72088c9c37de8aa1e6/DotWatcher---Logo---Pin-_1_.jpg"/>
 				</Head>
