@@ -13,7 +13,7 @@ export const WithResults = Page => {
 			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${race}&Year=${year}&_size=max&_shape=array`);
 			const results = await raceResultsResponse.json();
 
-			const racerClasses = ['None']
+			const racerClasses = []
 
 			results.forEach(result => {
 				if (racerClasses.filter(racerClass => racerClass === result['Class']).length < 1) {

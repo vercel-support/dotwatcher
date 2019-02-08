@@ -25,7 +25,7 @@ class ResultsTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeFilter: 'None'
+			activeFilter: this.props.racerClasses[0]
 		};
 
 		this.setFilter = this.setFilter.bind(this);
@@ -100,7 +100,7 @@ class ResultsTable extends React.Component {
 							{
 								withCapNo ? <ResultsHeadCell dn dtc_ns>Cap/Bib</ResultsHeadCell> : null
 							}
-							<ResultsHeadCell dn dtc_ns>Class</ResultsHeadCell>
+							<ResultsHeadCell dn dtc_ns>Category</ResultsHeadCell>
 							<ResultsHeadCell>Result</ResultsHeadCell>
 							<ResultsHeadCell dn dtc_ns>Bike</ResultsHeadCell>
 							<ResultsHeadCell tr><abbr title="Finish Time in days, hours and minutes">Finish Time</abbr></ResultsHeadCell>
@@ -109,7 +109,7 @@ class ResultsTable extends React.Component {
 					<tbody>
 						{
 							this.props.results.map((result, i) => {
-								if (this.state.activeFilter !== 'None' && this.state.activeFilter !== result['Class']) {
+								if (this.state.activeFilter !== result['Class']) {
 									return null
 								}
 								const id = this.props.type === 'profile' ? `${slugify(result['Event'])}-${slugify(result['Year'].toString())}` : slugify(result['Rider'])

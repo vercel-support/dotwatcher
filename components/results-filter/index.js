@@ -62,7 +62,7 @@ class ResultsFilter extends React.Component {
 		return (
 			<Form mb3>
 				<Fieldset bn ma0 pa0 aria-describedby="filter-title">
-					<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3>Filter by class:</H3>
+					<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3>Filter by category:</H3>
 					{
 						this.props.racerClasses.map(racerClass => (
 							<Div dib mr4 relative key={`wrap-filter-${racerClass}`}>
