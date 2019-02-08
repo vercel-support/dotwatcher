@@ -49,6 +49,7 @@ export const withFeature = Page => {
 			feature = {
 				id: featureResponse.items[0].sys.id,
 				title: featureResponse.items[0].fields.title,
+				excerpt: featureResponse.items[0].fields.excerpt,
 				text: featureResponse.items[0].fields.text,
 				blocks: []
 			};
