@@ -109,7 +109,7 @@ class ResultsTable extends React.Component {
 					<tbody>
 						{
 							this.props.results.map((result, i) => {
-								if (this.state.activeFilter !== result['Class']) {
+								if (this.props.type !== 'profile' && this.state.activeFilter !== result['Class']) {
 									return null
 								}
 								const id = this.props.type === 'profile' ? `${slugify(result['Event'])}-${slugify(result['Year'].toString())}` : slugify(result['Rider'])
