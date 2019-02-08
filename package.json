@@ -18,11 +18,11 @@
     "extends": "xo-react"
   },
   "dependencies": {
-    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-module-resolver": "^3.1.3",
     "babel-plugin-styled-components": "^1.6.3",
     "babel-plugin-wrap-in-js": "^1.1.1",
-    "contentful": "^7.0.5",
-    "moment": "^2.22.2",
+    "contentful": "^7.2.0",
+    "moment": "^2.24.0",
     "next": "^7.0.2",
     "next-routes": "^1.4.2",
     "path-match": "^1.2.4",
@@ -31,12 +31,12 @@
     "prop-types": "^15.6.2",
     "pusher": "^2.2.0",
     "pusher-js": "^4.3.1",
-    "raw-loader": "^0.5.1",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
-    "react-ga": "^2.5.6",
-    "react-instagram-embed": "^1.4.1",
-    "react-mailchimp-subscribe": "^2.0.2",
+    "raw-loader": "^1.0.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-ga": "^2.5.7",
+    "react-instagram-embed": "^1.5.0",
+    "react-mailchimp-subscribe": "^2.1.0",
     "react-markdown": "^4.0.4",
     "react-responsive-navbar": "^1.0.11",
     "react-social": "^1.10.0",
@@ -49,12 +49,12 @@
     "tachyons": "^4.11.1"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "eslint": "^5.9.0",
-    "eslint-config-xo-react": "^0.17.0",
+    "ava": "^1.2.1",
+    "eslint": "^5.13.0",
+    "eslint-config-xo-react": "^0.18.0",
     "eslint-plugin-react": "^7.11.1",
     "now-env": "^3.1.0",
     "superagent": "^4.0.0",
-    "xo": "^0.23.0"
+    "xo": "^0.24.0"
   }
 }
