@@ -13,37 +13,9 @@ export const withFeature = Page => {
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
-		const racesQuery = {
-			content_type: vars.content_type.categories,
-			order: 'fields.raceDate'
-		};
-
-		const racesResponse = await client.getEntries(racesQuery);
 		const featureResponse = await client.getEntries({'sys.id': id});
-		const races = [];
+
 		let feature;
-
-		for (const item of racesResponse.items) {
-			const entry = {
-				sys: {
-					id: item.sys.id
-				},
-				data: {
-					title: item.fields.title,
-					description: item.fields.shortDescription,
-					raceID: item.fields.trackleadersRaceId,
-					raceDate: item.fields.raceDate,
-					raceEndDate: item.fields.raceEndDate
-				}
-			};
-
-			if (item.fields.icon) {
-				entry.data.icon = racesResponse.includes.Asset.find(obj => {
-					return obj.sys.id === item.fields.icon.sys.id;
-				});
-			}
-			races.push(entry);
-		}
 
 		if (featureResponse.items[0]) {
 			feature = {
