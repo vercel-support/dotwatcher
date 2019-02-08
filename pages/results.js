@@ -39,8 +39,8 @@ class App extends Component {
 							<Link route="results" params={{ type: 'results' }} passHref prefetch>
 							<A ph3 db link near_black hover_blue>← All results</A>
 						</Link>
-						<Heading fl w_100 mb3 ph3>
-							<H1 f3 f1_l fw6 lh_title>
+						<Heading fl w_100 mb4 ph3>
+							<H1 f3 f1_l fw6 lh_title mb0>
 								{ this.props.race } { this.props.year } results
 							</H1>
 						</Heading>
