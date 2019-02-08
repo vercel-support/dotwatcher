@@ -25,10 +25,16 @@ class App extends Component {
 		return (
 			<Page>
 				<Head>
-					<title>{ this.props.race } { this.props.year } results - DotWatcher.cc</title>
-					<meta property="og:title" content={`${this.props.race} ${this.props.year} results - DotWatcher.cc`}/>
-					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
+					<title>{ this.props.race } { this.props.year } Results - DotWatcher.cc</title>
+					<meta property="og:title" content={`${this.props.race} ${this.props.year} Results - DotWatcher.cc`}/>
+					<meta property="og:description" content="A history of results from the ultra-cycling world, in one database."/>
 					<meta property="og:image" content="https://images.ctfassets.net/6hyijb95boju/KQ7Yj247Go6KOIm60SeQ2/9315aa310eee6a72088c9c37de8aa1e6/DotWatcher---Logo---Pin-_1_.jpg"/>
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:site" content="@dotwatcher"/>
+					<meta name="twitter:creator" content="@dotwatcher"/>
+					<meta name="twitter:title" content={`${this.props.race} ${this.props.year} Results - DotWatcher.cc`} />
+					<meta name="twitter:description" content="A history of results from the ultra-cycling world, in one database." />
+					<meta name="description" content="A history of results from the ultra-cycling world, in one database." />
 				</Head>
 				<Header
 					title="dotwatcher.cc"
