@@ -15,11 +15,6 @@ import {withRaces} from '../data/with-races';
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`${tachyons}`;
-const RaceWrap = styled.div`
-	@media screen and (min-width: 64em) {
-		margin-left: 10%;
-	}
-${tachyons}`;
 
 class App extends Component {
 	render() {
@@ -44,8 +39,8 @@ class App extends Component {
 				<Header
 					title="dotwatcher.cc"
 				/>
-				<Div mt3 mt4_l>
-					<RaceWrap fl ph3_ns pb2 w_100 w_80_l center mt4_ns className="cf">
+				<Div mt3 mt4_l mh6_l>
+					<Div pb5>
 						{
 							currentRaces.length > 0 ? <Heading fl w_100 mb4 ph3><H1 ma0 f4 fw6 ttu tracked bb bw1 b__light_gray pb1>Live coverage</H1></Heading> : null
 						}
@@ -63,7 +58,7 @@ class App extends Component {
 								return <RacePreview key={race.sys.id} id={race.sys.id} slug={slugify(race.data.title, {lower: true})} data={race.data}/>;
 							})
 						}
-					</RaceWrap>
+					</Div>
 				</Div>
 				<Footer/>
 			</Page>

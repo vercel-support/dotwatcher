@@ -34,8 +34,8 @@ class App extends Component {
 					title="dotwatcher.cc"
 				/>
 				{
-					this.props.results.length > 1 ? <Div mt3 mh6_l>
-					<Div pb5 className="cf">
+					this.props.results.length > 1 ? <Div mt3 mt4_l mh6_l>
+					<Div pb5>
 							<Link route="results" params={{ type: 'results' }} passHref prefetch>
 							<A ph3 db link near_black hover_blue>← All results</A>
 						</Link>

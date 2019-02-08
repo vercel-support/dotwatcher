@@ -17,8 +17,8 @@ ${tachyons}`;
 
 const ResultsIndex = ({ raceResultsByYear }) => {
 	return (
-		<Div mt3 mh6_l>
-			<Div pb5 className="cf">
+		<Div mt3 mt4_l mh6_l>
+			<Div>
 				<Header ma3>
 					<H1 ma0 f1 fw6>Browse race results</H1>
 				</Header>
