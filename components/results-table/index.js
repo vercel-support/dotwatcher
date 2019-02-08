@@ -83,7 +83,7 @@ class ResultsTable extends React.Component {
 
 		return (
 			<Div ph3>
-				{ this.props.racerClasses.length > 1 ? <ResultsFilter racerClasses={this.props.racerClasses} setFilter={this.setFilter.bind(this)} activeFilter={this.state.activeFilter} /> : null }
+				{ this.props.type !== 'profile' && this.props.racerClasses.length > 1 ? <ResultsFilter racerClasses={this.props.racerClasses} setFilter={this.setFilter.bind(this)} activeFilter={this.state.activeFilter} /> : null }
 				<Results w_100 f6 f5_l>
 					<thead>
 						<HeadRow bb bw1>
