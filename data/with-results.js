@@ -13,12 +13,21 @@ export const WithResults = Page => {
 			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${race}&Year=${year}&_size=max&_shape=array`);
 			const results = await raceResultsResponse.json();
 
+			const racerClasses = ['None']
+
+			results.forEach(result => {
+				if (racerClasses.filter(racerClass => racerClass === result['Class']).length < 1) {
+					racerClasses.push(result['Class'])
+				}
+			})
+
 			return {
 				...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 				race,
 				year,
 				results,
-				focus
+				focus,
+				racerClasses
 			};
 		} else {
 			const allResultsResponse = await fetch(`${vars.data.baseUrl}.json?sql=select+DISTINCT+Event%2C+year+from+results+order+by+Event+ASC%2C+year+Desc&_shape=array`);

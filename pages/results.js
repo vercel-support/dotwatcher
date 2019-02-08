@@ -44,7 +44,7 @@ class App extends Component {
 								{ this.props.race } { this.props.year } results
 							</H1>
 						</Heading>
-						<ResultsTable type="race" results={this.props.results} focus={this.props.focus} />
+						<ResultsTable type="race" results={this.props.results} focus={this.props.focus} racerClasses={this.props.racerClasses} />
 						<ResultsContribute/>
 					</Div>
 					</Div> : <ResultsIndex raceResultsByYear={this.props.raceResultsByYear} /> }
