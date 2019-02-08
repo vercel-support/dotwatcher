@@ -52,7 +52,7 @@ class FeaturePage extends React.Component {
 					<meta name="twitter:creator" content="@dotwatcher"/>
 					<meta name="twitter:title" content={`${this.props.feature.title} – DotWatcher.cc`} />
 					<meta name="twitter:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
-					<meta name="twitter:image" content="https://a.ltrbxd.com/resized/sm/upload/m2/rx/cn/gv/the-favourite-1200-1200-675-675-crop-000000.jpg?k=461595f6f4" />
+					<meta name="twitter:image" content={this.props.feature.image ? `${this.props.feature.image.fields.file.url}` : 'https://images.ctfassets.net/6hyijb95boju/KQ7Yj247Go6KOIm60SeQ2/9315aa310eee6a72088c9c37de8aa1e6/DotWatcher---Logo---Pin-_1_.jpg' } />
 					<meta name="description" content={this.props.feature.excerpt ? this.props.feature.excerpt : 'DotWatcher is here to showcase the best of long distance self-supported bike racing.' } />
 					</Head>
 				<Header
