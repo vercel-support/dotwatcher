@@ -66,9 +66,7 @@ class ResultsFilter extends React.Component {
 					{
 						this.props.racerClasses.map(racerClass => (
 							<Div dib mr4 relative key={`wrap-filter-${racerClass}`}>
-								{
-									racerClass === this.props.activeFilter ? <Input o_0 absolute top_0 left_0 type="radio" checked name="filter" id={`filter-${racerClass}`} value={racerClass} onChange={this.onSelectChange.bind(this)}/> : <Input o_0 absolute top_0 left_0 type="radio" name="filter" id={`filter-${racerClass}`} value={racerClass} onChange={this.onSelectChange.bind(this)}/>
-								}
+								<Input o_0 absolute top_0 left_0 type="radio" name="filter" id={`filter-${racerClass}`} value={racerClass} onChange={this.onSelectChange.bind(this)} checked={racerClass === this.props.activeFilter}/>
 								<Label f5 fw6 lh-copy dib pl2 pv1 htmlFor={`filter-${racerClass}`}>{racerClass}</Label>
 							</Div>
 						))
