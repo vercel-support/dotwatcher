@@ -27,9 +27,17 @@ class PostPage extends React.Component {
 			<Page>
 				<Head>
 					<title>{this.props.posts[0].data.title}</title>
-					<meta property="og:title" content={this.props.posts[0].data.title}/>
+					<meta property="og:title" content={`${this.props.posts[0].data.title} – DotWatcher.cc`}/>
 					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
 					<meta property="og:image" content="https://images.ctfassets.net/6hyijb95boju/KQ7Yj247Go6KOIm60SeQ2/9315aa310eee6a72088c9c37de8aa1e6/DotWatcher---Logo---Pin-_1_.jpg"/>
+
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:site" content="@dotwatcher" />
+					<meta name="twitter:creator" content="@dotwatcher" />
+					<meta name="twitter:title" content={`${this.props.posts[0].data.title} – DotWatcher.cc`} />
+					<meta name="twitter:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
+					<meta name="description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
+					<script src="//www.instagram.com/embed.js" />
 				</Head>
 				<Header
 					title="dotwatcher.cc"

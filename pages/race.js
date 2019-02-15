@@ -197,18 +197,18 @@ class Race extends React.Component {
 				<Head>
 					<title>{this.props.raceName} – DotWatcher.cc</title>
 					<meta property="og:title" content={`${this.props.raceName} – DotWatcher.cc`}/>
-					<meta property="og:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing."/>
 					<meta property="og:description" content={this.props.race.fields.shortDescription ? this.props.race.fields.shortDescription : 'DotWatcher is here to showcase the best of long distance self-supported bike racing.' }/>
 					<meta property="og:image" content={this.props.raceImage}/>
 					<meta name="twitter:card" content="summary_large_image" />
 					<meta name="twitter:site" content="@dotwatcher"/>
 					<meta name="twitter:creator" content="@dotwatcher"/>
 					<meta name="twitter:title" content={`${this.props.raceName} – DotWatcher.cc`}/>
-					<meta name="twitter:description" content="DotWatcher is here to showcase the best of long distance self-supported bike racing." />
+					<meta name="twitter:description" content={this.props.race.fields.shortDescription ? this.props.race.fields.shortDescription : 'DotWatcher is here to showcase the best of long distance self-supported bike racing.'} />
 					<meta name="twitter:image" content={this.props.raceImage} />
 					<meta name="description" content={this.props.race.fields.shortDescription ? this.props.race.fields.shortDescription : 'DotWatcher is here to showcase the best of long distance self-supported bike racing.' } />
 					<meta name="twitter:label1" content="Location" /><meta name="twitter:data1" content={this.props.race.fields.location} />
 					<meta name="twitter:label2" content="Length" /><meta name="twitter:data2" content={this.props.race.fields.length} />
+					<script src="//www.instagram.com/embed.js" />
 				</Head>
 				<Header
 					title="dotwatcher.cc"
