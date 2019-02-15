@@ -25,7 +25,7 @@ class ResultsTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeFilter: this.props.racerClasses[0]
+			activeFilter: this.props.activeClass
 		};
 
 		this.setFilter = this.setFilter.bind(this);
@@ -116,7 +116,7 @@ class ResultsTable extends React.Component {
 								return (
 									<ResultsRow key={result['rowid']} id={id}>
 										{
-											this.props.type === 'profile' ? <ResultsCell className="race-name"><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'], 'focus': slugify(result['Rider']) }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
+											this.props.type === 'profile' ? <ResultsCell className="race-name"><Link route="results" params={{ type: 'results', race: result['Event'], year: result['Year'], 'focus': slugify(result['Rider']), 'activeClass': result['Class'] }} passHref><A link near_black hover_blue underline>{result['Event']}</A></Link></ResultsCell> : null
 										}
 										{
 											this.props.type === 'profile' ? <ResultsCell>{result['Year']}</ResultsCell> : null

@@ -7,7 +7,7 @@ import vars from './api-vars';
 export const WithResults = Page => {
 	const WithResults = props => <Page {...props} />
 
-	WithResults.getInitialProps = async ({ query: { year, race, focus } }) => {
+	WithResults.getInitialProps = async ({ query: { year, race, focus, activeClass } }) => {
 
 		if (year && race) {
 			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${race}&Year=${year}&_size=max&_shape=array`);
@@ -21,13 +21,16 @@ export const WithResults = Page => {
 				}
 			})
 
+			activeClass = activeClass || racerClasses[0]
+
 			return {
 				...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 				race,
 				year,
 				results,
 				focus,
-				racerClasses
+				racerClasses,
+				activeClass
 			};
 		} else {
 			const allResultsResponse = await fetch(`${vars.data.baseUrl}.json?sql=select+DISTINCT+Event%2C+year+from+results+order+by+Event+ASC%2C+year+Desc&_shape=array`);

@@ -50,7 +50,7 @@ class App extends Component {
 								{ this.props.race } { this.props.year } results
 							</H1>
 						</Heading>
-						<ResultsTable type="race" results={this.props.results} focus={this.props.focus} racerClasses={this.props.racerClasses} />
+						<ResultsTable type="race" results={this.props.results} focus={this.props.focus} racerClasses={this.props.racerClasses} activeClass={this.props.activeClass} />
 						<ResultsContribute/>
 					</Div>
 					</Div> : <ResultsIndex raceResultsByYear={this.props.raceResultsByYear} /> }
