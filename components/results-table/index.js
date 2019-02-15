@@ -136,7 +136,7 @@ class ResultsTable extends React.Component {
 											{result['Class']}
 										</ResultsCell>
 										<ResultsCell>
-											{result['Result'].replace('(within time limit)','')}
+											{result['Result']}
 										</ResultsCell>
 										<ResultsCell dn dtc_ns>
 											{result['Bike']}
