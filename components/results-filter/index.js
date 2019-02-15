@@ -56,6 +56,7 @@ class ResultsFilter extends React.Component {
 
 	onSelectChange(event) {
 		this.props.setFilter(event.target.value)
+		history.pushState({}, '', `${window.location.pathname}?activeClass=${event.target.value}`)
 	}
 
 	render() {
