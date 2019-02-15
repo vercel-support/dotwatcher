@@ -23,7 +23,7 @@
     "babel-plugin-wrap-in-js": "^1.1.1",
     "contentful": "^7.3.0",
     "moment": "^2.24.0",
-    "next": "^7.0.3",
+    "next": "^8.0.1",
     "next-routes": "^1.4.2",
     "path-match": "^1.2.4",
     "postcss-easy-import": "^3.0.0",
