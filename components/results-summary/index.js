@@ -10,9 +10,13 @@ const H2 = styled.h2`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Years = styled.ul`
   display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(64px, 1fr) );
+	grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
 ${tachyons}`;
-const Year = styled.li`${tachyons}`;
+const Year = styled.li`
+  &:only-child {
+    width: 50%;
+  }
+${tachyons}`;
 
 const ResultsSummary = ({ event }) => {
   return (
