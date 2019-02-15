@@ -9,6 +9,7 @@ import Header from '../components/header';
 import Page from '../components/shared/page';
 import Footer from '../components/footer';
 import ResultsTable from '../components/results-table';
+import ResultsContribute from '../components/results-contribute';
 import { WithProfile } from '../data/with-profile';
 
 const Heading = styled.header`${tachyons}`;
@@ -45,6 +46,7 @@ class App extends Component {
 							<H1 f3 f1_l fw6 lh_title>{this.props.name}’s race results</H1>
 						</Heading>
 						<ResultsTable type="profile" results={this.props.profile} />
+						<ResultsContribute />
 					</Div>
 				</Div>
 				<Footer />
