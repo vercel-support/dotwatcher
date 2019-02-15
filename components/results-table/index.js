@@ -93,9 +93,7 @@ class ResultsTable extends React.Component {
 							{
 								this.props.type === 'profile' ? <ResultsHeadCell>Year</ResultsHeadCell> : null
 							}
-							{
-								this.props.type !== 'profile' ? <ResultsHeadCell>Rank</ResultsHeadCell> : null
-							}
+							<ResultsHeadCell>Rank</ResultsHeadCell>
 							<ResultsHeadCell>Rider</ResultsHeadCell>
 							{
 								withCapNo ? <ResultsHeadCell dn dtc_ns>Cap/Bib</ResultsHeadCell> : null
@@ -108,7 +106,7 @@ class ResultsTable extends React.Component {
 					</thead>
 					<tbody>
 						{
-							this.props.results.map((result, i) => {
+							this.props.results.map(result => {
 								if (this.props.type !== 'profile' && this.state.activeFilter !== result['Class']) {
 									return null
 								}
@@ -121,9 +119,7 @@ class ResultsTable extends React.Component {
 										{
 											this.props.type === 'profile' ? <ResultsCell>{result['Year']}</ResultsCell> : null
 										}
-										{
-											this.props.type !== 'profile' ? <ResultsCell pa0 pr2 className="rank">{ i+1 }</ResultsCell> : null
-										}
+										<ResultsCell pa0 pr2 className="rank">{ result['Position'] }</ResultsCell>
 										<ResultsCell className="rider-name">
 											<Link route="profile" params={{ type: 'profile', name: result['Rider'] }} passHref>
 												<A link near_black hover_blue underline>
