@@ -11,7 +11,8 @@ const A = styled.a`${tachyons}`;
 const Results = styled.table`
     border:none;
     border-collapse:collapse;
-    border-spacing:0;
+		border-spacing:0;
+		margin-bottom: var(--spacing-extra-large);
 ${tachyons}`;
 const ResultsHeadCell = styled.th`
 	text-align: left;
