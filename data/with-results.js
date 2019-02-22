@@ -10,7 +10,7 @@ export const WithResults = Page => {
 	WithResults.getInitialProps = async ({ query: { year, race, focus, activeClass } }) => {
 
 		if (year && race) {
-			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${race}&Year=${year}&_size=max&_shape=array`);
+			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${encodeURIComponent(race)}&Year=${year}&_size=max&_shape=array`);
 			const results = await raceResultsResponse.json();
 
 			const racerClasses = []

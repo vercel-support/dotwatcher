@@ -1,13 +1,13 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
+import vars from './api-vars';
 
 export const WithProfile = Page => {
 	const WithProfile = props => <Page {...props}/>;
-	const baseURL = 'https://data.dotwatcher.cc/data-d6ac28d';
 
 	WithProfile.getInitialProps = async ({query: { name }}) => {
 
-		const profileResponse = await fetch(`${baseURL}.json?sql=select+*+from+results+where+%22Rider%22+like+%22${name}%22+order+by+Year+DESC&_shape=array`);
+		const profileResponse = await fetch(`${vars.data.baseUrl}.json?sql=select+*+from+results+where+Rider+like+"${encodeURIComponent(name)}"+order+by+Year+DESC&_shape=array`);
 		const profile = await profileResponse.json();
 
 		return {
