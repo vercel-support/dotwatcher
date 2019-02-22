@@ -69,14 +69,13 @@ const CustomForm = ({status, message, onValidated}) => {
 				ref={node => email = node}
 				type="email"
 				placeholder="your.name@email.com"
-				input_reset bb bw1
+				input_reset ba bw1
 				b__light_silver ph3
 				pv2 mt4
-				mb2 f5 br_0
-				bt_0 bl_0 f4
+				mb2 f5 f4 br_0_l
 				fl w_100 w_70_ns
 			/>
-			<SubmitButton f4 bg_white fl w_100 w_30_ns ph3 pv2 mt4 mb2 center tc blue tracked ttl small_caps ba bw1 br_0_ns bt_0_ns bl_0_ns b__blue type="submit">
+			<SubmitButton f4 bg_white fl w_100 w_30_ns ph3 pv2 mt4 mb2 center tc blue tracked ttl small_caps ba bw1 b__blue type="submit">
 				Subscribe
 			</SubmitButton>
 			{status === 'sending' && <Message fl w_70 ph3 f6 lh_copy>sending...</Message>}
