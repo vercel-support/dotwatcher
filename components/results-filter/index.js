@@ -66,7 +66,7 @@ class ResultsFilter extends React.Component {
 	render() {
 		return (
 			<Form mb3>
-				<Fieldset dib bn ma0 pa0 aria-describedby="filter-title">
+				<Fieldset dib bn ma0 mr4 pa0 aria-describedby="filter-title">
 					<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3 lh-copy>Filter by class:</H3>
 					{
 						this.props.racerClasses.map(racerClass => (
@@ -77,7 +77,7 @@ class ResultsFilter extends React.Component {
 						))
 					}
 				</Fieldset> 
-				<Fieldset dib bn ma0 ml4 pa0 aria-describedby="filter-title">
+				<Fieldset dib bn ma0 mt3 mt0_ns pa0 aria-describedby="filter-title">
 					<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3 lh-copy>Filter by category:</H3>
 					{
 						this.props.racerCategories.map(racerCategory => (
