@@ -62,7 +62,7 @@ const CarouselKey = ({slide, setActiveKey, activeKey}) => {
 			</A>
 		</Link>
 	} else if (slide.feature) {
-		cta = <Link route="feature" params={{type: 'feature', id: slide.feature}} passHref prefetch>
+		cta = <Link route="feature" params={{type: 'feature', slug: slide.feature}} passHref prefetch>
 			<A dib f6 f5_l mt2 mb0 no_underline>
 				<Span near_black hover_blue bb bw1>
 					{slide.callToAction ? slide.callToAction : 'Read more'} »

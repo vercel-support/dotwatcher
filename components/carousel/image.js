@@ -32,7 +32,7 @@ const CarouselImage = ({slide}) => {
 		)
 	} else if (slide.feature) {
 		image = (
-			<Link route="feature" params={{type: 'feature', id: slide.feature}} passHref prefetch>
+			<Link route="feature" params={{type: 'feature', slug: slide.feature}} passHref prefetch>
 				<A db h_100 cover bg_center bg={slide.image.fields.file.url} className="cf"></A>
 			</Link>
 		)
