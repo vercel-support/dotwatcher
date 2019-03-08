@@ -23,6 +23,7 @@ export const withFeature = Page => {
 				title: featureResponse.items[0].fields.title,
 				excerpt: featureResponse.items[0].fields.excerpt,
 				text: featureResponse.items[0].fields.text,
+				imageAnchor: featureResponse.items[0].fields.imageAnchor,
 				blocks: []
 			};
 
