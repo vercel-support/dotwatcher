@@ -7,21 +7,26 @@ import vars from './api-vars';
 export const WithResults = Page => {
 	const WithResults = props => <Page {...props} />
 
-	WithResults.getInitialProps = async ({ query: { year, race, focus, activeClass } }) => {
+	WithResults.getInitialProps = async ({ query: { year, race, focus, activeClass, activeCategory } }) => {
 
 		if (year && race) {
 			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${encodeURIComponent(race)}&Year=${year}&_size=max&_shape=array`);
 			const results = await raceResultsResponse.json();
 
 			const racerClasses = []
+			const racerCategories = ['Both']
 
 			results.forEach(result => {
 				if (racerClasses.filter(racerClass => racerClass === result['Class']).length < 1) {
 					racerClasses.push(result['Class'])
 				}
+				if (racerCategories.filter(racerCategory => racerCategory === result['Category']).length < 1) {
+					racerCategories.push(result['Category'])
+				}
 			})
 
 			activeClass = activeClass || racerClasses[0]
+			activeCategory = activeCategory || racerCategories[0]
 
 			return {
 				...(Page.getInitialProps ? await Page.getInitialProps() : {}),
@@ -30,7 +35,9 @@ export const WithResults = Page => {
 				results,
 				focus,
 				racerClasses,
-				activeClass
+				racerCategories,
+				activeClass,
+				activeCategory
 			};
 		} else {
 			const allResultsResponse = await fetch(`${vars.data.baseUrl}.json?sql=select+DISTINCT+Event%2C+year+from+results+order+by+Event+ASC%2C+year+Desc&_shape=array`);

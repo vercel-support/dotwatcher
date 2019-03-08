@@ -26,16 +26,32 @@ class ResultsTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeFilter: this.props.activeClass
+			activeClassFilter: this.props.activeClass,
+			activeCategoryFilter: this.props.activeCategory
 		};
 
-		this.setFilter = this.setFilter.bind(this);
+		this.setClassFilter = this.setClassFilter.bind(this);
+		this.setCategoryFilter = this.setCategoryFilter.bind(this);
 	}
 
-	setFilter(filter) {
+	setClassFilter(filter) {
 		this.setState({
-			activeFilter: filter
+			activeClassFilter: filter
+		}, () => {
+			this.updateURL()
 		});
+	}
+
+	setCategoryFilter(filter) {
+		this.setState({
+			activeCategoryFilter: filter
+		}, () => {
+			this.updateURL()
+		});
+	}
+
+	updateURL() {
+		history.pushState({}, '', `${window.location.pathname}?activeClass=${this.state.activeClassFilter}&activeCategory=${this.state.activeCategoryFilter}`)
 	}
 
 	render() {
@@ -82,9 +98,18 @@ class ResultsTable extends React.Component {
 
 		const withCapNo = this.props.results[0]['Cap/Bib'];
 
+		let filteredResults = this.props.results
+		if (this.props.type !== 'profile') {
+			filteredResults = filteredResults.filter(result => result['Class'] === this.state.activeClassFilter)
+
+			if (this.state.activeCategoryFilter !== 'Both') {
+				filteredResults = filteredResults.filter(result => result['Category'] === this.state.activeCategoryFilter)
+			}
+		}
+
 		return (
 			<Div ph3>
-				{ this.props.type !== 'profile' && this.props.racerClasses.length > 1 ? <ResultsFilter racerClasses={this.props.racerClasses} setFilter={this.setFilter.bind(this)} activeFilter={this.state.activeFilter} /> : null }
+				{this.props.type !== 'profile' && this.props.racerClasses.length > 1 ? <ResultsFilter racerClasses={this.props.racerClasses} racerCategories={this.props.racerCategories} setClassFilter={this.setClassFilter.bind(this)} activeClassFilter={this.state.activeClassFilter} setCategoryFilter={this.setCategoryFilter.bind(this)} activeCategoryFilter={this.state.activeCategoryFilter} /> : null }
 				<Results w_100 f6 f5_l>
 					<thead>
 						<HeadRow bb bw1>
@@ -99,7 +124,7 @@ class ResultsTable extends React.Component {
 							{
 								withCapNo ? <ResultsHeadCell dn dtc_ns>Cap/Bib</ResultsHeadCell> : null
 							}
-							<ResultsHeadCell dn dtc_ns>Category</ResultsHeadCell>
+							<ResultsHeadCell dn dtc_ns colSpan="2">Class/Category</ResultsHeadCell>
 							<ResultsHeadCell>Result</ResultsHeadCell>
 							<ResultsHeadCell dn dtc_ns>Bike</ResultsHeadCell>
 							<ResultsHeadCell tr><abbr title="Finish Time in days, hours and minutes">Finish Time</abbr></ResultsHeadCell>
@@ -107,10 +132,7 @@ class ResultsTable extends React.Component {
 					</thead>
 					<tbody>
 						{
-							this.props.results.map(result => {
-								if (this.props.type !== 'profile' && this.state.activeFilter !== result['Class']) {
-									return null
-								}
+							filteredResults.map(result => {
 								const id = this.props.type === 'profile' ? `${slugify(result['Event'])}-${slugify(result['Year'].toString())}` : slugify(result['Rider'])
 								return (
 									<ResultsRow key={result['rowid']} id={id}>
@@ -131,6 +153,9 @@ class ResultsTable extends React.Component {
 										{ withCapNo ? <ResultsCell dn dtc_ns tc>{ result['Cap/Bib'] }</ResultsCell> : null }
 										<ResultsCell dn dtc_ns>
 											{result['Class']}
+										</ResultsCell>
+										<ResultsCell dn dtc_ns>
+											{result['Category'].substring(0,1)}
 										</ResultsCell>
 										<ResultsCell>
 											{result['Result']}
@@ -167,6 +192,7 @@ class ResultsTable extends React.Component {
 ResultsTable.propTypes = {
 	results: PropTypes.array,
 	racerClasses: PropTypes.array,
+	racerCategories: PropTypes.array,
 	type: PropTypes.string,
 	focus: PropTypes.string
 };
@@ -174,6 +200,7 @@ ResultsTable.propTypes = {
 ResultsTable.defaultProps = {
 	results: [],
 	racerClasses: [],
+	racerCategories: [],
 	type: 'race',
 	focus: ''
 };
