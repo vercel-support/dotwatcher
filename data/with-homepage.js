@@ -19,7 +19,8 @@ export const withHomepage = Page => {
 		};
 
 		const homepageQuery = {
-			'sys.id': vars.pages.homepage
+			'sys.id': vars.pages.homepage,
+			'include': 2
 		};
 
 		const racesResponse = await client.getEntries(racesQuery);
@@ -77,7 +78,7 @@ export const withHomepage = Page => {
 					}
 
 					if (contentBlock.fields.feature) {
-						block.feature = contentBlock.fields.feature.sys.id;
+						block.feature = contentBlock.fields.feature.fields.slug;
 					}
 
 					if (contentBlock.fields.image) {
