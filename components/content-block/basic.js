@@ -27,9 +27,10 @@ const Block = ({block, feature}) => {
 		}
 
 		blockquote {
+			margin: 1rem 0;
+			padding-left: 1rem;
 			font-style: italic;
 			border-left: .5rem solid var(--light-blue);
-			padding-left: 1rem;
 		}
 		a:link, a:visited {
 			color: var(--blue)
@@ -53,7 +54,7 @@ const Block = ({block, feature}) => {
 	return (
 		<Wrap margin className="cf">
 			{ heading }
-			<Div measure mh3 lh_copy f4>
+			<Div measure mh3 lh_copy f5 f4_ns>
 				<ReactMarkdown
 					source={block.words}
 					plugins={[shortcodes]}
