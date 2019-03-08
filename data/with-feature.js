@@ -7,13 +7,23 @@ import vars from './api-vars';
 export const withFeature = Page => {
 	const withFeature = props => <Page {...props}/>;
 
-	withFeature.getInitialProps = async ({query: {id}}) => {
+	withFeature.getInitialProps = async ({query: {slug}}) => {
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
-		const featureResponse = await client.getEntries({'sys.id': id});
+		let featureResponse = await client.getEntries({
+			'content_type': 'feature',
+			'fields.slug': slug
+		});
+
+		// Because we added slugs later we need to stop old sys.id urls 404ing
+		if (featureResponse.total === 0) {
+			featureResponse = await client.getEntries({
+				'sys.id': slug
+			});
+		}
 
 		let feature;
 

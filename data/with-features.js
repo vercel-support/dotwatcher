@@ -28,6 +28,7 @@ export const WithFeatures = Page => {
 				},
 				data: {
 					title: item.fields.title,
+					slug: item.fields.slug,
 					excerpt: item.fields.excerpt,
 					blocks: []
 				}
