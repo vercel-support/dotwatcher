@@ -37,6 +37,10 @@ const Block = ({block, feature}) => {
 		a:hover {
 			color: var(--light-blue)
 		}
+
+		img {
+			max-width: 100%;
+		}
 	${tachyons}`;
 	let heading = null;
 	if (block.heading) {
