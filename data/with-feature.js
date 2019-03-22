@@ -37,6 +37,11 @@ export const withFeature = Page => {
 				blocks: []
 			};
 
+			if (featureResponse.items[0].fields.contributor) {
+				feature.contributor = featureResponse.items[0].fields.contributor.fields
+
+			}
+
 			if (featureResponse.items[0].fields.featuredImage) {
 				feature.image = featureResponse.includes.Asset.find(obj => {
 					return obj.sys.id === featureResponse.items[0].fields.featuredImage.sys.id;

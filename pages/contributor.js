@@ -67,8 +67,8 @@ class App extends Component {
                 <Img img db bg_light_gray
                   title={this.props.contributor.avatar.title}
                   alt={this.props.contributor.avatar.description}
-                  src={`${this.props.contributor.avatar.url}?w=500&h=500&fm=jpg&q=60`}
-                  srcSet={`${this.props.contributor.avatar.url}?w=500&h=500&fm=jpg&q=60 768w, ${this.props.contributor.avatar.url}?w=600&h=600&fm=jpg&q=80 1024w`}
+                  src={`${this.props.contributor.avatar.url}?w=500&h=500&fit=fill&fm=jpg&q=60`}
+                  srcSet={`${this.props.contributor.avatar.url}?w=500&h=500&fit=fill&fm=jpg&q=60 768w, ${this.props.contributor.avatar.url}?w=600&h=600&fit=fill&fm=jpg&q=80 1024w`}
                   sizes="200vw"
                 />
               </Figure>

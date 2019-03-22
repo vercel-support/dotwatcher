@@ -12,6 +12,7 @@ import Footer from '../components/footer';
 import ContentBlock from '../components/content-block';
 import Carousel from '../components/carousel';
 import Page from '../components/shared/page';
+import ContributorInfo from '../components/contributor-info'
 import {withFeature} from '../data/with-feature';
 import widont from '../utils/widont';
 
@@ -22,6 +23,7 @@ const Div = styled.div`
 ${tachyons}`;
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
 
 class FeaturePage extends React.Component {
 	render() {
@@ -69,11 +71,14 @@ class FeaturePage extends React.Component {
 					title="dotwatcher.cc"
 				/>
 				<StyledWrapper fl w_100 />
-				<Heading mh3>
-					<H1 f2 f_headline_ns fw6 lh_solid mv0 mh3 mh6_ns>
+				<Heading mh3 mh6_ns>
+					<H1 f2 f_headline_ns fw6 lh_solid mv0 mh3>
 						{ widont(this.props.feature.title) }
 					</H1>
 				</Heading>
+				{
+					this.props.feature.contributor ? <ContributorInfo contributor={this.props.feature.contributor}/> : null
+				}
 				<Div fl w_100 mt3 mt4_l cf>
 					{carousel}
 					{
