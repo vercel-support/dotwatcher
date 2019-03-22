@@ -21,14 +21,22 @@ const H1 = styled.h1`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Contributor = styled.div`
-  display: grid;
-  grid-template-columns: [sidebar] 1fr [content] 3fr;
-  grid-gap: 0 4rem;
+  @media screen and (min-width: 48em) {
+    display: grid;
+    grid-template-columns: [sidebar] 1fr [content] 3fr;
+    grid-gap: 0 4rem;
+  }
 ${tachyons}`;
 const Figure = styled.figure`${tachyons}`;
 const Img = styled.img`${tachyons}`;
 const Sidebar = styled.div`
   grid-column: sidebar;
+  float: left;
+  margin: 0 var(--spacing-large) var(--spacing-small) 0;
+  @media screen and (min-width: 48em) {
+    float: none;
+    margin: 0;
+  }
 ${tachyons}`;
 const Profile = styled.div`
   grid-column: content;
@@ -52,10 +60,10 @@ class App extends Component {
         <Header
           title="dotwatcher.cc"
         />
-        <Div mt3 mh6_l>
+        <Div mt3 mh3 mh6_l>
           <Contributor mt4 pb5 className="cf">
-            <Sidebar tc>
-              <Figure ma0 mb4>
+            <Sidebar tc_ns w_50 w_100_ns>
+              <Figure ma0 mb3>
                 <Img img db bg_light_gray
                   title={this.props.contributor.avatar.title}
                   alt={this.props.contributor.avatar.description}
@@ -64,13 +72,16 @@ class App extends Component {
                   sizes="200vw"
                 />
               </Figure>
-              <A w2 mh3 near_black link grow hover_blue dib v_btm href={this.props.contributor.instagramProfile} title={`Follow ${this.props.contributor.name} on Instagram`}>
+              <A near_black link hover_blue mb3 tl db href={this.props.contributor.website}>
+                { this.props.contributor.website }
+              </A>
+              <A w2 mr3 mh3_ns near_black link hover_blue dib v_btm href={this.props.contributor.instagramProfile} title={`Follow ${this.props.contributor.name} on Instagram`}>
                 <InstagramLogo />
               </A>
-              <A w2 mh3 near_black link grow hover_blue dib v_btm href={this.props.contributor.twitterProfile} title={`Follow ${this.props.contributor.name} on Twitter`}>
+              <A w2 mh3 near_black link hover_blue dib v_btm href={this.props.contributor.twitterProfile} title={`Follow ${this.props.contributor.name} on Twitter`}>
                 <TwitterLogo />
               </A>
-              <A w2 mh3 near_black link grow hover_blue dib v_btm href={this.props.contributor.stravaProfile} title={`Follow ${this.props.contributor.name} on Strava`}>
+              <A w2 mh3 near_black link hover_blue dib v_btm href={this.props.contributor.stravaProfile} title={`Follow ${this.props.contributor.name} on Strava`}>
                 <StravaLogo />
               </A>
             </Sidebar>
