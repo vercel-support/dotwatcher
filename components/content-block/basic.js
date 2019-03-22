@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import shortcodes from 'remark-shortcodes';
+import breaks from 'remark-breaks';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
@@ -57,7 +58,7 @@ const Block = ({block, feature}) => {
 			<Div measure mh3 lh_copy f5 f4_ns>
 				<ReactMarkdown
 					source={block.words}
-					plugins={[shortcodes]}
+					plugins={[shortcodes, breaks]}
 					renderers={{shortcode: Embed}}
 				/>
 			</Div>
