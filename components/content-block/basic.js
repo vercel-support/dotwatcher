@@ -23,6 +23,10 @@ const Block = ({block, feature}) => {
 			margin: 0;
 		}
 
+		h2,h3,h4,h5,strong {
+			font-weight: 600;
+		}
+
 		p + p {
 			margin-top: 1rem;
 		}
@@ -48,7 +52,7 @@ const Block = ({block, feature}) => {
 	if (block.heading) {
 		heading = (
 			<Header measure_wide mh3>
-				<H2 f3 f2_ns fw6 ma0 mb3 lh_title>{widont(block.heading)}</H2>
+				<H1 f3 f2_ns fw6 ma0 mb3 lh_title>{widont(block.heading)}</H1>
 			</Header>
 		)
 	}

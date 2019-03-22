@@ -75,7 +75,7 @@ class App extends Component {
                 />
               </Figure>
               {
-                this.props.contributor.website ? <A near_black link hover_blue mb3 tl tc_ns fw5 db href={this.props.contributor.website}>
+                this.props.contributor.website ? <A near_black link hover_blue mb3 tl tc_ns fw6 db href={this.props.contributor.website}>
                   {this.props.contributor.website.replace(/^(http|https):\/\//,'')}
                 </A> : null
               }
