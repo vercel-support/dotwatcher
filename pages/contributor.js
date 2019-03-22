@@ -18,6 +18,8 @@ import StravaLogo from '../components/shared/icons/strava';
 
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
+const P = styled.p`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Contributor = styled.div`
@@ -64,7 +66,7 @@ class App extends Component {
           <Contributor mt4 pb5 className="cf">
             <Sidebar tc_ns w_50 w_100_ns>
               <Figure ma0 mb3>
-                <Img img db bg_light_gray
+                <Img img db bg_light_gray br_100
                   title={this.props.contributor.avatar.title}
                   alt={this.props.contributor.avatar.description}
                   src={`${this.props.contributor.avatar.url}?w=500&h=500&fit=fill&fm=jpg&q=60`}
@@ -73,8 +75,8 @@ class App extends Component {
                 />
               </Figure>
               {
-                this.props.contributor.website ? <A near_black link hover_blue mb3 tl db href={this.props.contributor.website}>
-                  {this.props.contributor.website}
+                this.props.contributor.website ? <A near_black link hover_blue mb3 tl tc_ns fw5 db href={this.props.contributor.website}>
+                  {this.props.contributor.website.replace(/^(http|https):\/\//,'')}
                 </A> : null
               }
               {
@@ -98,6 +100,12 @@ class App extends Component {
                 <H1 f3 f1_l fw6 lh_solid ma0>{this.props.contributor.name}</H1>
               </Heading>
               <Richtext source={this.props.contributor.bio} />
+              <Div mt5 bt bw1 b__light_gray>
+                <H2 f4 f3_l lh_title mb2 fw5>Become a DotWatcher contributor</H2>
+                <P lh_copy f5 measure ma0>
+                  Do you have stories, photos, or insight that would be at home on DotWatcher? Drop us a line at <A link near_black hover_blue underline href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A>, or find us on <A link near_black hover_blue underline href="https://twitter.com/dotwatcher">Twitter</A> and <A link near_black hover_blue underline href="https://www.instagram.com/dotwatcher.cc/">Instagram</A>.
+                </P>
+              </Div>
             </Profile>
           </Contributor>
         </Div>
