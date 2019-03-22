@@ -26,7 +26,7 @@ const H1 = styled.h1`${tachyons}`;
 class FeaturePage extends React.Component {
 	render() {
 		const StyledWrapper = styled.div`
-			background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url})` : 'none' };
+			background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url}?w=800&fm=jpg&q=60)` : 'none' };
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position:  ${this.props.feature.imageAnchor ? this.props.feature.imageAnchor : 'center' } center;
@@ -34,6 +34,15 @@ class FeaturePage extends React.Component {
 
 			&> h1 {
 				background-color: rgba(255, 255, 255, .66)
+			}
+			@media screen and (min-width: 48em) {
+				background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url}?w=1024&fm=jpg&q=60)` : 'none' };
+			}
+			@media screen and (min-width: 64em) {
+				background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url}?w=1200&fm=jpg&q=60)` : 'none' };
+			}
+			@media screen and (min-width: 75em) {
+				background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url}?w=1600&fm=jpg&q=80)` : 'none' };
 			}
 		${tachyons}`
 
