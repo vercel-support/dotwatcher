@@ -72,18 +72,26 @@ class App extends Component {
                   sizes="200vw"
                 />
               </Figure>
-              <A near_black link hover_blue mb3 tl db href={this.props.contributor.website}>
-                { this.props.contributor.website }
-              </A>
-              <A w2 mr3 mh3_ns near_black link hover_blue dib v_btm href={this.props.contributor.instagramProfile} title={`Follow ${this.props.contributor.name} on Instagram`}>
-                <InstagramLogo />
-              </A>
-              <A w2 mh3 near_black link hover_blue dib v_btm href={this.props.contributor.twitterProfile} title={`Follow ${this.props.contributor.name} on Twitter`}>
-                <TwitterLogo />
-              </A>
-              <A w2 mh3 near_black link hover_blue dib v_btm href={this.props.contributor.stravaProfile} title={`Follow ${this.props.contributor.name} on Strava`}>
-                <StravaLogo />
-              </A>
+              {
+                this.props.contributor.website ? <A near_black link hover_blue mb3 tl db href={this.props.contributor.website}>
+                  {this.props.contributor.website}
+                </A> : null
+              }
+              {
+                this.props.contributor.instagramProfile ? <A w2 mr3 mh3_ns near_black link hover_blue dib v_btm href={this.props.contributor.instagramProfile} title={`Follow ${this.props.contributor.name} on Instagram`}>
+                  <InstagramLogo />
+                </A> : null
+              }
+              {
+                this.props.contributor.twitterProfile ? <A w2 mh3 near_black link hover_blue dib v_btm href={this.props.contributor.twitterProfile} title={`Follow ${this.props.contributor.name} on Twitter`}>
+                  <TwitterLogo />
+                </A> : null
+              }
+              {
+                this.props.contributor.stravaProfile ? <A w2 mh3 near_black link hover_blue dib v_btm href={this.props.contributor.stravaProfile} title={`Follow ${this.props.contributor.name} on Strava`}>
+                  <StravaLogo />
+                </A> : null
+              }
             </Sidebar>
             <Profile>
               <Heading mb3>
