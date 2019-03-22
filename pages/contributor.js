@@ -41,15 +41,13 @@ class App extends Component {
         <Head>
           <title>{this.props.contributor.name}’s contributor profile - DotWatcher.cc</title>
           <meta property="og:title" content={`${this.props.contributor.name}’s contributor profile - DotWatcher.cc`} />
-          <meta property="og:description" content={`${this.props.contributor.name}’s contributor profile`} />
-          <meta property="og:image" content={this.props.contributor.avatar.url} />
+          <meta property="og:image" content={`${this.props.contributor.avatar.url}?w=600&h=600&fm=jpg&q=80`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@dotwatcher" />
           <meta name="twitter:creator" content="@dotwatcher" />
           <meta name="twitter:title" content={`${this.props.contributor.name}’s contributor profile - DotWatcher.cc`} />
-          <meta name="twitter:description" content={`Historic results from ultra-cycling races for ${this.props.contributor.name}`} />
-          <meta name="twitter:image" content={this.props.contributor.avatar.url} />
-          <meta name="description" content={`Historic results from ultra-cycling races for ${this.props.contributor.name}`} />
+          <meta name="twitter:image" content={`${this.props.contributor.avatar.url}?w=600&h=600&fm=jpg&q=80`} />
+          <meta name="description" content={`${this.props.contributor.name}’s contributor profile`} />
         </Head>
         <Header
           title="dotwatcher.cc"
