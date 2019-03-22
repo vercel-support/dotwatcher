@@ -8,3 +8,4 @@ routes.add('race', '/:type(race)/:slug');
 routes.add('feature', '/:type(feature)/:slug');
 routes.add('results', '/:type(results)/:year?/:race?');
 routes.add('profile', '/:type(profile)/:name');
+routes.add('contributor', '/:type(contributor)/:name');
