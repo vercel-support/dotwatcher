@@ -7,7 +7,7 @@ import vars from './api-vars';
 export const WithResults = Page => {
 	const WithResults = props => <Page {...props} />
 
-	WithResults.getInitialProps = async ({ query: { year, race, focus, activeClass, activeCategory } }) => {
+	WithResults.getInitialProps = async ({ query: { year, race, focus, activeClass, activeCategory, activeLocation } }) => {
 
 		if (year && race) {
 			const raceResultsResponse = await fetch(`${vars.data.baseUrl}/results.json?Event=${encodeURIComponent(race)}&Year=${year}&_size=max&_shape=array`);
@@ -15,6 +15,7 @@ export const WithResults = Page => {
 
 			const racerClasses = []
 			const racerCategories = ['Both']
+			const finishLocations = []
 
 			results.forEach(result => {
 				if (racerClasses.filter(racerClass => racerClass === result['Class']).length < 1) {
@@ -23,10 +24,16 @@ export const WithResults = Page => {
 				if (racerCategories.filter(racerCategory => racerCategory === result['Category']).length < 1) {
 					racerCategories.push(result['Category'])
 				}
+				if (finishLocations.filter(finishLocation => finishLocation === result['Finish Location']).length < 1) {
+					finishLocations.push(result['Finish Location'])
+				}
 			})
 
 			activeClass = activeClass || racerClasses[0]
 			activeCategory = activeCategory || racerCategories[0]
+			activeLocation = activeLocation || finishLocations[0]
+
+			console.log(finishLocations)
 
 			return {
 				...(Page.getInitialProps ? await Page.getInitialProps() : {}),
@@ -37,7 +44,9 @@ export const WithResults = Page => {
 				racerClasses,
 				racerCategories,
 				activeClass,
-				activeCategory
+				activeCategory,
+				finishLocations,
+				activeLocation
 			};
 		} else {
 			const allResultsResponse = await fetch(`${vars.data.baseUrl}.json?sql=select+DISTINCT+Event%2C+year+from+results+order+by+Event+ASC%2C+year+Desc&_shape=array`);

@@ -27,11 +27,13 @@ class ResultsTable extends React.Component {
 		super(props);
 		this.state = {
 			activeClassFilter: this.props.activeClass,
-			activeCategoryFilter: this.props.activeCategory
+			activeCategoryFilter: this.props.activeCategory,
+			activeLocationFilter: this.props.activeLocation
 		};
 
 		this.setClassFilter = this.setClassFilter.bind(this);
 		this.setCategoryFilter = this.setCategoryFilter.bind(this);
+		this.setLocationFilter = this.setLocationFilter.bind(this);
 	}
 
 	setClassFilter(filter) {
@@ -50,8 +52,16 @@ class ResultsTable extends React.Component {
 		});
 	}
 
+	setLocationFilter(filter) {
+		this.setState({
+			activeLocationFilter: filter
+		}, () => {
+			this.updateURL()
+		});
+	}
+
 	updateURL() {
-		history.pushState({}, '', `${window.location.pathname}?activeClass=${this.state.activeClassFilter}&activeCategory=${this.state.activeCategoryFilter}`)
+		history.pushState({}, '', `${window.location.pathname}?activeClass=${this.state.activeClassFilter}&activeCategory=${this.state.activeCategoryFilter}&activeLocation=${this.state.activeLocationFilter}`)
 	}
 
 	render() {
@@ -101,6 +111,7 @@ class ResultsTable extends React.Component {
 		let filteredResults = this.props.results
 		if (this.props.type !== 'profile') {
 			filteredResults = filteredResults.filter(result => result['Class'] === this.state.activeClassFilter)
+			filteredResults = filteredResults.filter(result => result['Finish Location'] === this.state.activeLocationFilter)
 
 			if (this.state.activeCategoryFilter !== 'Both') {
 				filteredResults = filteredResults.filter(result => result['Category'] === this.state.activeCategoryFilter)
@@ -109,7 +120,7 @@ class ResultsTable extends React.Component {
 
 		return (
 			<Div ph3>
-				{this.props.type !== 'profile' ? <ResultsFilter racerClasses={this.props.racerClasses} racerCategories={this.props.racerCategories} setClassFilter={this.setClassFilter.bind(this)} activeClassFilter={this.state.activeClassFilter} setCategoryFilter={this.setCategoryFilter.bind(this)} activeCategoryFilter={this.state.activeCategoryFilter} /> : null }
+				{this.props.type !== 'profile' ? <ResultsFilter racerClasses={this.props.racerClasses} racerCategories={this.props.racerCategories} setClassFilter={this.setClassFilter.bind(this)} activeClassFilter={this.state.activeClassFilter} setCategoryFilter={this.setCategoryFilter.bind(this)} activeCategoryFilter={this.state.activeCategoryFilter} setLocationFilter={this.setLocationFilter.bind(this)} finishLocations={this.props.finishLocations} activeLocation={this.state.activeLocationFilter} /> : null }
 				<Results w_100 f6 f5_l>
 					<thead>
 						<HeadRow bb bw1>
@@ -127,6 +138,11 @@ class ResultsTable extends React.Component {
 							<ResultsHeadCell dn dtc_ns colSpan="2">Class/Category</ResultsHeadCell>
 							<ResultsHeadCell>Result</ResultsHeadCell>
 							<ResultsHeadCell dn dtc_ns>Bike</ResultsHeadCell>
+							{
+								this.props.activeLocation ? <ResultsHeadCell>
+									Finish Location
+								</ResultsHeadCell> : null
+							}
 							<ResultsHeadCell tr><abbr title="Finish Time in days, hours and minutes">Finish Time</abbr></ResultsHeadCell>
 						</HeadRow>
 					</thead>
@@ -163,6 +179,12 @@ class ResultsTable extends React.Component {
 										<ResultsCell dn dtc_ns>
 											{result['Bike']}
 										</ResultsCell>
+										{
+											result['Finish Location'] ? 
+												<ResultsCell dn dtc_ns>
+													{result['Finish Location']}
+												</ResultsCell> : null
+										}
 										<ResultsCell tr title="Finish Time in days, hours and minutes">
 											{
 												result['Days'] ? result['Days'] + 'd:' : '--'
