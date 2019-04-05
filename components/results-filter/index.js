@@ -66,28 +66,34 @@ class ResultsFilter extends React.Component {
 	render() {
 		return (
 			<Form mb3>
-				<Fieldset dib bn ma0 mr4 pa0 aria-describedby="filter-title">
-					<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3 lh-copy>Filter by class:</H3>
-					{
-						this.props.racerClasses.map(racerClass => (
-							<Div dib mr4 relative key={`wrap-filter-${racerClass}`}>
-								<Input o_0 absolute top_0 left_0 type="radio" name="filter-class" id={`filter-${racerClass}`} value={racerClass} onChange={this.onSelectChange.bind(this)} checked={racerClass === this.props.activeClassFilter} />
-								<Label f5 fw6 lh-copy dib pl2 pv1 htmlFor={`filter-${racerClass}`}>{racerClass}</Label>
-							</Div>
-						))
-					}
-				</Fieldset> 
-				<Fieldset dib bn ma0 mt3 mt0_ns pa0 aria-describedby="filter-title">
-					<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3 lh-copy>Filter by category:</H3>
-					{
-						this.props.racerCategories.map(racerCategory => (
-							<Div dib mr4 relative key={`wrap-filter-${racerCategory}`}>
-								<Input o_0 absolute top_0 left_0 type="radio" name="filter-category" id={`filter-${racerCategory}`} value={racerCategory} onChange={this.onSelectChange.bind(this)} checked={racerCategory === this.props.activeCategoryFilter} />
-								<Label f5 fw6 lh-copy dib pl2 pv1 htmlFor={`filter-${racerCategory}`}>{racerCategory}</Label>
-							</Div>
-						))
-					}
-				</Fieldset>
+				{
+					this.props.racerClasses.length > 1 ?
+					<Fieldset dib bn ma0 mr4 pa0 aria-describedby="filter-title">
+						<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3 lh-copy>Filter by class:</H3>
+						{
+							this.props.racerClasses.map(racerClass => (
+								<Div dib mr4 relative key={`wrap-filter-${racerClass}`}>
+									<Input o_0 absolute top_0 left_0 type="radio" name="filter-class" id={`filter-${racerClass}`} value={racerClass} onChange={this.onSelectChange.bind(this)} checked={racerClass === this.props.activeClassFilter} />
+									<Label f5 fw6 lh-copy dib pl2 pv1 htmlFor={`filter-${racerClass}`}>{racerClass}</Label>
+								</Div>
+							))
+						}
+					</Fieldset> : null 
+				}
+				{
+					this.props.racerCategories.length > 1 ?
+					<Fieldset dib bn ma0 mt3 mt0_ns pa0 aria-describedby="filter-title">
+						<H3 id="filter-title" dib_ns f6 ttu tracked ma0 mr3 mb3 lh-copy>Filter by category:</H3>
+						{
+							this.props.racerCategories.map(racerCategory => (
+								<Div dib mr4 relative key={`wrap-filter-${racerCategory}`}>
+									<Input o_0 absolute top_0 left_0 type="radio" name="filter-category" id={`filter-${racerCategory}`} value={racerCategory} onChange={this.onSelectChange.bind(this)} checked={racerCategory === this.props.activeCategoryFilter} />
+									<Label f5 fw6 lh-copy dib pl2 pv1 htmlFor={`filter-${racerCategory}`}>{racerCategory}</Label>
+								</Div>
+							))
+						}
+					</Fieldset> : null
+				}
 			</Form>
 		);
 	}
