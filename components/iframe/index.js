@@ -30,7 +30,7 @@ class Iframe extends Component {
 				height: ${this.props.raceID.indexOf('maprogress') !== -1 ? 'calc(100vh - 75px)' : '100vh'};
 			}
 		${tachyons}`;
-		let iframe = <Placeholder raceID="No race found" w_100 h_100/>
+		let iframe = <Placeholder raceID="Live tracker coming soon" w_100 h_100/>
 		if (this.props.raceID && this.props.raceID.indexOf('maprogress') !== -1) {
 			iframe = <Map ref="iframe" id="trackleaders-iframe" w_100 h_100 ba bw0 src={`${this.props.raceID}viewswitcher/switchview?mobile=true&returnurl=%2F`} frameborder="0" {...this.props.onLoad}/>
 		} else if (this.props.raceID && this.props.raceID.indexOf('http') !== -1) {
