@@ -20,7 +20,10 @@ const Short = ({data}) => {
 			<ReactMarkdown
 				source={data.body}
 				plugins={[shortcodes]}
-				renderers={{shortcode: Embed}}
+				renderers={{
+					shortcode: Embed,
+					link: AutoEmbed
+				}}
 			/>
 		);
 	}

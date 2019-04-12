@@ -7,6 +7,7 @@ import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../components/embed';
+import AutoEmbed from '../embed/auto';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import ContentBlock from '../components/content-block';
@@ -67,7 +68,10 @@ class ContentPage extends React.Component {
 							<ReactMarkdown
 								source={this.props.page.text}
 								plugins={[shortcodes]}
-								renderers={{shortcode: Embed}}
+								renderers={{
+									shortcode: Embed,
+									link: AutoEmbed
+								}}
 							/>
 						</Div>
 					</Div>

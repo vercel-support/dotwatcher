@@ -7,6 +7,7 @@ import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
 import Image from '../image';
 import BodyImage from '../image/markdown';
+import AutoEmbed from '../embed/auto';
 import {Link} from '../../routes';
 import slugify from '../../utils/slugify';
 import widont from '../../utils/widont';
@@ -69,7 +70,8 @@ class Long extends Component {
 					escapeHtml={false}
 					renderers={{
 						shortcode: Embed,
-						image: BodyImage
+						image: BodyImage,
+						link: AutoEmbed
 					}}
 				/>
 			) : null;
@@ -90,7 +92,8 @@ class Long extends Component {
 						escapeHtml={false}
 						renderers={{
 							shortcode: Embed,
-							image: BodyImage
+							image: BodyImage,
+							link: AutoEmbed
 						}}
 					/>
 					{ this.state.showMore ? null : continueReading }

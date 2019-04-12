@@ -31,7 +31,10 @@ const Short = ({data}) => {
 					source={data.body}
 					plugins={[shortcodes]}
 					escapeHtml={false}
-					renderers={{shortcode: Embed}}
+					renderers={{
+						shortcode: Embed,
+						link: AutoEmbed
+					}}
 				/>
 			</Div>
 		);

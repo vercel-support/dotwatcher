@@ -5,6 +5,7 @@ import shortcodes from 'remark-shortcodes';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
+import AutoEmbed from '../embed/auto';
 import Placeholder from '../placeholder';
 import Wrapper from '../shared/wrapper';
 
@@ -45,7 +46,10 @@ const Block = ({block}) => {
 					<ReactMarkdown
 						source={block.words}
 						plugins={[shortcodes]}
-						renderers={{shortcode: Embed}}
+						renderers={{
+							shortcode: Embed,
+							link: AutoEmbed
+						}}
 					/>
 				</Div>
 			</WordsWrap>

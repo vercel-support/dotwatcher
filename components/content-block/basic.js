@@ -6,6 +6,7 @@ import breaks from 'remark-breaks';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Embed from '../embed';
+import AutoEmbed from '../embed/auto';
 import widont from '../../utils/widont';
 
 const Div = styled.div`${tachyons}`;
@@ -63,7 +64,10 @@ const Block = ({block, feature}) => {
 				<ReactMarkdown
 					source={block.words}
 					plugins={[shortcodes, breaks]}
-					renderers={{shortcode: Embed}}
+					renderers={{
+						shortcode: Embed,
+						link: AutoEmbed
+					}}
 				/>
 			</Div>
 		</Wrap>
