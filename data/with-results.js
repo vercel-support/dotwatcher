@@ -33,8 +33,6 @@ export const WithResults = Page => {
 			activeCategory = activeCategory || racerCategories[0]
 			activeLocation = activeLocation || finishLocations[0]
 
-			console.log(finishLocations)
-
 			return {
 				...(Page.getInitialProps ? await Page.getInitialProps() : {}),
 				race,
