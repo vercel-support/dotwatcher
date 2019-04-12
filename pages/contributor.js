@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 
-import { Link } from '../routes';
 import { WithContributor } from '../data/with-contributor';
 import Header from '../components/header';
 import Page from '../components/shared/page';
@@ -15,11 +14,10 @@ import Richtext from '../components/rich-text';
 import InstagramLogo from '../components/shared/icons/instagram';
 import TwitterLogo from '../components/shared/icons/twitter';
 import StravaLogo from '../components/shared/icons/strava';
+import Contribute from '../components/contributor-info/contribute';
 
 const Heading = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
-const P = styled.p`${tachyons}`;
 const Div = styled.div`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const Contributor = styled.div`
@@ -100,12 +98,7 @@ class App extends Component {
                 <H1 f3 f1_l fw6 lh_solid ma0>{this.props.contributor.name}</H1>
               </Heading>
               <Richtext source={this.props.contributor.bio} />
-              <Div mt5 bt bw1 b__light_gray>
-                <H2 f4 f3_l lh_title mb2 fw5>Become a DotWatcher contributor</H2>
-                <P lh_copy f5 measure ma0>
-                  Do you have stories, photos, or insight that would be at home on DotWatcher? Drop us a line at <A link near_black hover_blue underline href="mailto:info@dotwatcher.cc">info@dotwatcher.cc</A>, or find us on <A link near_black hover_blue underline href="https://twitter.com/dotwatcher">Twitter</A> and <A link near_black hover_blue underline href="https://www.instagram.com/dotwatcher.cc/">Instagram</A>.
-                </P>
-              </Div>
+              <Contribute/>
             </Profile>
           </Contributor>
         </Div>
