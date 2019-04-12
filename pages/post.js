@@ -41,13 +41,13 @@ class PostPage extends React.Component {
 				</Head>
 				<Header
 					title="dotwatcher.cc"
-					raceName={this.props.posts[0].data.categories[0].fields.title}
-					race={this.props.posts[0].data.categories[0]}
+					raceName={this.props.posts[0].data.categories.fields.title}
+					race={this.props.posts[0].data.categories}
 				/>
-				<MapContainer raceID={this.props.posts[0].data.categories[0].fields.trackleadersRaceId} offset={true}/>
+				<MapContainer raceID={this.props.posts[0].data.categories.fields.trackleadersRaceId} offset={true}/>
 				<PostWrapper fl w_100 w_50_l pa4>
-					<Link route="race" params={{type: 'race', slug: this.props.posts[0].data.categories[0].fields.slug}} passHref prefetch>
-						<A near_black f6 href="#">« Back to {this.props.posts[0].data.categories[0].fields.title} feed</A>
+					<Link route="race" params={{type: 'race', slug: this.props.posts[0].data.categories.fields.slug}} passHref prefetch>
+						<A near_black f6 href="#">« Back to {this.props.posts[0].data.categories.fields.title} feed</A>
 					</Link>
 					<Post key={this.props.posts[0].sys.id} id={this.props.posts[0].sys.id} data={this.props.posts[0].data}/>
 					<P measure lh_copy f6 silver>

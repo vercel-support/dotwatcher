@@ -28,7 +28,7 @@ export const withEntry = Page => {
 					slug: response.fields.slug,
 					date: response.sys.createdAt,
 					body: response.fields.body,
-					categories: response.fields.category,
+					categories: response.fields.race,
 					keyEvent: response.fields.keyPost,
 					embed: response.fields.embed
 				}
