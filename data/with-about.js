@@ -75,8 +75,6 @@ export const withAbout = Page => {
     });
     const contributors = [];
 
-    console.log(contributorsResponse.items)
-
     if (contributorsResponse.items.length > 0) {
       for(const contributorData of contributorsResponse.items) {
         const contributor = contributorData.fields

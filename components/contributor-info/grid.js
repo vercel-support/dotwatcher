@@ -18,9 +18,10 @@ const Wrap = styled.div`
   }
 ${tachyons}`;
 const Grid = styled.div`
+  width: 100%;
   display: grid;
   grid-gap: var(--spacing-large);
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) );
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr) );
 ${tachyons}`
 
 const ContributorsGrid = ({ contributors }) => {
