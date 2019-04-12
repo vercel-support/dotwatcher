@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Instagram from 'react-instagram-embed';
-import Placeholder from '../placeholder';
 
 class Embed extends Component {
 	constructor(props) {
