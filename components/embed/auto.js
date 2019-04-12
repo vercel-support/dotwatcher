@@ -29,7 +29,7 @@ class AutoEmbed extends Component {
       const { TwitterTweetEmbed } = require('react-twitter-embed');
       return <TwitterTweetEmbed tweetId={tweetID[1]} />;
     }
-    if (this.state.inBrowser && this.props.href.includes('instagram.com')) {
+    if (this.state.inBrowser && this.props.href.includes('instagram.com/p/')) {
       return <Instagram url={this.props.href} />;
     }
     if (this.state.inBrowser && youtubeDomain.test(this.props.href)) {
