@@ -36,23 +36,26 @@ export const WithFeatures = Page => {
 
 			if (item.fields.contentBlock) {
 				for (const contentBlock of item.fields.contentBlock) {
-					const block = {
-						sys: {
-							id: contentBlock.sys.id
-						},
-						heading: contentBlock.fields.heading,
-						layout: contentBlock.fields.layout,
-						words: contentBlock.fields.words,
-						link: contentBlock.fields.link,
-						callToAction: contentBlock.fields.callToActionText
-					};
+					if (contentBlock.fields) {
 
-					if (contentBlock.fields.image) {
-						block.image = item.includes.Asset.find(obj => {
-							return obj.sys.id === contentBlock.fields.image.sys.id;
-						});
+						const block = {
+							sys: {
+								id: contentBlock.sys.id
+							},
+							heading: contentBlock.fields.heading,
+							layout: contentBlock.fields.layout,
+							words: contentBlock.fields.words,
+							link: contentBlock.fields.link,
+							callToAction: contentBlock.fields.callToActionText
+						};
+
+						if (contentBlock.fields.image && item.includes) {
+							block.image = item.includes.Asset.find(obj => {
+								return obj.sys.id === contentBlock.fields.image.sys.id;
+							});
+						}
+						feature.data.blocks.push(block);
 					}
-					feature.data.blocks.push(block);
 				}
 			}
 
