@@ -35,8 +35,8 @@ class AutoEmbed extends Component {
     if (this.state.inBrowser && youtubeDomain.test(this.props.href)) {
       return <iframe width="560" height="315" style={{ maxWidth: '100%' }} src={`https://www.youtube.com/embed/${youtubeID[1]}`} frameBorder="0" allowFullScreen />;
     }
-    
-    return <A link blue href={this.props.href}>{this.props.href}</A>;
+    console.log(this.props)
+    return <A link blue href={this.props.href}>{this.props.children[0].props.value ? this.props.children[0].props.value : this.props.href}</A> ;
   }
 }
 
