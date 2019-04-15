@@ -32,10 +32,10 @@ const ContributorInfo = ({ contributor }) => {
         <Link route="contributor" params={{ type: 'contributor', name: contributor.slug }} passHref >
           <A db link near_black>
             <Figure w3 dib v_mid>
-              <Img img db bg_light_gray
+              <Img img db bg_light_gray br_100
                 title={contributor.avatar.fields.title}
                 alt={contributor.avatar.fields.description}
-                src={`${contributor.avatar.fields.file.url}?w=96&h=96&fit=fill&fm=jpg&q=80&r=max`}
+                src={`${contributor.avatar.fields.file.url}?w=96&h=96&fit=fill&fm=jpg&q=80`}
               />
             </Figure>
             <Header dib v_mid>
