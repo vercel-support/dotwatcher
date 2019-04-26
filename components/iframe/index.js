@@ -26,6 +26,7 @@ class Iframe extends Component {
 	render() {
 		const Container = styled.div`
 			margin-top: ${this.props.raceID.indexOf('maprogress') !== -1 ? '75px' : '0'};
+			height: 80vh;
 			@media screen and (min-width: 64em) {
 				height: ${this.props.raceID.indexOf('maprogress') !== -1 ? 'calc(100vh - 75px)' : '100vh'};
 			}
