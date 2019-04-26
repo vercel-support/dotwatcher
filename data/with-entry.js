@@ -7,40 +7,38 @@ import vars from './api-vars';
 export const withEntry = Page => {
 	const WithEntry = props => <Page {...props}/>;
 
-	WithEntry.getInitialProps = async ({query: {id, type}}) => {
+	WithEntry.getInitialProps = async ({query: {id}}) => {
 		const posts = [];
 		const client = createClient({
 			space: vars.space,
 			accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 		});
 
-		if (id && type === 'post') {
-			const response = await client.getEntry(id);
+		const response = await client.getEntry(id);
 
-
-			const entry = {
-				sys: {
-					id: response.sys.id
-				},
-				data: {
-					title: response.fields.title,
-					format: response.fields.format,
-					slug: response.fields.slug,
-					date: response.sys.createdAt,
-					body: response.fields.body,
-					categories: response.fields.race,
-					keyEvent: response.fields.keyPost,
-					embed: response.fields.embed
-				}
-			};
-
-			if (response.fields.featuredImage) {
-				entry.data.image = response.includes.Asset.find(obj => {
-					return obj.sys.id === response.fields.featuredImage.sys.id;
-				});
+		const entry = {
+			sys: {
+				id: response.sys.id
+			},
+			data: {
+				title: response.fields.title || 'Post not found',
+				format: response.fields.format || '',
+				slug: response.fields.slug || 'no-post',
+				date: response.sys.createdAt,
+				body: response.fields.body || '',
+				categories: response.fields.race || {},
+				keyEvent: response.fields.keyPost || false,
+				embed: response.fields.embed || ''
 			}
-			posts.push(entry);
+		};
+
+		if (response.fields.featuredImage) {
+			entry.data.image = response.includes.Asset.find(obj => {
+				return obj.sys.id === response.fields.featuredImage.sys.id;
+			});
 		}
+		posts.push(entry);
+	
 
 		return {
 			...(Page.getInitialProps ? await Page.getInitialProps() : {}),
