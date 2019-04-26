@@ -199,7 +199,7 @@ class Race extends React.Component {
 					<meta property="og:title" content={`${this.props.raceName} – DotWatcher.cc`}/>
 					<meta property="og:description" content={this.props.race.fields.shortDescription ? this.props.race.fields.shortDescription : 'DotWatcher is here to showcase the best of long distance self-supported bike racing.' }/>
 					<meta property="og:image" content={this.props.raceImage}/>
-					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:card" content="summary" />
 					<meta name="twitter:site" content="@dotwatcher"/>
 					<meta name="twitter:creator" content="@dotwatcher"/>
 					<meta name="twitter:title" content={`${this.props.raceName} – DotWatcher.cc`}/>
