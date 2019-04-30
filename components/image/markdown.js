@@ -7,13 +7,14 @@ const Figure = styled.figure`${tachyons}`;
 const Img = styled.img`${tachyons}`;
 
 const Image = ({src, alt}) => {
+	const format = src.match(/\.png$/) ? '&fm=jpg' : ''
 	return (
 		<Img img db bg_light_gray mb4
 			alt={alt}
-			src={`${src}?w=400&fm=jpg&q=60`}
-			srcSet={`${src}?w=600&fm=jpg&q=60 1024w,
-				${src}?w=400&fm=jpg&q=60 768w,
-				${src}?w=320&fm=jpg&q=60 320w`}
+			src={`${src}?w=400${format}&q=60`}
+			srcSet={`${src}?w=600${format}&q=60 1024w,
+				${src}?w=400${format}&q=60 768w,
+				${src}?w=320${format}&q=60 320w`}
 			sizes="200vw"
 		/>
 	);
