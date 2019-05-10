@@ -16,7 +16,7 @@ const H2 = styled.h2`
 	width: 50%;
 	border-top: .125rem solid white;
 	position: absolute;
-	bottom: -1rem;
+	bottom: -.75rem;
 	left: 25%;
 	height: 25%;
 }
@@ -46,7 +46,7 @@ const Box = ({block}) => (
 			<a href={block.link}>
 				<Div aspect_ratio__object z_1>
 					<VerticallyCenter>
-						<H2 f3 f4_ns fw6 ttu tracked white tc lh_title ma0 relative>{widont(block.heading)}</H2>
+						<H2 f3 f4_ns fw6 ttu tracked white tc lh_solid ma0 mb2 relative>{widont(block.heading)}</H2>
 						<P f4 f5_ns white lh_copy tc mt3 mb0>{widont(block.words)}</P>
 					</VerticallyCenter>
 				</Div>
