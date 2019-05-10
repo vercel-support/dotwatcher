@@ -11,10 +11,12 @@ import AutoEmbed from '../components/embed/auto';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import ContentBlock from '../components/content-block';
-import Carousel from '../components/carousel';
+import Grid from '../components/grid';
+import Homepage from '../components/content-block/homepage';
 import Page from '../components/shared/page';
 import {withPage} from '../data/with-page';
 import widont from '../utils/widont';
+import { Link } from '../routes';
 
 const Div = styled.div`
 	p {
@@ -22,6 +24,9 @@ const Div = styled.div`
 	}
 ${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
+const H2 = styled.h2`${tachyons}`;
+const A = styled.a`${tachyons}`;
+const SVG = styled.svg`${tachyons}`;
 
 class ContentPage extends React.Component {
 	render() {
@@ -36,9 +41,10 @@ class ContentPage extends React.Component {
 			}
 		${tachyons}`
 
-		const carouselSlides = this.props.page.blocks.filter(block => block.layout === 'Carousel slide');
-		const carousel = carouselSlides.length ? <Carousel slides={carouselSlides}/> : null;
-		const blocksWithoutSlides = this.props.page.blocks.filter(block => block.layout !== 'Carousel slide');
+		const homepageBlock = this.props.page.blocks.filter(block => block.layout === 'Homepage')[0];
+		const gridBlocks = this.props.page.blocks.filter(block => block.layout === 'Carousel slide');
+		const grid = gridBlocks.length ? <Grid blocks={gridBlocks}/> : null;
+		const blocksWithoutSlides = this.props.page.blocks.filter(block => block.layout !== 'Carousel slide').filter(block => block.layout !== 'Homepage');
 		return (
 			<Page>
 				<Head>
@@ -76,8 +82,49 @@ class ContentPage extends React.Component {
 						</Div>
 					</Div>
 				</StyledWrapper>
-				<Div fl w_100 mt3 mt4_l cf>
-					{carousel}
+				<Div fl w_100 mt3 mt4_l className="cf">
+					{homepageBlock ? <Homepage block={homepageBlock} /> : null}
+
+					<Div mb4 mb5_l className="cf">
+						<Div w_90 w_60_l center pa4 bg_near_white className="cf">
+							<Div fl w_10>
+								<SVG w_100 viewBox="0 0 21 37" xmlns="http://www.w3.org/2000/svg"><g fill="#1A1918" fill-rule="evenodd"><path d="M7.703 5.444l4.58 7.956 2.43-4.225 4.409 7.657c.882-2.47 1.47-4.627 1.47-5.982 0-5.665-4.597-10.278-10.245-10.278C4.699.572.1 5.184.1 10.85c0 1.268.524 3.248 1.313 5.522l6.29-10.928z" /><path d="M14.715 12.31l-1.531 2.659 3.956 6.873c.446-1.048.876-2.093 1.271-3.108l-3.696-6.424zM8.626 10.183L6.776 13.4l-.925-1.605-3.739 6.495c2.701 7.07 7.196 15.828 7.46 16.345l.774 1.485.758-1.485c.21-.39 2.826-5.489 5.26-11.005L8.626 10.183z" /></g></SVG>
+							</Div>
+							<Div fl w_90 pl4>
+								<H1 f2 f1_ns fw6 lh_solid mt0 mb3>
+									{
+										widont(this.props.page.title)
+									}
+								</H1>
+								<Div f4 f3_ns measure lh_copy>
+									<ReactMarkdown
+										source={this.props.page.text}
+										plugins={[shortcodes]}
+										renderers={{
+											shortcode: Embed,
+											link: AutoEmbed
+										}}
+									/>
+									<p>Learn more »</p>
+								</Div>
+							</Div>
+						</Div>
+					</Div>
+
+					{/* <Div mb4 mb5_l className="cf">
+						<Link href="/races" as="/races" passHref>
+							<A db fl w_50 bg_yellow pv6 link white hover_near_black>
+								<H2 ttu f4 f1_ns fw6 tracked tc>Race coverage</H2>
+							</A>
+						</Link>
+						<Link href="/results" as="/results" passHref>
+							<A db fl w_50 bg_navy pv6 link white hover_near_black>
+								<H2 ttu f4 f1_ns fw6 tracked tc>Race results</H2>
+							</A>
+						</Link>
+					</Div> */}
+
+					{ grid }
 					{
 						blocksWithoutSlides.map(block => {
 							return (

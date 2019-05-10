@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import ReactMarkdown from 'react-markdown';
-import Wrapper from '../shared/wrapper';
 
 const mailchimpURL = process.env.MAILCHIMP || '';
 
 const Form = styled.form`${tachyons}`;
+const Div = styled.div`${tachyons}`;
 const Header = styled.header`
 	p {
+		max-width: 42em;
 		margin-top: 0;
 		line-height: 1.5;
 	}
@@ -90,25 +91,27 @@ const CustomForm = ({status, message, onValidated}) => {
 };
 
 const EmailSignup = ({block}) => (
-	<Wrapper mhw_100 w_50_ns ph4 mt4_ns mb5_ns className="cf">
-		<Header>
-			<H2 f3 fw6 mt0 mb2 pb1 lh_title>{block.heading}</H2>
-			<ReactMarkdown
-				source={block.words}
-			/>
-		</Header>
-		<MailchimpSubscribe
-			url={mailchimpURL}
-			render={({subscribe, status, message}) => (
-				<CustomForm
-					status={status}
-					message={message}
-					onValidated={formData => subscribe(formData)}
-					url={mailchimpURL}
+	<Div mb4 mb5_l className="cf">
+		<Div w_90 w_60_l center pa4 bg_near_white className="cf">
+			<Header>
+				<H2 f3 f2_ns fw6 mt0 mb2 pb1 lh_title>{block.heading}</H2>
+				<ReactMarkdown
+					source={block.words}
 				/>
-			)}
-		/>
-	</Wrapper>
+			</Header>
+			<MailchimpSubscribe
+				url={mailchimpURL}
+				render={({subscribe, status, message}) => (
+					<CustomForm
+						status={status}
+						message={message}
+						onValidated={formData => subscribe(formData)}
+						url={mailchimpURL}
+					/>
+				)}
+			/>
+		</Div>
+	</Div>
 );
 
 EmailSignup.propTypes = {
