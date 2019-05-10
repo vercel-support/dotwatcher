@@ -86,7 +86,11 @@ class App extends Component {
 											link: AutoEmbed
 										}}
 									/>
-									<p>Learn more »</p>
+									<Link href="/about" as="/about" passHref>
+										<A link near_black hover_blue>
+											Learn more »
+										</A>
+									</Link>
 								</Div>
 							</Div>
 						</Div>
