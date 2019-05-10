@@ -41,6 +41,13 @@ const Grid = ({blocks}) => {
           </Link>
         ))
       }
+      <H3 mt0 lh_solid f4 f3_ns ma0 fw6>
+        <Link href="/features" as="/features" passHref>
+          <A link near_black hover_blue>
+            More features »
+          </A>
+        </Link>
+      </H3>
     </GridContainer>
   );
 }
