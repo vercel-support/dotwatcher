@@ -85,7 +85,7 @@ class App extends Component {
 									}}
 								/>
 								<Link href="/about" as="/about" passHref>
-									<A link near_black hover_blue>
+									<A link blue hover_near_black mt3 db>
 										Learn more »
 									</A>
 								</Link>
