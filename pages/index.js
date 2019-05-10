@@ -24,7 +24,6 @@ const Div = styled.div`
 	}
 ${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
 const A = styled.a`${tachyons}`;
 const SVG = styled.svg`${tachyons}`;
 
@@ -93,19 +92,6 @@ class App extends Component {
 							</Div>
 						</Div>
 					</Div>
-
-					{/* <Div mb4 mb5_l className="cf">
-						<Link href="/races" as="/races" passHref>
-							<A db fl w_50 bg_yellow pv6 link white hover_near_black>
-								<H2 ttu f4 f1_ns fw6 tracked tc>Race coverage</H2>
-							</A>
-						</Link>
-						<Link href="/results" as="/results" passHref>
-							<A db fl w_50 bg_navy pv6 link white hover_near_black>
-								<H2 ttu f4 f1_ns fw6 tracked tc>Race results</H2>
-							</A>
-						</Link>
-					</Div> */}
 
 					{ grid }
 					{
