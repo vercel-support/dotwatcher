@@ -73,7 +73,7 @@ class App extends Component {
 							</Div>
 							<H1 f2 f1_ns fw6 lh_solid mt0 mb3>
 								{
-									widont(this.props.page.title)
+									this.props.page.title
 								}
 							</H1>
 							<Div f4 f3_ns measure lh_copy fr_ns w_80_ns>
