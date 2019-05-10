@@ -10,9 +10,8 @@ import AutoEmbed from '../embed/auto';
 import widont from '../../utils/widont';
 
 const Div = styled.div`${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
+const H1 = styled.h1`${tachyons}`;
 const Header = styled.header`${tachyons}`;
-const Img = styled.img`${tachyons}`;
 
 const Block = ({block, feature}) => {
 	const Wrap = styled.div`
