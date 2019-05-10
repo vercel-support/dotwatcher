@@ -4,7 +4,6 @@ import styled, {keyframes} from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import moment from 'moment';
 import widont from '../../utils/widont';
-import slugify from 'slugify';
 import {Link} from '../../routes';
 
 const onAir = keyframes`
