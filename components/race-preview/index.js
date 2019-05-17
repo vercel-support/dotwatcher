@@ -104,7 +104,12 @@ const RacePreview = ({data}) => {
 						data.raceResults.map((result, i) => {
 							return (
 								<ResultsRow>
-									<ResultsCell f6 lh_copy fw6>{i+1}. { result.Rider }</ResultsCell>
+									<ResultsCell f6 lh_copy fw6>
+										{i+1}.&nbsp;
+										<Link route="profile" params={{ type: 'profile', name: result.Rider }} passHref>
+											<A link near_black hover_blue underline title={`See ${result.Rider}’s past results`}>{ result.Rider }</A>
+										</Link>
+									</ResultsCell>
 									<ResultsCell tr f6 lh_copy v_top><abbr title="(D:H:MM)">{ result['Finish Time (D:H:MM)'] }</abbr></ResultsCell>
 								</ResultsRow>
 							)
