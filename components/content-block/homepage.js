@@ -18,6 +18,10 @@ const onAir = keyframes`
 `;
 const A = styled.a`
 	background-image: url(${props => props.bg}?w=800);
+	background-position: 33% 0;
+	@media screen and (min-width: 48em) {
+		background-image: url(${props => props.bg}?w=1200);
+	}
 	@media screen and (min-width: 64em) {
 		background-image: url(${props => props.bg}?w=1800);
 	}
@@ -50,24 +54,24 @@ const Span = styled.span`${tachyons}`;
 const Homepage = ({block}) => {
 	if (block.race) {
 		const isRaceLive = moment().isBetween(moment(block.race.fields.raceDate), moment(block.race.fields.raceEndDate));
-			const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bt bw3 b__white pt2 pl5 pr4 near_black relative mb3>{widont(block.heading)}</H2Live> : <H2 f2 f1_ns lh_title ma0 bt bw3 b__white pt2 ph4 near_black mb3>{widont(block.heading)}</H2>;
+			const Title = isRaceLive ? <H2Live f2 f1_ns lh_title ma0 bb bw2 b__white pb2 pl5 pr4 near_white relative mb3>{widont(block.heading)}</H2Live> : <H2 f2 f1_ns lh_title ma0 bb bw2 b__white pb2 ph4 near_white mb3>{widont(block.heading)}</H2>;
 			const WordsWrap = styled.div`
 				margin-left: var(--spacing-${isRaceLive ? 'extra-large' : 'large'});
 			${tachyons}`;
 
 			return (
-				<Div mh4_m mb4 mb5_ns className="cf">
+				<Div mb4 mb5_ns className="cf">
 					<Link route="race" params={{type: 'race', slug: block.race.fields.slug}} passHref prefetch>
-						<A db cover bg_center bg={block.image.fields.file.url} className="cf">
-							<Wrapper fr w_100 w_two_thirds_m w_50_l pa4 pv6_ns mv4 mv0_ns className="cf">
-								<Div bg_white_50 pb4>
+						<A db cover bg={block.image.fields.file.url} className="cf">
+							<Wrapper fl w_100 w_40_m w_third_l pa4 pb6 pb4_ns pl0 pv6_ns bg_black_50 className="cf">
+								<Div>
 									{Title}
 									<WordsWrap mr4>
-										<P f3 lh_copy measure_narrow near_black>
+										<P f3 lh_copy measure_narrow near_white>
 											{widont(block.words)}
 										</P>
 										<P f3 pt3>
-											<Span link underline near_black hover_white>
+											<Span link underline near_white hover_white>
 												{
 													moment(block.race.fields.raceEndDate).isBefore() ? `Look back at the race »` : `Follow the race »`
 												}
