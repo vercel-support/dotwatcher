@@ -14,7 +14,7 @@ const Years = styled.ul`
 ${tachyons}`;
 const Year = styled.li`
   &:only-child {
-    width: 50%;
+    width: 33%;
   }
 ${tachyons}`;
 

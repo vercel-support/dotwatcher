@@ -8,11 +8,9 @@ import ResultsContribute from '../results-contribute';
 const Div = styled.div`${tachyons}`;
 const Header = styled.header`${tachyons}`;
 const H1 = styled.h1`${tachyons}`;
-const H2 = styled.h2`${tachyons}`;
 const Grid = styled.div`
 	display: grid;
 	grid-gap: var(--spacing-large);
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr) );
 ${tachyons}`;
 
 const ResultsIndex = ({ raceResultsByYear }) => {
