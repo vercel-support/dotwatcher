@@ -28,7 +28,7 @@ const Grid = ({blocks}) => {
       <H3 lh_solid f3 f2_ns ma0 fw6>Recently on Dotwatcher</H3>
       {
         blocks.map(block => (
-          <Link href="/races" as="/races" passHref>
+          <Link route="feature" params={{ type: 'feature', slug: block.feature }} passHref>
               <A db link near_black hover_blue key={block.sys.id}>
               <Div>
                 <Img mw_100 src={`${block.image.fields.file.url}?w=800&h=500&fit=fill&fm=jpg&q=60`} />
