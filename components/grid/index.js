@@ -25,7 +25,7 @@ ${tachyons}`;
 const Grid = ({blocks}) => {
   return (
     <GridContainer mh4 mb4 mh5_ns mb5_ns>
-      <H3 lh_solid f3 f2_ns ma0 fw6>Recently on Dotwatcher</H3>
+      <H3 lh_solid f3 f2_ns ma0 fw6>Recently on DotWatcher</H3>
       {
         blocks.map(block => (
           <Link route="feature" params={{ type: 'feature', slug: block.feature }} passHref>
