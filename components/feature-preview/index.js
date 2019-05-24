@@ -16,14 +16,14 @@ const P = styled.p`${tachyons}`;
 const FeaturePreview = ({data}) => {
 	return (
 		<Div className="with-divider cf">
-			<Figure ma0 pa0 fl ph3 w_40>
+			<Figure ma0 pa0 fl ph3 w_100 w_40_ns>
 				<Link route="feature" params={{type: 'feature', slug: data.slug}} passHref prefetch>
-					<a>
-						{ data.image ? <Img mw_100 srcSet={`${data.image.fields.file.url}?w=300&h=300&fm=jpg&q=50 768w, ${data.image.fields.file.url}?w=600&h=600&fm=jpg&q=50 769w`} src={`${data.image.fields.file.url}?w=600&h=600&fm=jpg&q=50`} alt={data.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
-					</a>
+					<A db>
+						{ data.image ? <Img db mw_100 src={`${data.image.fields.file.url}?w=600&h=600&fm=jpg&q=50`} alt={data.image.fields.description}/> : <Placeholder w_100 h_100 pv6 bg_light_gray/> }
+					</A>
 				</Link>
 			</Figure>
-			<Div fl_ns ph3 w_50_m w_60_l>
+			<Div fl_ns ph3 w_100 w_60_ns>
 				<Link route="feature" params={{type: 'feature', slug: data.slug}} passHref prefetch>
 					<A link near_black>
 						<H1 f2 fw6 ma0 lh_title link hover_blue>{widont(data.title)}</H1>
