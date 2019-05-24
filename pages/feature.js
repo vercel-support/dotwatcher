@@ -32,12 +32,13 @@ class FeaturePage extends React.Component {
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position:  ${this.props.feature.imageAnchor ? this.props.feature.imageAnchor : 'center' } center;
-			height: ${this.props.feature.image ? `75vh` : `20vh`};
+			height: ${this.props.feature.image ? `35vh` : `20vh`};
 
 			&> h1 {
 				background-color: rgba(255, 255, 255, .66)
 			}
 			@media screen and (min-width: 48em) {
+				height: ${this.props.feature.image ? `75vh` : `20vh`};
 				background-image: ${this.props.feature.image ? `url(${this.props.feature.image.fields.file.url}?w=1024&fm=jpg&q=60)` : 'none' };
 			}
 			@media screen and (min-width: 64em) {
