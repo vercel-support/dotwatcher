@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import ResultsSummary from '../results-summary';
 import ResultsContribute from '../results-contribute';
+import ResultsFilter from './results-filter';
 
 const Div = styled.div`${tachyons}`;
 const Header = styled.header`${tachyons}`;
@@ -14,12 +15,16 @@ const Grid = styled.div`
 ${tachyons}`;
 
 const ResultsIndex = ({ raceResultsByYear }) => {
+	const raceNames = raceResultsByYear.map(result => result.Event)
 	return (
 		<Div mt3 mt4_l mh6_l>
 			<Div>
 				<Header ma3>
 					<H1 ma0 f1 fw6>Browse race results</H1>
 				</Header>
+				<Div>
+					<ResultsFilter events={raceNames} />
+				</Div>
 				<Grid mh3 pb4 bb bw1 b__light_gray>
 					{
 						raceResultsByYear.map((result, i) => <ResultsSummary event={result} key={i} />)

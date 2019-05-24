@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.2.0",
+    "accessible-autocomplete": "^1.6.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.6.3",
     "babel-plugin-wrap-in-js": "^1.1.1",
